@@ -1,0 +1,30 @@
+
+{% block content %}
+    <h1>Mentee Profile</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.bio.label }}<br>
+            {{ form.bio }}
+        </p>
+        <p>
+            {{ form.current_industry.label }}<br>
+            {{ form.current_industry }}
+        </p>
+        <p>
+            {{ form.desired_field.label }}<br>
+            {{ form.desired_field }}
+        </p>
+        <p>
+            {{ form.mentee_purpose.label }}<br>
+            {{ form.mentee_purpose }}
+        </p>     
+
+        <p>
+            {{ form.secret_question.label }}<br>
+            {{ form.secret_question }}
+        </p>
+ 
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}
