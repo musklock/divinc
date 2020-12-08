@@ -26,8 +26,17 @@ def profile_mentee():
     # logged_in = checklogin()
     return render_template("mentee_profile.html", form=form, logged_in=logged_in)
 
+
+@app.route('/api', methods=['GET'])
+def api():
+    return {
+        'userId': 1,
+        'title': 'Flask React Application',
+        'complete': False
+}
+
 @app.route('/profile/mentor', methods=['GET', 'POST'])
-def profile_mentee():
+def profile_mentor():
     form = MentorForm()
     if form.validate_on_submit():
         new_profile = MentorProfile()
