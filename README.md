@@ -17,6 +17,7 @@ Open your terminal on your PC and enter the following commands.
 ## Project structure
 1. HTML files go in ` templates `
 2. CSS files and images go in ` static `
+3. React CSS files and images
 
 ## To run with React
 1. cd frontend && 

@@ -30,7 +30,7 @@ const [initialData, setInitialData] = useState([{}]);
     return (
             <div className="main_page_container">
             Welcome to React
-        
+               <h1>{initialData.title}</h1>
             </div>
         )
 }
