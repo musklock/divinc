@@ -134,7 +134,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
+ // import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 function App() {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -185,6 +185,77 @@ var closeModal = function closeModal() {
 
 /***/ }),
 
+/***/ "./components/header_footer/header.jsx":
+/*!*********************************************!*\
+  !*** ./components/header_footer/header.jsx ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Header = function Header(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header-logo"
+  }, "MATCHTOR"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+
+/***/ "./components/main_page/login_component.jsx":
+/*!**************************************************!*\
+  !*** ./components/main_page/login_component.jsx ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+
+
+var LoginContainer = function LoginContainer(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "login-container",
+    action: ""
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "login-container-input",
+    type: "text",
+    placeholder: "Email"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "login-container-input",
+    type: "password",
+    placeholder: "Password"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    className: "login-container-input",
+    type: "submit",
+    value: "LOGIN"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: ""
+  })));
+};
+
+var mSTP = function mSTP(state) {
+  return {};
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {};
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(LoginContainer));
+
+/***/ }),
+
 /***/ "./components/main_page/main_page.jsx":
 /*!********************************************!*\
   !*** ./components/main_page/main_page.jsx ***!
@@ -196,6 +267,8 @@ var closeModal = function closeModal() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login_component */ "./components/main_page/login_component.jsx");
+/* harmony import */ var _header_footer_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../header_footer/header */ "./components/header_footer/header.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -207,6 +280,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
  // import TableContainer from '../table/table_container'
 
@@ -235,7 +310,7 @@ var MainPage = function MainPage(props) {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_container"
-  }, "Welcome to React", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, initialData.title));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_login_component__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MainPage);
@@ -463,7 +538,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _frontend_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_frontend_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "body {\n  font: verdana, sans-serif;\n  background-color: #f3e2c7; }\n  body h1, body h2 {\n    color: #b68d4c; }\n", "",{"version":3,"sources":["webpack://./../static/css/appStyles.scss","webpack://./../static/css/themeColors.scss"],"names":[],"mappings":"AAGA;EACE,yBAHiC;EAIjC,yBCLwB,EAAA;EDG1B;IAIM,cCNkB,EAAA","sourcesContent":["@import 'themeColors';\n$theme-font:    verdana, sans-serif;\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark\n  }\n}","$themeColor-Light: #f3e2c7;\n$themeColor-Dark:#b68d4c;"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".header-logo {\n  display: flex;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: normal;\n  font-size: 44px;\n  line-height: 59px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.015em;\n  text-transform: uppercase;\n  color: #000000; }\n\nbody {\n  font: verdana, sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n", "",{"version":3,"sources":["webpack://./../static/css/header_footer.scss","webpack://./../static/css/appStyles.scss","webpack://./../static/css/themeColors.scss"],"names":[],"mappings":"AAEA;EAEI,aAAa;EACb,0BAA0B;EAC1B,kBAAkB;EAClB,mBAAmB;EACnB,eAAe;EACf,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,wBAAwB;EACxB,yBAAyB;EAEzB,cAAc,EAAA;;ACXlB;EACE,yBALiC;EAMjC,yBCPwB,EAAA;EDK1B;IAIM,cCRkB,EAAA","sourcesContent":["\n\n.header-logo {\n\n    display: flex;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: normal;\n    font-size: 44px;\n    line-height: 59px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.015em;\n    text-transform: uppercase;\n    \n    color: #000000;\n}\n\n","@import 'themeColors';\n$theme-font:    verdana, sans-serif;\n\n@import 'header_footer';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark\n  }\n}\n\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 

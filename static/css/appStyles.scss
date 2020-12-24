@@ -1,6 +1,8 @@
 @import 'themeColors';
 $theme-font:    verdana, sans-serif;
 
+@import 'header_footer';
+
 body {
   font: $theme-font;
   background-color: $themeColor-Light;
@@ -8,3 +10,5 @@ body {
       color: $themeColor-Dark
   }
 }
+
+

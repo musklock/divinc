@@ -1,5 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
+import LoginComponent from './login_component';
+import Header from '../header_footer/header';
 // import TableContainer from '../table/table_container'
 
 const MainPage = props => {
@@ -29,8 +31,10 @@ const [initialData, setInitialData] = useState([{}]);
     
     return (
             <div className="main_page_container">
-            Welcome to React
-               <h1>{initialData.title}</h1>
+              <Header/>
+              <LoginComponent></LoginComponent>
+
+            
             </div>
         )
 }

@@ -9,10 +9,11 @@ const LoginContainer = (props) => {
     return (
 
         <span>
-            <form action="">
-                <input type="text" placeholder="Email"/>
-                <input type="password" placeholder="Password"/>
-                <input type="submit" value={"LOGIN"}/>
+            <form className='login-container' action="">
+                <input className="login-container-input" type="text" placeholder="Email"/>
+                <input className="login-container-input" type="password" placeholder="Password"/>
+                <input className="login-container-input" type="submit" value={"LOGIN"}/>
+                <div className=""></div>
 
             </form>
 
