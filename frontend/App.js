@@ -4,6 +4,7 @@ import Modal from "./components/modal/modal.jsx"
 import { HashRouter } from 'react-router-dom';
 import MainPageContainer from './components/main_page/main_page_container'
 import "../static/css/appStyles.scss"
+// import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 function App() {
   return (
