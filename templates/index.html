@@ -1,8 +1,23 @@
 
 {% block content %}
-    <h1> Hello!</h1>
-    <div>
-        Diversity Inclusion
-        <a href= "/index">Home</a>
+<head>
+    <title>Divinc</title>
+</head>
+
+<body>
+
+    <div id="root">
+        <h1> Hello!</h1>
+        <h2> If you see this, you aren't seeing React.</h2>
+        <div>
+            Diversity Inclusion
+            <a href= "/index">Home</a>
+            <a href= "/profile/mentee">Home</a>
+            <a href= "/index">Home</a>
+            
+        </div>
+        
     </div>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bundle.js') }}" ></script>
+</body>
 {% endblock %}

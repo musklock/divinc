@@ -1,0 +1,14 @@
+@import 'themeColors';
+$theme-font:    verdana, sans-serif;
+
+@import 'header_footer';
+
+body {
+  font: $theme-font;
+  background-color: $themeColor-Light;
+  h1, h2 {
+      color: $themeColor-Dark
+  }
+}
+
+
