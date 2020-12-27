@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import MainPage from "./main_page.jsx";
+import RegistrationPage from "./registration_page.jsx";
 // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
 // import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
 
@@ -19,4 +19,4 @@ const mDTP = dispatch => ({
 
 
 
-export default connect(mSTP, mDTP)(MainPage)
+export default connect(mSTP, mDTP)(RegistrationPage)

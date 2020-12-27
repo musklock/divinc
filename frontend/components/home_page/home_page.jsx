@@ -4,7 +4,7 @@ import LoginComponent from './login_component';
 import Header from '../header_footer/header';
 // import TableContainer from '../table/table_container'
 
-const MainPage = props => {
+const HomePage = props => {
 
 
 // useEffect(() => {
@@ -39,4 +39,4 @@ const [initialData, setInitialData] = useState([{}]);
         )
 }
 
-export default MainPage
+export default HomePage
