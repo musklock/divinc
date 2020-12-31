@@ -1,5 +1,7 @@
 from flask import Flask, render_template, flash, redirect
 from app import app
+from .forms import *
+from .models import *
 
 
 @app.route('/')
@@ -24,10 +26,10 @@ def profile_mentee():
         flash("Your profile has been made!", "success")
         return redirect(url_for('home'))
     # logged_in = checklogin()
-    return render_template("mentee_profile.html", form=form, logged_in=logged_in)
+    return render_template("mentee_profile.html", form=form)
 
 @app.route('/profile/mentor', methods=['GET', 'POST'])
-def profile_mentee():
+def profile_mentor():
     form = MentorForm()
     if form.validate_on_submit():
         new_profile = MentorProfile()
@@ -42,4 +44,4 @@ def profile_mentee():
         flash("Your profile has been made!", "success")
         return redirect(url_for('home'))
     # logged_in = checklogin()
-    return render_template("mentor_profile.html", form=form, logged_in=logged_in)
+    return render_template("mentor_profile.html", form=form)
