@@ -16,7 +16,7 @@ Open your terminal on your PC and enter the following commands.
 ## Project structure
 1. HTML files go in ` templates` Root page will primarily be rendered from index.html
 2. CSS files and images go in `static`
-3. Bundle.js from react lives in `sttic`
+3. Bundle.js from react lives in `static`
 
 ## To run with React
 1. cd frontend && 
