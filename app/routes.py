@@ -54,3 +54,5 @@ def profile_mentor():
         return redirect(url_for('home'))
     # logged_in = checklogin()
     return render_template("mentor_profile.html", form=form, logged_in=logged_in)
+
+@app.route('/test')
