@@ -5,6 +5,8 @@ from .models import *
 
 
 @app.route('/')
+def index():
+    return render_template('index.html')
 @app.route('/index')
 def index():
     return render_template('index.html')
@@ -28,6 +30,15 @@ def profile_mentee():
     # logged_in = checklogin()
     return render_template("mentee_profile.html", form=form)
 
+
+@app.route('/api', methods=['GET'])
+def api():
+    return {
+        'userId': 1,
+        'title': 'Flask React Application',
+        'complete': False
+}
+
 @app.route('/profile/mentor', methods=['GET', 'POST'])
 def profile_mentor():
     form = MentorForm()
@@ -45,3 +56,6 @@ def profile_mentor():
         return redirect(url_for('home'))
     # logged_in = checklogin()
     return render_template("mentor_profile.html", form=form)
+    #return render_template("mentor_profile.html", form=form, logged_in=logged_in)
+
+

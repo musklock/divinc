@@ -3,7 +3,7 @@ from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 
-app = Flask(__name__, template_folder='../templates')
+app = Flask(__name__, template_folder='../templates', static_url_path=None, static_folder="../static")
 
 app.config.from_object(Config)
 db = SQLAlchemy(app)
