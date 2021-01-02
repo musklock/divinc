@@ -1,0 +1,26 @@
+{% block content %}
+    <h1>Mentor Profile</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+
+        <p>
+            {{ form.past_industry.label }}<br>
+            {{ form.past_industry }}
+        </p>
+        <p>
+            {{ form.current_field.label }}<br>
+            {{ form.current_field }}
+        </p>
+        <p>
+            {{ form.mentor_purpose.label }}<br>
+            {{ form.mentor_purpose }}
+        </p>     
+
+        <p>
+            {{ form.secret_question.label }}<br>
+            {{ form.secret_question }}
+        </p>
+ 
+        <p>{{ form.submit() }}</p>
+    </form>
+{% endblock %}

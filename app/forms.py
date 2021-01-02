@@ -9,9 +9,11 @@ class MenteeForm(FlaskForm):
     desired_field = StringField('What is your desired field in tech')
     mentee_purpose = StringField('What do you want out of a mentorship?')
     secret_question = TextAreaField('What are the biggest career challenges you are facing right now?')
+    submit = SubmitField('Submit')
 
 class MentorForm(FlaskForm):
     past_industry = StringField('Have you ever switched your career in the past? If yes, what was your original field?')
-    current_field - StringField('What is your current field?')
+    current_field = StringField('What is your current field?')
     mentor_purpose = StringField('What can you offer as a mentor?')
     secret_question = TextAreaField('TBD')
+    submit = SubmitField('Submit')
