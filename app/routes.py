@@ -1,12 +1,12 @@
 from flask import Flask, render_template, flash, redirect
 from app import app
-
-
+from .forms import *
+from .models import *
 @app.route('/')
 def index():
     return render_template('index.html')
 @app.route('/index')
-def index():
+def index1():
     return render_template('index.html')
 
 @app.route('/profile/mentee', methods=['GET', 'POST'])
@@ -26,7 +26,8 @@ def profile_mentee():
         flash("Your profile has been made!", "success")
         return redirect(url_for('home'))
     # logged_in = checklogin()
-    return render_template("mentee_profile.html", form=form, logged_in=logged_in)
+    return render_template("mentee_profile.html", form=form)
+    # return render_template("mentee_profile.html", form=form, logged_in=logged_in)
 
 
 @app.route('/api', methods=['GET'])
@@ -53,6 +54,5 @@ def profile_mentor():
         flash("Your profile has been made!", "success")
         return redirect(url_for('home'))
     # logged_in = checklogin()
-    return render_template("mentor_profile.html", form=form, logged_in=logged_in)
-
-@app.route('/test')
+    return render_template("mentor_profile.html", form=form)
+    # return render_template("mentor_profile.html", form=form, logged_in=logged_in)
