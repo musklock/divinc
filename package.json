@@ -32,6 +32,7 @@
     "webpack": "^4.44.2"
   },
   "devDependencies": {
+    "file-loader": "^6.2.0",
     "node-sass": "^5.0.0",
     "sass-loader": "^10.1.0",
     "webpack-cli": "^4.2.0"

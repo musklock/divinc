@@ -884,16 +884,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _images_homepage_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../images/homepage.png */ "./static/images/homepage.png");
-/* harmony import */ var _images_homepage_png__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_images_homepage_png__WEBPACK_IMPORTED_MODULE_3__);
 // Imports
 
 
 
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
-var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(_images_homepage_png__WEBPACK_IMPORTED_MODULE_3___default.a);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(_images_homepage_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".header-logo {\n  display: flex;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 800;\n  font-size: 44px;\n  line-height: 59px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.015em;\n  text-transform: uppercase;\n  color: #000000; }\n\n.main_page_backgroun {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + "); }\n\nbody {\n  font: verdana, sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n", "",{"version":3,"sources":["webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAEA;EAEI,aAAa;EACb,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,wBAAwB;EACxB,yBAAyB;EAGzB,cAAc,EAAA;;AChBlB;EACI,yDAA+C,EAAA;;ACInD;EACE,yBANiC;EAOjC,yBCRwB,EAAA;EDM1B;IAIM,cCTkB,EAAA","sourcesContent":["\n\n.header-logo {\n\n    display: flex;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 800;\n    font-size: 44px;\n    line-height: 59px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.015em;\n    text-transform: uppercase;\n\n    \n    color: #000000;\n}\n\n","\n.main_page_backgroun {\n    background-image: url('../images/homepage.png');\n}","@import 'themeColors';\n$theme-font:    verdana, sans-serif;\n\n@import 'header_footer';\n@import 'mainPage';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark\n  }\n}\n\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".header-logo {\n  display: flex;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 800;\n  font-size: 44px;\n  line-height: 59px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.015em;\n  text-transform: uppercase;\n  color: #000000; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + "); }\n\nbody {\n  font: verdana, sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n", "",{"version":3,"sources":["webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAEA;EAEI,aAAa;EACb,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,wBAAwB;EACxB,yBAAyB;EAGzB,cAAc,EAAA;;AChBlB;EACI,yDAAoD,EAAA;;ACIxD;EACE,yBANiC;EAOjC,yBCRwB,EAAA;EDM1B;IAIM,cCTkB,EAAA","sourcesContent":["\n\n.header-logo {\n\n    display: flex;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 800;\n    font-size: 44px;\n    line-height: 59px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.015em;\n    text-transform: uppercase;\n\n    \n    color: #000000;\n}\n\n","\n.main_page_background {\n    background-image: url('/static/images/homepage.png');\n}","@import 'themeColors';\n$theme-font:    verdana, sans-serif;\n\n@import 'header_footer';\n@import 'mainPage';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark\n  }\n}\n\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -37974,10 +37973,12 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 /*!************************************!*\
   !*** ./static/images/homepage.png ***!
   \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module parse failed: Unexpected character '�' (1:0)\nYou may need an appropriate loader to handle this file type, currently no loaders are configured to process this file. See https://webpack.js.org/concepts#loaders\n(Source code omitted for this binary file)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (__webpack_require__.p + "004545227194519e1ce23b5a4dc89e4b.png");
 
 /***/ })
 
