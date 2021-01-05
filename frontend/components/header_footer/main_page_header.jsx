@@ -5,9 +5,9 @@ const Header = props => {
 
     return (
 
-        <span>
+        
             <div className="header-logo">MATCHTOR</div>
-        </span>
+        
     )
 
 }
