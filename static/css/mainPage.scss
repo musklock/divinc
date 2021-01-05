@@ -1,4 +1,6 @@
 
 .main_page_background {
-    background-image: url('/static/images/homepage.png');
+    background-image: url('./images/homepage.png');
+    height: 100%;
+    background-repeat: no-repeat;
 }
