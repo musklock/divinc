@@ -34,7 +34,7 @@ const [initialData, setInitialData] = useState([{}]);
               <Header/>
               
               <div className="main_page_background"> 
-                <LoginComponent></LoginComponent>
+                <LoginComponent/>
 
               </div>
 
