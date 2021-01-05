@@ -5,6 +5,8 @@ import { HashRouter } from 'react-router-dom';
 import HomePageContainer from './components/home_page/home_page_container'
 import "../static/css/appStyles.scss"
 import RegistrationPageContainer from './components/registration/registration_page_container';
+import RegistrationPageContainer2 from './components/registration/registration_page_2_container'
+
 // import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 function App() {
@@ -15,6 +17,7 @@ function App() {
       <HashRouter>
         <Switch>
           <Route exact path='/' component={HomePageContainer} />
+          <Route exact path ='/register2' component={RegistrationPageContainer2} />
           <Route exact path ='/register' component={RegistrationPageContainer} />
           <Route render={() => <Redirect to="/" />} />
         </Switch>

@@ -102,6 +102,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_home_page_home_page_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/home_page/home_page_container */ "./frontend/components/home_page/home_page_container.js");
 /* harmony import */ var _static_css_appStyles_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../static/css/appStyles.scss */ "./static/css/appStyles.scss");
 /* harmony import */ var _components_registration_registration_page_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/registration/registration_page_container */ "./frontend/components/registration/registration_page_container.js");
+/* harmony import */ var _components_registration_registration_page_2_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/registration/registration_page_2_container */ "./frontend/components/registration/registration_page_2_container.js");
+
 
 
 
@@ -117,6 +119,10 @@ function App() {
     exact: true,
     path: "/",
     component: _components_home_page_home_page_container__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/register2",
+    component: _components_registration_registration_page_2_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     exact: true,
     path: "/register",
@@ -453,10 +459,69 @@ var RegistrationPage = function RegistrationPage(props) {
 
 /***/ }),
 
-/***/ "./frontend/components/registration/registration_page_container.js":
-/*!*************************************************************************!*\
-  !*** ./frontend/components/registration/registration_page_container.js ***!
-  \*************************************************************************/
+/***/ "./frontend/components/registration/registration_page_2.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/registration/registration_page_2.jsx ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _header_footer_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/header */ "./frontend/components/header_footer/header.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+ // import TableContainer from '../table/table_container'
+
+var RegistrationPage2 = function RegistrationPage2(props) {
+  // useEffect(() => {
+  //     props.fetchOTBSamples()
+  //     props.fetchOTBSampleHistories()
+  // }, [])    
+  var table = true; // function container() {
+  //     if (table) {
+  //         return <TableContainer/>
+  //     }
+  // }
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([{}]),
+      _useState2 = _slicedToArray(_useState, 2),
+      initialData = _useState2[0],
+      setInitialData = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetch('/api').then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      return setInitialData(data);
+    });
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main_page_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_header__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegistrationPage2);
+
+/***/ }),
+
+/***/ "./frontend/components/registration/registration_page_2_container.js":
+/*!***************************************************************************!*\
+  !*** ./frontend/components/registration/registration_page_2_container.js ***!
+  \***************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -483,6 +548,39 @@ var mDTP = function mDTP(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/registration/registration_page_container.js":
+/*!*************************************************************************!*\
+  !*** ./frontend/components/registration/registration_page_container.js ***!
+  \*************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
+
+
+ // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
+// import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
+
+var mSTP = function mSTP(state) {
+  return {// OTBSamples: Object.values(state.entities.OTBSamples)
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {// fetchOTBSamples: () => dispatch(fetchOTBSamples()),
+    // fetchOTBSampleHistories: () => dispatch(fetchOTBSampleHistories()),
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
