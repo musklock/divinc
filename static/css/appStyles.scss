@@ -2,6 +2,7 @@
 $theme-font:    verdana, sans-serif;
 
 @import 'header_footer';
+@import 'mainPage';
 
 body {
   font: $theme-font;

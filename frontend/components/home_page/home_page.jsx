@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
 import LoginComponent from './login_component';
-import Header from '../header_footer/header';
+import Header from '../header_footer/main_page_header';
 // import TableContainer from '../table/table_container'
 
 const HomePage = props => {
@@ -32,7 +32,11 @@ const [initialData, setInitialData] = useState([{}]);
     return (
             <div className="main_page_container">
               <Header/>
-              <LoginComponent></LoginComponent>
+              
+              <div className="main_page_background"> 
+                <LoginComponent></LoginComponent>
+
+              </div>
 
             
             </div>
