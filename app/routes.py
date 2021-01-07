@@ -1,10 +1,14 @@
-from flask import Flask, render_template, flash, redirect
-from app import app
-from .forms import *
-from .models import *
+from flask import Flask, render_template, flash, redirect, url_for
+from app import app, db
+from app.forms import *
+from app.models import *
 @app.route('/')
 def index():
     return render_template('index.html')
+    # resets the database:
+    # db.drop_all()
+    # db.create_all()
+    # db.session.commit()
 @app.route('/index')
 def index1():
     return render_template('index.html')
@@ -24,7 +28,7 @@ def profile_mentee():
         db.session.commit()
         # logged_in = checklogin()
         flash("Your profile has been made!", "success")
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     # logged_in = checklogin()
     return render_template("mentee_profile.html", form=form)
     # return render_template("mentee_profile.html", form=form, logged_in=logged_in)
@@ -52,7 +56,7 @@ def profile_mentor():
         db.session.commit()
         # logged_in = checklogin()
         flash("Your profile has been made!", "success")
-        return redirect(url_for('home'))
+        return redirect(url_for('index'))
     # logged_in = checklogin()
     return render_template("mentor_profile.html", form=form)
     # return render_template("mentor_profile.html", form=form, logged_in=logged_in)
