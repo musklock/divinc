@@ -1,0 +1,60 @@
+
+.main_page_background {
+    background-image: url('./images/homepage.png');
+    background-position: top 1px center;
+    background-size: 100% auto;
+    height: 100%;
+    background-repeat: no-repeat;
+    justify-content: center;
+    width: 100%;
+}
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    width: 420px;
+    height: 300px;
+    position: absolute;
+    top: 30%;
+    right: 8%;
+    background-color: white;
+    border: 1px solid #C4C4C4;
+    border-radius: 3px;
+    align-content: center;
+    
+}
+
+.login-container-input {
+    height: 50px;
+    width: 80%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    border: 1px solid #BDBDBD;
+    margin: 5px;
+    align-self:center;
+    border-radius: 3px;
+    padding: 10px;
+    color: #BDBDBD;
+
+}
+
+.login-container-submit {
+    height: 50px;
+    width: 80%;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    border: 1px solid #BDBDBD;
+    margin: 5px;
+    align-self:center;
+    background-color: #6187c8;
+    border: 2px solid #6187c8;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    justify-content: center;
+}
+.login-container-submit:hover {
+    cursor: pointer;
+    background-color: #4e7ac5;
+}

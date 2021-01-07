@@ -2,6 +2,7 @@
 $theme-font:    verdana, sans-serif;
 
 @import 'header_footer';
+@import 'mainPage';
 
 body {
   font: $theme-font;
@@ -9,6 +10,13 @@ body {
   h1, h2 {
       color: $themeColor-Dark
   }
+}
+
+.main_page_container {
+  display:flex;
+  flex-direction: column;
+  height: 100%;
+  width:100%;
 }
 
 

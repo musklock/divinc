@@ -1,2 +1,2 @@
-web: python app/__init__.py
+web: gunicorn divinc:app
 heroku ps:scale worker=1

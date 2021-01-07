@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 import Header from '../header_footer/main_page_header';
 // import TableContainer from '../table/table_container'
 
-const RegistrationPage = props => {
+const RegistrationPage2 = props => {
 
 
 // useEffect(() => {
@@ -38,4 +38,4 @@ const [initialData, setInitialData] = useState([{}]);
         )
 }
 
-export default RegistrationPage
+export default RegistrationPage2
