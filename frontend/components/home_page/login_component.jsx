@@ -12,8 +12,8 @@ const LoginContainer = (props) => {
             <form className='login-container' action="">
                 <input className="login-container-input" type="text" placeholder="Email"/>
                 <input className="login-container-input" type="password" placeholder="Password"/>
-                <input className="login-container-input" type="submit" value={"LOGIN"}/>
-                <div className=""></div>
+                <input className="login-container-submit" type="submit" value={"LOGIN"}/>
+              
 
             </form>
 
