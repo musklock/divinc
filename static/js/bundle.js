@@ -186,17 +186,6 @@ var Header = function Header(props) {
 
 /***/ }),
 
-/***/ "./frontend/components/header_footer/main_page_header.jsx":
-/*!****************************************************************!*\
-  !*** ./frontend/components/header_footer/main_page_header.jsx ***!
-  \****************************************************************/
-/*! exports provided: default */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nError: ENOENT: no such file or directory, open '/Users/Adrian/Desktop/repositories/divinc/frontend/components/header_footer/main_page_header.jsx'");
-
-/***/ }),
-
 /***/ "./frontend/components/home_page/home_page.jsx":
 /*!*****************************************************!*\
   !*** ./frontend/components/home_page/home_page.jsx ***!
@@ -416,7 +405,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/main_page_header */ "./frontend/components/header_footer/main_page_header.jsx");
+/* harmony import */ var _header_footer_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/header */ "./frontend/components/header_footer/header.jsx");
 
  // import TableContainer from '../table/table_container'
 
@@ -427,13 +416,39 @@ var RegistrationPage = function RegistrationPage(props) {
   //       response => response.json()
   //     ).then(data => setInitialData(data))
   //   }, [])
+  var handleSubmit = function handleSubmit(e) {
+    e.preventDefault();
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "background_container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, " className=\"form_box\"", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
-    action: ""
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form_box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Your Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "registration_form",
+    onSubmit: handleSubmit(event)
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text"
+  }, "Email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "youremail@example.com"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text"
+  }, "Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "must be longer than 6 characters"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text"
+  }, "Verify Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    placeholder: "type to confirm your password"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text"
+  }, "Linkedin URL", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
     className: "register_button"
   }, "Register")))));
 };
