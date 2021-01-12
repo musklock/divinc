@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
 
-import Header from '../header_footer/main_page_header';
+import RegisterHeader from '../header_footer/register_header';
 // import TableContainer from '../table/table_container'
 
 const RegistrationPage2 = props => {
@@ -31,9 +31,21 @@ const [initialData, setInitialData] = useState([{}]);
     
     return (
             <div className="main_page_container">
-              <Header/>
+              <RegisterHeader/>
 
-            
+              
+              
+              <div className="background_container">
+                <div className="form_box">
+                  <h2>Are you interested in being a mentor or a mentee?</h2>
+                  
+                  
+                      <button className="register_button">Mentor</button>
+                      <button className="register_button">Mentee</button>
+                  
+                </div>
+              
+            </div>
             </div>
         )
 }

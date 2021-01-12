@@ -17,3 +17,15 @@
     color: #000000;
 }
 
+.header_wrapper {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0px 20px;
+
+}
+
+.login-button {
+    width: 120px;
+    height: 30px;
+}

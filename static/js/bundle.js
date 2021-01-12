@@ -192,6 +192,33 @@ var Header = function Header(props) {
 
 /***/ }),
 
+/***/ "./frontend/components/header_footer/register_header.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/header_footer/register_header.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var RegisterHeader = function RegisterHeader(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "header_wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header-logo"
+  }, "MATCHTOR"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "login-button"
+  }, "Login"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegisterHeader);
+
+/***/ }),
+
 /***/ "./frontend/components/home_page/home_page.jsx":
 /*!*****************************************************!*\
   !*** ./frontend/components/home_page/home_page.jsx ***!
@@ -411,7 +438,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/main_page_header */ "./frontend/components/header_footer/main_page_header.jsx");
+/* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
 
  // import TableContainer from '../table/table_container'
 
@@ -428,7 +455,7 @@ var RegistrationPage = function RegistrationPage(props) {
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_register_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "background_container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form_box"
@@ -463,6 +490,73 @@ var RegistrationPage = function RegistrationPage(props) {
 
 /***/ }),
 
+/***/ "./frontend/components/registration/registration_page_2.jsx":
+/*!******************************************************************!*\
+  !*** ./frontend/components/registration/registration_page_2.jsx ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+ // import TableContainer from '../table/table_container'
+
+var RegistrationPage2 = function RegistrationPage2(props) {
+  // useEffect(() => {
+  //     props.fetchOTBSamples()
+  //     props.fetchOTBSampleHistories()
+  // }, [])    
+  var table = true; // function container() {
+  //     if (table) {
+  //         return <TableContainer/>
+  //     }
+  // }
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([{}]),
+      _useState2 = _slicedToArray(_useState, 2),
+      initialData = _useState2[0],
+      setInitialData = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetch('/api').then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      return setInitialData(data);
+    });
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main_page_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_register_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "background_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form_box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Are you interested in being a mentor or a mentee?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "register_button"
+  }, "Mentor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "register_button"
+  }, "Mentee"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegistrationPage2);
+
+/***/ }),
+
 /***/ "./frontend/components/registration/registration_page_2_container.js":
 /*!***************************************************************************!*\
   !*** ./frontend/components/registration/registration_page_2_container.js ***!
@@ -475,7 +569,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page.jsx */ "./frontend/components/registration/registration_page.jsx");
+/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
 
 
  // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
@@ -492,7 +586,7 @@ var mDTP = function mDTP(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -835,7 +929,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(_images_homepage_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".header-logo {\n  display: flex;\n  align-self: center;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top 1px center;\n  background-size: 100% auto;\n  height: 100%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  width: 420px;\n  height: 300px;\n  position: absolute;\n  top: 30%;\n  right: 8%;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  border-radius: 3px;\n  align-content: center; }\n\n.login-container-input {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD; }\n\n.login-container-submit {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\nbody {\n  font: verdana, sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%; }\n", "",{"version":3,"sources":["webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAEA;EAEI,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,yBAAyB;EACzB,cAAc,EAAA;;ACflB;EACI,yDAA8C;EAC9C,mCAAmC;EACnC,0BAA0B;EAC1B,YAAY;EACZ,4BAA4B;EAC5B,uBAAuB;EACvB,WAAW,EAAA;;AAGf;EACI,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,uBAAuB;EACvB,yBAAyB;EACzB,kBAAkB;EAClB,qBAAqB,EAAA;;AAIzB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc,EAAA;;AAIlB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAE3B;EACI,eAAe;EACf,yBAAyB,EAAA;;ACpD7B;EACE,yBANiC;EAOjC,yBCRwB,EAAA;EDM1B;IAIM,cCTkB,EAAA;;ADaxB;EACE,aAAY;EACZ,sBAAsB;EACtB,YAAY;EACZ,WAAU,EAAA","sourcesContent":["\n\n.header-logo {\n\n    display: flex;\n    align-self: center;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n}\n\n","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: top 1px center;\n    background-size: 100% auto;\n    height: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    width: 420px;\n    height: 300px;\n    position: absolute;\n    top: 30%;\n    right: 8%;\n    background-color: white;\n    border: 1px solid #C4C4C4;\n    border-radius: 3px;\n    align-content: center;\n    \n}\n\n.login-container-input {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n\n}\n\n.login-container-submit {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n","@import 'themeColors';\n$theme-font:    verdana, sans-serif;\n\n@import 'header_footer';\n@import 'mainPage';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark\n  }\n}\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n}\n\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".header-logo {\n  display: flex;\n  align-self: center;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000; }\n\n.header_wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  margin: 0px 20px; }\n\n.login-button {\n  width: 120px;\n  height: 30px; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top 1px center;\n  background-size: 100% auto;\n  height: 100%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  width: 420px;\n  height: 300px;\n  position: absolute;\n  top: 30%;\n  right: 8%;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  border-radius: 3px;\n  align-content: center; }\n\n.login-container-input {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD; }\n\n.login-container-submit {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\nbody {\n  font: verdana, sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%; }\n", "",{"version":3,"sources":["webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAEA;EAEI,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,yBAAyB;EACzB,cAAc,EAAA;;AAGlB;EACI,aAAY;EACZ,mBAAmB;EACnB,8BAA8B;EAC9B,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,YAAY,EAAA;;AC5BhB;EACI,yDAA8C;EAC9C,mCAAmC;EACnC,0BAA0B;EAC1B,YAAY;EACZ,4BAA4B;EAC5B,uBAAuB;EACvB,WAAW,EAAA;;AAGf;EACI,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,uBAAuB;EACvB,yBAAyB;EACzB,kBAAkB;EAClB,qBAAqB,EAAA;;AAIzB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc,EAAA;;AAIlB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAE3B;EACI,eAAe;EACf,yBAAyB,EAAA;;ACpD7B;EACE,yBANiC;EAOjC,yBCRwB,EAAA;EDM1B;IAIM,cCTkB,EAAA;;ADaxB;EACE,aAAY;EACZ,sBAAsB;EACtB,YAAY;EACZ,WAAU,EAAA","sourcesContent":["\n\n.header-logo {\n\n    display: flex;\n    align-self: center;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n}\n\n.header_wrapper {\n    display:flex;\n    flex-direction: row;\n    justify-content: space-between;\n    margin: 0px 20px;\n\n}\n\n.login-button {\n    width: 120px;\n    height: 30px;\n}","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: top 1px center;\n    background-size: 100% auto;\n    height: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    width: 420px;\n    height: 300px;\n    position: absolute;\n    top: 30%;\n    right: 8%;\n    background-color: white;\n    border: 1px solid #C4C4C4;\n    border-radius: 3px;\n    align-content: center;\n    \n}\n\n.login-container-input {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n\n}\n\n.login-container-submit {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n","@import 'themeColors';\n$theme-font:    verdana, sans-serif;\n\n@import 'header_footer';\n@import 'mainPage';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark\n  }\n}\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n}\n\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
