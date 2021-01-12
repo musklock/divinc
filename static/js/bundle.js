@@ -103,6 +103,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _static_css_appStyles_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../static/css/appStyles.scss */ "./static/css/appStyles.scss");
 /* harmony import */ var _components_registration_registration_page_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/registration/registration_page_container */ "./frontend/components/registration/registration_page_container.js");
 /* harmony import */ var _components_registration_registration_page_2_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/registration/registration_page_2_container */ "./frontend/components/registration/registration_page_2_container.js");
+/* harmony import */ var _components_registration_reigstration_profile_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/registration/reigstration_profile_container */ "./frontend/components/registration/reigstration_profile_container.js");
+
 
 
 
@@ -127,6 +129,10 @@ function App() {
     exact: true,
     path: "/register",
     component: _components_registration_registration_page_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/register3",
+    component: _components_registration_reigstration_profile_container__WEBPACK_IMPORTED_MODULE_7__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     render: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
@@ -166,6 +172,31 @@ var closeModal = function closeModal() {
     type: CLOSE_MODAL
   };
 };
+
+/***/ }),
+
+/***/ "./frontend/components/header_footer/blank_header.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/header_footer/blank_header.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var RegisterHeader = function RegisterHeader(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "header_wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header-logo"
+  }, "MATCHTOR"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegisterHeader);
 
 /***/ }),
 
@@ -623,6 +654,108 @@ var mDTP = function mDTP(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/registration/registration_profile.jsx":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/registration/registration_profile.jsx ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _header_footer_blank_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/blank_header */ "./frontend/components/header_footer/blank_header.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+ // import TableContainer from '../table/table_container'
+
+var RegistrationProfile = function RegistrationProfile(props) {
+  // useEffect(() => {
+  //     props.fetchOTBSamples()
+  //     props.fetchOTBSampleHistories()
+  // }, [])    
+  var table = true; // function container() {
+  //     if (table) {
+  //         return <TableContainer/>
+  //     }
+  // }
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([{}]),
+      _useState2 = _slicedToArray(_useState, 2),
+      initialData = _useState2[0],
+      setInitialData = _useState2[1];
+
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    fetch('/api').then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      return setInitialData(data);
+    });
+  }, []);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main_page_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_blank_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blue-top"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blue-header-text bold"
+  }, "Create your profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blue-header-text "
+  }, "Tell your future mentees about yourself."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blue-header-text "
+  }, "Tell your future mentors about yourself.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "photo-bubble"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegistrationProfile);
+
+/***/ }),
+
+/***/ "./frontend/components/registration/reigstration_profile_container.js":
+/*!****************************************************************************!*\
+  !*** ./frontend/components/registration/reigstration_profile_container.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _registration_profile_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_profile.jsx */ "./frontend/components/registration/registration_profile.jsx");
+
+
+ // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
+// import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
+
+var mSTP = function mSTP(state) {
+  return {// OTBSamples: Object.values(state.entities.OTBSamples)
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {// fetchOTBSamples: () => dispatch(fetchOTBSamples()),
+    // fetchOTBSampleHistories: () => dispatch(fetchOTBSampleHistories()),
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_profile_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
 /***/ "./frontend/divinc_frontend.jsx":
 /*!**************************************!*\
   !*** ./frontend/divinc_frontend.jsx ***!
@@ -929,7 +1062,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(_images_homepage_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".header-logo {\n  display: flex;\n  align-self: center;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000; }\n\n.header_wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  margin: 0px 20px; }\n\n.login-button {\n  width: 120px;\n  height: 30px; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top 1px center;\n  background-size: 100% auto;\n  height: 100%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  width: 420px;\n  height: 300px;\n  position: absolute;\n  top: 30%;\n  right: 8%;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  border-radius: 3px;\n  align-content: center; }\n\n.login-container-input {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD; }\n\n.login-container-submit {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\nbody {\n  font: verdana, sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%; }\n", "",{"version":3,"sources":["webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAEA;EAEI,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,yBAAyB;EACzB,cAAc,EAAA;;AAGlB;EACI,aAAY;EACZ,mBAAmB;EACnB,8BAA8B;EAC9B,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,YAAY,EAAA;;AC5BhB;EACI,yDAA8C;EAC9C,mCAAmC;EACnC,0BAA0B;EAC1B,YAAY;EACZ,4BAA4B;EAC5B,uBAAuB;EACvB,WAAW,EAAA;;AAGf;EACI,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,uBAAuB;EACvB,yBAAyB;EACzB,kBAAkB;EAClB,qBAAqB,EAAA;;AAIzB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc,EAAA;;AAIlB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAE3B;EACI,eAAe;EACf,yBAAyB,EAAA;;ACpD7B;EACE,yBANiC;EAOjC,yBCRwB,EAAA;EDM1B;IAIM,cCTkB,EAAA;;ADaxB;EACE,aAAY;EACZ,sBAAsB;EACtB,YAAY;EACZ,WAAU,EAAA","sourcesContent":["\n\n.header-logo {\n\n    display: flex;\n    align-self: center;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n}\n\n.header_wrapper {\n    display:flex;\n    flex-direction: row;\n    justify-content: space-between;\n    margin: 0px 20px;\n\n}\n\n.login-button {\n    width: 120px;\n    height: 30px;\n}","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: top 1px center;\n    background-size: 100% auto;\n    height: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    width: 420px;\n    height: 300px;\n    position: absolute;\n    top: 30%;\n    right: 8%;\n    background-color: white;\n    border: 1px solid #C4C4C4;\n    border-radius: 3px;\n    align-content: center;\n    \n}\n\n.login-container-input {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n\n}\n\n.login-container-submit {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n","@import 'themeColors';\n$theme-font:    verdana, sans-serif;\n\n@import 'header_footer';\n@import 'mainPage';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark\n  }\n}\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n}\n\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, ".header-logo {\n  display: flex;\n  align-self: center;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000; }\n\n.header_wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  margin: 0px 20px;\n  width: 100%; }\n\n.login-button {\n  width: 120px;\n  height: 30px; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top 1px center;\n  background-size: 100% auto;\n  height: 100%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  width: 420px;\n  height: 300px;\n  position: absolute;\n  top: 30%;\n  right: 8%;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  border-radius: 3px;\n  align-content: center; }\n\n.login-container-input {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD; }\n\n.login-container-submit {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\nbody {\n  font: verdana, sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n", "",{"version":3,"sources":["webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAEA;EAEI,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,yBAAyB;EACzB,cAAc,EAAA;;AAGlB;EACI,aAAY;EACZ,mBAAmB;EACnB,8BAA8B;EAC9B,gBAAgB;EAChB,WAAW,EAAA;;AAIf;EACI,YAAY;EACZ,YAAY,EAAA;;AAIhB;EACI,WAAW;EACX,yBAAyB;EACzB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B,EAAA;;AAG/B;EACI,YAAY;EACZ,wIAAwI,EAAA;;AAG5I;EACI,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,oBAAoB;EACpB,kBAAkB;EAClB,kBAAkB;EAClB,UAAU,EAAA;;AC3Dd;EACI,yDAA8C;EAC9C,mCAAmC;EACnC,0BAA0B;EAC1B,YAAY;EACZ,4BAA4B;EAC5B,uBAAuB;EACvB,WAAW,EAAA;;AAGf;EACI,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,uBAAuB;EACvB,yBAAyB;EACzB,kBAAkB;EAClB,qBAAqB,EAAA;;AAIzB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc,EAAA;;AAIlB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAE3B;EACI,eAAe;EACf,yBAAyB,EAAA;;ACpD7B;EACE,yBANiC;EAOjC,yBCRwB,EAAA;EDM1B;IAIM,cCTkB,EAAA;;ADaxB;EACE,aAAY;EACZ,sBAAsB;EACtB,YAAY;EACZ,WAAU;EACX,mBAAmB,EAAA","sourcesContent":["\n\n.header-logo {\n\n    display: flex;\n    align-self: center;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n}\n\n.header_wrapper {\n    display:flex;\n    flex-direction: row;\n    justify-content: space-between;\n    margin: 0px 20px;\n    width: 100%;\n\n}\n\n.login-button {\n    width: 120px;\n    height: 30px;\n}\n\n\n.blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: top 1px center;\n    background-size: 100% auto;\n    height: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    width: 420px;\n    height: 300px;\n    position: absolute;\n    top: 30%;\n    right: 8%;\n    background-color: white;\n    border: 1px solid #C4C4C4;\n    border-radius: 3px;\n    align-content: center;\n    \n}\n\n.login-container-input {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n\n}\n\n.login-container-submit {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n","@import 'themeColors';\n$theme-font:    verdana, sans-serif;\n\n@import 'header_footer';\n@import 'mainPage';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark\n  }\n}\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
