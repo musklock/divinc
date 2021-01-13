@@ -24,9 +24,9 @@ const handleSubmit = (e) => {
 
     
     return (
-            <div className="main_page_container">
+            <div className="background_container">
               <RegisterHeader/>
-              <div className="background_container">
+              <div className="form-box-container">
                 <div className="form_box">
                   <h1>Your Information</h1>
                   <form className="registration_form" onSubmit={handleSubmit(event)}>
@@ -35,10 +35,10 @@ const handleSubmit = (e) => {
                         <input type="text" placeholder="youremail@example.com"/>
                     </label>
                     <label className="registration_text">Password
-                        <input type="text" placeholder="must be longer than 6 characters"/>
+                        <input type="password" placeholder="must be longer than 6 characters"/>
                     </label>
                     <label className="registration_text">Verify Password
-                        <input type="text" placeholder="type to confirm your password"/>
+                        <input type="password" placeholder="type to confirm your password"/>
                     </label>
                     <label className="registration_text">Linkedin URL
                         <input type="text" />

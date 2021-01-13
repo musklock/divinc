@@ -15,21 +15,29 @@
     letter-spacing: -0.03em;
     text-transform: uppercase;
     color: #000000;
+    margin-left: 80px;
+   
 }
 
 .header_wrapper {
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 0px 20px;
+
     width: 100%;
+     background-color: white;
+    
 
 }
 
 .login-button {
     width: 120px;
-    height: 30px;
-    text-align:center;
+    background: white;
+    color: #969696; 
+    border-color: #969696;
+    // height: 30px;
+    // text-align:center;
+    // justify-content: center;
 }
 
 
