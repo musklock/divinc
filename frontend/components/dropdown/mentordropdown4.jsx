@@ -1,7 +1,36 @@
 import React, { useState } from 'react';
 import onClickOutside from 'react-onclickoutside';
+ 
 
-function Dropdown({ title, items, multiSelect = false }) {
+const selectObjects = [
+        {
+        id: 0,
+        value: "Help Build Confidence",
+        },
+        {
+        id: 1,
+        value: "Help Develop Transferrable Skills"
+        },
+        {
+        id: 2,
+        value: "Give Resume Feedback",
+        },
+        {
+        id: 3,
+        value: "Help with Job Search Strategy",
+        },
+        {
+        id: 4,
+        value: "Give Interview Feedback",
+        },
+        {
+        id: 4,
+        value: "Build ongoing relationships with aspiring professionals",
+        },
+
+        ]
+
+function Dropdown({ title, selectObjects, multiSelect = false }) {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState([]);
   const toggle = () => setOpen(!open);
