@@ -12,7 +12,7 @@ const RegistrationPage2 = ({userProfile, registration, updateRegistrationProfile
 //     props.fetchOTBSampleHistories()
 // }, [])    
 
-let table = true;
+// let table = true;
 // function container() {
 //     if (table) {
 //         return <TableContainer/>
@@ -23,13 +23,13 @@ let table = true;
 
 
 
-const [initialData, setInitialData] = useState([{}]);
+// const [initialData, setInitialData] = useState([{}]);
 
-  useEffect(() => {
-    fetch('/api').then(
-      response => response.json()
-    ).then(data => setInitialData(data))
-  }, [])
+//   useEffect(() => {
+//     fetch('/api').then(
+//       response => response.json()
+//     ).then(data => setInitialData(data))
+//   }, [])
 
 
     

@@ -2,34 +2,54 @@
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 
+import MenteeDropdown1 from '../dropdown/menteedropdown1';
+import MenteeDropdown2 from '../dropdown/menteedropdown2';
+import MenteeDropdown3 from '../dropdown/menteedropdown3';
+import MentorDropdown1 from '../dropdown/mentordropdown1';
+import MentorDropdown2 from '../dropdown/mentordropdown2';
+import MentorDropdown3 from '../dropdown/mentordropdown3';
+import MentorDropdown4 from '../dropdown/mentordropdown4';
+
+
 import RegisterHeader from '../header_footer/register_header';
 
 // import TableContainer from '../table/table_container'
 
-const RegistrationPage = ({userProfile, registration, updateRegistrationProfileObject, updateUserProfile, history}) => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('&&&&');
-  const [confirmation, setConfirmation ] = useState('');
-  const [linkedin, setlinkedin] = useState('');
+const MatchingQuestions = ({userProfile, registration, updateRegistrationProfileObject, updateUserProfile, history}) => {
+  const [mentor1, setMentor1] = useState('');
+  const [mentor2, setMentor2] = useState('');
+  const [mentor3, setMentor3] = useState('');
+  const [mentor4, setMentor4] = useState('');
+  
+  
+  const [mentee1, setMetee1] = useState('');
+  const [mentee2, setMetee2] = useState('');
+  const [mentee3, setMetee3] = useState('');
 
   const submit = () => {
+    let userObject;
+    if (registration.userType === "mentor") {
 
-    if (password != confirmation) {
-
-      alert('Passwords must match!')
-      return;
-
+      userObject = {
+        careerSwitcher: mentor1,
+        industry: mentor2,
+        currentField: mentor3,
+        offering: mentor4
+      }
     }
-    let userObject = {
-      name: name,
-      email: email,
-      password: password,
-      linkedin: linkedin
+
+    if (registration.userType === "mentee") {
+
+      userObject = {
+        industry: mentee1,
+        currentField: mentee2,
+        goals: mentee3
+      }
+
     }
 
     updateRegistrationProfileObject(userObject)
-    history.push("/register2")
+    history.push("/matchpage")
 
     }
 
@@ -72,4 +92,4 @@ const RegistrationPage = ({userProfile, registration, updateRegistrationProfileO
         )
 }
 
-export default RegistrationPage
+export default MatchingQuestions

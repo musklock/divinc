@@ -104,6 +104,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_registration_registration_page_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/registration/registration_page_container */ "./frontend/components/registration/registration_page_container.js");
 /* harmony import */ var _components_registration_registration_page_2_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/registration/registration_page_2_container */ "./frontend/components/registration/registration_page_2_container.js");
 /* harmony import */ var _components_registration_registration_profile_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/registration/registration_profile_container */ "./frontend/components/registration/registration_profile_container.js");
+/* harmony import */ var _components_registration_matching_questions_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/registration/matching_questions_container */ "./frontend/components/registration/matching_questions_container.js");
+
 
 
 
@@ -133,6 +135,10 @@ function App() {
     exact: true,
     path: "/register3",
     component: _components_registration_registration_profile_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/matchingquestions",
+    component: _components_registration_matching_questions_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     render: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
@@ -281,135 +287,6 @@ var updateUserProfile = function updateUserProfile(userObject) {
 //     OTBSampleAPIUtil.deleteOTBSample(OTBSampleId)
 //         .then(() => dispatch(removeOTBSample(OTBSampleId)))
 // )
-
-/***/ }),
-
-/***/ "./frontend/components/dropdown/dropdown.jsx":
-/*!***************************************************!*\
-  !*** ./frontend/components/dropdown/dropdown.jsx ***!
-  \***************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
-
-
-
-function Dropdown(_ref) {
-  var title = _ref.title,
-      items = _ref.items,
-      _ref$multiSelect = _ref.multiSelect,
-      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
-      _useState2 = _slicedToArray(_useState, 2),
-      open = _useState2[0],
-      setOpen = _useState2[1];
-
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      selection = _useState4[0],
-      setSelection = _useState4[1];
-
-  var toggle = function toggle() {
-    return setOpen(!open);
-  };
-
-  Dropdown.handleClickOutside = function () {
-    return setOpen(false);
-  };
-
-  function handleOnClick(item) {
-    if (!selection.some(function (current) {
-      return current.id === item.id;
-    })) {
-      if (!multiSelect) {
-        setSelection([item]);
-      } else if (multiSelect) {
-        setSelection([].concat(_toConsumableArray(selection), [item]));
-      }
-    } else {
-      var selectionAfterRemoval = selection;
-      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
-        return current.id !== item.id;
-      });
-      setSelection(_toConsumableArray(selectionAfterRemoval));
-    }
-  }
-
-  function isItemInSelection(item) {
-    if (selection.some(function (current) {
-      return current.id === item.id;
-    })) {
-      return true;
-    }
-
-    return false;
-  }
-
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dd-wrapper"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    tabIndex: 0,
-    className: "dd-header",
-    role: "button",
-    onKeyPress: function onKeyPress() {
-      return toggle(!open);
-    },
-    onClick: function onClick() {
-      return toggle(!open);
-    }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dd-header__title"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "dd-header__title--bold"
-  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dd-header__action"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "dd-list"
-  }, items.map(function (item) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-      className: "dd-list-item",
-      key: item.id
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-      type: "button",
-      onClick: function onClick() {
-        return handleOnClick(item);
-      }
-    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
-  })));
-}
-
-var clickOutsideConfig = {
-  handleClickOutside: function handleClickOutside() {
-    return Dropdown.handleClickOutside;
-  }
-};
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
 
 /***/ }),
 
@@ -740,6 +617,51 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/registration/matching_questions_container.js":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/registration/matching_questions_container.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page.jsx */ "./frontend/components/registration/registration_page.jsx");
+/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    userProfile: state.entities.userProfile,
+    registration: state.entities.registration
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    updateRegistrationProfileObject: function updateRegistrationProfileObject(profileObject) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateRegistrationProfileObject"])(profileObject));
+    },
+    updateUserProfile: function updateUserProfile(user) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateUserProfile"])(user));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__["default"])));
+
+/***/ }),
+
 /***/ "./frontend/components/registration/registration_page.jsx":
 /*!****************************************************************!*\
   !*** ./frontend/components/registration/registration_page.jsx ***!
@@ -781,20 +703,25 @@ var RegistrationPage = function RegistrationPage(_ref) {
       email = _useState2[0],
       setEmail = _useState2[1];
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('&&&&'),
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState4 = _slicedToArray(_useState3, 2),
-      password = _useState4[0],
-      setPassword = _useState4[1];
+      name = _useState4[0],
+      setName = _useState4[1];
 
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('&&&&'),
       _useState6 = _slicedToArray(_useState5, 2),
-      confirmation = _useState6[0],
-      setConfirmation = _useState6[1];
+      password = _useState6[0],
+      setPassword = _useState6[1];
 
   var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState8 = _slicedToArray(_useState7, 2),
-      linkedin = _useState8[0],
-      setlinkedin = _useState8[1];
+      confirmation = _useState8[0],
+      setConfirmation = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      linkedin = _useState10[0],
+      setlinkedin = _useState10[1];
 
   var submit = function submit() {
     if (password != confirmation) {
@@ -803,6 +730,7 @@ var RegistrationPage = function RegistrationPage(_ref) {
     }
 
     var userObject = {
+      name: name,
       email: email,
       password: password,
       linkedin: linkedin
@@ -823,6 +751,13 @@ var RegistrationPage = function RegistrationPage(_ref) {
       return submit();
     }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text"
+  }, "Full Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    onChange: function onChange(event) {
+      return setName(event.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "registration_text"
   }, "Email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
@@ -878,18 +813,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
 /* harmony import */ var _header_footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../header_footer/footer */ "./frontend/components/header_footer/footer.jsx");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
  // import TableContainer from '../table/table_container'
@@ -905,24 +828,18 @@ var RegistrationPage2 = function RegistrationPage2(_ref) {
   //     props.fetchOTBSamples()
   //     props.fetchOTBSampleHistories()
   // }, [])    
-  var table = true; // function container() {
+  // let table = true;
+  // function container() {
   //     if (table) {
   //         return <TableContainer/>
   //     }
   // }
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([{}]),
-      _useState2 = _slicedToArray(_useState, 2),
-      initialData = _useState2[0],
-      setInitialData = _useState2[1];
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    fetch('/api').then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      return setInitialData(data);
-    });
-  }, []);
+  // const [initialData, setInitialData] = useState([{}]);
+  //   useEffect(() => {
+  //     fetch('/api').then(
+  //       response => response.json()
+  //     ).then(data => setInitialData(data))
+  //   }, [])
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_register_header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1051,14 +968,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _header_footer_blank_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/blank_header */ "./frontend/components/header_footer/blank_header.jsx");
 /* harmony import */ var _header_footer_footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ..//header_footer/footer */ "./frontend/components/header_footer/footer.jsx");
-/* harmony import */ var _dropdown_dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dropdown/dropdown */ "./frontend/components/dropdown/dropdown.jsx");
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+ // import Dropdown from '../dropdown/mentordropdown1';
 
 
  // import TableContainer from '../table/table_container'
 
-var RegistrationProfile = function RegistrationProfile(props) {
-  // const questions = [
+var RegistrationProfile = function RegistrationProfile(_ref) {
+  var userProfile = _ref.userProfile,
+      registration = _ref.registration,
+      updateRegistrationProfileObject = _ref.updateRegistrationProfileObject,
+      updateUserProfile = _ref.updateUserProfile,
+      history = _ref.history;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      picture = _useState2[0],
+      setPicture = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      aboutMe = _useState4[0],
+      setAboutMe = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      job = _useState6[0],
+      setJob = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('company'),
+      _useState8 = _slicedToArray(_useState7, 2),
+      company = _useState8[0],
+      setCompany = _useState8[1];
+
+  var submit = function submit() {
+    var userObject = {
+      aboutMe: aboutMe,
+      job: job,
+      company: company
+    };
+    updateRegistrationProfileObject(userObject);
+    history.push("/matchingquestions");
+  }; // const questions = [
   //     {id: 1, value: "test1"}, 
   //     {id: 2, value: "test2"}, 
   //     {id: 3, value: "test3"},
@@ -1067,21 +1033,30 @@ var RegistrationProfile = function RegistrationProfile(props) {
   //     {id: 3, value: "test3"},
   //     {id: 3, value: "test3"},
   //   ]
-  // useEffect(() => {
-  //     props.fetchOTBSamples()
-  //     props.fetchOTBSampleHistories()
-  // }, [])    
-  var table = true; // function container() {
-  //     if (table) {
-  //         return <TableContainer/>
-  //     }
+  // const getBase64Image = (img) => {
+  //     var canvas = document.createElement("canvas");
+  //     canvas.width = img.width;
+  //     canvas.height = img.height;
+  //     var ctx = canvas.getContext("2d");
+  //     ctx.drawImage(img, 0, 0);
+  //     var dataURL = canvas.toDataURL("image/png");
+  //     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+  // }
+  // const onSubmit = (data) => {
+  //   // console.log(data)
+  //   // setPicture(data)
+  //   setPicture(true)
+  //   let imgData = getBase64Image(data);
+  //   localStorage.setItem("picture", imgData);
+  // }
+  // const renderStorageImage = () => {
+  //   let dataImage = localStorage.getItem('imgData');
+  //   let bannerImg = document.getElementById('tableBanner');
+  //   bannerImg.src = "data:image/png;base64," + dataImage;
   // }
   // const [initialData, setInitialData] = useState([{}]);
-  //   useEffect(() => {
-  //     fetch('/api').then(
-  //       response => response.json()
-  //     ).then(data => setInitialData(data))
-  //   }, [])
+  // const {register, handleSubmit} = useForm()s
+
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_container"
@@ -1089,9 +1064,9 @@ var RegistrationProfile = function RegistrationProfile(props) {
     className: "blue-top"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "blue-header-text bold"
-  }, "Create your profile"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Create your profile"), registration.userType === 'mentor' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "blue-header-text "
-  }, "Tell your future mentees about yourself."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Tell your future mentees about yourself.") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "blue-header-text "
   }, "Tell your future mentors about yourself.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "photo-bubble"
@@ -1114,16 +1089,43 @@ var RegistrationProfile = function RegistrationProfile(props) {
     viewBox: "0 0 50 46",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    className: "back-button",
+    to: "/register2"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    "fill-rule": "evenodd",
-    "clip-rule": "evenodd",
+    fillRule: "evenodd",
+    clipRule: "evenodd",
     d: "M13.3626 23.8335L26.4728 35.3704L23.5265 37.9632L5.38672 22.0001L23.5265 6.03711L26.4728 8.62983L13.3626 20.1668H43.7497V23.8335H13.3626Z",
     fill: "rgb(46, 44, 44)"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("defs", null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("defs", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
     className: "name-header"
-  }, "Profile Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "profile_form"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }, registration.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit() {
+      return submit();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Job Title", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: function onChange(event) {
+      return setJob(event.target.value);
+    },
+    type: "text"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: function onChange(event) {
+      return setCompany(event.target.vaue);
+    },
+    type: "text"
+  })), registration.userType === "mentor" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "About Me (i.e. what are you passionate about? What are your hobbies? What would you like to share with your mentee?)", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    cols: "30",
+    rows: "10",
+    onChange: function onChange(event) {
+      return setAboutMet(event.target.value);
+    }
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "About Me (i.e. what are you passionate about? What are your hobbies? What would you like to share with your mentor?)", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    cols: "30",
+    rows: "10"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Next"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RegistrationProfile);
@@ -1145,6 +1147,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _registration_profile_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_profile.jsx */ "./frontend/components/registration/registration_profile.jsx");
 /* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
 /* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -1169,7 +1173,7 @@ var mDTP = function mDTP(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_profile_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_profile_jsx__WEBPACK_IMPORTED_MODULE_2__["default"])));
 
 /***/ }),
 
@@ -1590,7 +1594,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(_images_homepage_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\ninput {\n  height: 30px;\n  width: 450px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD;\n  margin-top: 10px; }\n\nbutton {\n  padding: 10px;\n  justify-self: center;\n  height: 20px;\n  width: 80px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px; }\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer; }\n\n/* Clearfix */\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.header-logo {\n  display: flex;\n  align-self: center;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000;\n  margin-left: 80px;\n  height: 150px; }\n\n.header_wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  width: 100%;\n  background-color: white; }\n\n.footer_wrapper {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  width: 100%;\n  background-color: white;\n  height: 150px; }\n\n.login-button {\n  width: 120px;\n  background: white;\n  color: #969696;\n  border-color: #969696; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top 1px center;\n  background-size: 100% auto;\n  height: 100%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  align-items: center; }\n\n.login-container-input {\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #5B5A5A;\n  background-color: #e9eef1;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-container-submit {\n  margin-top: 10px;\n  width: 80%;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\n.header-prompt {\n  position: relative;\n  top: 150px;\n  left: 50px;\n  width: 800px;\n  height: 130px; }\n\n.register-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-wrapper {\n  display: flex;\n  position: absolute;\n  flex-direction: column;\n  display: flex;\n  width: 420px;\n  height: 420px;\n  position: absolute;\n  right: 8%;\n  top: 30%; }\n\n.reset-password {\n  margin-top: 10px; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.photo_button {\n  position: relative;\n  top: 120px;\n  left: 120px;\n  cursor: pointer; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.name-header {\n  margin-top: 100px; }\n\n.register_button {\n  margin-top: 30px;\n  align-self: center; }\n\n.background_container {\n  background-color: #f4f5f6;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n\n.form_box {\n  margin-top: 80px;\n  background-color: white;\n  border: 1px solid #C0C0C0;\n  padding: 40px;\n  width: 800px;\n  padding-bottom: 100px; }\n\nbody {\n  font: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n", "",{"version":3,"sources":["webpack://./static/css/reset.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/profile_page.scss","webpack://./static/css/registration_page.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAAA;;;;;EAKE,SAAS;EACT,UAAU;EACV,SAAS;EACT,UAAU;EACV,wIAAyI;EACzI,cAAc;EACd,mBAAmB;EACnB,wBAAwB;EACxB,uBAAuB;EACvB,mBAAmB;EACnB,uBAAuB,EAAA;;AAGzB;EACE,gBAAgB,EAAA;;AAGlB;EACE,cAAc;EACd,WAAW;EACX,YAAY,EAAA;;AAId;EACG,YAAY;EACX,YAAY;EACZ,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,gBAAe,EAAA;;AAInB;EACI,aAAa;EACb,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAG3B;;;;;;EAME;;;GCJC;EDQD,wBAAwB;EACxB,qBAAqB;EACrB,gBAAgB;EAChB,YAAY,EAAA;;AAGd;;EAEE,eAAe,EAAA;;AAGjB,aAAA;AAEA;EACE,WAAW;EACX,cAAc;EACd,WAAW,EAAA;;AEvFb;EACI,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,yBAAyB;EACzB,cAAc;EACd,iBAAiB;EAEjB,aAAa,EAAA;;AAIjB;EACI,aAAY;EACZ,mBAAmB;EACnB,8BAA8B;EAE9B,WAAW;EACV,uBAAuB,EAAA;;AAI5B;EACI,aAAY;EACZ,sBAAsB;EACtB,6BAA6B;EAE7B,WAAW;EACV,uBAAuB;EACxB,aAAa,EAAA;;AAKjB;EACI,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,qBAAqB,EAAA;;AAOzB;EACI,WAAW;EACX,yBAAyB;EACzB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B,EAAA;;AC5D/B;EACI,yDAA8C;EAC9C,mCAAmC;EACnC,0BAA0B;EAC1B,YAAY;EACZ,4BAA4B;EAC5B,uBAAuB;EACvB,WAAW,EAAA;;AAGf;EACI,aAAa;EACb,sBAAsB;EAEtB,kBAAkB;EAClB,qBAAqB;EACrB,aAAa;EACX,WAAW;EAEb,gBAAgB;EACd,uBAAuB;EACzB,yBAAyB;EACzB,mBAAmB,EAAA;;AAIvB;EAEI,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EAEzB,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,yBAA4B;EAC3B,2CAA2C,EAAA;;AAIhD;EAGI,gBAAgB;EAChB,UAAU;EAEV,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAE3B;EACI,eAAe;EACf,yBAAyB,EAAA;;AAI7B;EACI,kBAAkB;EAClB,UAAU;EACV,UAAU;EACV,YAAY;EACZ,aAAa,EAAA;;AAGjB;EACQ,aAAa;EACjB,sBAAsB;EAEnB,kBAAkB;EACrB,qBAAqB;EACrB,aAAa;EACb,WAAW;EAEX,gBAAgB;EACd,uBAAuB;EACzB,yBAAyB;EACxB,2CAA2C,EAAA;;AAIhD;EACI,aAAa;EACb,kBAAkB;EAClB,sBAAsB;EAItB,aAAa;EACb,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,SAAS;EACT,QAAQ,EAAA;;AAGZ;EACI,gBAAgB,EAAA;;ACxGpB;EACI,WAAW;EACX,yBAAyB;EACzB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B,EAAA;;AAG/B;EACI,YAAY;EACZ,wIAAwI,EAAA;;AAG5I;EACI,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,oBAAoB;EACpB,kBAAkB;EAClB,kBAAkB;EAClB,UAAU,EAAA;;AAId;EACE,qBAAqB;EACrB,UAAU;EACV,WAAW;EACX,eAAe;EACf,YAAW;EACX,eAAuB;EACvB,WAAW,EAAA;;AAKb;EACI,sBAAsB,EAAA;;AAG1B;EACI,YAAY;EACZ,wIAAwI,EAAA;;AAG5I;EACI,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,oBAAoB;EACpB,kBAAkB;EAClB,kBAAkB;EAClB,UAAU,EAAA;;AAId;EACI,kBAAkB;EAClB,UAAU;EACV,WAAW;EACX,eAAe,EAAA;;AAGnB;EACE,qBAAqB;EACrB,UAAU;EACV,WAAW;EACX,eAAe;EACf,YAAW;EACX,eAAuB;EACvB,WAAW,EAAA;;AAKb;EACI,sBAAsB,EAAA;;AAI1B;EACI,iBAAiB,EAAA;;AC5FrB;EACI,gBAAgB;EACpB,kBAAkB,EAAA;;AAIlB;EACI,yBAAyB;EACxB,aAAY;EACf,sBAAsB;EACtB,YAAY;EACZ,WAAU;EACX,mBAAmB,EAAA;;AAGpB;EACI,gBAAgB;EAChB,uBAAsB;EACtB,yBAAyB;EACzB,aAAa;EACb,YAAY;EACZ,qBAAqB,EAAA;;AJbzB;EACE,iIARyI;EASzI,yBKVwB,EAAA;ELQ1B;IAIM,cKXkB,EAAA;;ALexB;EACE,aAAY;EACZ,sBAAsB;EACxB,2BAA2B;EACzB,YAAY;EACZ,WAAU;EACX,mBAAmB,EAAA","sourcesContent":["html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent;\n}\n\nul {\n  list-style: none;\n}\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n\n\ninput {\n   height: 30px;\n    width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-top:10px;\n\n}\n\nbutton {\n    padding: 10px;\n    justify-self: center;\n    height: 20px;\n    width: 80px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px;\n}\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer;\n}\n\n/* Clearfix */\n\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both;\n}","@import 'themeColors';\n$theme-font:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n@import 'reset';\n@import 'header_footer';\n@import 'mainPage';\n@import 'profile_page';\n@import 'registration_page';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark;\n  }\n}\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\njustify-content: flex-start;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n","\n\n.header-logo {\n    display: flex;\n    align-self: center;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n    margin-left: 80px;\n    \n    height: 150px;\n   \n}\n\n.header_wrapper {\n    display:flex;\n    flex-direction: row;\n    justify-content: space-between;\n\n    width: 100%;\n     background-color: white;\n    \n\n}\n.footer_wrapper {\n    display:flex;\n    flex-direction: column;\n    justify-content: space-around;\n\n    width: 100%;\n     background-color: white;\n    height: 150px;\n    \n\n}\n\n.login-button {\n    width: 120px;\n    background: white;\n    color: #969696; \n    border-color: #969696;\n    // height: 30px;\n    // text-align:center;\n    // justify-content: center;\n}\n\n\n.blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: top 1px center;\n    background-size: 100% auto;\n    height: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    \n    border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n      width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n    align-items: center;\n    \n}\n\n.login-container-input {\n    // height: 30px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    \n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #5B5A5A;\n    background-color: #e9eef1   ;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n\n}\n\n.login-container-submit {\n    // height: 30px;\n    // margin: 5px;\n    margin-top: 10px;\n    width: 80%;\n  \n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n\n\n.header-prompt {\n    position: relative;\n    top: 150px;\n    left: 50px;\n    width: 800px;\n    height: 130px;\n}\n\n.register-container {\n        display: flex;\n    flex-direction: column;\n   \n       border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n    width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    \n}\n\n.login-wrapper {\n    display: flex;\n    position: absolute;\n    flex-direction: column;\n  \n    // top: 35%;\n     \n    display: flex;\n    width: 420px;\n    height: 420px; \n    position: absolute;\n    right: 8%;\n    top: 30%;\n}\n\n.reset-password {\n    margin-top: 10px;\n}",".blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.photo_button {\n    position: relative;\n    top: 120px;\n    left: 120px;\n    cursor: pointer;\n}\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n\n.name-header {\n    margin-top: 100px;\n}\n\n",".register_button {\n    margin-top: 30px;\nalign-self: center;\n\n}\n\n.background_container {\n    background-color: #f4f5f6;\n     display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n.form_box {\n    margin-top: 80px;\n    background-color:white;\n    border: 1px solid #C0C0C0;\n    padding: 40px;\n    width: 800px;\n    padding-bottom: 100px;\n}","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\ninput {\n  height: 30px;\n  width: 450px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD;\n  margin-bottom: 40px; }\n\nbutton {\n  padding: 10px;\n  justify-self: center;\n  height: 20px;\n  width: 80px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\ninput[type=\"submit\"] {\n  padding: 10px;\n  justify-self: center;\n  height: 20px;\n  width: 80px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center;\n  margin-top: 80px;\n  padding: 10px 25px; }\n\ntextarea {\n  min-height: 90px;\n  width: 950px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD;\n  margin-top: 20px;\n  resize: none; }\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px; }\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer; }\n\n/* Clearfix */\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.header-logo {\n  display: flex;\n  align-self: center;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000;\n  margin-left: 80px;\n  height: 150px; }\n\n.header_wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  width: 100%;\n  background-color: white; }\n\n.footer_wrapper {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  width: 100%;\n  background-color: white;\n  height: 150px; }\n\n.login-button {\n  width: 120px;\n  background: white;\n  color: #969696;\n  border-color: #969696; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top 1px center;\n  background-size: 100% auto;\n  height: 100%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  align-items: center; }\n\n.login-container-input {\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #5B5A5A;\n  background-color: #e9eef1;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-container-submit {\n  margin-top: 10px;\n  width: 80%;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\n.header-prompt {\n  position: relative;\n  top: 150px;\n  left: 50px;\n  width: 800px;\n  height: 130px; }\n\n.register-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-wrapper {\n  display: flex;\n  position: absolute;\n  flex-direction: column;\n  display: flex;\n  width: 420px;\n  height: 420px;\n  position: absolute;\n  right: 8%;\n  top: 30%; }\n\n.reset-password {\n  margin-top: 10px; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.photo_button {\n  position: relative;\n  top: 120px;\n  left: 120px;\n  cursor: pointer; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.name-header {\n  margin-top: 100px; }\n\n.register_button {\n  margin-top: 30px;\n  align-self: center; }\n\n.background_container {\n  background-color: #f4f5f6;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n\n.form_box {\n  margin-top: 80px;\n  background-color: white;\n  border: 1px solid #C0C0C0;\n  padding: 40px;\n  width: 800px;\n  padding-bottom: 100px; }\n\n.back-button {\n  position: relative;\n  top: 0px;\n  left: 0px;\n  height: 150px;\n  width: 150px; }\n\n.back-button:hover {\n  cursor: pointer; }\n\nbody {\n  font: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n", "",{"version":3,"sources":["webpack://./static/css/reset.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/profile_page.scss","webpack://./static/css/registration_page.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAAA;;;;;EAKE,SAAS;EACT,UAAU;EACV,SAAS;EACT,UAAU;EACV,wIAAyI;EACzI,cAAc;EACd,mBAAmB;EACnB,wBAAwB;EACxB,uBAAuB;EACvB,mBAAmB;EACnB,uBAAuB,EAAA;;AAGzB;EACE,gBAAgB,EAAA;;AAGlB;EACE,cAAc;EACd,WAAW;EACX,YAAY,EAAA;;AAId;EACG,YAAY;EACX,YAAY;EACZ,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,mBAAkB,EAAA;;AAItB;EACI,aAAa;EACb,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAI3B;EACG,aAAa;EACZ,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;EAChB,kBAAkB,EAAA;;AAGtB;EACO,gBAAgB;EACnB,YAAY;EACZ,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,gBAAe;EACf,YAAY,EAAA;;AAKhB;;;;;;EAME;;;GCTC;EDaD,wBAAwB;EACxB,qBAAqB;EACrB,gBAAgB;EAChB,YAAY,EAAA;;AAGd;;EAEE,eAAe,EAAA;;AAGjB,aAAA;AAEA;EACE,WAAW;EACX,cAAc;EACd,WAAW,EAAA;;AE9Hb;EACI,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,yBAAyB;EACzB,cAAc;EACd,iBAAiB;EAEjB,aAAa,EAAA;;AAIjB;EACI,aAAY;EACZ,mBAAmB;EACnB,8BAA8B;EAE9B,WAAW;EACV,uBAAuB,EAAA;;AAI5B;EACI,aAAY;EACZ,sBAAsB;EACtB,6BAA6B;EAE7B,WAAW;EACV,uBAAuB;EACxB,aAAa,EAAA;;AAKjB;EACI,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,qBAAqB,EAAA;;AAOzB;EACI,WAAW;EACX,yBAAyB;EACzB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B,EAAA;;AC5D/B;EACI,yDAA8C;EAC9C,mCAAmC;EACnC,0BAA0B;EAC1B,YAAY;EACZ,4BAA4B;EAC5B,uBAAuB;EACvB,WAAW,EAAA;;AAGf;EACI,aAAa;EACb,sBAAsB;EAEtB,kBAAkB;EAClB,qBAAqB;EACrB,aAAa;EACX,WAAW;EAEb,gBAAgB;EACd,uBAAuB;EACzB,yBAAyB;EACzB,mBAAmB,EAAA;;AAIvB;EAEI,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EAEzB,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,yBAA4B;EAC3B,2CAA2C,EAAA;;AAIhD;EAGI,gBAAgB;EAChB,UAAU;EAEV,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAE3B;EACI,eAAe;EACf,yBAAyB,EAAA;;AAI7B;EACI,kBAAkB;EAClB,UAAU;EACV,UAAU;EACV,YAAY;EACZ,aAAa,EAAA;;AAGjB;EACQ,aAAa;EACjB,sBAAsB;EAEnB,kBAAkB;EACrB,qBAAqB;EACrB,aAAa;EACb,WAAW;EAEX,gBAAgB;EACd,uBAAuB;EACzB,yBAAyB;EACxB,2CAA2C,EAAA;;AAIhD;EACI,aAAa;EACb,kBAAkB;EAClB,sBAAsB;EAItB,aAAa;EACb,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,SAAS;EACT,QAAQ,EAAA;;AAGZ;EACI,gBAAgB,EAAA;;ACxGpB;EACI,WAAW;EACX,yBAAyB;EACzB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B,EAAA;;AAG/B;EACI,YAAY;EACZ,wIAAwI,EAAA;;AAG5I;EACI,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,oBAAoB;EACpB,kBAAkB;EAClB,kBAAkB;EAClB,UAAU,EAAA;;AAId;EACE,qBAAqB;EACrB,UAAU;EACV,WAAW;EACX,eAAe;EACf,YAAW;EACX,eAAuB;EACvB,WAAW,EAAA;;AAKb;EACI,sBAAsB,EAAA;;AAG1B;EACI,YAAY;EACZ,wIAAwI,EAAA;;AAG5I;EACI,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,oBAAoB;EACpB,kBAAkB;EAClB,kBAAkB;EAClB,UAAU,EAAA;;AAId;EACI,kBAAkB;EAClB,UAAU;EACV,WAAW;EACX,eAAe,EAAA;;AAGnB;EACE,qBAAqB;EACrB,UAAU;EACV,WAAW;EACX,eAAe;EACf,YAAW;EACX,eAAuB;EACvB,WAAW,EAAA;;AAKb;EACI,sBAAsB,EAAA;;AAI1B;EACI,iBAAiB,EAAA;;AC5FrB;EACI,gBAAgB;EACpB,kBAAkB,EAAA;;AAIlB;EACI,yBAAyB;EACxB,aAAY;EACf,sBAAsB;EACtB,YAAY;EACZ,WAAU;EACX,mBAAmB,EAAA;;AAGpB;EACI,gBAAgB;EAChB,uBAAsB;EACtB,yBAAyB;EACzB,aAAa;EACb,YAAY;EACZ,qBAAqB,EAAA;;AAQzB;EACI,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,aAAa;EACb,YAAY,EAAA;;AAGhB;EACI,eAAe,EAAA;;AJ9BnB;EACE,iIARyI;EASzI,yBKVwB,EAAA;ELQ1B;IAIM,cKXkB,EAAA;;ALexB;EACE,aAAY;EACZ,sBAAsB;EACxB,2BAA2B;EACzB,YAAY;EACZ,WAAU;EACX,mBAAmB,EAAA","sourcesContent":["html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent;\n}\n\nul {\n  list-style: none;\n}\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n\n\ninput {\n   height: 30px;\n    width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-bottom:40px;\n\n}\n\nbutton {\n    padding: 10px;\n    justify-self: center;\n    height: 20px;\n    width: 80px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n\n\ninput[type=\"submit\"] {\n   padding: 10px;\n    justify-self: center;\n    height: 20px;\n    width: 80px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;  \n    margin-top: 80px;\n    padding: 10px 25px;\n}\n\ntextarea {\n       min-height: 90px;\n    width: 950px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-top:20px;\n    resize: none;\n    \n\n}\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px;\n}\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer;\n}\n\n/* Clearfix */\n\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both;\n}","@import 'themeColors';\n$theme-font:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n@import 'reset';\n@import 'header_footer';\n@import 'mainPage';\n@import 'profile_page';\n@import 'registration_page';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark;\n  }\n}\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\njustify-content: flex-start;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n","\n\n.header-logo {\n    display: flex;\n    align-self: center;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n    margin-left: 80px;\n    \n    height: 150px;\n   \n}\n\n.header_wrapper {\n    display:flex;\n    flex-direction: row;\n    justify-content: space-between;\n\n    width: 100%;\n     background-color: white;\n    \n\n}\n.footer_wrapper {\n    display:flex;\n    flex-direction: column;\n    justify-content: space-around;\n\n    width: 100%;\n     background-color: white;\n    height: 150px;\n    \n\n}\n\n.login-button {\n    width: 120px;\n    background: white;\n    color: #969696; \n    border-color: #969696;\n    // height: 30px;\n    // text-align:center;\n    // justify-content: center;\n}\n\n\n.blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: top 1px center;\n    background-size: 100% auto;\n    height: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    \n    border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n      width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n    align-items: center;\n    \n}\n\n.login-container-input {\n    // height: 30px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    \n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #5B5A5A;\n    background-color: #e9eef1   ;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n\n}\n\n.login-container-submit {\n    // height: 30px;\n    // margin: 5px;\n    margin-top: 10px;\n    width: 80%;\n  \n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n\n\n.header-prompt {\n    position: relative;\n    top: 150px;\n    left: 50px;\n    width: 800px;\n    height: 130px;\n}\n\n.register-container {\n        display: flex;\n    flex-direction: column;\n   \n       border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n    width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    \n}\n\n.login-wrapper {\n    display: flex;\n    position: absolute;\n    flex-direction: column;\n  \n    // top: 35%;\n     \n    display: flex;\n    width: 420px;\n    height: 420px; \n    position: absolute;\n    right: 8%;\n    top: 30%;\n}\n\n.reset-password {\n    margin-top: 10px;\n}",".blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.photo_button {\n    position: relative;\n    top: 120px;\n    left: 120px;\n    cursor: pointer;\n}\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n\n.name-header {\n    margin-top: 100px;\n}\n\n",".register_button {\n    margin-top: 30px;\nalign-self: center;\n\n}\n\n.background_container {\n    background-color: #f4f5f6;\n     display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n.form_box {\n    margin-top: 80px;\n    background-color:white;\n    border: 1px solid #C0C0C0;\n    padding: 40px;\n    width: 800px;\n    padding-bottom: 100px;\n}\n\n\n.test_image {\n\n}\n\n.back-button {\n    position: relative;\n    top: 0px;\n    left: 0px;\n    height: 150px;\n    width: 150px;\n}\n\n.back-button:hover {\n    cursor: pointer;\n}","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -30651,6 +30655,1948 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-hook-form/dist/index.esm.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-hook-form/dist/index.esm.js ***!
+  \********************************************************/
+/*! exports provided: Controller, FormProvider, appendErrors, get, transformToNestObject, useController, useFieldArray, useForm, useFormContext, useWatch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Controller", function() { return Controller; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormProvider", function() { return FormProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appendErrors", function() { return appendErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get", function() { return get; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transformToNestObject", function() { return transformToNestObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useController", function() { return useController; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useFieldArray", function() { return useFieldArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useForm", function() { return useForm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useFormContext", function() { return useFormContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useWatch", function() { return useWatch; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var isHTMLElement = (value) => value instanceof HTMLElement;
+
+const EVENTS = {
+    BLUR: 'blur',
+    CHANGE: 'change',
+    INPUT: 'input',
+};
+const VALIDATION_MODE = {
+    onBlur: 'onBlur',
+    onChange: 'onChange',
+    onSubmit: 'onSubmit',
+    onTouched: 'onTouched',
+    all: 'all',
+};
+const SELECT = 'select';
+const UNDEFINED = 'undefined';
+const INPUT_VALIDATION_RULES = {
+    max: 'max',
+    min: 'min',
+    maxLength: 'maxLength',
+    minLength: 'minLength',
+    pattern: 'pattern',
+    required: 'required',
+    validate: 'validate',
+};
+
+function attachEventListeners({ ref }, shouldAttachChangeEvent, handleChange) {
+    if (isHTMLElement(ref) && handleChange) {
+        ref.addEventListener(shouldAttachChangeEvent ? EVENTS.CHANGE : EVENTS.INPUT, handleChange);
+        ref.addEventListener(EVENTS.BLUR, handleChange);
+    }
+}
+
+var isNullOrUndefined = (value) => value == null;
+
+const isObjectType = (value) => typeof value === 'object';
+var isObject = (value) => !isNullOrUndefined(value) &&
+    !Array.isArray(value) &&
+    isObjectType(value) &&
+    !(value instanceof Date);
+
+var isKey = (value) => /^\w*$/.test(value);
+
+var compact = (value) => value.filter(Boolean);
+
+var stringToPath = (input) => compact(input
+    .replace(/["|']/g, '')
+    .replace(/\[/g, '.')
+    .replace(/\]/g, '')
+    .split('.'));
+
+function set(object, path, value) {
+    let index = -1;
+    const tempPath = isKey(path) ? [path] : stringToPath(path);
+    const length = tempPath.length;
+    const lastIndex = length - 1;
+    while (++index < length) {
+        const key = tempPath[index];
+        let newValue = value;
+        if (index !== lastIndex) {
+            const objValue = object[key];
+            newValue =
+                isObject(objValue) || Array.isArray(objValue)
+                    ? objValue
+                    : !isNaN(+tempPath[index + 1])
+                        ? []
+                        : {};
+        }
+        object[key] = newValue;
+        object = object[key];
+    }
+    return object;
+}
+
+var transformToNestObject = (data, value = {}) => {
+    for (const key in data) {
+        !isKey(key) ? set(value, key, data[key]) : (value[key] = data[key]);
+    }
+    return value;
+};
+
+var isUndefined = (val) => val === undefined;
+
+var get = (obj = {}, path, defaultValue) => {
+    const result = compact(path.split(/[,[\].]+?/)).reduce((result, key) => (isNullOrUndefined(result) ? result : result[key]), obj);
+    return isUndefined(result) || result === obj
+        ? isUndefined(obj[path])
+            ? defaultValue
+            : obj[path]
+        : result;
+};
+
+var focusOnErrorField = (fields, fieldErrors) => {
+    for (const key in fields) {
+        if (get(fieldErrors, key)) {
+            const field = fields[key];
+            if (field) {
+                if (field.ref.focus && isUndefined(field.ref.focus())) {
+                    break;
+                }
+                else if (field.options) {
+                    field.options[0].ref.focus();
+                    break;
+                }
+            }
+        }
+    }
+};
+
+var removeAllEventListeners = (ref, validateWithStateUpdate) => {
+    if (isHTMLElement(ref) && ref.removeEventListener) {
+        ref.removeEventListener(EVENTS.INPUT, validateWithStateUpdate);
+        ref.removeEventListener(EVENTS.CHANGE, validateWithStateUpdate);
+        ref.removeEventListener(EVENTS.BLUR, validateWithStateUpdate);
+    }
+};
+
+const defaultReturn = {
+    isValid: false,
+    value: '',
+};
+var getRadioValue = (options) => Array.isArray(options)
+    ? options.reduce((previous, option) => option && option.ref.checked
+        ? {
+            isValid: true,
+            value: option.ref.value,
+        }
+        : previous, defaultReturn)
+    : defaultReturn;
+
+var getMultipleSelectValue = (options) => [...options]
+    .filter(({ selected }) => selected)
+    .map(({ value }) => value);
+
+var isRadioInput = (element) => element.type === 'radio';
+
+var isFileInput = (element) => element.type === 'file';
+
+var isCheckBoxInput = (element) => element.type === 'checkbox';
+
+var isMultipleSelect = (element) => element.type === `${SELECT}-multiple`;
+
+const defaultResult = {
+    value: false,
+    isValid: false,
+};
+const validResult = { value: true, isValid: true };
+var getCheckboxValue = (options) => {
+    if (Array.isArray(options)) {
+        if (options.length > 1) {
+            const values = options
+                .filter((option) => option && option.ref.checked)
+                .map(({ ref: { value } }) => value);
+            return { value: values, isValid: !!values.length };
+        }
+        const { checked, value, attributes } = options[0].ref;
+        return checked
+            ? attributes && !isUndefined(attributes.value)
+                ? isUndefined(value) || value === ''
+                    ? validResult
+                    : { value: value, isValid: true }
+                : validResult
+            : defaultResult;
+    }
+    return defaultResult;
+};
+
+function getFieldValue(fieldsRef, name, shallowFieldsStateRef, excludeDisabled) {
+    const field = fieldsRef.current[name];
+    if (field) {
+        const { ref: { value, disabled }, ref, valueAsNumber, valueAsDate, setValueAs, } = field;
+        if (disabled && excludeDisabled) {
+            return;
+        }
+        if (isFileInput(ref)) {
+            return ref.files;
+        }
+        if (isRadioInput(ref)) {
+            return getRadioValue(field.options).value;
+        }
+        if (isMultipleSelect(ref)) {
+            return getMultipleSelectValue(ref.options);
+        }
+        if (isCheckBoxInput(ref)) {
+            return getCheckboxValue(field.options).value;
+        }
+        return valueAsNumber
+            ? +value
+            : valueAsDate
+                ? ref.valueAsDate
+                : setValueAs
+                    ? setValueAs(value)
+                    : value;
+    }
+    if (shallowFieldsStateRef) {
+        return get(shallowFieldsStateRef.current, name);
+    }
+}
+
+function isDetached(element) {
+    if (!element) {
+        return true;
+    }
+    if (!(element instanceof HTMLElement) ||
+        element.nodeType === Node.DOCUMENT_NODE) {
+        return false;
+    }
+    return isDetached(element.parentNode);
+}
+
+var isEmptyObject = (value) => isObject(value) && !Object.keys(value).length;
+
+var isBoolean = (value) => typeof value === 'boolean';
+
+function baseGet(object, updatePath) {
+    const length = updatePath.slice(0, -1).length;
+    let index = 0;
+    while (index < length) {
+        object = isUndefined(object) ? index++ : object[updatePath[index++]];
+    }
+    return object;
+}
+function unset(object, path) {
+    const updatePath = isKey(path) ? [path] : stringToPath(path);
+    const childObject = updatePath.length == 1 ? object : baseGet(object, updatePath);
+    const key = updatePath[updatePath.length - 1];
+    let previousObjRef;
+    if (childObject) {
+        delete childObject[key];
+    }
+    for (let k = 0; k < updatePath.slice(0, -1).length; k++) {
+        let index = -1;
+        let objectRef;
+        const currentPaths = updatePath.slice(0, -(k + 1));
+        const currentPathsLength = currentPaths.length - 1;
+        if (k > 0) {
+            previousObjRef = object;
+        }
+        while (++index < currentPaths.length) {
+            const item = currentPaths[index];
+            objectRef = objectRef ? objectRef[item] : object[item];
+            if (currentPathsLength === index &&
+                ((isObject(objectRef) && isEmptyObject(objectRef)) ||
+                    (Array.isArray(objectRef) &&
+                        !objectRef.filter((data) => (isObject(data) && !isEmptyObject(data)) || isBoolean(data)).length))) {
+                previousObjRef ? delete previousObjRef[item] : delete object[item];
+            }
+            previousObjRef = objectRef;
+        }
+    }
+    return object;
+}
+
+const isSameRef = (fieldValue, ref) => fieldValue && fieldValue.ref === ref;
+function findRemovedFieldAndRemoveListener(fieldsRef, handleChange, field, shallowFieldsStateRef, shouldUnregister, forceDelete) {
+    const { ref, ref: { name }, } = field;
+    const fieldRef = fieldsRef.current[name];
+    if (!shouldUnregister) {
+        const value = getFieldValue(fieldsRef, name, shallowFieldsStateRef);
+        !isUndefined(value) && set(shallowFieldsStateRef.current, name, value);
+    }
+    if (!ref.type || !fieldRef) {
+        delete fieldsRef.current[name];
+        return;
+    }
+    if (isRadioInput(ref) || isCheckBoxInput(ref)) {
+        if (Array.isArray(fieldRef.options) && fieldRef.options.length) {
+            compact(fieldRef.options).forEach((option = {}, index) => {
+                if ((isDetached(option.ref) && isSameRef(option, option.ref)) ||
+                    forceDelete) {
+                    removeAllEventListeners(option.ref, handleChange);
+                    unset(fieldRef.options, `[${index}]`);
+                }
+            });
+            if (fieldRef.options && !compact(fieldRef.options).length) {
+                delete fieldsRef.current[name];
+            }
+        }
+        else {
+            delete fieldsRef.current[name];
+        }
+    }
+    else if ((isDetached(ref) && isSameRef(fieldRef, ref)) || forceDelete) {
+        removeAllEventListeners(ref, handleChange);
+        delete fieldsRef.current[name];
+    }
+}
+
+var isPrimitive = (value) => isNullOrUndefined(value) || !isObjectType(value);
+
+function deepMerge(target, source) {
+    if (isPrimitive(target) || isPrimitive(source)) {
+        return source;
+    }
+    for (const key in source) {
+        const targetValue = target[key];
+        const sourceValue = source[key];
+        try {
+            target[key] =
+                (isObject(targetValue) && isObject(sourceValue)) ||
+                    (Array.isArray(targetValue) && Array.isArray(sourceValue))
+                    ? deepMerge(targetValue, sourceValue)
+                    : sourceValue;
+        }
+        catch (_a) { }
+    }
+    return target;
+}
+
+function setDirtyFields(values, defaultValues, dirtyFields, parentNode, parentName) {
+    let index = -1;
+    while (++index < values.length) {
+        for (const key in values[index]) {
+            if (Array.isArray(values[index][key])) {
+                !dirtyFields[index] && (dirtyFields[index] = {});
+                dirtyFields[index][key] = [];
+                setDirtyFields(values[index][key], get(defaultValues[index] || {}, key, []), dirtyFields[index][key], dirtyFields[index], key);
+            }
+            else {
+                get(defaultValues[index] || {}, key) === values[index][key]
+                    ? set(dirtyFields[index] || {}, key)
+                    : (dirtyFields[index] = Object.assign(Object.assign({}, dirtyFields[index]), { [key]: true }));
+            }
+        }
+        parentNode &&
+            !dirtyFields.length &&
+            delete parentNode[parentName];
+    }
+    return dirtyFields;
+}
+var setFieldArrayDirtyFields = (values, defaultValues, dirtyFields) => deepMerge(setDirtyFields(values, defaultValues, dirtyFields.slice(0, values.length)), setDirtyFields(defaultValues, values, dirtyFields.slice(0, values.length)));
+
+var isString = (value) => typeof value === 'string';
+
+var getFieldsValues = (fieldsRef, shallowFieldsState, shouldUnregister, excludeDisabled, search) => {
+    const output = {};
+    for (const name in fieldsRef.current) {
+        if (isUndefined(search) ||
+            (isString(search)
+                ? name.startsWith(search)
+                : Array.isArray(search) && search.find((data) => name.startsWith(data)))) {
+            output[name] = getFieldValue(fieldsRef, name, undefined, excludeDisabled);
+        }
+    }
+    return shouldUnregister
+        ? transformToNestObject(output)
+        : deepMerge(shallowFieldsState, transformToNestObject(output));
+};
+
+function deepEqual(object1, object2, isErrorObject) {
+    if (isPrimitive(object1) ||
+        isPrimitive(object2) ||
+        object1 instanceof Date ||
+        object2 instanceof Date) {
+        return object1 === object2;
+    }
+    if (!Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(object1)) {
+        const keys1 = Object.keys(object1);
+        const keys2 = Object.keys(object2);
+        if (keys1.length !== keys2.length) {
+            return false;
+        }
+        for (const key of keys1) {
+            const val1 = object1[key];
+            if (!(isErrorObject && key === 'ref')) {
+                const val2 = object2[key];
+                if ((isObject(val1) || Array.isArray(val1)) &&
+                    (isObject(val2) || Array.isArray(val2))
+                    ? !deepEqual(val1, val2, isErrorObject)
+                    : val1 !== val2) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+var isErrorStateChanged = ({ errors, name, error, validFields, fieldsWithValidation, }) => {
+    const isValid = isUndefined(error);
+    const previousError = get(errors, name);
+    return ((isValid && !!previousError) ||
+        (!isValid && !deepEqual(previousError, error, true)) ||
+        (isValid && get(fieldsWithValidation, name) && !get(validFields, name)));
+};
+
+var isRegex = (value) => value instanceof RegExp;
+
+var getValueAndMessage = (validationData) => isObject(validationData) && !isRegex(validationData)
+    ? validationData
+    : {
+        value: validationData,
+        message: '',
+    };
+
+var isFunction = (value) => typeof value === 'function';
+
+var isMessage = (value) => isString(value) || Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(value);
+
+function getValidateError(result, ref, type = 'validate') {
+    if (isMessage(result) || (isBoolean(result) && !result)) {
+        return {
+            type,
+            message: isMessage(result) ? result : '',
+            ref,
+        };
+    }
+}
+
+var appendErrors = (name, validateAllFieldCriteria, errors, type, message) => validateAllFieldCriteria
+    ? Object.assign(Object.assign({}, errors[name]), { types: Object.assign(Object.assign({}, (errors[name] && errors[name].types ? errors[name].types : {})), { [type]: message || true }) }) : {};
+
+var validateField = async (fieldsRef, validateAllFieldCriteria, { ref, ref: { value }, options, required, maxLength, minLength, min, max, pattern, validate, }, shallowFieldsStateRef) => {
+    const name = ref.name;
+    const error = {};
+    const isRadio = isRadioInput(ref);
+    const isCheckBox = isCheckBoxInput(ref);
+    const isRadioOrCheckbox = isRadio || isCheckBox;
+    const isEmpty = value === '';
+    const appendErrorsCurry = appendErrors.bind(null, name, validateAllFieldCriteria, error);
+    const getMinMaxMessage = (exceedMax, maxLengthMessage, minLengthMessage, maxType = INPUT_VALIDATION_RULES.maxLength, minType = INPUT_VALIDATION_RULES.minLength) => {
+        const message = exceedMax ? maxLengthMessage : minLengthMessage;
+        error[name] = Object.assign({ type: exceedMax ? maxType : minType, message,
+            ref }, (exceedMax
+            ? appendErrorsCurry(maxType, message)
+            : appendErrorsCurry(minType, message)));
+    };
+    if (required &&
+        ((!isRadio && !isCheckBox && (isEmpty || isNullOrUndefined(value))) ||
+            (isBoolean(value) && !value) ||
+            (isCheckBox && !getCheckboxValue(options).isValid) ||
+            (isRadio && !getRadioValue(options).isValid))) {
+        const { value, message } = isMessage(required)
+            ? { value: !!required, message: required }
+            : getValueAndMessage(required);
+        if (value) {
+            error[name] = Object.assign({ type: INPUT_VALIDATION_RULES.required, message, ref: isRadioOrCheckbox
+                    ? ((fieldsRef.current[name].options || [])[0] || {}).ref
+                    : ref }, appendErrorsCurry(INPUT_VALIDATION_RULES.required, message));
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if ((!isNullOrUndefined(min) || !isNullOrUndefined(max)) && value !== '') {
+        let exceedMax;
+        let exceedMin;
+        const maxOutput = getValueAndMessage(max);
+        const minOutput = getValueAndMessage(min);
+        if (!isNaN(value)) {
+            const valueNumber = ref.valueAsNumber || parseFloat(value);
+            if (!isNullOrUndefined(maxOutput.value)) {
+                exceedMax = valueNumber > maxOutput.value;
+            }
+            if (!isNullOrUndefined(minOutput.value)) {
+                exceedMin = valueNumber < minOutput.value;
+            }
+        }
+        else {
+            const valueDate = ref.valueAsDate || new Date(value);
+            if (isString(maxOutput.value)) {
+                exceedMax = valueDate > new Date(maxOutput.value);
+            }
+            if (isString(minOutput.value)) {
+                exceedMin = valueDate < new Date(minOutput.value);
+            }
+        }
+        if (exceedMax || exceedMin) {
+            getMinMaxMessage(!!exceedMax, maxOutput.message, minOutput.message, INPUT_VALIDATION_RULES.max, INPUT_VALIDATION_RULES.min);
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if (isString(value) && !isEmpty && (maxLength || minLength)) {
+        const maxLengthOutput = getValueAndMessage(maxLength);
+        const minLengthOutput = getValueAndMessage(minLength);
+        const exceedMax = !isNullOrUndefined(maxLengthOutput.value) &&
+            value.length > maxLengthOutput.value;
+        const exceedMin = !isNullOrUndefined(minLengthOutput.value) &&
+            value.length < minLengthOutput.value;
+        if (exceedMax || exceedMin) {
+            getMinMaxMessage(exceedMax, maxLengthOutput.message, minLengthOutput.message);
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if (isString(value) && pattern && !isEmpty) {
+        const { value: patternValue, message } = getValueAndMessage(pattern);
+        if (isRegex(patternValue) && !patternValue.test(value)) {
+            error[name] = Object.assign({ type: INPUT_VALIDATION_RULES.pattern, message,
+                ref }, appendErrorsCurry(INPUT_VALIDATION_RULES.pattern, message));
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if (validate) {
+        const fieldValue = getFieldValue(fieldsRef, name, shallowFieldsStateRef);
+        const validateRef = isRadioOrCheckbox && options ? options[0].ref : ref;
+        if (isFunction(validate)) {
+            const result = await validate(fieldValue);
+            const validateError = getValidateError(result, validateRef);
+            if (validateError) {
+                error[name] = Object.assign(Object.assign({}, validateError), appendErrorsCurry(INPUT_VALIDATION_RULES.validate, validateError.message));
+                if (!validateAllFieldCriteria) {
+                    return error;
+                }
+            }
+        }
+        else if (isObject(validate)) {
+            let validationResult = {};
+            for (const [key, validateFunction] of Object.entries(validate)) {
+                if (!isEmptyObject(validationResult) && !validateAllFieldCriteria) {
+                    break;
+                }
+                const validateResult = await validateFunction(fieldValue);
+                const validateError = getValidateError(validateResult, validateRef, key);
+                if (validateError) {
+                    validationResult = Object.assign(Object.assign({}, validateError), appendErrorsCurry(key, validateError.message));
+                    if (validateAllFieldCriteria) {
+                        error[name] = validationResult;
+                    }
+                }
+            }
+            if (!isEmptyObject(validationResult)) {
+                error[name] = Object.assign({ ref: validateRef }, validationResult);
+                if (!validateAllFieldCriteria) {
+                    return error;
+                }
+            }
+        }
+    }
+    return error;
+};
+
+const getPath = (rootPath, values, paths = []) => {
+    for (const property in values) {
+        const rootName = (rootPath +
+            (isObject(values)
+                ? `.${property}`
+                : `[${property}]`));
+        isPrimitive(values[property])
+            ? paths.push(rootName)
+            : getPath(rootName, values[property], paths);
+    }
+    return paths;
+};
+
+var assignWatchFields = (fieldValues, fieldName, watchFields, inputValue, isSingleField) => {
+    let value = undefined;
+    watchFields.add(fieldName);
+    if (!isEmptyObject(fieldValues)) {
+        value = get(fieldValues, fieldName);
+        if (isObject(value) || Array.isArray(value)) {
+            getPath(fieldName, value).forEach((name) => watchFields.add(name));
+        }
+    }
+    return isUndefined(value)
+        ? isSingleField
+            ? inputValue
+            : get(inputValue, fieldName)
+        : value;
+};
+
+var skipValidation = ({ isOnBlur, isOnChange, isOnTouch, isTouched, isReValidateOnBlur, isReValidateOnChange, isBlurEvent, isSubmitted, isOnAll, }) => {
+    if (isOnAll) {
+        return false;
+    }
+    else if (!isSubmitted && isOnTouch) {
+        return !(isTouched || isBlurEvent);
+    }
+    else if (isSubmitted ? isReValidateOnBlur : isOnBlur) {
+        return !isBlurEvent;
+    }
+    else if (isSubmitted ? isReValidateOnChange : isOnChange) {
+        return isBlurEvent;
+    }
+    return true;
+};
+
+var getFieldArrayParentName = (name) => name.substring(0, name.indexOf('['));
+
+const isMatchFieldArrayName = (name, searchName) => RegExp(`^${searchName}([|.)\\d+`.replace(/\[/g, '\\[').replace(/\]/g, '\\]')).test(name);
+var isNameInFieldArray = (names, name) => [...names].some((current) => isMatchFieldArrayName(name, current));
+
+var isSelectInput = (element) => element.type === `${SELECT}-one`;
+
+function onDomRemove(fieldsRef, removeFieldEventListenerAndRef) {
+    const observer = new MutationObserver(() => {
+        for (const field of Object.values(fieldsRef.current)) {
+            if (field && field.options) {
+                for (const option of field.options) {
+                    if (option && option.ref && isDetached(option.ref)) {
+                        removeFieldEventListenerAndRef(field);
+                    }
+                }
+            }
+            else if (field && isDetached(field.ref)) {
+                removeFieldEventListenerAndRef(field);
+            }
+        }
+    });
+    observer.observe(window.document, {
+        childList: true,
+        subtree: true,
+    });
+    return observer;
+}
+
+var isWeb = typeof window !== UNDEFINED && typeof document !== UNDEFINED;
+
+function cloneObject(data) {
+    let copy;
+    if (isPrimitive(data) ||
+        (isWeb && (data instanceof File || isHTMLElement(data)))) {
+        return data;
+    }
+    if (data instanceof Date) {
+        copy = new Date(data.getTime());
+        return copy;
+    }
+    if (data instanceof Set) {
+        copy = new Set();
+        for (const item of data) {
+            copy.add(item);
+        }
+        return copy;
+    }
+    if (data instanceof Map) {
+        copy = new Map();
+        for (const key of data.keys()) {
+            copy.set(key, cloneObject(data.get(key)));
+        }
+        return copy;
+    }
+    copy = Array.isArray(data) ? [] : {};
+    for (const key in data) {
+        copy[key] = cloneObject(data[key]);
+    }
+    return copy;
+}
+
+var modeChecker = (mode) => ({
+    isOnSubmit: !mode || mode === VALIDATION_MODE.onSubmit,
+    isOnBlur: mode === VALIDATION_MODE.onBlur,
+    isOnChange: mode === VALIDATION_MODE.onChange,
+    isOnAll: mode === VALIDATION_MODE.all,
+    isOnTouch: mode === VALIDATION_MODE.onTouched,
+});
+
+var isRadioOrCheckboxFunction = (ref) => isRadioInput(ref) || isCheckBoxInput(ref);
+
+const isWindowUndefined = typeof window === UNDEFINED;
+const isProxyEnabled = isWeb ? 'Proxy' in window : typeof Proxy !== UNDEFINED;
+function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_MODE.onChange, resolver, context, defaultValues = {}, shouldFocusError = true, shouldUnregister = true, criteriaMode, } = {}) {
+    const fieldsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const fieldArrayDefaultValuesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const fieldArrayValuesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const watchFieldsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(new Set());
+    const useWatchFieldsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const useWatchRenderFunctionsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const fieldsWithValidationRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const validFieldsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const defaultValuesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(defaultValues);
+    const isUnMount = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(false);
+    const isWatchAllRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(false);
+    const handleChangeRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+    const shallowFieldsStateRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const resetFieldArrayFunctionRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const contextRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(context);
+    const resolverRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(resolver);
+    const fieldArrayNamesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(new Set());
+    const modeRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(modeChecker(mode));
+    const { isOnSubmit, isOnTouch } = modeRef.current;
+    const isValidateAllFieldCriteria = criteriaMode === VALIDATION_MODE.all;
+    const [formState, setFormState] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+        isDirty: false,
+        isValidating: false,
+        dirtyFields: {},
+        isSubmitted: false,
+        submitCount: 0,
+        touched: {},
+        isSubmitting: false,
+        isSubmitSuccessful: false,
+        isValid: !isOnSubmit,
+        errors: {},
+    });
+    const readFormStateRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({
+        isDirty: !isProxyEnabled,
+        dirtyFields: !isProxyEnabled,
+        touched: !isProxyEnabled || isOnTouch,
+        isValidating: !isProxyEnabled,
+        isSubmitting: !isProxyEnabled,
+        isValid: !isProxyEnabled,
+    });
+    const formStateRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(formState);
+    const observerRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+    const { isOnBlur: isReValidateOnBlur, isOnChange: isReValidateOnChange, } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(modeChecker(reValidateMode)).current;
+    contextRef.current = context;
+    resolverRef.current = resolver;
+    formStateRef.current = formState;
+    shallowFieldsStateRef.current = shouldUnregister
+        ? {}
+        : isEmptyObject(shallowFieldsStateRef.current)
+            ? cloneObject(defaultValues)
+            : shallowFieldsStateRef.current;
+    const updateFormState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((state = {}) => {
+        if (!isUnMount.current) {
+            formStateRef.current = Object.assign(Object.assign({}, formStateRef.current), state);
+            setFormState(formStateRef.current);
+        }
+    }, []);
+    const updateIsValidating = () => readFormStateRef.current.isValidating &&
+        updateFormState({
+            isValidating: true,
+        });
+    const shouldRenderBaseOnError = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, error, shouldRender = false, state = {}, isValid) => {
+        let shouldReRender = shouldRender ||
+            isErrorStateChanged({
+                errors: formStateRef.current.errors,
+                error,
+                name,
+                validFields: validFieldsRef.current,
+                fieldsWithValidation: fieldsWithValidationRef.current,
+            });
+        const previousError = get(formStateRef.current.errors, name);
+        if (error) {
+            unset(validFieldsRef.current, name);
+            shouldReRender =
+                shouldReRender ||
+                    !previousError ||
+                    !deepEqual(previousError, error, true);
+            set(formStateRef.current.errors, name, error);
+        }
+        else {
+            if (get(fieldsWithValidationRef.current, name) || resolverRef.current) {
+                set(validFieldsRef.current, name, true);
+                shouldReRender = shouldReRender || previousError;
+            }
+            unset(formStateRef.current.errors, name);
+        }
+        if ((shouldReRender && !isNullOrUndefined(shouldRender)) ||
+            !isEmptyObject(state) ||
+            readFormStateRef.current.isValidating) {
+            updateFormState(Object.assign(Object.assign(Object.assign({}, state), (resolverRef.current ? { isValid: !!isValid } : {})), { isValidating: false }));
+        }
+    }, []);
+    const setFieldValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, rawValue) => {
+        const { ref, options } = fieldsRef.current[name];
+        const value = isWeb && isHTMLElement(ref) && isNullOrUndefined(rawValue)
+            ? ''
+            : rawValue;
+        if (isRadioInput(ref)) {
+            (options || []).forEach(({ ref: radioRef }) => (radioRef.checked = radioRef.value === value));
+        }
+        else if (isFileInput(ref) && !isString(value)) {
+            ref.files = value;
+        }
+        else if (isMultipleSelect(ref)) {
+            [...ref.options].forEach((selectRef) => (selectRef.selected = value.includes(selectRef.value)));
+        }
+        else if (isCheckBoxInput(ref) && options) {
+            options.length > 1
+                ? options.forEach(({ ref: checkboxRef }) => (checkboxRef.checked = Array.isArray(value)
+                    ? !!value.find((data) => data === checkboxRef.value)
+                    : value === checkboxRef.value))
+                : (options[0].ref.checked = !!value);
+        }
+        else {
+            ref.value = value;
+        }
+    }, []);
+    const isFormDirty = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, data) => {
+        if (readFormStateRef.current.isDirty) {
+            const formValues = getValues();
+            name && data && set(formValues, name, data);
+            return !deepEqual(formValues, defaultValuesRef.current);
+        }
+        return false;
+    }, []);
+    const updateAndGetDirtyState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, shouldRender = true) => {
+        if (readFormStateRef.current.isDirty ||
+            readFormStateRef.current.dirtyFields) {
+            const isFieldDirty = !deepEqual(get(defaultValuesRef.current, name), getFieldValue(fieldsRef, name, shallowFieldsStateRef));
+            const isDirtyFieldExist = get(formStateRef.current.dirtyFields, name);
+            const previousIsDirty = formStateRef.current.isDirty;
+            isFieldDirty
+                ? set(formStateRef.current.dirtyFields, name, true)
+                : unset(formStateRef.current.dirtyFields, name);
+            const state = {
+                isDirty: isFormDirty(),
+                dirtyFields: formStateRef.current.dirtyFields,
+            };
+            const isChanged = (readFormStateRef.current.isDirty &&
+                previousIsDirty !== state.isDirty) ||
+                (readFormStateRef.current.dirtyFields &&
+                    isDirtyFieldExist !== get(formStateRef.current.dirtyFields, name));
+            isChanged && shouldRender && updateFormState(state);
+            return isChanged ? state : {};
+        }
+        return {};
+    }, []);
+    const executeValidation = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async (name, skipReRender) => {
+        if (true) {
+            if (!fieldsRef.current[name]) {
+                console.warn('📋 Field is missing with `name` attribute: ', name);
+                return false;
+            }
+        }
+        const error = (await validateField(fieldsRef, isValidateAllFieldCriteria, fieldsRef.current[name], shallowFieldsStateRef))[name];
+        shouldRenderBaseOnError(name, error, skipReRender);
+        return isUndefined(error);
+    }, [shouldRenderBaseOnError, isValidateAllFieldCriteria]);
+    const executeSchemaOrResolverValidation = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async (names) => {
+        const { errors } = await resolverRef.current(getValues(), contextRef.current, isValidateAllFieldCriteria);
+        const previousFormIsValid = formStateRef.current.isValid;
+        if (Array.isArray(names)) {
+            const isInputsValid = names
+                .map((name) => {
+                const error = get(errors, name);
+                error
+                    ? set(formStateRef.current.errors, name, error)
+                    : unset(formStateRef.current.errors, name);
+                return !error;
+            })
+                .every(Boolean);
+            updateFormState({
+                isValid: isEmptyObject(errors),
+                isValidating: false,
+            });
+            return isInputsValid;
+        }
+        else {
+            const error = get(errors, names);
+            shouldRenderBaseOnError(names, error, previousFormIsValid !== isEmptyObject(errors), {}, isEmptyObject(errors));
+            return !error;
+        }
+    }, [shouldRenderBaseOnError, isValidateAllFieldCriteria]);
+    const trigger = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async (name) => {
+        const fields = name || Object.keys(fieldsRef.current);
+        updateIsValidating();
+        if (resolverRef.current) {
+            return executeSchemaOrResolverValidation(fields);
+        }
+        if (Array.isArray(fields)) {
+            !name && (formStateRef.current.errors = {});
+            const result = await Promise.all(fields.map(async (data) => await executeValidation(data, null)));
+            updateFormState({
+                isValidating: false,
+            });
+            return result.every(Boolean);
+        }
+        return await executeValidation(fields);
+    }, [executeSchemaOrResolverValidation, executeValidation]);
+    const setInternalValues = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, value, { shouldDirty, shouldValidate }) => {
+        const data = {};
+        set(data, name, value);
+        for (const fieldName of getPath(name, value)) {
+            if (fieldsRef.current[fieldName]) {
+                setFieldValue(fieldName, get(data, fieldName));
+                shouldDirty && updateAndGetDirtyState(fieldName);
+                shouldValidate && trigger(fieldName);
+            }
+        }
+    }, [trigger, setFieldValue, updateAndGetDirtyState]);
+    const setInternalValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, value, config) => {
+        !shouldUnregister &&
+            !isPrimitive(value) &&
+            set(shallowFieldsStateRef.current, name, Object.assign({}, value));
+        if (fieldsRef.current[name]) {
+            setFieldValue(name, value);
+            config.shouldDirty && updateAndGetDirtyState(name);
+            config.shouldValidate && trigger(name);
+        }
+        else if (!isPrimitive(value)) {
+            setInternalValues(name, value, config);
+            if (fieldArrayNamesRef.current.has(name)) {
+                const parentName = getFieldArrayParentName(name) || name;
+                set(fieldArrayDefaultValuesRef.current, name, value);
+                resetFieldArrayFunctionRef.current[parentName]({
+                    [parentName]: get(fieldArrayDefaultValuesRef.current, parentName),
+                });
+                if ((readFormStateRef.current.isDirty ||
+                    readFormStateRef.current.dirtyFields) &&
+                    config.shouldDirty) {
+                    set(formStateRef.current.dirtyFields, name, setFieldArrayDirtyFields(value, get(defaultValuesRef.current, name, []), get(formStateRef.current.dirtyFields, name, [])));
+                    updateFormState({
+                        isDirty: !deepEqual(Object.assign(Object.assign({}, getValues()), { [name]: value }), defaultValuesRef.current),
+                    });
+                }
+            }
+        }
+        !shouldUnregister && set(shallowFieldsStateRef.current, name, value);
+    }, [updateAndGetDirtyState, setFieldValue, setInternalValues]);
+    const isFieldWatched = (name) => isWatchAllRef.current ||
+        watchFieldsRef.current.has(name) ||
+        watchFieldsRef.current.has((name.match(/\w+/) || [])[0]);
+    const renderWatchedInputs = (name) => {
+        let found = true;
+        if (!isEmptyObject(useWatchFieldsRef.current)) {
+            for (const key in useWatchFieldsRef.current) {
+                if (!name ||
+                    !useWatchFieldsRef.current[key].size ||
+                    useWatchFieldsRef.current[key].has(name) ||
+                    useWatchFieldsRef.current[key].has(getFieldArrayParentName(name))) {
+                    useWatchRenderFunctionsRef.current[key]();
+                    found = false;
+                }
+            }
+        }
+        return found;
+    };
+    function setValue(name, value, config) {
+        setInternalValue(name, value, config || {});
+        isFieldWatched(name) && updateFormState();
+        renderWatchedInputs(name);
+    }
+    handleChangeRef.current = handleChangeRef.current
+        ? handleChangeRef.current
+        : async ({ type, target }) => {
+            let name = target.name;
+            const field = fieldsRef.current[name];
+            let error;
+            let isValid;
+            if (field) {
+                const isBlurEvent = type === EVENTS.BLUR;
+                const shouldSkipValidation = skipValidation(Object.assign({ isBlurEvent,
+                    isReValidateOnChange,
+                    isReValidateOnBlur, isTouched: !!get(formStateRef.current.touched, name), isSubmitted: formStateRef.current.isSubmitted }, modeRef.current));
+                let state = updateAndGetDirtyState(name, false);
+                let shouldRender = !isEmptyObject(state) ||
+                    (!isBlurEvent && isFieldWatched(name));
+                if (isBlurEvent &&
+                    !get(formStateRef.current.touched, name) &&
+                    readFormStateRef.current.touched) {
+                    set(formStateRef.current.touched, name, true);
+                    state = Object.assign(Object.assign({}, state), { touched: formStateRef.current.touched });
+                }
+                if (!shouldUnregister && isCheckBoxInput(target)) {
+                    set(shallowFieldsStateRef.current, name, getFieldValue(fieldsRef, name));
+                }
+                if (shouldSkipValidation) {
+                    !isBlurEvent && renderWatchedInputs(name);
+                    return ((!isEmptyObject(state) ||
+                        (shouldRender && isEmptyObject(state))) &&
+                        updateFormState(state));
+                }
+                updateIsValidating();
+                if (resolverRef.current) {
+                    const { errors } = await resolverRef.current(getValues(), contextRef.current, isValidateAllFieldCriteria);
+                    const previousFormIsValid = formStateRef.current.isValid;
+                    error = get(errors, name);
+                    if (isCheckBoxInput(target) &&
+                        !error &&
+                        resolverRef.current) {
+                        const parentNodeName = getFieldArrayParentName(name);
+                        const currentError = get(errors, parentNodeName, {});
+                        currentError.type &&
+                            currentError.message &&
+                            (error = currentError);
+                        if (parentNodeName &&
+                            (currentError ||
+                                get(formStateRef.current.errors, parentNodeName))) {
+                            name = parentNodeName;
+                        }
+                    }
+                    isValid = isEmptyObject(errors);
+                    previousFormIsValid !== isValid && (shouldRender = true);
+                }
+                else {
+                    error = (await validateField(fieldsRef, isValidateAllFieldCriteria, field, shallowFieldsStateRef))[name];
+                }
+                !isBlurEvent && renderWatchedInputs(name);
+                shouldRenderBaseOnError(name, error, shouldRender, state, isValid);
+            }
+        };
+    function setFieldArrayDefaultValues(data) {
+        if (!shouldUnregister) {
+            let copy = cloneObject(data);
+            for (const value of fieldArrayNamesRef.current) {
+                if (isKey(value) && !copy[value]) {
+                    copy = Object.assign(Object.assign({}, copy), { [value]: [] });
+                }
+            }
+            return copy;
+        }
+        return data;
+    }
+    function getValues(payload) {
+        if (isString(payload)) {
+            return getFieldValue(fieldsRef, payload, shallowFieldsStateRef);
+        }
+        if (Array.isArray(payload)) {
+            const data = {};
+            for (const name of payload) {
+                set(data, name, getFieldValue(fieldsRef, name, shallowFieldsStateRef));
+            }
+            return data;
+        }
+        return setFieldArrayDefaultValues(getFieldsValues(fieldsRef, cloneObject(shallowFieldsStateRef.current), shouldUnregister));
+    }
+    const validateResolver = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async (values = {}) => {
+        const { errors } = await resolverRef.current(Object.assign(Object.assign({}, getValues()), values), contextRef.current, isValidateAllFieldCriteria);
+        const isValid = isEmptyObject(errors);
+        formStateRef.current.isValid !== isValid &&
+            updateFormState({
+                isValid,
+            });
+    }, [isValidateAllFieldCriteria]);
+    const removeFieldEventListener = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((field, forceDelete) => findRemovedFieldAndRemoveListener(fieldsRef, handleChangeRef.current, field, shallowFieldsStateRef, shouldUnregister, forceDelete), [shouldUnregister]);
+    const updateWatchedValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name) => {
+        if (isWatchAllRef.current) {
+            updateFormState();
+        }
+        else {
+            for (const watchField of watchFieldsRef.current) {
+                if (watchField.startsWith(name)) {
+                    updateFormState();
+                    break;
+                }
+            }
+            renderWatchedInputs(name);
+        }
+    }, []);
+    const removeFieldEventListenerAndRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((field, forceDelete) => {
+        if (field) {
+            removeFieldEventListener(field, forceDelete);
+            if (shouldUnregister && !compact(field.options || []).length) {
+                unset(validFieldsRef.current, field.ref.name);
+                unset(fieldsWithValidationRef.current, field.ref.name);
+                unset(formStateRef.current.errors, field.ref.name);
+                set(formStateRef.current.dirtyFields, field.ref.name, true);
+                updateFormState({
+                    isDirty: isFormDirty(),
+                });
+                readFormStateRef.current.isValid &&
+                    resolverRef.current &&
+                    validateResolver();
+                updateWatchedValue(field.ref.name);
+            }
+        }
+    }, [validateResolver, removeFieldEventListener]);
+    function clearErrors(name) {
+        name &&
+            (Array.isArray(name) ? name : [name]).forEach((inputName) => fieldsRef.current[inputName] && isKey(inputName)
+                ? delete formStateRef.current.errors[inputName]
+                : unset(formStateRef.current.errors, inputName));
+        updateFormState({
+            errors: name ? formStateRef.current.errors : {},
+        });
+    }
+    function setError(name, error) {
+        const ref = (fieldsRef.current[name] || {}).ref;
+        set(formStateRef.current.errors, name, Object.assign(Object.assign({}, error), { ref }));
+        updateFormState({
+            isValid: false,
+        });
+        error.shouldFocus && ref && ref.focus && ref.focus();
+    }
+    const watchInternal = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((fieldNames, defaultValue, watchId) => {
+        const watchFields = watchId
+            ? useWatchFieldsRef.current[watchId]
+            : watchFieldsRef.current;
+        let fieldValues = getFieldsValues(fieldsRef, cloneObject(shallowFieldsStateRef.current), shouldUnregister, false, fieldNames);
+        if (isString(fieldNames)) {
+            if (fieldArrayNamesRef.current.has(fieldNames)) {
+                const fieldArrayValue = get(fieldArrayValuesRef.current, fieldNames, []);
+                fieldValues =
+                    !fieldArrayValue.length ||
+                        fieldArrayValue.length !==
+                            compact(get(fieldValues, fieldNames, [])).length
+                        ? fieldArrayValuesRef.current
+                        : fieldValues;
+            }
+            return assignWatchFields(fieldValues, fieldNames, watchFields, isUndefined(get(defaultValuesRef.current, fieldNames))
+                ? defaultValue
+                : get(defaultValuesRef.current, fieldNames), true);
+        }
+        const combinedDefaultValues = isUndefined(defaultValue)
+            ? defaultValuesRef.current
+            : defaultValue;
+        if (Array.isArray(fieldNames)) {
+            return fieldNames.reduce((previous, name) => (Object.assign(Object.assign({}, previous), { [name]: assignWatchFields(fieldValues, name, watchFields, combinedDefaultValues) })), {});
+        }
+        isWatchAllRef.current = isUndefined(watchId);
+        return transformToNestObject((!isEmptyObject(fieldValues) && fieldValues) ||
+            combinedDefaultValues);
+    }, []);
+    function watch(fieldNames, defaultValue) {
+        return watchInternal(fieldNames, defaultValue);
+    }
+    function unregister(name) {
+        for (const fieldName of Array.isArray(name) ? name : [name]) {
+            removeFieldEventListenerAndRef(fieldsRef.current[fieldName], true);
+        }
+    }
+    function registerFieldRef(ref, options = {}) {
+        if (true) {
+            if (!ref.name) {
+                return console.warn('📋 Field is missing `name` attribute', ref, `https://react-hook-form.com/api#useForm`);
+            }
+            if (fieldArrayNamesRef.current.has(ref.name.split(/\[\d+\]$/)[0]) &&
+                !RegExp(`^${ref.name.split(/\[\d+\]$/)[0]}[\\d+].\\w+`
+                    .replace(/\[/g, '\\[')
+                    .replace(/\]/g, '\\]')).test(ref.name)) {
+                return console.warn('📋 `name` prop should be in object shape: name="test[index].name"', ref, 'https://react-hook-form.com/api#useFieldArray');
+            }
+        }
+        const { name, type, value } = ref;
+        const fieldRefAndValidationOptions = Object.assign({ ref }, options);
+        const fields = fieldsRef.current;
+        const isRadioOrCheckbox = isRadioOrCheckboxFunction(ref);
+        const isFieldArray = isNameInFieldArray(fieldArrayNamesRef.current, name);
+        const compareRef = (currentRef) => isWeb && (!isHTMLElement(ref) || currentRef === ref);
+        let field = fields[name];
+        let isEmptyDefaultValue = true;
+        let defaultValue;
+        if (field &&
+            (isRadioOrCheckbox
+                ? Array.isArray(field.options) &&
+                    compact(field.options).find((option) => {
+                        return value === option.ref.value && compareRef(option.ref);
+                    })
+                : compareRef(field.ref))) {
+            fields[name] = Object.assign(Object.assign({}, field), options);
+            return;
+        }
+        if (type) {
+            field = isRadioOrCheckbox
+                ? Object.assign({ options: [
+                        ...compact((field && field.options) || []),
+                        {
+                            ref,
+                        },
+                    ], ref: { type, name } }, options) : Object.assign({}, fieldRefAndValidationOptions);
+        }
+        else {
+            field = fieldRefAndValidationOptions;
+        }
+        fields[name] = field;
+        const isEmptyUnmountFields = isUndefined(get(shallowFieldsStateRef.current, name));
+        if (!isEmptyObject(defaultValuesRef.current) || !isEmptyUnmountFields) {
+            defaultValue = get(isEmptyUnmountFields
+                ? defaultValuesRef.current
+                : shallowFieldsStateRef.current, name);
+            isEmptyDefaultValue = isUndefined(defaultValue);
+            if (!isEmptyDefaultValue && !isFieldArray) {
+                setFieldValue(name, defaultValue);
+            }
+        }
+        if (!isEmptyObject(options)) {
+            set(fieldsWithValidationRef.current, name, true);
+            if (!isOnSubmit && readFormStateRef.current.isValid) {
+                validateField(fieldsRef, isValidateAllFieldCriteria, field, shallowFieldsStateRef).then((error) => {
+                    const previousFormIsValid = formStateRef.current.isValid;
+                    isEmptyObject(error)
+                        ? set(validFieldsRef.current, name, true)
+                        : unset(validFieldsRef.current, name);
+                    previousFormIsValid !== isEmptyObject(error) && updateFormState();
+                });
+            }
+        }
+        if (shouldUnregister && !(isFieldArray && isEmptyDefaultValue)) {
+            !isFieldArray && unset(formStateRef.current.dirtyFields, name);
+        }
+        if (type) {
+            attachEventListeners(isRadioOrCheckbox && field.options
+                ? field.options[field.options.length - 1]
+                : field, isRadioOrCheckbox || isSelectInput(ref), handleChangeRef.current);
+        }
+    }
+    function register(refOrRegisterOptions, options) {
+        if (!isWindowUndefined) {
+            if (isString(refOrRegisterOptions)) {
+                registerFieldRef({ name: refOrRegisterOptions }, options);
+            }
+            else if (isObject(refOrRegisterOptions) &&
+                'name' in refOrRegisterOptions) {
+                registerFieldRef(refOrRegisterOptions, options);
+            }
+            else {
+                return (ref) => ref && registerFieldRef(ref, refOrRegisterOptions);
+            }
+        }
+    }
+    const handleSubmit = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((onValid, onInvalid) => async (e) => {
+        if (e && e.preventDefault) {
+            e.preventDefault();
+            e.persist();
+        }
+        let fieldErrors = {};
+        let fieldValues = setFieldArrayDefaultValues(getFieldsValues(fieldsRef, cloneObject(shallowFieldsStateRef.current), shouldUnregister, true));
+        readFormStateRef.current.isSubmitting &&
+            updateFormState({
+                isSubmitting: true,
+            });
+        try {
+            if (resolverRef.current) {
+                const { errors, values } = await resolverRef.current(fieldValues, contextRef.current, isValidateAllFieldCriteria);
+                formStateRef.current.errors = fieldErrors = errors;
+                fieldValues = values;
+            }
+            else {
+                for (const field of Object.values(fieldsRef.current)) {
+                    if (field) {
+                        const { name } = field.ref;
+                        const fieldError = await validateField(fieldsRef, isValidateAllFieldCriteria, field, shallowFieldsStateRef);
+                        if (fieldError[name]) {
+                            set(fieldErrors, name, fieldError[name]);
+                            unset(validFieldsRef.current, name);
+                        }
+                        else if (get(fieldsWithValidationRef.current, name)) {
+                            unset(formStateRef.current.errors, name);
+                            set(validFieldsRef.current, name, true);
+                        }
+                    }
+                }
+            }
+            if (isEmptyObject(fieldErrors) &&
+                Object.keys(formStateRef.current.errors).every((name) => name in fieldsRef.current)) {
+                updateFormState({
+                    errors: {},
+                    isSubmitting: true,
+                });
+                await onValid(fieldValues, e);
+            }
+            else {
+                formStateRef.current.errors = Object.assign(Object.assign({}, formStateRef.current.errors), fieldErrors);
+                onInvalid && (await onInvalid(formStateRef.current.errors, e));
+                shouldFocusError &&
+                    focusOnErrorField(fieldsRef.current, formStateRef.current.errors);
+            }
+        }
+        finally {
+            formStateRef.current.isSubmitting = false;
+            updateFormState({
+                isSubmitted: true,
+                isSubmitting: false,
+                isSubmitSuccessful: isEmptyObject(formStateRef.current.errors),
+                submitCount: formStateRef.current.submitCount + 1,
+            });
+        }
+    }, [shouldFocusError, isValidateAllFieldCriteria]);
+    const resetRefs = ({ errors, isDirty, isSubmitted, touched, isValid, submitCount, dirtyFields, }) => {
+        if (!isValid) {
+            validFieldsRef.current = {};
+            fieldsWithValidationRef.current = {};
+        }
+        fieldArrayDefaultValuesRef.current = {};
+        watchFieldsRef.current = new Set();
+        isWatchAllRef.current = false;
+        updateFormState({
+            submitCount: submitCount ? formStateRef.current.submitCount : 0,
+            isDirty: isDirty ? formStateRef.current.isDirty : false,
+            isSubmitted: isSubmitted ? formStateRef.current.isSubmitted : false,
+            isValid: isValid ? formStateRef.current.isValid : false,
+            dirtyFields: dirtyFields ? formStateRef.current.dirtyFields : {},
+            touched: touched ? formStateRef.current.touched : {},
+            errors: errors ? formStateRef.current.errors : {},
+            isSubmitting: false,
+            isSubmitSuccessful: false,
+        });
+    };
+    const reset = (values, omitResetState = {}) => {
+        if (isWeb) {
+            for (const field of Object.values(fieldsRef.current)) {
+                if (field) {
+                    const { ref, options } = field;
+                    const inputRef = isRadioOrCheckboxFunction(ref) && Array.isArray(options)
+                        ? options[0].ref
+                        : ref;
+                    if (isHTMLElement(inputRef)) {
+                        try {
+                            inputRef.closest('form').reset();
+                            break;
+                        }
+                        catch (_a) { }
+                    }
+                }
+            }
+        }
+        fieldsRef.current = {};
+        defaultValuesRef.current = Object.assign({}, (values || defaultValuesRef.current));
+        values && renderWatchedInputs('');
+        Object.values(resetFieldArrayFunctionRef.current).forEach((resetFieldArray) => isFunction(resetFieldArray) && resetFieldArray());
+        shallowFieldsStateRef.current = shouldUnregister
+            ? {}
+            : cloneObject(values || defaultValuesRef.current);
+        resetRefs(omitResetState);
+    };
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        resolver && readFormStateRef.current.isValid && validateResolver();
+        observerRef.current =
+            observerRef.current || !isWeb
+                ? observerRef.current
+                : onDomRemove(fieldsRef, removeFieldEventListenerAndRef);
+    }, [removeFieldEventListenerAndRef, defaultValuesRef.current]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => () => {
+        observerRef.current && observerRef.current.disconnect();
+        isUnMount.current = true;
+        if (true) {
+            return;
+        }
+        Object.values(fieldsRef.current).forEach((field) => removeFieldEventListenerAndRef(field, true));
+    }, []);
+    if (!resolver && readFormStateRef.current.isValid) {
+        formState.isValid =
+            deepEqual(validFieldsRef.current, fieldsWithValidationRef.current) &&
+                isEmptyObject(formStateRef.current.errors);
+    }
+    const commonProps = {
+        trigger,
+        setValue: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(setValue, [setInternalValue, trigger]),
+        getValues: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(getValues, []),
+        register: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(register, [defaultValuesRef.current]),
+        unregister: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(unregister, []),
+        formState: isProxyEnabled
+            ? new Proxy(formState, {
+                get: (obj, prop) => {
+                    if (true) {
+                        if (prop === 'isValid' && isOnSubmit) {
+                            console.warn('📋 `formState.isValid` is applicable with `onTouched`, `onChange` or `onBlur` mode. https://react-hook-form.com/api#formState');
+                        }
+                    }
+                    if (prop in obj) {
+                        readFormStateRef.current[prop] = true;
+                        return obj[prop];
+                    }
+                    return undefined;
+                },
+            })
+            : formState,
+    };
+    const control = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(() => (Object.assign({ isFormDirty,
+        updateWatchedValue,
+        shouldUnregister,
+        updateFormState,
+        removeFieldEventListener,
+        watchInternal, mode: modeRef.current, reValidateMode: {
+            isReValidateOnBlur,
+            isReValidateOnChange,
+        }, validateResolver: resolver ? validateResolver : undefined, fieldsRef,
+        resetFieldArrayFunctionRef,
+        useWatchFieldsRef,
+        useWatchRenderFunctionsRef,
+        fieldArrayDefaultValuesRef,
+        validFieldsRef,
+        fieldsWithValidationRef,
+        fieldArrayNamesRef,
+        readFormStateRef,
+        formStateRef,
+        defaultValuesRef,
+        shallowFieldsStateRef,
+        fieldArrayValuesRef }, commonProps)), [
+        defaultValuesRef.current,
+        updateWatchedValue,
+        shouldUnregister,
+        removeFieldEventListener,
+        watchInternal,
+    ]);
+    return Object.assign({ watch,
+        control,
+        handleSubmit, reset: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(reset, []), clearErrors: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(clearErrors, []), setError: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(setError, []), errors: formState.errors }, commonProps);
+}
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+const FormContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])(null);
+FormContext.displayName = 'RHFContext';
+const useFormContext = () => Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(FormContext);
+const FormProvider = (_a) => {
+    var { children } = _a, props = __rest(_a, ["children"]);
+    return (Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(FormContext.Provider, { value: Object.assign({}, props) }, children));
+};
+
+var generateId = () => {
+    const d = typeof performance === UNDEFINED ? Date.now() : performance.now() * 1000;
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+        const r = (Math.random() * 16 + d) % 16 | 0;
+        return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
+    });
+};
+
+function removeAtIndexes(data, indexes) {
+    let i = 0;
+    const temp = [...data];
+    for (const index of indexes) {
+        temp.splice(index - i, 1);
+        i++;
+    }
+    return compact(temp).length ? temp : [];
+}
+var removeArrayAt = (data, index) => isUndefined(index)
+    ? []
+    : removeAtIndexes(data, (Array.isArray(index) ? index : [index]).sort());
+
+var moveArrayAt = (data, from, to) => {
+    if (Array.isArray(data)) {
+        if (isUndefined(data[to])) {
+            data[to] = undefined;
+        }
+        data.splice(to, 0, data.splice(from, 1)[0]);
+        return data;
+    }
+    return [];
+};
+
+var swapArrayAt = (data, indexA, indexB) => {
+    const temp = [data[indexB], data[indexA]];
+    data[indexA] = temp[0];
+    data[indexB] = temp[1];
+};
+
+function prepend(data, value) {
+    return [...(Array.isArray(value) ? value : [value || undefined]), ...data];
+}
+
+function insert(data, index, value) {
+    return [
+        ...data.slice(0, index),
+        ...(Array.isArray(value) ? value : [value || undefined]),
+        ...data.slice(index),
+    ];
+}
+
+var fillEmptyArray = (value) => Array.isArray(value) ? Array(value.length).fill(undefined) : undefined;
+
+var fillBooleanArray = (value) => (Array.isArray(value) ? value : [value]).map((data) => {
+    if (isObject(data)) {
+        const object = {};
+        for (const key in data) {
+            object[key] = true;
+        }
+        return object;
+    }
+    return true;
+});
+
+const mapIds = (values = [], keyName, skipWarn) => {
+    if (true) {
+        if (!skipWarn) {
+            for (const value of values) {
+                if (typeof value === 'object') {
+                    if (keyName in value) {
+                        console.warn(`📋 useFieldArray fieldValues contain the keyName \`${keyName}\` which is reserved for use by useFieldArray. https://react-hook-form.com/api#useFieldArray`);
+                        break;
+                    }
+                }
+                else {
+                    console.warn(`📋 useFieldArray input's name should be in object shape instead of flat array. https://react-hook-form.com/api#useFieldArray`);
+                    break;
+                }
+            }
+        }
+    }
+    return values.map((value) => (Object.assign({ [keyName]: value[keyName] || generateId() }, value)));
+};
+const useFieldArray = ({ control, name, keyName = 'id', }) => {
+    const methods = useFormContext();
+    if (true) {
+        if (!control && !methods) {
+            throw new Error('📋 useFieldArray is missing `control` prop. https://react-hook-form.com/api#useFieldArray');
+        }
+    }
+    const focusIndexRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(-1);
+    const { isFormDirty, updateWatchedValue, resetFieldArrayFunctionRef, fieldArrayNamesRef, fieldsRef, defaultValuesRef, removeFieldEventListener, formStateRef, shallowFieldsStateRef, updateFormState, readFormStateRef, validFieldsRef, fieldsWithValidationRef, fieldArrayDefaultValuesRef, validateResolver, getValues, shouldUnregister, fieldArrayValuesRef, } = control || methods.control;
+    const fieldArrayParentName = getFieldArrayParentName(name);
+    const memoizedDefaultValues = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])([
+        ...(get(fieldArrayDefaultValuesRef.current, fieldArrayParentName)
+            ? get(fieldArrayDefaultValuesRef.current, name, [])
+            : get(shouldUnregister
+                ? defaultValuesRef.current
+                : shallowFieldsStateRef.current, name, [])),
+    ]);
+    const [fields, setFields] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(mapIds(memoizedDefaultValues.current, keyName));
+    set(fieldArrayValuesRef.current, name, fields);
+    const omitKey = (fields) => fields.map((_a = {}) => {
+        var _b = keyName, omitted = _a[_b], rest = __rest(_a, [typeof _b === "symbol" ? _b : _b + ""]);
+        return rest;
+    });
+    fieldArrayNamesRef.current.add(name);
+    const getFieldArrayValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => get(fieldArrayValuesRef.current, name, []), [name]);
+    const getCurrentFieldsValues = () => mapIds(get(getValues(), name, getFieldArrayValue()).map((item, index) => (Object.assign(Object.assign({}, getFieldArrayValue()[index]), item))), keyName, true);
+    fieldArrayNamesRef.current.add(name);
+    if (fieldArrayParentName &&
+        !get(fieldArrayDefaultValuesRef.current, fieldArrayParentName)) {
+        set(fieldArrayDefaultValuesRef.current, fieldArrayParentName, cloneObject(get(defaultValuesRef.current, fieldArrayParentName)));
+    }
+    const setFieldAndValidState = (fieldsValues) => {
+        setFields(fieldsValues);
+        set(fieldArrayValuesRef.current, name, fieldsValues);
+        if (readFormStateRef.current.isValid && validateResolver) {
+            const values = getValues();
+            set(values, name, fieldsValues);
+            validateResolver(values);
+        }
+    };
+    const resetFields = () => {
+        for (const key in fieldsRef.current) {
+            if (isMatchFieldArrayName(key, name)) {
+                removeFieldEventListener(fieldsRef.current[key], true);
+                delete fieldsRef.current[key];
+            }
+        }
+    };
+    const cleanup = (ref) => !compact(get(ref, name, [])).length && unset(ref, name);
+    const updateDirtyFieldsWithDefaultValues = (updatedFieldArrayValues) => {
+        if (updatedFieldArrayValues) {
+            set(formStateRef.current.dirtyFields, name, setFieldArrayDirtyFields(omitKey(updatedFieldArrayValues), get(defaultValuesRef.current, name, []), get(formStateRef.current.dirtyFields, name, [])));
+        }
+    };
+    const batchStateUpdate = (method, args, updatedFieldValues, updatedFormValues = [], shouldSet = true, shouldUpdateValid = false) => {
+        if (get(shallowFieldsStateRef.current, name)) {
+            const output = method(get(shallowFieldsStateRef.current, name), args.argA, args.argB);
+            shouldSet && set(shallowFieldsStateRef.current, name, output);
+        }
+        if (get(fieldArrayDefaultValuesRef.current, name)) {
+            const output = method(get(fieldArrayDefaultValuesRef.current, name), args.argA, args.argB);
+            shouldSet && set(fieldArrayDefaultValuesRef.current, name, output);
+            cleanup(fieldArrayDefaultValuesRef.current);
+        }
+        if (Array.isArray(get(formStateRef.current.errors, name))) {
+            const output = method(get(formStateRef.current.errors, name), args.argA, args.argB);
+            shouldSet && set(formStateRef.current.errors, name, output);
+            cleanup(formStateRef.current.errors);
+        }
+        if (readFormStateRef.current.touched &&
+            get(formStateRef.current.touched, name)) {
+            const output = method(get(formStateRef.current.touched, name), args.argA, args.argB);
+            shouldSet && set(formStateRef.current.touched, name, output);
+            cleanup(formStateRef.current.touched);
+        }
+        if (readFormStateRef.current.dirtyFields ||
+            readFormStateRef.current.isDirty) {
+            set(formStateRef.current.dirtyFields, name, setFieldArrayDirtyFields(omitKey(updatedFormValues), get(defaultValuesRef.current, name, []), get(formStateRef.current.dirtyFields, name, [])));
+            updateDirtyFieldsWithDefaultValues(updatedFieldValues);
+            cleanup(formStateRef.current.dirtyFields);
+        }
+        if (shouldUpdateValid &&
+            readFormStateRef.current.isValid &&
+            !validateResolver) {
+            set(validFieldsRef.current, name, method(get(validFieldsRef.current, name, []), args.argA));
+            cleanup(validFieldsRef.current);
+            set(fieldsWithValidationRef.current, name, method(get(fieldsWithValidationRef.current, name, []), args.argA));
+            cleanup(fieldsWithValidationRef.current);
+        }
+        updateFormState({
+            isDirty: isFormDirty(name, omitKey(updatedFormValues)),
+        });
+    };
+    const append = (value, shouldFocus = true) => {
+        const appendValue = Array.isArray(value) ? value : [value];
+        const updateFormValues = [
+            ...getCurrentFieldsValues(),
+            ...mapIds(appendValue, keyName),
+        ];
+        setFieldAndValidState(updateFormValues);
+        if (readFormStateRef.current.dirtyFields ||
+            readFormStateRef.current.isDirty) {
+            updateDirtyFieldsWithDefaultValues(updateFormValues);
+            updateFormState({
+                isDirty: true,
+                dirtyFields: formStateRef.current.dirtyFields,
+            });
+        }
+        !shouldUnregister &&
+            set(shallowFieldsStateRef.current, name, [
+                ...(get(shallowFieldsStateRef.current, name) || []),
+                ...cloneObject(appendValue),
+            ]);
+        focusIndexRef.current = shouldFocus
+            ? get(fieldArrayValuesRef.current, name).length - 1
+            : -1;
+    };
+    const prepend$1 = (value, shouldFocus = true) => {
+        const emptyArray = fillEmptyArray(value);
+        const updatedFieldArrayValues = prepend(getCurrentFieldsValues(), mapIds(Array.isArray(value) ? value : [value], keyName));
+        setFieldAndValidState(updatedFieldArrayValues);
+        resetFields();
+        batchStateUpdate(prepend, {
+            argA: emptyArray,
+            argC: fillBooleanArray(value),
+        }, updatedFieldArrayValues);
+        focusIndexRef.current = shouldFocus ? 0 : -1;
+    };
+    const remove = (index) => {
+        const fieldValues = getCurrentFieldsValues();
+        const updatedFieldValues = removeArrayAt(fieldValues, index);
+        setFieldAndValidState(updatedFieldValues);
+        resetFields();
+        batchStateUpdate(removeArrayAt, {
+            argA: index,
+            argC: index,
+        }, updatedFieldValues, removeArrayAt(fieldValues, index), true, true);
+    };
+    const insert$1 = (index, value, shouldFocus = true) => {
+        const emptyArray = fillEmptyArray(value);
+        const fieldValues = getCurrentFieldsValues();
+        const updatedFieldArrayValues = insert(fieldValues, index, mapIds(Array.isArray(value) ? value : [value], keyName));
+        setFieldAndValidState(updatedFieldArrayValues);
+        resetFields();
+        batchStateUpdate(insert, {
+            argA: index,
+            argB: emptyArray,
+            argC: index,
+            argD: fillBooleanArray(value),
+        }, updatedFieldArrayValues, insert(fieldValues, index));
+        focusIndexRef.current = shouldFocus ? index : -1;
+    };
+    const swap = (indexA, indexB) => {
+        const fieldValues = getCurrentFieldsValues();
+        swapArrayAt(fieldValues, indexA, indexB);
+        resetFields();
+        setFieldAndValidState([...fieldValues]);
+        batchStateUpdate(swapArrayAt, {
+            argA: indexA,
+            argB: indexB,
+            argC: indexA,
+            argD: indexB,
+        }, undefined, fieldValues, false);
+    };
+    const move = (from, to) => {
+        const fieldValues = getCurrentFieldsValues();
+        moveArrayAt(fieldValues, from, to);
+        resetFields();
+        setFieldAndValidState([...fieldValues]);
+        batchStateUpdate(moveArrayAt, {
+            argA: from,
+            argB: to,
+            argC: from,
+            argD: to,
+        }, undefined, fieldValues, false);
+    };
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        if (true) {
+            if (!name) {
+                console.warn('📋 useFieldArray is missing `name` attribute. https://react-hook-form.com/api#useFieldArray');
+            }
+        }
+        const defaultValues = get(fieldArrayDefaultValuesRef.current, name);
+        if (defaultValues && fields.length < defaultValues.length) {
+            defaultValues.pop();
+            set(fieldArrayDefaultValuesRef.current, name, defaultValues);
+        }
+        updateWatchedValue(name);
+        if (focusIndexRef.current > -1) {
+            for (const key in fieldsRef.current) {
+                const field = fieldsRef.current[key];
+                if (key.startsWith(`${name}[${focusIndexRef.current}]`) &&
+                    field.ref.focus) {
+                    field.ref.focus();
+                    break;
+                }
+            }
+        }
+        focusIndexRef.current = -1;
+    }, [fields, name]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        const resetFunctions = resetFieldArrayFunctionRef.current;
+        const fieldArrayNames = fieldArrayNamesRef.current;
+        if (!getFieldArrayParentName(name)) {
+            resetFunctions[name] = (data) => {
+                resetFields();
+                !data && unset(fieldArrayDefaultValuesRef.current, name);
+                unset(shallowFieldsStateRef.current, name);
+                memoizedDefaultValues.current = get(data || defaultValuesRef.current, name);
+                setFields(mapIds(memoizedDefaultValues.current, keyName));
+            };
+        }
+        return () => {
+            if (true) {
+                return;
+            }
+            resetFields();
+            delete resetFunctions[name];
+            unset(fieldArrayValuesRef, name);
+            fieldArrayNames.delete(name);
+        };
+    }, []);
+    return {
+        swap: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(swap, [name]),
+        move: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(move, [name]),
+        prepend: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(prepend$1, [name]),
+        append: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(append, [name]),
+        remove: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(remove, [name]),
+        insert: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(insert$1, [name]),
+        fields,
+    };
+};
+
+var getInputValue = (event) => isPrimitive(event) ||
+    !isObject(event.target) ||
+    (isObject(event.target) && !event.type)
+    ? event
+    : isUndefined(event.target.value)
+        ? event.target.checked
+        : event.target.value;
+
+function useController({ name, rules, defaultValue, control, onFocus, }) {
+    const methods = useFormContext();
+    if (true) {
+        if (!control && !methods) {
+            throw new Error('📋 Controller is missing `control` prop. https://react-hook-form.com/api#Controller');
+        }
+    }
+    const { defaultValuesRef, setValue, register, unregister, trigger, mode, reValidateMode: { isReValidateOnBlur, isReValidateOnChange }, formState, formStateRef: { current: { isSubmitted, touched, errors }, }, updateFormState, readFormStateRef, fieldsRef, fieldArrayNamesRef, shallowFieldsStateRef, } = control || methods.control;
+    const isNotFieldArray = !isNameInFieldArray(fieldArrayNamesRef.current, name);
+    const getInitialValue = () => !isUndefined(get(shallowFieldsStateRef.current, name)) && isNotFieldArray
+        ? get(shallowFieldsStateRef.current, name)
+        : isUndefined(defaultValue)
+            ? get(defaultValuesRef.current, name)
+            : defaultValue;
+    const [value, setInputStateValue] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getInitialValue());
+    const valueRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(value);
+    const ref = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({
+        focus: () => null,
+    });
+    const onFocusRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(onFocus ||
+        (() => {
+            if (isFunction(ref.current.focus)) {
+                ref.current.focus();
+            }
+            if (true) {
+                if (!isFunction(ref.current.focus)) {
+                    console.warn(`📋 'ref' from Controller render prop must be attached to a React component or a DOM Element whose ref provides a 'focus()' method`);
+                }
+            }
+        }));
+    const shouldValidate = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((isBlurEvent) => !skipValidation(Object.assign({ isBlurEvent,
+        isReValidateOnBlur,
+        isReValidateOnChange,
+        isSubmitted, isTouched: !!get(touched, name) }, mode)), [
+        isReValidateOnBlur,
+        isReValidateOnChange,
+        isSubmitted,
+        touched,
+        name,
+        mode,
+    ]);
+    const commonTask = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(([event]) => {
+        const data = getInputValue(event);
+        setInputStateValue(data);
+        valueRef.current = data;
+        return data;
+    }, []);
+    const registerField = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((shouldUpdateValue) => {
+        if (true) {
+            if (!name) {
+                return console.warn('📋 Field is missing `name` prop. https://react-hook-form.com/api#Controller');
+            }
+        }
+        if (fieldsRef.current[name]) {
+            fieldsRef.current[name] = Object.assign({ ref: fieldsRef.current[name].ref }, rules);
+        }
+        else {
+            register(Object.defineProperties({
+                name,
+                focus: onFocusRef.current,
+            }, {
+                value: {
+                    set(data) {
+                        setInputStateValue(data);
+                        valueRef.current = data;
+                    },
+                    get() {
+                        return valueRef.current;
+                    },
+                },
+            }), rules);
+            shouldUpdateValue = isUndefined(get(defaultValuesRef.current, name));
+        }
+        shouldUpdateValue &&
+            isNotFieldArray &&
+            setInputStateValue(getInitialValue());
+    }, [rules, name, register]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => () => unregister(name), [name]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        if (true) {
+            if (isUndefined(value)) {
+                console.warn(`📋 ${name} is missing in the 'defaultValue' prop of either its Controller (https://react-hook-form.com/api#Controller) or useForm (https://react-hook-form.com/api#useForm)`);
+            }
+            if (!isNotFieldArray && isUndefined(defaultValue)) {
+                console.warn('📋 Controller is missing `defaultValue` prop when using `useFieldArray`. https://react-hook-form.com/api#Controller');
+            }
+        }
+        registerField();
+    }, [registerField]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        !fieldsRef.current[name] && registerField(true);
+    });
+    const onBlur = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => {
+        if (readFormStateRef.current.touched && !get(touched, name)) {
+            set(touched, name, true);
+            updateFormState({
+                touched,
+            });
+        }
+        shouldValidate(true) && trigger(name);
+    }, [name, updateFormState, shouldValidate, trigger, readFormStateRef]);
+    const onChange = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((...event) => setValue(name, commonTask(event), {
+        shouldValidate: shouldValidate(),
+        shouldDirty: true,
+    }), [setValue, name, shouldValidate]);
+    return {
+        field: {
+            onChange,
+            onBlur,
+            name,
+            value,
+            ref,
+        },
+        meta: Object.defineProperties({
+            invalid: !!get(errors, name),
+        }, {
+            isDirty: {
+                get() {
+                    return !!get(formState.dirtyFields, name);
+                },
+            },
+            isTouched: {
+                get() {
+                    return !!get(formState.touched, name);
+                },
+            },
+        }),
+    };
+}
+
+function useWatch({ control, name, defaultValue, }) {
+    const methods = useFormContext();
+    if (true) {
+        if (!control && !methods) {
+            throw new Error('📋 useWatch is missing `control` prop. https://react-hook-form.com/api#useWatch');
+        }
+    }
+    const { useWatchFieldsRef, useWatchRenderFunctionsRef, watchInternal, defaultValuesRef, } = control || methods.control;
+    const updateValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])()[1];
+    const idRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+    const defaultValueRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(defaultValue);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        if (true) {
+            if (name === '') {
+                console.warn('📋 useWatch is missing `name` attribute. https://react-hook-form.com/api#useWatch');
+            }
+        }
+        const id = (idRef.current = generateId());
+        const watchFieldsHookRender = useWatchRenderFunctionsRef.current;
+        const watchFieldsHook = useWatchFieldsRef.current;
+        watchFieldsHook[id] = new Set();
+        watchFieldsHookRender[id] = () => updateValue({});
+        watchInternal(name, defaultValueRef.current, id);
+        return () => {
+            delete watchFieldsHook[id];
+            delete watchFieldsHookRender[id];
+        };
+    }, [
+        name,
+        useWatchRenderFunctionsRef,
+        useWatchFieldsRef,
+        watchInternal,
+        defaultValueRef,
+    ]);
+    return idRef.current
+        ? watchInternal(name, defaultValueRef.current, idRef.current)
+        : isUndefined(defaultValue)
+            ? isString(name)
+                ? get(defaultValuesRef.current, name)
+                : Array.isArray(name)
+                    ? name.reduce((previous, inputName) => (Object.assign(Object.assign({}, previous), { [inputName]: get(defaultValuesRef.current, inputName) })), {})
+                    : defaultValuesRef.current
+            : defaultValue;
+}
+
+const Controller = (props) => {
+    const { rules, as, render, defaultValue, control, onFocus } = props, rest = __rest(props, ["rules", "as", "render", "defaultValue", "control", "onFocus"]);
+    const { field, meta } = useController(props);
+    const componentProps = Object.assign(Object.assign({}, rest), field);
+    return as
+        ? Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(as)
+            ? Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(as, componentProps)
+            : Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(as, componentProps)
+        : render
+            ? render(field, meta)
+            : null;
+};
+
+
+//# sourceMappingURL=index.esm.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -30857,387 +32803,6 @@ exports.typeOf = typeOf;
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
 }
-
-
-/***/ }),
-
-/***/ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js ***!
-  \***************************************************************************/
-/*! exports provided: IGNORE_CLASS_NAME, default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IGNORE_CLASS_NAME", function() { return IGNORE_CLASS_NAME; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-
-
-
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype);
-  subClass.prototype.constructor = subClass;
-  subClass.__proto__ = superClass;
-}
-
-function _objectWithoutProperties(source, excluded) {
-  if (source == null) return {};
-  var target = {};
-  var sourceKeys = Object.keys(source);
-  var key, i;
-
-  for (i = 0; i < sourceKeys.length; i++) {
-    key = sourceKeys[i];
-    if (excluded.indexOf(key) >= 0) continue;
-    target[key] = source[key];
-  }
-
-  if (Object.getOwnPropertySymbols) {
-    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
-
-    for (i = 0; i < sourceSymbolKeys.length; i++) {
-      key = sourceSymbolKeys[i];
-      if (excluded.indexOf(key) >= 0) continue;
-      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
-      target[key] = source[key];
-    }
-  }
-
-  return target;
-}
-
-/**
- * Check whether some DOM node is our Component's node.
- */
-function isNodeFound(current, componentNode, ignoreClass) {
-  if (current === componentNode) {
-    return true;
-  } // SVG <use/> elements do not technically reside in the rendered DOM, so
-  // they do not have classList directly, but they offer a link to their
-  // corresponding element, which can have classList. This extra check is for
-  // that case.
-  // See: http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGUseElement
-  // Discussion: https://github.com/Pomax/react-onclickoutside/pull/17
-
-
-  if (current.correspondingElement) {
-    return current.correspondingElement.classList.contains(ignoreClass);
-  }
-
-  return current.classList.contains(ignoreClass);
-}
-/**
- * Try to find our node in a hierarchy of nodes, returning the document
- * node as highest node if our node is not found in the path up.
- */
-
-function findHighest(current, componentNode, ignoreClass) {
-  if (current === componentNode) {
-    return true;
-  } // If source=local then this event came from 'somewhere'
-  // inside and should be ignored. We could handle this with
-  // a layered approach, too, but that requires going back to
-  // thinking in terms of Dom node nesting, running counter
-  // to React's 'you shouldn't care about the DOM' philosophy.
-
-
-  while (current.parentNode) {
-    if (isNodeFound(current, componentNode, ignoreClass)) {
-      return true;
-    }
-
-    current = current.parentNode;
-  }
-
-  return current;
-}
-/**
- * Check if the browser scrollbar was clicked
- */
-
-function clickedScrollbar(evt) {
-  return document.documentElement.clientWidth <= evt.clientX || document.documentElement.clientHeight <= evt.clientY;
-}
-
-// ideally will get replaced with external dep
-// when rafrex/detect-passive-events#4 and rafrex/detect-passive-events#5 get merged in
-var testPassiveEventSupport = function testPassiveEventSupport() {
-  if (typeof window === 'undefined' || typeof window.addEventListener !== 'function') {
-    return;
-  }
-
-  var passive = false;
-  var options = Object.defineProperty({}, 'passive', {
-    get: function get() {
-      passive = true;
-    }
-  });
-
-  var noop = function noop() {};
-
-  window.addEventListener('testPassiveEventSupport', noop, options);
-  window.removeEventListener('testPassiveEventSupport', noop, options);
-  return passive;
-};
-
-function autoInc(seed) {
-  if (seed === void 0) {
-    seed = 0;
-  }
-
-  return function () {
-    return ++seed;
-  };
-}
-
-var uid = autoInc();
-
-var passiveEventSupport;
-var handlersMap = {};
-var enabledInstances = {};
-var touchEvents = ['touchstart', 'touchmove'];
-var IGNORE_CLASS_NAME = 'ignore-react-onclickoutside';
-/**
- * Options for addEventHandler and removeEventHandler
- */
-
-function getEventHandlerOptions(instance, eventName) {
-  var handlerOptions = null;
-  var isTouchEvent = touchEvents.indexOf(eventName) !== -1;
-
-  if (isTouchEvent && passiveEventSupport) {
-    handlerOptions = {
-      passive: !instance.props.preventDefault
-    };
-  }
-
-  return handlerOptions;
-}
-/**
- * This function generates the HOC function that you'll use
- * in order to impart onOutsideClick listening to an
- * arbitrary component. It gets called at the end of the
- * bootstrapping code to yield an instance of the
- * onClickOutsideHOC function defined inside setupHOC().
- */
-
-
-function onClickOutsideHOC(WrappedComponent, config) {
-  var _class, _temp;
-
-  var componentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
-  return _temp = _class =
-  /*#__PURE__*/
-  function (_Component) {
-    _inheritsLoose(onClickOutside, _Component);
-
-    function onClickOutside(props) {
-      var _this;
-
-      _this = _Component.call(this, props) || this;
-
-      _this.__outsideClickHandler = function (event) {
-        if (typeof _this.__clickOutsideHandlerProp === 'function') {
-          _this.__clickOutsideHandlerProp(event);
-
-          return;
-        }
-
-        var instance = _this.getInstance();
-
-        if (typeof instance.props.handleClickOutside === 'function') {
-          instance.props.handleClickOutside(event);
-          return;
-        }
-
-        if (typeof instance.handleClickOutside === 'function') {
-          instance.handleClickOutside(event);
-          return;
-        }
-
-        throw new Error("WrappedComponent: " + componentName + " lacks a handleClickOutside(event) function for processing outside click events.");
-      };
-
-      _this.__getComponentNode = function () {
-        var instance = _this.getInstance();
-
-        if (config && typeof config.setClickOutsideRef === 'function') {
-          return config.setClickOutsideRef()(instance);
-        }
-
-        if (typeof instance.setClickOutsideRef === 'function') {
-          return instance.setClickOutsideRef();
-        }
-
-        return Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["findDOMNode"])(instance);
-      };
-
-      _this.enableOnClickOutside = function () {
-        if (typeof document === 'undefined' || enabledInstances[_this._uid]) {
-          return;
-        }
-
-        if (typeof passiveEventSupport === 'undefined') {
-          passiveEventSupport = testPassiveEventSupport();
-        }
-
-        enabledInstances[_this._uid] = true;
-        var events = _this.props.eventTypes;
-
-        if (!events.forEach) {
-          events = [events];
-        }
-
-        handlersMap[_this._uid] = function (event) {
-          if (_this.componentNode === null) return;
-
-          if (_this.props.preventDefault) {
-            event.preventDefault();
-          }
-
-          if (_this.props.stopPropagation) {
-            event.stopPropagation();
-          }
-
-          if (_this.props.excludeScrollbar && clickedScrollbar(event)) return;
-          var current = event.target;
-
-          if (findHighest(current, _this.componentNode, _this.props.outsideClickIgnoreClass) !== document) {
-            return;
-          }
-
-          _this.__outsideClickHandler(event);
-        };
-
-        events.forEach(function (eventName) {
-          document.addEventListener(eventName, handlersMap[_this._uid], getEventHandlerOptions(_this, eventName));
-        });
-      };
-
-      _this.disableOnClickOutside = function () {
-        delete enabledInstances[_this._uid];
-        var fn = handlersMap[_this._uid];
-
-        if (fn && typeof document !== 'undefined') {
-          var events = _this.props.eventTypes;
-
-          if (!events.forEach) {
-            events = [events];
-          }
-
-          events.forEach(function (eventName) {
-            return document.removeEventListener(eventName, fn, getEventHandlerOptions(_this, eventName));
-          });
-          delete handlersMap[_this._uid];
-        }
-      };
-
-      _this.getRef = function (ref) {
-        return _this.instanceRef = ref;
-      };
-
-      _this._uid = uid();
-      return _this;
-    }
-    /**
-     * Access the WrappedComponent's instance.
-     */
-
-
-    var _proto = onClickOutside.prototype;
-
-    _proto.getInstance = function getInstance() {
-      if (!WrappedComponent.prototype.isReactComponent) {
-        return this;
-      }
-
-      var ref = this.instanceRef;
-      return ref.getInstance ? ref.getInstance() : ref;
-    };
-
-    /**
-     * Add click listeners to the current document,
-     * linked to this component's state.
-     */
-    _proto.componentDidMount = function componentDidMount() {
-      // If we are in an environment without a DOM such
-      // as shallow rendering or snapshots then we exit
-      // early to prevent any unhandled errors being thrown.
-      if (typeof document === 'undefined' || !document.createElement) {
-        return;
-      }
-
-      var instance = this.getInstance();
-
-      if (config && typeof config.handleClickOutside === 'function') {
-        this.__clickOutsideHandlerProp = config.handleClickOutside(instance);
-
-        if (typeof this.__clickOutsideHandlerProp !== 'function') {
-          throw new Error("WrappedComponent: " + componentName + " lacks a function for processing outside click events specified by the handleClickOutside config option.");
-        }
-      }
-
-      this.componentNode = this.__getComponentNode(); // return early so we dont initiate onClickOutside
-
-      if (this.props.disableOnClickOutside) return;
-      this.enableOnClickOutside();
-    };
-
-    _proto.componentDidUpdate = function componentDidUpdate() {
-      this.componentNode = this.__getComponentNode();
-    };
-    /**
-     * Remove all document's event listeners for this component
-     */
-
-
-    _proto.componentWillUnmount = function componentWillUnmount() {
-      this.disableOnClickOutside();
-    };
-    /**
-     * Can be called to explicitly enable event listening
-     * for clicks and touches outside of this element.
-     */
-
-
-    /**
-     * Pass-through render
-     */
-    _proto.render = function render() {
-      // eslint-disable-next-line no-unused-vars
-      var _props = this.props,
-          excludeScrollbar = _props.excludeScrollbar,
-          props = _objectWithoutProperties(_props, ["excludeScrollbar"]);
-
-      if (WrappedComponent.prototype.isReactComponent) {
-        props.ref = this.getRef;
-      } else {
-        props.wrappedRef = this.getRef;
-      }
-
-      props.disableOnClickOutside = this.disableOnClickOutside;
-      props.enableOnClickOutside = this.enableOnClickOutside;
-      return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WrappedComponent, props);
-    };
-
-    return onClickOutside;
-  }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]), _class.displayName = "OnClickOutside(" + componentName + ")", _class.defaultProps = {
-    eventTypes: ['mousedown', 'touchstart'],
-    excludeScrollbar: config && config.excludeScrollbar || false,
-    outsideClickIgnoreClass: IGNORE_CLASS_NAME,
-    preventDefault: false,
-    stopPropagation: false
-  }, _class.getClass = function () {
-    return WrappedComponent.getClass ? WrappedComponent.getClass() : WrappedComponent;
-  }, _temp;
-}
-
-
-/* harmony default export */ __webpack_exports__["default"] = (onClickOutsideHOC);
 
 
 /***/ }),
