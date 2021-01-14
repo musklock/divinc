@@ -1,9 +1,9 @@
 import * as OTBSampleAPIUtil from '../../util/otb_sample_api_util.js'
 
-export const RECEIVE_OTB_SAMPLES = 'RECEIVE_OTB_SAMPLES';
-export const RECEIVE_OTB_SAMPLE = "RECEIVE_OTB_SAMPLE";
+export const UPDATE_REGISTER = 'UPDATE_REGISTER_OBJECT_OBJECT';
+export const UPDATE_USER_PROFILE= "UPDATE_USER_PROFILE";
 export const REMOVE_OTB_SAMPLE = "REMOVE_OTB_SAMPLE";
-export const RECEIVE_OTB_SAMPLE_ERRORS = "RECEIVE_OTB_SAMPLE_ERRORS"
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
 
 const receiveErrors = errors => ({
@@ -15,6 +15,17 @@ export const clearErrors = () => ({
     type: CLEAR_ERRORS
 }) 
 
+
+const updateRegisterObject = registerObject => {
+    type: UPDATE_REGISTER_OBJECT,
+    registerObject
+
+}
+
+const updateProfile = userObject => {
+    type: UPDATE_USER_PROFILE,
+    userObject
+}
 const receiveOTBSamples = OTBSamples => {
     
  return {   type: RECEIVE_OTB_SAMPLES,
