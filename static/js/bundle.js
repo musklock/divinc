@@ -210,16 +210,22 @@ var clearErrors = function clearErrors() {
 };
 
 var updateRegisterObject = function updateRegisterObject(registerObject) {
-  type: UPDATE_REGISTER_OBJECT, registerObject;
+  return {
+    type: UPDATE_REGISTER_OBJECT,
+    registerObject: registerObject
+  };
 };
 
 var updateProfile = function updateProfile(user) {
-  type: UPDATE_USER_PROFILE, user;
+  return {
+    type: UPDATE_USER_PROFILE,
+    user: user
+  };
 };
 
 var updateRegistrationProfileObject = function updateRegistrationProfileObject(registrationObject) {
   return function (dispatch) {
-    dispatch(updateRegisterObect(registrationObject)), function (err) {
+    dispatch(updateRegisterObject(registrationObject)), function (err) {
       return dispatch(receiveErrors(err.response.JSON));
     };
   };
@@ -747,19 +753,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 
 
  // import TableContainer from '../table/table_container'
 
-var RegistrationPage = function RegistrationPage(props) {
-  // const [initialData, setInitialData] = useState([{}]);
-  //   useEffect(() => {
-  //     fetch('/api').then(
-  //       response => response.json()
-  //     ).then(data => setInitialData(data))
-  //   }, [])
-  var handleSubmit = function handleSubmit(e) {
-    e.preventDefault();
+var RegistrationPage = function RegistrationPage(_ref) {
+  var userProfile = _ref.userProfile,
+      registration = _ref.registration,
+      updateRegistrationProfileObject = _ref.updateRegistrationProfileObject,
+      updateUserProfile = _ref.updateUserProfile,
+      history = _ref.history;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      email = _useState2[0],
+      setEmail = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('&&&&'),
+      _useState4 = _slicedToArray(_useState3, 2),
+      password = _useState4[0],
+      setPassword = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      confirmation = _useState6[0],
+      setConfirmation = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      linkedin = _useState8[0],
+      setlinkedin = _useState8[1];
+
+  var submit = function submit() {
+    if (password != confirmation) {
+      alert('Passwords must match!');
+      return;
+    }
+
+    var userObject = {
+      email: email,
+      password: password,
+      linkedin: linkedin
+    };
+    updateRegistrationProfileObject(userObject);
+    history.push("/register2");
   };
 
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -770,30 +819,45 @@ var RegistrationPage = function RegistrationPage(props) {
     className: "form_box"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Your Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "registration_form",
-    onSubmit: handleSubmit(event)
+    onSubmit: function onSubmit() {
+      return submit();
+    }
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "registration_text"
   }, "Email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text",
+    onChange: function onChange(event) {
+      return setEmail(event.target.value);
+    },
     placeholder: "youremail@example.com"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "registration_text"
   }, "Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
+    onChange: function onChange(event) {
+      return setPassword(event.target.value);
+    },
     placeholder: "must be longer than 6 characters"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     className: "registration_text"
   }, "Verify Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "password",
+    onChange: function onChange(event) {
+      return setConfirmation(event.target.value);
+    },
     placeholder: "type to confirm your password"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    className: "registration_text"
+    className: "registration_text",
+    onChange: function onChange(event) {
+      return setlinkedin(event.target.value);
+    }
   }, "Linkedin URL", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "text"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/register2",
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Register",
     className: "register_button"
-  }, "Register")))));
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RegistrationPage);
@@ -811,8 +875,9 @@ var RegistrationPage = function RegistrationPage(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
-/* harmony import */ var _header_footer_footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../header_footer/footer */ "./frontend/components/header_footer/footer.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
+/* harmony import */ var _header_footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../header_footer/footer */ "./frontend/components/header_footer/footer.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -826,11 +891,16 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
+
  // import TableContainer from '../table/table_container'
 
 
 
-var RegistrationPage2 = function RegistrationPage2(props) {
+var RegistrationPage2 = function RegistrationPage2(_ref) {
+  var userProfile = _ref.userProfile,
+      registration = _ref.registration,
+      updateRegistrationProfileObject = _ref.updateRegistrationProfileObject,
+      updateUserProfile = _ref.updateUserProfile;
   // useEffect(() => {
   //     props.fetchOTBSamples()
   //     props.fetchOTBSampleHistories()
@@ -855,15 +925,27 @@ var RegistrationPage2 = function RegistrationPage2(props) {
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_register_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_register_header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "background_container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form_box"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Are you interested in being a mentor or a mentee?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "register_button"
-  }, "Mentor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "register_button"
-  }, "Mentee"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Are you interested in being a mentor or a mentee?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/register3",
+    className: "register_button",
+    onClick: function onClick() {
+      return updateRegistrationProfileObject({
+        userType: "mentor"
+      });
+    }
+  }, "Mentor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/register3",
+    className: "register_button",
+    onClick: function onClick() {
+      return updateRegistrationProfileObject({
+        userType: "mentee"
+      });
+    }
+  }, "Mentee"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RegistrationPage2);
@@ -926,6 +1008,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page.jsx */ "./frontend/components/registration/registration_page.jsx");
 /* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
 /* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
@@ -950,7 +1034,7 @@ var mDTP = function mDTP(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__["default"])));
 
 /***/ }),
 
@@ -968,18 +1052,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_footer_blank_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/blank_header */ "./frontend/components/header_footer/blank_header.jsx");
 /* harmony import */ var _header_footer_footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ..//header_footer/footer */ "./frontend/components/header_footer/footer.jsx");
 /* harmony import */ var _dropdown_dropdown__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dropdown/dropdown */ "./frontend/components/dropdown/dropdown.jsx");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 
 
 
@@ -1004,19 +1076,13 @@ var RegistrationProfile = function RegistrationProfile(props) {
   //         return <TableContainer/>
   //     }
   // }
+  // const [initialData, setInitialData] = useState([{}]);
+  //   useEffect(() => {
+  //     fetch('/api').then(
+  //       response => response.json()
+  //     ).then(data => setInitialData(data))
+  //   }, [])
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([{}]),
-      _useState2 = _slicedToArray(_useState, 2),
-      initialData = _useState2[0],
-      setInitialData = _useState2[1];
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    fetch('/api').then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      return setInitialData(data);
-    });
-  }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_blank_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1037,8 +1103,8 @@ var RegistrationProfile = function RegistrationProfile(props) {
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
-    "fill-rule": "evenodd",
-    "clip-rule": "evenodd",
+    fillRule: "evenodd",
+    clipRule: "evenodd",
     d: "M16.1864 13.6392C16.3517 13.4094 16.5353 13.128 16.7695 12.7487C16.855 12.6101 17.0882 12.2253 17.2619 11.9387C17.3546 11.7858 17.4303 11.6608 17.4576 11.6163C19.3919 8.45224 20.798 7 23.3334 7H35V11.6667H23.3334C23.131 11.6667 22.4945 12.324 21.4392 14.0504C21.4175 14.0859 21.3528 14.1925 21.2703 14.3288L21.2694 14.3302L21.2685 14.3316C21.0934 14.6205 20.8389 15.0405 20.7407 15.1995C20.4538 15.6644 20.2155 16.0297 19.9748 16.3643C18.9289 17.8183 17.8835 18.6667 16.3334 18.6667H9.33337C8.04471 18.6667 7.00004 19.7113 7.00004 21V42C7.00004 43.2887 8.04471 44.3333 9.33337 44.3333H46.6667C47.9554 44.3333 49 43.2887 49 42V28H53.6667V42C53.6667 45.866 50.5327 49 46.6667 49H9.33337C5.46738 49 2.33337 45.866 2.33337 42V21C2.33337 17.134 5.46738 14 9.33337 14H15.9045C15.9822 13.9112 16.0774 13.7908 16.1864 13.6392ZM39.6667 18.6667V14H44.3334V9.33335H49V14H53.6667V18.6667H49V23.3333H44.3334V18.6667H39.6667ZM28 42C21.5567 42 16.3334 36.7766 16.3334 30.3333C16.3334 23.89 21.5567 18.6667 28 18.6667C34.4434 18.6667 39.6667 23.89 39.6667 30.3333C39.6667 36.7766 34.4434 42 28 42ZM28 37.3333C31.866 37.3333 35 34.1993 35 30.3333C35 26.4674 31.866 23.3333 28 23.3333C24.134 23.3333 21 26.4674 21 30.3333C21 34.1993 24.134 37.3333 28 37.3333Z",
     fill: "black"
   }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
@@ -1234,7 +1300,8 @@ var ProfileReducer = function ProfileReducer() {
 
   switch (action.type) {
     case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_USER_PROFILE"]:
-      newState = _objectSpread({}, state);
+      var newState = _objectSpread({}, state);
+
       Object.keys(action.registerObject).forEach(function (key, idx) {
         newState[key] = Object.values(action.registerObject)[idx];
       });
@@ -1304,7 +1371,8 @@ var RegisterReducer = function RegisterReducer() {
 
   switch (action.type) {
     case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_REGISTER_OBJECT"]:
-      newState = _objectSpread({}, state);
+      var newState = _objectSpread({}, state);
+
       Object.keys(action.registerObject).forEach(function (key, idx) {
         newState[key] = Object.values(action.registerObject)[idx];
       });

@@ -12,18 +12,18 @@ export const clearErrors = () => ({
     type: CLEAR_ERRORS
 }) 
 
-const updateRegisterObject = registerObject => {
+const updateRegisterObject = registerObject => ({
     type: UPDATE_REGISTER_OBJECT,
     registerObject
-}
+})
 
-const updateProfile = user => {
+const updateProfile = user => ({
     type: UPDATE_USER_PROFILE,
     user
-}
+})
 
 export const updateRegistrationProfileObject = (registrationObject) => dispatch => {
-   dispatch(updateRegisterObect(registrationObject)), err => dispatch(receiveErrors(err.response.JSON))
+   dispatch(updateRegisterObject(registrationObject)), err => dispatch(receiveErrors(err.response.JSON))
 }  
 
 export const updateUserProfile = userObject => dispatch => {

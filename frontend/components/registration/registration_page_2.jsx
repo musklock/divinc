@@ -1,10 +1,10 @@
 
 import React, {useState, useEffect} from 'react';
-
+import {Link} from 'react-router-dom';
 import RegisterHeader from '../header_footer/register_header';
 // import TableContainer from '../table/table_container'
 import Footer from '../header_footer/footer'
-const RegistrationPage2 = props => {
+const RegistrationPage2 = ({userProfile, registration, updateRegistrationProfileObject, updateUserProfile}) => {
 
 
 // useEffect(() => {
@@ -18,6 +18,10 @@ let table = true;
 //         return <TableContainer/>
 //     }
 // }
+
+
+
+
 
 const [initialData, setInitialData] = useState([{}]);
 
@@ -40,8 +44,8 @@ const [initialData, setInitialData] = useState([{}]);
                   <h2>Are you interested in being a mentor or a mentee?</h2>
                   
                   
-                      <button className="register_button">Mentor</button>
-                      <button className="register_button">Mentee</button>
+                      <Link to="/register3" className="register_button" onClick={()=> updateRegistrationProfileObject({userType: "mentor"})}>Mentor</Link>
+                      <Link to="/register3"  className="register_button" onClick={()=> updateRegistrationProfileObject({userType: "mentee"})}>Mentee</Link>
                   
                 </div>
               
