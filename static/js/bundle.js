@@ -175,6 +175,17 @@ var closeModal = function closeModal() {
 
 /***/ }),
 
+/***/ "./frontend/actions/register_actions.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/register_actions.js ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/Adrian/Desktop/repositories/divinc/frontend/actions/register_actions.js: Identifier 'updateProfile' has already been declared (34:13)\n\n\u001b[0m \u001b[90m 32 | \u001b[39m}  \u001b[0m\n\u001b[0m \u001b[90m 33 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 34 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m updateProfile \u001b[33m=\u001b[39m userObject \u001b[33m=>\u001b[39m dispatch \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 35 | \u001b[39m    dispatch(updateProfile(userObject))\u001b[33m,\u001b[39m err \u001b[33m=>\u001b[39m dispatch(receiveErrors(err\u001b[33m.\u001b[39mresponse\u001b[33m.\u001b[39m\u001b[33mJSON\u001b[39m))\u001b[0m\n\u001b[0m \u001b[90m 36 | \u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 37 | \u001b[39m\u001b[0m\n    at Object._raise (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:748:17)\n    at Object.raiseWithData (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:741:17)\n    at Object.raise (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:735:17)\n    at ScopeHandler.checkRedeclarationInScope (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:4919:12)\n    at ScopeHandler.declareName (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:4885:12)\n    at Object.checkLVal (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:9590:24)\n    at Object.parseVarId (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:12361:10)\n    at Object.parseVar (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:12336:12)\n    at Object.parseVarStatement (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:12151:10)\n    at Object.parseStatementContent (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:11743:21)");
+
+/***/ }),
+
 /***/ "./frontend/components/dropdown/dropdown.jsx":
 /*!***************************************************!*\
   !*** ./frontend/components/dropdown/dropdown.jsx ***!
@@ -1015,6 +1026,8 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
+/* harmony import */ var _otb_sample_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./otb_sample_errors_reducer */ "./frontend/reducers/otb_sample_errors_reducer.js");
+
  // import OTBSamplesReducer from './otb_samples_reducer.js';
 // import OTBSampleHistoriesReducer from './otb_sample_histories_reducer';
 // import currentOTBSamplesReducer from './current_otb_samples_reducer'
@@ -1076,6 +1089,37 @@ function modalReducer() {
       return state;
   }
 }
+
+/***/ }),
+
+/***/ "./frontend/reducers/otb_sample_errors_reducer.js":
+/*!********************************************************!*\
+  !*** ./frontend/reducers/otb_sample_errors_reducer.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/register_actions */ "./frontend/actions/register_actions.js");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_actions_register_actions__WEBPACK_IMPORTED_MODULE_0__);
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
+      return action.errors;
+
+    case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
+      return [];
+
+    default:
+      return state;
+  }
+});
 
 /***/ }),
 

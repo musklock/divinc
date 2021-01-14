@@ -1,10 +1,10 @@
-import { UPDATE_REGISTER, UPDATE_USER_PROFILE} from '../actions/register_actions';
+import { UPDATE_REGISTER_OBJECT} from '../actions/register_actions';
 
 
-const registerReducer = (state = {}, action) => {
+const RegisterReducer = (state = {}, action) => {
     Object.freeze(state);
     switch (action.type) {
-        case UPDATE_REGISTER:
+        case UPDATE_REGISTER_OBJECT:
             newState = {...state};
             Object.keys(action.registerObject).forEach((key, idx) => {
                 newState[key] = Object.values(action.registerObject)[idx];
@@ -16,4 +16,4 @@ const registerReducer = (state = {}, action) => {
     }
 }
 
-export default registerReducer;
+export default RegisterReducer;

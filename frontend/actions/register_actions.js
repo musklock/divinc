@@ -1,6 +1,6 @@
 // import * as OTBSampleAPIUtil from '../../util/otb_sample_api_util.js'
 
-export const UPDATE_REGISTER = 'UPDATE_REGISTER_OBJECT_OBJECT';
+export const UPDATE_REGISTER_OBJECT = 'UPDATE_REGISTER_OBJECT';
 export const UPDATE_USER_PROFILE= "UPDATE_USER_PROFILE";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
 export const CLEAR_ERRORS = 'CLEAR_ERRORS'
