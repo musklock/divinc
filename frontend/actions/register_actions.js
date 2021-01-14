@@ -1,5 +1,3 @@
-// import * as OTBSampleAPIUtil from '../../util/otb_sample_api_util.js'
-
 export const UPDATE_REGISTER_OBJECT = 'UPDATE_REGISTER_OBJECT';
 export const UPDATE_USER_PROFILE= "UPDATE_USER_PROFILE";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS"
@@ -14,11 +12,9 @@ export const clearErrors = () => ({
     type: CLEAR_ERRORS
 }) 
 
-
 const updateRegisterObject = registerObject => {
     type: UPDATE_REGISTER_OBJECT,
     registerObject
-
 }
 
 const updateProfile = user => {
@@ -26,20 +22,15 @@ const updateProfile = user => {
     user
 }
 
-
 export const updateRegistrationProfileObject = (registrationObject) => dispatch => {
    dispatch(updateRegisterObect(registrationObject)), err => dispatch(receiveErrors(err.response.JSON))
 }  
 
-export const updateProfile = userObject => dispatch => {
+export const updateUserProfile = userObject => dispatch => {
     dispatch(updateProfile(userObject)), err => dispatch(receiveErrors(err.response.JSON))
 }
 
-
-
-
 // const receiveOTBSamples = OTBSamples => {
-    
 //  return {   type: RECEIVE_OTB_SAMPLES,
 //     OTBSamples
 //      }
@@ -54,8 +45,6 @@ export const updateProfile = userObject => dispatch => {
 //     type: REMOVE_OTB_SAMPLE,
 //     OTBSampleId
 // })
-
-
 
 // export const fetchOTBSamples = () => dispatch => (
 //     OTBSampleAPIUtil.fetchOTBSamples()

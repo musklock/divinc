@@ -179,10 +179,102 @@ var closeModal = function closeModal() {
 /*!**********************************************!*\
   !*** ./frontend/actions/register_actions.js ***!
   \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+/*! exports provided: UPDATE_REGISTER_OBJECT, UPDATE_USER_PROFILE, RECEIVE_ERRORS, CLEAR_ERRORS, clearErrors, updateRegistrationProfileObject, updateUserProfile */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/Adrian/Desktop/repositories/divinc/frontend/actions/register_actions.js: Identifier 'updateProfile' has already been declared (34:13)\n\n\u001b[0m \u001b[90m 32 | \u001b[39m}  \u001b[0m\n\u001b[0m \u001b[90m 33 | \u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 34 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m updateProfile \u001b[33m=\u001b[39m userObject \u001b[33m=>\u001b[39m dispatch \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 35 | \u001b[39m    dispatch(updateProfile(userObject))\u001b[33m,\u001b[39m err \u001b[33m=>\u001b[39m dispatch(receiveErrors(err\u001b[33m.\u001b[39mresponse\u001b[33m.\u001b[39m\u001b[33mJSON\u001b[39m))\u001b[0m\n\u001b[0m \u001b[90m 36 | \u001b[39m}\u001b[0m\n\u001b[0m \u001b[90m 37 | \u001b[39m\u001b[0m\n    at Object._raise (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:748:17)\n    at Object.raiseWithData (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:741:17)\n    at Object.raise (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:735:17)\n    at ScopeHandler.checkRedeclarationInScope (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:4919:12)\n    at ScopeHandler.declareName (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:4885:12)\n    at Object.checkLVal (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:9590:24)\n    at Object.parseVarId (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:12361:10)\n    at Object.parseVar (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:12336:12)\n    at Object.parseVarStatement (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:12151:10)\n    at Object.parseStatementContent (/Users/Adrian/Desktop/repositories/divinc/node_modules/@babel/parser/lib/index.js:11743:21)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_REGISTER_OBJECT", function() { return UPDATE_REGISTER_OBJECT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_USER_PROFILE", function() { return UPDATE_USER_PROFILE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateRegistrationProfileObject", function() { return updateRegistrationProfileObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateUserProfile", function() { return updateUserProfile; });
+var UPDATE_REGISTER_OBJECT = 'UPDATE_REGISTER_OBJECT';
+var UPDATE_USER_PROFILE = "UPDATE_USER_PROFILE";
+var RECEIVE_ERRORS = "RECEIVE_ERRORS";
+var CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_OTB_SAMPLE_ERRORS,
+    errors: errors
+  };
+};
+
+var clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
+
+var updateRegisterObject = function updateRegisterObject(registerObject) {
+  type: UPDATE_REGISTER_OBJECT, registerObject;
+};
+
+var updateProfile = function updateProfile(user) {
+  type: UPDATE_USER_PROFILE, user;
+};
+
+var updateRegistrationProfileObject = function updateRegistrationProfileObject(registrationObject) {
+  return function (dispatch) {
+    dispatch(updateRegisterObect(registrationObject)), function (err) {
+      return dispatch(receiveErrors(err.response.JSON));
+    };
+  };
+};
+var updateUserProfile = function updateUserProfile(userObject) {
+  return function (dispatch) {
+    dispatch(updateProfile(userObject)), function (err) {
+      return dispatch(receiveErrors(err.response.JSON));
+    };
+  };
+}; // const receiveOTBSamples = OTBSamples => {
+//  return {   type: RECEIVE_OTB_SAMPLES,
+//     OTBSamples
+//      }
+// }
+// const receiveOTBSample = OTBSample => ({
+//     type: RECEIVE_OTB_SAMPLE,
+//     OTBSample
+// })
+// const removeOTBSample = OTBSampleId => ({
+//     type: REMOVE_OTB_SAMPLE,
+//     OTBSampleId
+// })
+// export const fetchOTBSamples = () => dispatch => (
+//     OTBSampleAPIUtil.fetchOTBSamples()
+//         .then(OTBSamples => (dispatch(receiveOTBSamples(OTBSamples))
+//         ), err => (
+//             dispatch(receiveErrors(err.responseJSON))
+//         ))
+// )
+// export const fetchOTBSample = id => dispatch => (
+//     OTBSampleAPIUtil.fetchOTBSample(id)
+//         .then(OTBSample => (dispatch(receiveAirTravel(OTBSample))
+//         ), err => (
+//             dispatch(receiveErrors(err.responseJSON))
+//         ))
+// )
+// export const createOTBSample = OTBSample => dispatch => (
+//     OTBSampleAPIUtil.createOTBSample(OTBSample)
+//         .then(OTBSample => (dispatch(receiveOTBSample(OTBSample))
+//         ), err => (
+//             dispatch(receiveErrors(err.responseJSON))
+//         ))
+// )
+// export const updateOTBSample = OTBSample => dispatch => (
+//     OTBSampleAPIUtil.updateOTBSample(OTBSample)
+//         .then(OTBSample => (dispatch(receiveOTBSample(OTBSample))
+//         ), err => (
+//             dispatch(receiveErrors(err.responseJSON))
+//         ))
+// )
+// export const deleteOTBSample = OTBSampleId => dispatch => (
+//     OTBSampleAPIUtil.deleteOTBSample(OTBSampleId)
+//         .then(() => dispatch(removeOTBSample(OTBSampleId)))
+// )
 
 /***/ }),
 
@@ -1026,17 +1118,14 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _otb_sample_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./otb_sample_errors_reducer */ "./frontend/reducers/otb_sample_errors_reducer.js");
+/* harmony import */ var _profile_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profile_reducer */ "./frontend/reducers/profile_reducer.js");
+/* harmony import */ var _register_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./register_reducer */ "./frontend/reducers/register_reducer.js");
 
- // import OTBSamplesReducer from './otb_samples_reducer.js';
-// import OTBSampleHistoriesReducer from './otb_sample_histories_reducer';
-// import currentOTBSamplesReducer from './current_otb_samples_reducer'
-// import currentOTBSampleHistoriesReducer from './current_otb_sample_histories_reducer'
 
-var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({// OTBSamples: OTBSamplesReducer,
-  // OTBSampleHistories: OTBSampleHistoriesReducer,
-  // currentOTBSamples: currentOTBSamplesReducer,
-  // currentOTBSampleHistories: currentOTBSampleHistoriesReducer
+
+var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  registration: _register_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  userProfile: _profile_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -1052,11 +1141,11 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
- // import OTBSamplesErrors from './otb_sample_errors_reducer.js';
-// import OTBSampleHistoriesErrors from './otb_sample_history_errors_reducer.js';
+/* harmony import */ var _register_actions_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./register_actions_errors_reducer */ "./frontend/reducers/register_actions_errors_reducer.js");
 
-var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({// OTBSamples: OTBSamplesErrors,
-  // OTBSampleHistories: OTBSampleHistoriesErrors
+
+var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  RegistrationErrors: _register_actions_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
 
@@ -1092,17 +1181,56 @@ function modalReducer() {
 
 /***/ }),
 
-/***/ "./frontend/reducers/otb_sample_errors_reducer.js":
-/*!********************************************************!*\
-  !*** ./frontend/reducers/otb_sample_errors_reducer.js ***!
-  \********************************************************/
+/***/ "./frontend/reducers/profile_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/profile_reducer.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/register_actions */ "./frontend/actions/register_actions.js");
-/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_actions_register_actions__WEBPACK_IMPORTED_MODULE_0__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var ProfileReducer = function ProfileReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case UPDATE_REGISTER:
+      newState = _objectSpread({}, state);
+      Object.keys(action.registerObject).forEach(function (key, idx) {
+        newState[key] = Object.values(action.registerObject)[idx];
+      });
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ProfileReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/register_actions_errors_reducer.js":
+/*!**************************************************************!*\
+  !*** ./frontend/reducers/register_actions_errors_reducer.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/register_actions */ "./frontend/actions/register_actions.js");
 
 /* harmony default export */ __webpack_exports__["default"] = (function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -1120,6 +1248,46 @@ __webpack_require__.r(__webpack_exports__);
       return state;
   }
 });
+
+/***/ }),
+
+/***/ "./frontend/reducers/register_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/register_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/register_actions */ "./frontend/actions/register_actions.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var RegisterReducer = function RegisterReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_REGISTER_OBJECT"]:
+      newState = _objectSpread({}, state);
+      Object.keys(action.registerObject).forEach(function (key, idx) {
+        newState[key] = Object.values(action.registerObject)[idx];
+      });
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegisterReducer);
 
 /***/ }),
 
