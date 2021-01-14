@@ -290,6 +290,996 @@ var updateUserProfile = function updateUserProfile(userObject) {
 
 /***/ }),
 
+/***/ "./frontend/components/dropdown/menteedropdown1.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/menteedropdown1.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!multiSelect) {
+      if (!selection.some(function (current) {
+        return current.id === item.id;
+      })) {
+        setSelection([item]);
+        console.log;
+        console.log(selection); // setOpen(false);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/menteedropdown2.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/menteedropdown2.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/menteedropdown3.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/menteedropdown3.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/mentordropdown1.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/mentordropdown1.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/mentordropdown2.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/mentordropdown2.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/mentordropdown3.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/mentordropdown3.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/mentordropdown4.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/mentordropdown4.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "dd-button",
+      type: "button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
 /***/ "./frontend/components/header_footer/blank_header.jsx":
 /*!************************************************************!*\
   !*** ./frontend/components/header_footer/blank_header.jsx ***!
@@ -617,6 +1607,275 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
+/***/ "./frontend/components/registration/matching_questions.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/registration/matching_questions.jsx ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _dropdown_menteedropdown1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dropdown/menteedropdown1 */ "./frontend/components/dropdown/menteedropdown1.jsx");
+/* harmony import */ var _dropdown_menteedropdown2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dropdown/menteedropdown2 */ "./frontend/components/dropdown/menteedropdown2.jsx");
+/* harmony import */ var _dropdown_menteedropdown3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dropdown/menteedropdown3 */ "./frontend/components/dropdown/menteedropdown3.jsx");
+/* harmony import */ var _dropdown_mentordropdown2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../dropdown/mentordropdown2 */ "./frontend/components/dropdown/mentordropdown2.jsx");
+/* harmony import */ var _dropdown_mentordropdown1__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dropdown/mentordropdown1 */ "./frontend/components/dropdown/mentordropdown1.jsx");
+/* harmony import */ var _dropdown_mentordropdown3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../dropdown/mentordropdown3 */ "./frontend/components/dropdown/mentordropdown3.jsx");
+/* harmony import */ var _dropdown_mentordropdown4__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../dropdown/mentordropdown4 */ "./frontend/components/dropdown/mentordropdown4.jsx");
+/* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+var industries = [{
+  id: 0,
+  value: "ARts, Audio/Video Technology, Communication"
+}, {
+  id: 1,
+  value: "Architecture, Construction and Manufacturing"
+}, {
+  id: 2,
+  value: "Agriculture, Food and Natural Resources"
+}, {
+  id: 3,
+  value: "Business, Managemetn and Administration"
+}, {
+  id: 4,
+  value: "Education"
+}, {
+  id: 5,
+  value: "Engineering"
+}, {
+  id: 6,
+  value: "Government and Public Services"
+}, {
+  id: 7,
+  value: "Healthcare"
+}, {
+  id: 8,
+  value: "Hospitality"
+}, {
+  id: 9,
+  value: "Information Technology"
+}, {
+  id: 10,
+  value: "Law/Legal"
+}];
+var fields = [{
+  id: 0,
+  value: "Product Management"
+}, {
+  id: 1,
+  value: "User Experience Design"
+}, {
+  id: 2,
+  value: "Software Engineering"
+}];
+var menteeGoals = [{
+  id: 0,
+  value: "Build Confidence"
+}, {
+  id: 1,
+  value: "Develop Transferrable Skills"
+}, {
+  id: 2,
+  value: "Resume Feedback"
+}, {
+  id: 3,
+  value: "Job Search Strategy"
+}, {
+  id: 4,
+  value: "Interview Feedback"
+}, {
+  id: 5,
+  value: "Build ongoing relationships with experienced professionals"
+}];
+var yesNoSelect = [{
+  id: 0,
+  value: "No"
+}, {
+  id: 1,
+  value: "Yes"
+}];
+var mentorGoals = [{
+  id: 0,
+  value: "Help Build Confidence"
+}, {
+  id: 1,
+  value: "Help Develop Transferrable Skills"
+}, {
+  id: 2,
+  value: "Give Resume Feedback"
+}, {
+  id: 3,
+  value: "Help with Job Search Strategy"
+}, {
+  id: 4,
+  value: "Give Interview Feedback"
+}, {
+  id: 5,
+  value: "Build ongoing relationships with aspiring professionals"
+}];
+ // import TableContainer from '../table/table_container'
+
+var MatchingQuestions = function MatchingQuestions(_ref) {
+  var userProfile = _ref.userProfile,
+      registration = _ref.registration,
+      updateRegistrationProfileObject = _ref.updateRegistrationProfileObject,
+      updateUserProfile = _ref.updateUserProfile,
+      history = _ref.history;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      mentor1 = _useState2[0],
+      setMentor1 = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      mentor2 = _useState4[0],
+      setMentor2 = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      mentor3 = _useState6[0],
+      setMentor3 = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      mentor4 = _useState8[0],
+      setMentor4 = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      mentee1 = _useState10[0],
+      setMetee1 = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState12 = _slicedToArray(_useState11, 2),
+      mentee2 = _useState12[0],
+      setMetee2 = _useState12[1];
+
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState14 = _slicedToArray(_useState13, 2),
+      mentee3 = _useState14[0],
+      setMetee3 = _useState14[1];
+
+  var submit = function submit() {
+    var userObject;
+
+    if (registration.userType === "mentor") {
+      userObject = {
+        careerSwitcher: mentor1,
+        industry: mentor2,
+        currentField: mentor3,
+        offering: mentor4
+      };
+    }
+
+    if (registration.userType === "mentee") {
+      userObject = {
+        industry: mentee1,
+        currentField: mentee2,
+        goals: mentee3
+      };
+    }
+
+    updateRegistrationProfileObject(userObject);
+    history.push("/matchpage");
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "background_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_register_header__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-box-container"
+  }, registration.userType === "mentee" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form_box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "registration_form",
+    onSubmit: function onSubmit() {
+      return submit();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "form_header"
+  }, "Let's get started with matching you with some mentees!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " Have you switched from another Industry into tech?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_menteedropdown1__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "Select One",
+    items: yesNoSelect
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " If yes, which industry did you switch from?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_menteedropdown2__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    title: "Select One",
+    items: industries
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What's your current field?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_menteedropdown3__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    title: "Select One",
+    items: fields
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What can you offer as a mentor?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_menteedropdown3__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    title: "Select All That Apply",
+    items: mentorGoals,
+    multiselect: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Submit"
+  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form_box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "registration_form",
+    onSubmit: function onSubmit() {
+      return submit();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "form_header"
+  }, "Let's get started with matching you with some mentors!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What industry are you currently in?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_mentordropdown2__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    title: "Select One",
+    items: industries
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What's your desired field in Tech?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_mentordropdown1__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    title: "Select One",
+    items: fields
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What do you wnat out of mentorship?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_mentordropdown3__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    title: "Select One",
+    items: menteeGoals
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Submit"
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MatchingQuestions);
+
+/***/ }),
+
 /***/ "./frontend/components/registration/matching_questions_container.js":
 /*!**************************************************************************!*\
   !*** ./frontend/components/registration/matching_questions_container.js ***!
@@ -629,11 +1888,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page.jsx */ "./frontend/components/registration/registration_page.jsx");
-/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
-/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
+/* harmony import */ var _matching_questions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./matching_questions */ "./frontend/components/registration/matching_questions.jsx");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
@@ -650,15 +1907,15 @@ var mSTP = function mSTP(state) {
 var mDTP = function mDTP(dispatch) {
   return {
     updateRegistrationProfileObject: function updateRegistrationProfileObject(profileObject) {
-      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateRegistrationProfileObject"])(profileObject));
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_3__["updateRegistrationProfileObject"])(profileObject));
     },
     updateUserProfile: function updateUserProfile(user) {
-      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateUserProfile"])(user));
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_3__["updateUserProfile"])(user));
     }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__["default"])));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_matching_questions__WEBPACK_IMPORTED_MODULE_2__["default"])));
 
 /***/ }),
 
@@ -1594,7 +2851,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(_images_homepage_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, "html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\ninput {\n  height: 30px;\n  width: 450px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD;\n  margin-bottom: 40px; }\n\nbutton {\n  padding: 10px;\n  justify-self: center;\n  height: 20px;\n  width: 80px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\ninput[type=\"submit\"] {\n  padding: 10px;\n  justify-self: center;\n  height: 20px;\n  width: 80px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center;\n  margin-top: 80px;\n  padding: 10px 25px; }\n\ntextarea {\n  min-height: 90px;\n  width: 950px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD;\n  margin-top: 20px;\n  resize: none; }\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px; }\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer; }\n\n/* Clearfix */\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.header-logo {\n  display: flex;\n  align-self: center;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000;\n  margin-left: 80px;\n  height: 150px; }\n\n.header_wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  width: 100%;\n  background-color: white; }\n\n.footer_wrapper {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  width: 100%;\n  background-color: white;\n  height: 150px; }\n\n.login-button {\n  width: 120px;\n  background: white;\n  color: #969696;\n  border-color: #969696; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top 1px center;\n  background-size: 100% auto;\n  height: 100%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  align-items: center; }\n\n.login-container-input {\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #5B5A5A;\n  background-color: #e9eef1;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-container-submit {\n  margin-top: 10px;\n  width: 80%;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\n.header-prompt {\n  position: relative;\n  top: 150px;\n  left: 50px;\n  width: 800px;\n  height: 130px; }\n\n.register-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-wrapper {\n  display: flex;\n  position: absolute;\n  flex-direction: column;\n  display: flex;\n  width: 420px;\n  height: 420px;\n  position: absolute;\n  right: 8%;\n  top: 30%; }\n\n.reset-password {\n  margin-top: 10px; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.photo_button {\n  position: relative;\n  top: 120px;\n  left: 120px;\n  cursor: pointer; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.name-header {\n  margin-top: 100px; }\n\n.register_button {\n  margin-top: 30px;\n  align-self: center; }\n\n.background_container {\n  background-color: #f4f5f6;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n\n.form_box {\n  margin-top: 80px;\n  background-color: white;\n  border: 1px solid #C0C0C0;\n  padding: 40px;\n  width: 800px;\n  padding-bottom: 100px; }\n\n.back-button {\n  position: relative;\n  top: 0px;\n  left: 0px;\n  height: 150px;\n  width: 150px; }\n\n.back-button:hover {\n  cursor: pointer; }\n\nbody {\n  font: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n", "",{"version":3,"sources":["webpack://./static/css/reset.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/profile_page.scss","webpack://./static/css/registration_page.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAAA;;;;;EAKE,SAAS;EACT,UAAU;EACV,SAAS;EACT,UAAU;EACV,wIAAyI;EACzI,cAAc;EACd,mBAAmB;EACnB,wBAAwB;EACxB,uBAAuB;EACvB,mBAAmB;EACnB,uBAAuB,EAAA;;AAGzB;EACE,gBAAgB,EAAA;;AAGlB;EACE,cAAc;EACd,WAAW;EACX,YAAY,EAAA;;AAId;EACG,YAAY;EACX,YAAY;EACZ,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,mBAAkB,EAAA;;AAItB;EACI,aAAa;EACb,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAI3B;EACG,aAAa;EACZ,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;EAChB,kBAAkB,EAAA;;AAGtB;EACO,gBAAgB;EACnB,YAAY;EACZ,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,gBAAe;EACf,YAAY,EAAA;;AAKhB;;;;;;EAME;;;GCTC;EDaD,wBAAwB;EACxB,qBAAqB;EACrB,gBAAgB;EAChB,YAAY,EAAA;;AAGd;;EAEE,eAAe,EAAA;;AAGjB,aAAA;AAEA;EACE,WAAW;EACX,cAAc;EACd,WAAW,EAAA;;AE9Hb;EACI,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,yBAAyB;EACzB,cAAc;EACd,iBAAiB;EAEjB,aAAa,EAAA;;AAIjB;EACI,aAAY;EACZ,mBAAmB;EACnB,8BAA8B;EAE9B,WAAW;EACV,uBAAuB,EAAA;;AAI5B;EACI,aAAY;EACZ,sBAAsB;EACtB,6BAA6B;EAE7B,WAAW;EACV,uBAAuB;EACxB,aAAa,EAAA;;AAKjB;EACI,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,qBAAqB,EAAA;;AAOzB;EACI,WAAW;EACX,yBAAyB;EACzB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B,EAAA;;AC5D/B;EACI,yDAA8C;EAC9C,mCAAmC;EACnC,0BAA0B;EAC1B,YAAY;EACZ,4BAA4B;EAC5B,uBAAuB;EACvB,WAAW,EAAA;;AAGf;EACI,aAAa;EACb,sBAAsB;EAEtB,kBAAkB;EAClB,qBAAqB;EACrB,aAAa;EACX,WAAW;EAEb,gBAAgB;EACd,uBAAuB;EACzB,yBAAyB;EACzB,mBAAmB,EAAA;;AAIvB;EAEI,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EAEzB,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,yBAA4B;EAC3B,2CAA2C,EAAA;;AAIhD;EAGI,gBAAgB;EAChB,UAAU;EAEV,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAE3B;EACI,eAAe;EACf,yBAAyB,EAAA;;AAI7B;EACI,kBAAkB;EAClB,UAAU;EACV,UAAU;EACV,YAAY;EACZ,aAAa,EAAA;;AAGjB;EACQ,aAAa;EACjB,sBAAsB;EAEnB,kBAAkB;EACrB,qBAAqB;EACrB,aAAa;EACb,WAAW;EAEX,gBAAgB;EACd,uBAAuB;EACzB,yBAAyB;EACxB,2CAA2C,EAAA;;AAIhD;EACI,aAAa;EACb,kBAAkB;EAClB,sBAAsB;EAItB,aAAa;EACb,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,SAAS;EACT,QAAQ,EAAA;;AAGZ;EACI,gBAAgB,EAAA;;ACxGpB;EACI,WAAW;EACX,yBAAyB;EACzB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B,EAAA;;AAG/B;EACI,YAAY;EACZ,wIAAwI,EAAA;;AAG5I;EACI,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,oBAAoB;EACpB,kBAAkB;EAClB,kBAAkB;EAClB,UAAU,EAAA;;AAId;EACE,qBAAqB;EACrB,UAAU;EACV,WAAW;EACX,eAAe;EACf,YAAW;EACX,eAAuB;EACvB,WAAW,EAAA;;AAKb;EACI,sBAAsB,EAAA;;AAG1B;EACI,YAAY;EACZ,wIAAwI,EAAA;;AAG5I;EACI,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,oBAAoB;EACpB,kBAAkB;EAClB,kBAAkB;EAClB,UAAU,EAAA;;AAId;EACI,kBAAkB;EAClB,UAAU;EACV,WAAW;EACX,eAAe,EAAA;;AAGnB;EACE,qBAAqB;EACrB,UAAU;EACV,WAAW;EACX,eAAe;EACf,YAAW;EACX,eAAuB;EACvB,WAAW,EAAA;;AAKb;EACI,sBAAsB,EAAA;;AAI1B;EACI,iBAAiB,EAAA;;AC5FrB;EACI,gBAAgB;EACpB,kBAAkB,EAAA;;AAIlB;EACI,yBAAyB;EACxB,aAAY;EACf,sBAAsB;EACtB,YAAY;EACZ,WAAU;EACX,mBAAmB,EAAA;;AAGpB;EACI,gBAAgB;EAChB,uBAAsB;EACtB,yBAAyB;EACzB,aAAa;EACb,YAAY;EACZ,qBAAqB,EAAA;;AAQzB;EACI,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,aAAa;EACb,YAAY,EAAA;;AAGhB;EACI,eAAe,EAAA;;AJ9BnB;EACE,iIARyI;EASzI,yBKVwB,EAAA;ELQ1B;IAIM,cKXkB,EAAA;;ALexB;EACE,aAAY;EACZ,sBAAsB;EACxB,2BAA2B;EACzB,YAAY;EACZ,WAAU;EACX,mBAAmB,EAAA","sourcesContent":["html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent;\n}\n\nul {\n  list-style: none;\n}\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n\n\ninput {\n   height: 30px;\n    width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-bottom:40px;\n\n}\n\nbutton {\n    padding: 10px;\n    justify-self: center;\n    height: 20px;\n    width: 80px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n\n\ninput[type=\"submit\"] {\n   padding: 10px;\n    justify-self: center;\n    height: 20px;\n    width: 80px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;  \n    margin-top: 80px;\n    padding: 10px 25px;\n}\n\ntextarea {\n       min-height: 90px;\n    width: 950px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-top:20px;\n    resize: none;\n    \n\n}\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px;\n}\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer;\n}\n\n/* Clearfix */\n\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both;\n}","@import 'themeColors';\n$theme-font:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n@import 'reset';\n@import 'header_footer';\n@import 'mainPage';\n@import 'profile_page';\n@import 'registration_page';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark;\n  }\n}\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\njustify-content: flex-start;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n","\n\n.header-logo {\n    display: flex;\n    align-self: center;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n    margin-left: 80px;\n    \n    height: 150px;\n   \n}\n\n.header_wrapper {\n    display:flex;\n    flex-direction: row;\n    justify-content: space-between;\n\n    width: 100%;\n     background-color: white;\n    \n\n}\n.footer_wrapper {\n    display:flex;\n    flex-direction: column;\n    justify-content: space-around;\n\n    width: 100%;\n     background-color: white;\n    height: 150px;\n    \n\n}\n\n.login-button {\n    width: 120px;\n    background: white;\n    color: #969696; \n    border-color: #969696;\n    // height: 30px;\n    // text-align:center;\n    // justify-content: center;\n}\n\n\n.blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: top 1px center;\n    background-size: 100% auto;\n    height: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    \n    border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n      width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n    align-items: center;\n    \n}\n\n.login-container-input {\n    // height: 30px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    \n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #5B5A5A;\n    background-color: #e9eef1   ;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n\n}\n\n.login-container-submit {\n    // height: 30px;\n    // margin: 5px;\n    margin-top: 10px;\n    width: 80%;\n  \n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n\n\n.header-prompt {\n    position: relative;\n    top: 150px;\n    left: 50px;\n    width: 800px;\n    height: 130px;\n}\n\n.register-container {\n        display: flex;\n    flex-direction: column;\n   \n       border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n    width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    \n}\n\n.login-wrapper {\n    display: flex;\n    position: absolute;\n    flex-direction: column;\n  \n    // top: 35%;\n     \n    display: flex;\n    width: 420px;\n    height: 420px; \n    position: absolute;\n    right: 8%;\n    top: 30%;\n}\n\n.reset-password {\n    margin-top: 10px;\n}",".blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.photo_button {\n    position: relative;\n    top: 120px;\n    left: 120px;\n    cursor: pointer;\n}\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n\n.name-header {\n    margin-top: 100px;\n}\n\n",".register_button {\n    margin-top: 30px;\nalign-self: center;\n\n}\n\n.background_container {\n    background-color: #f4f5f6;\n     display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n.form_box {\n    margin-top: 80px;\n    background-color:white;\n    border: 1px solid #C0C0C0;\n    padding: 40px;\n    width: 800px;\n    padding-bottom: 100px;\n}\n\n\n.test_image {\n\n}\n\n.back-button {\n    position: relative;\n    top: 0px;\n    left: 0px;\n    height: 150px;\n    width: 150px;\n}\n\n.back-button:hover {\n    cursor: pointer;\n}","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\ninput {\n  height: 30px;\n  width: 450px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD;\n  margin-bottom: 40px; }\n\nbutton {\n  padding: 10px;\n  justify-self: center;\n  height: 20px;\n  width: 80px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\ninput[type=\"submit\"] {\n  padding: 10px;\n  justify-self: center;\n  height: 20px;\n  width: 80px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center;\n  margin-top: 80px;\n  padding: 10px 25px; }\n\ntextarea {\n  min-height: 90px;\n  width: 950px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD;\n  margin-top: 20px;\n  resize: none; }\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px; }\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer; }\n\n/* Clearfix */\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.header-logo {\n  display: flex;\n  align-self: center;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000;\n  margin-left: 80px;\n  height: 150px; }\n\n.header_wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  width: 100%;\n  background-color: white; }\n\n.footer_wrapper {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  width: 100%;\n  background-color: white;\n  height: 150px; }\n\n.login-button {\n  width: 120px;\n  background: white;\n  color: #969696;\n  border-color: #969696; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top 1px center;\n  background-size: 100% auto;\n  height: 100%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  align-items: center; }\n\n.login-container-input {\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #5B5A5A;\n  background-color: #e9eef1;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-container-submit {\n  margin-top: 10px;\n  width: 80%;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\n.header-prompt {\n  position: relative;\n  top: 150px;\n  left: 50px;\n  width: 800px;\n  height: 130px; }\n\n.register-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-wrapper {\n  display: flex;\n  position: absolute;\n  flex-direction: column;\n  display: flex;\n  width: 420px;\n  height: 420px;\n  position: absolute;\n  right: 8%;\n  top: 30%; }\n\n.reset-password {\n  margin-top: 10px; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.photo_button {\n  position: relative;\n  top: 120px;\n  left: 120px;\n  cursor: pointer; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.name-header {\n  margin-top: 100px; }\n\n.register_button {\n  margin-top: 30px;\n  align-self: center; }\n\n.background_container {\n  background-color: #f4f5f6;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n\n.form_box {\n  margin-top: 80px;\n  background-color: white;\n  border: 1px solid #C0C0C0;\n  padding: 40px;\n  width: 800px;\n  padding-bottom: 100px; }\n\n.back-button {\n  position: relative;\n  top: 0px;\n  left: 0px;\n  height: 150px;\n  width: 150px; }\n\n.back-button:hover {\n  cursor: pointer; }\n\n.dd-wrapper {\n  display: flex;\n  min-height: 20px;\n  flex-wrap: wrap;\n  font-size: 16px;\n  margin: 20px; }\n  .dd-wrapper .dd-header {\n    width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    align-self: center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD; }\n    .dd-wrapper .dd-header_title--bold {\n      font-weight: 400;\n      font-size: 16px; }\n  .dd-wrapper .dd-list {\n    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);\n    padding: 0;\n    margin: 0;\n    width: 300px;\n    margin-top: 2px;\n    position: relative;\n    top: 20px; }\n    .dd-wrapper .dd-list li {\n      list-style-type: none; }\n      .dd-wrapper .dd-list li:first-of-type > button {\n        border-top: 1px solid #ccc;\n        border-top-left-radius: 4px;\n        border-top-right-radius: 4px; }\n      .dd-wrapper .dd-list li:last-of-type > button {\n        border-bottom-left-radius: 4px;\n        border-bottom-right-radius: 4px; }\n      .dd-wrapper .dd-list li button {\n        display: flex;\n        justify-content: space-between;\n        background-color: white;\n        font-size: 16px;\n        padding: 10px 15px 10px 15px;\n        border: 0;\n        border-bottom: 1px solid #ccc;\n        width: 100%;\n        text-align: left;\n        border-left: 1px solid #ccc;\n        border-right: 1px solid #ccc;\n        height: 30px;\n        margin: 0px;\n        width: 450px;\n        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n        display: flex;\n        border: 1px solid #BDBDBD;\n        align-self: center;\n        border-radius: 3px;\n        padding: 10px;\n        color: #BDBDBD;\n        margin-bottom: 40px; }\n        .dd-wrapper .dd-list li button:hover, .dd-wrapper .dd-list li button:focus {\n          cursor: pointer;\n          font-weight: 400;\n          background-color: #ccc; }\n\n.dd-button {\n  margin: 0; }\n\nbody {\n  font: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n", "",{"version":3,"sources":["webpack://./static/css/reset.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/profile_page.scss","webpack://./static/css/registration_page.scss","webpack://./static/css/dropdown.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"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","sourcesContent":["html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent;\n}\n\nul {\n  list-style: none;\n}\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n\n\ninput {\n   height: 30px;\n    width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-bottom:40px;\n\n}\n\nbutton {\n    padding: 10px;\n    justify-self: center;\n    height: 20px;\n    width: 80px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n\n\ninput[type=\"submit\"] {\n   padding: 10px;\n    justify-self: center;\n    height: 20px;\n    width: 80px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;  \n    margin-top: 80px;\n    padding: 10px 25px;\n}\n\ntextarea {\n       min-height: 90px;\n    width: 950px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-top:20px;\n    resize: none;\n    \n\n}\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px;\n}\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer;\n}\n\n/* Clearfix */\n\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both;\n}","@import 'themeColors';\n$theme-font:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n@import 'reset';\n@import 'header_footer';\n@import 'mainPage';\n@import 'profile_page';\n@import 'registration_page';\n@import 'dropdown';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark;\n  }\n}\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\njustify-content: flex-start;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n","\n\n.header-logo {\n    display: flex;\n    align-self: center;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n    margin-left: 80px;\n    \n    height: 150px;\n   \n}\n\n.header_wrapper {\n    display:flex;\n    flex-direction: row;\n    justify-content: space-between;\n\n    width: 100%;\n     background-color: white;\n    \n\n}\n.footer_wrapper {\n    display:flex;\n    flex-direction: column;\n    justify-content: space-around;\n\n    width: 100%;\n     background-color: white;\n    height: 150px;\n    \n\n}\n\n.login-button {\n    width: 120px;\n    background: white;\n    color: #969696; \n    border-color: #969696;\n    // height: 30px;\n    // text-align:center;\n    // justify-content: center;\n}\n\n\n.blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: top 1px center;\n    background-size: 100% auto;\n    height: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    \n    border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n      width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n    align-items: center;\n    \n}\n\n.login-container-input {\n    // height: 30px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    \n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #5B5A5A;\n    background-color: #e9eef1   ;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n\n}\n\n.login-container-submit {\n    // height: 30px;\n    // margin: 5px;\n    margin-top: 10px;\n    width: 80%;\n  \n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n\n\n.header-prompt {\n    position: relative;\n    top: 150px;\n    left: 50px;\n    width: 800px;\n    height: 130px;\n}\n\n.register-container {\n        display: flex;\n    flex-direction: column;\n   \n       border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n    width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    \n}\n\n.login-wrapper {\n    display: flex;\n    position: absolute;\n    flex-direction: column;\n  \n    // top: 35%;\n     \n    display: flex;\n    width: 420px;\n    height: 420px; \n    position: absolute;\n    right: 8%;\n    top: 30%;\n}\n\n.reset-password {\n    margin-top: 10px;\n}",".blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.photo_button {\n    position: relative;\n    top: 120px;\n    left: 120px;\n    cursor: pointer;\n}\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n\n.name-header {\n    margin-top: 100px;\n}\n\n",".register_button {\n    margin-top: 30px;\nalign-self: center;\n\n}\n\n.background_container {\n    background-color: #f4f5f6;\n     display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n.form_box {\n    margin-top: 80px;\n    background-color:white;\n    border: 1px solid #C0C0C0;\n    padding: 40px;\n    width: 800px;\n    padding-bottom: 100px;\n}\n\n\n.test_image {\n\n}\n\n.back-button {\n    position: relative;\n    top: 0px;\n    left: 0px;\n    height: 150px;\n    width: 150px;\n}\n\n.back-button:hover {\n    cursor: pointer;\n}",".dd-wrapper {\n    display: flex;\n    min-height: 20px;\n    flex-wrap: wrap;\n    font-size: 16px;\n    margin: 20px;\n\n    .dd-header {\n        // // @include styling();\n        // display:flex;\n        // justify-content: space-between;\n        // cursor: pointer;\n        // width: 100%;\n        // padding: 0 5px;\n        width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    \n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    // margin-bottom:40px;\n\n        &_title--bold {\n            font-weight:400;\n            font-size: 16px;\n        }\n    }\n\n\n\n.dd-list {\n    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);\n    padding:0;\n    margin: 0;\n    width: 300px;\n    margin-top: 2px;\n    position:relative;\n    top: 20px;\n    \n\n    li {\n        list-style-type: none;\n        \n        &:first-of-type {\n            > button {\n                border-top: 1px solid #ccc;\n                border-top-left-radius: 4px;\n                border-top-right-radius: 4px;\n            }\n        }\n\n        &:last-of-type > button {\n            border-bottom-left-radius:4px;\n            border-bottom-right-radius:4px;\n        }\n\n        button {\n            display:flex;\n            justify-content: space-between;\n            background-color: white;\n            font-size: 16px;\n            padding: 10px 15px 10px 15px;\n            border: 0;\n            border-bottom: 1px solid #ccc;\n            width: 100%;\n            text-align: left;\n            border-left: 1px solid #ccc;\n            border-right: 1px solid #ccc;\n               height: 30px;\n               margin: 0px;\n    width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    \n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-bottom:40px;\n\n            &:hover, &:focus {\n                cursor: pointer;\n                font-weight: 400;\n                background-color: #ccc;\n            }\n        }\n    }\n  }\n}\n\n\n\n.dd-button {\n    margin: 0;\n}\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -32803,6 +34060,387 @@ exports.typeOf = typeOf;
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js ***!
+  \***************************************************************************/
+/*! exports provided: IGNORE_CLASS_NAME, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IGNORE_CLASS_NAME", function() { return IGNORE_CLASS_NAME; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+/**
+ * Check whether some DOM node is our Component's node.
+ */
+function isNodeFound(current, componentNode, ignoreClass) {
+  if (current === componentNode) {
+    return true;
+  } // SVG <use/> elements do not technically reside in the rendered DOM, so
+  // they do not have classList directly, but they offer a link to their
+  // corresponding element, which can have classList. This extra check is for
+  // that case.
+  // See: http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGUseElement
+  // Discussion: https://github.com/Pomax/react-onclickoutside/pull/17
+
+
+  if (current.correspondingElement) {
+    return current.correspondingElement.classList.contains(ignoreClass);
+  }
+
+  return current.classList.contains(ignoreClass);
+}
+/**
+ * Try to find our node in a hierarchy of nodes, returning the document
+ * node as highest node if our node is not found in the path up.
+ */
+
+function findHighest(current, componentNode, ignoreClass) {
+  if (current === componentNode) {
+    return true;
+  } // If source=local then this event came from 'somewhere'
+  // inside and should be ignored. We could handle this with
+  // a layered approach, too, but that requires going back to
+  // thinking in terms of Dom node nesting, running counter
+  // to React's 'you shouldn't care about the DOM' philosophy.
+
+
+  while (current.parentNode) {
+    if (isNodeFound(current, componentNode, ignoreClass)) {
+      return true;
+    }
+
+    current = current.parentNode;
+  }
+
+  return current;
+}
+/**
+ * Check if the browser scrollbar was clicked
+ */
+
+function clickedScrollbar(evt) {
+  return document.documentElement.clientWidth <= evt.clientX || document.documentElement.clientHeight <= evt.clientY;
+}
+
+// ideally will get replaced with external dep
+// when rafrex/detect-passive-events#4 and rafrex/detect-passive-events#5 get merged in
+var testPassiveEventSupport = function testPassiveEventSupport() {
+  if (typeof window === 'undefined' || typeof window.addEventListener !== 'function') {
+    return;
+  }
+
+  var passive = false;
+  var options = Object.defineProperty({}, 'passive', {
+    get: function get() {
+      passive = true;
+    }
+  });
+
+  var noop = function noop() {};
+
+  window.addEventListener('testPassiveEventSupport', noop, options);
+  window.removeEventListener('testPassiveEventSupport', noop, options);
+  return passive;
+};
+
+function autoInc(seed) {
+  if (seed === void 0) {
+    seed = 0;
+  }
+
+  return function () {
+    return ++seed;
+  };
+}
+
+var uid = autoInc();
+
+var passiveEventSupport;
+var handlersMap = {};
+var enabledInstances = {};
+var touchEvents = ['touchstart', 'touchmove'];
+var IGNORE_CLASS_NAME = 'ignore-react-onclickoutside';
+/**
+ * Options for addEventHandler and removeEventHandler
+ */
+
+function getEventHandlerOptions(instance, eventName) {
+  var handlerOptions = null;
+  var isTouchEvent = touchEvents.indexOf(eventName) !== -1;
+
+  if (isTouchEvent && passiveEventSupport) {
+    handlerOptions = {
+      passive: !instance.props.preventDefault
+    };
+  }
+
+  return handlerOptions;
+}
+/**
+ * This function generates the HOC function that you'll use
+ * in order to impart onOutsideClick listening to an
+ * arbitrary component. It gets called at the end of the
+ * bootstrapping code to yield an instance of the
+ * onClickOutsideHOC function defined inside setupHOC().
+ */
+
+
+function onClickOutsideHOC(WrappedComponent, config) {
+  var _class, _temp;
+
+  var componentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  return _temp = _class =
+  /*#__PURE__*/
+  function (_Component) {
+    _inheritsLoose(onClickOutside, _Component);
+
+    function onClickOutside(props) {
+      var _this;
+
+      _this = _Component.call(this, props) || this;
+
+      _this.__outsideClickHandler = function (event) {
+        if (typeof _this.__clickOutsideHandlerProp === 'function') {
+          _this.__clickOutsideHandlerProp(event);
+
+          return;
+        }
+
+        var instance = _this.getInstance();
+
+        if (typeof instance.props.handleClickOutside === 'function') {
+          instance.props.handleClickOutside(event);
+          return;
+        }
+
+        if (typeof instance.handleClickOutside === 'function') {
+          instance.handleClickOutside(event);
+          return;
+        }
+
+        throw new Error("WrappedComponent: " + componentName + " lacks a handleClickOutside(event) function for processing outside click events.");
+      };
+
+      _this.__getComponentNode = function () {
+        var instance = _this.getInstance();
+
+        if (config && typeof config.setClickOutsideRef === 'function') {
+          return config.setClickOutsideRef()(instance);
+        }
+
+        if (typeof instance.setClickOutsideRef === 'function') {
+          return instance.setClickOutsideRef();
+        }
+
+        return Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["findDOMNode"])(instance);
+      };
+
+      _this.enableOnClickOutside = function () {
+        if (typeof document === 'undefined' || enabledInstances[_this._uid]) {
+          return;
+        }
+
+        if (typeof passiveEventSupport === 'undefined') {
+          passiveEventSupport = testPassiveEventSupport();
+        }
+
+        enabledInstances[_this._uid] = true;
+        var events = _this.props.eventTypes;
+
+        if (!events.forEach) {
+          events = [events];
+        }
+
+        handlersMap[_this._uid] = function (event) {
+          if (_this.componentNode === null) return;
+
+          if (_this.props.preventDefault) {
+            event.preventDefault();
+          }
+
+          if (_this.props.stopPropagation) {
+            event.stopPropagation();
+          }
+
+          if (_this.props.excludeScrollbar && clickedScrollbar(event)) return;
+          var current = event.target;
+
+          if (findHighest(current, _this.componentNode, _this.props.outsideClickIgnoreClass) !== document) {
+            return;
+          }
+
+          _this.__outsideClickHandler(event);
+        };
+
+        events.forEach(function (eventName) {
+          document.addEventListener(eventName, handlersMap[_this._uid], getEventHandlerOptions(_this, eventName));
+        });
+      };
+
+      _this.disableOnClickOutside = function () {
+        delete enabledInstances[_this._uid];
+        var fn = handlersMap[_this._uid];
+
+        if (fn && typeof document !== 'undefined') {
+          var events = _this.props.eventTypes;
+
+          if (!events.forEach) {
+            events = [events];
+          }
+
+          events.forEach(function (eventName) {
+            return document.removeEventListener(eventName, fn, getEventHandlerOptions(_this, eventName));
+          });
+          delete handlersMap[_this._uid];
+        }
+      };
+
+      _this.getRef = function (ref) {
+        return _this.instanceRef = ref;
+      };
+
+      _this._uid = uid();
+      return _this;
+    }
+    /**
+     * Access the WrappedComponent's instance.
+     */
+
+
+    var _proto = onClickOutside.prototype;
+
+    _proto.getInstance = function getInstance() {
+      if (!WrappedComponent.prototype.isReactComponent) {
+        return this;
+      }
+
+      var ref = this.instanceRef;
+      return ref.getInstance ? ref.getInstance() : ref;
+    };
+
+    /**
+     * Add click listeners to the current document,
+     * linked to this component's state.
+     */
+    _proto.componentDidMount = function componentDidMount() {
+      // If we are in an environment without a DOM such
+      // as shallow rendering or snapshots then we exit
+      // early to prevent any unhandled errors being thrown.
+      if (typeof document === 'undefined' || !document.createElement) {
+        return;
+      }
+
+      var instance = this.getInstance();
+
+      if (config && typeof config.handleClickOutside === 'function') {
+        this.__clickOutsideHandlerProp = config.handleClickOutside(instance);
+
+        if (typeof this.__clickOutsideHandlerProp !== 'function') {
+          throw new Error("WrappedComponent: " + componentName + " lacks a function for processing outside click events specified by the handleClickOutside config option.");
+        }
+      }
+
+      this.componentNode = this.__getComponentNode(); // return early so we dont initiate onClickOutside
+
+      if (this.props.disableOnClickOutside) return;
+      this.enableOnClickOutside();
+    };
+
+    _proto.componentDidUpdate = function componentDidUpdate() {
+      this.componentNode = this.__getComponentNode();
+    };
+    /**
+     * Remove all document's event listeners for this component
+     */
+
+
+    _proto.componentWillUnmount = function componentWillUnmount() {
+      this.disableOnClickOutside();
+    };
+    /**
+     * Can be called to explicitly enable event listening
+     * for clicks and touches outside of this element.
+     */
+
+
+    /**
+     * Pass-through render
+     */
+    _proto.render = function render() {
+      // eslint-disable-next-line no-unused-vars
+      var _props = this.props,
+          excludeScrollbar = _props.excludeScrollbar,
+          props = _objectWithoutProperties(_props, ["excludeScrollbar"]);
+
+      if (WrappedComponent.prototype.isReactComponent) {
+        props.ref = this.getRef;
+      } else {
+        props.wrappedRef = this.getRef;
+      }
+
+      props.disableOnClickOutside = this.disableOnClickOutside;
+      props.enableOnClickOutside = this.enableOnClickOutside;
+      return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WrappedComponent, props);
+    };
+
+    return onClickOutside;
+  }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]), _class.displayName = "OnClickOutside(" + componentName + ")", _class.defaultProps = {
+    eventTypes: ['mousedown', 'touchstart'],
+    excludeScrollbar: config && config.excludeScrollbar || false,
+    outsideClickIgnoreClass: IGNORE_CLASS_NAME,
+    preventDefault: false,
+    stopPropagation: false
+  }, _class.getClass = function () {
+    return WrappedComponent.getClass ? WrappedComponent.getClass() : WrappedComponent;
+  }, _temp;
+}
+
+
+/* harmony default export */ __webpack_exports__["default"] = (onClickOutsideHOC);
 
 
 /***/ }),

@@ -33,8 +33,6 @@ const RegistrationPage = ({userProfile, registration, updateRegistrationProfileO
 
     }
 
-
-
     
     return (
             <div className="background_container">

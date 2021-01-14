@@ -5,6 +5,7 @@ $theme-font:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, U
 @import 'mainPage';
 @import 'profile_page';
 @import 'registration_page';
+@import 'dropdown';
 
 body {
   font: $theme-font;

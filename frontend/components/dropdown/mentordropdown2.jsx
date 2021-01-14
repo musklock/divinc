@@ -1,55 +1,8 @@
+let testValues = [{id: 1, value: "test1"}, {id: 2, value: "test2"}, {id: 3, value: "test3"}]
 import React, { useState } from 'react';
 import onClickOutside from 'react-onclickoutside';
 
- const selectObjects = [
-        {
-        id: 0,
-        value: "ARts, Audio/Video Technology, Communication",
-        },
-        {
-        id: 1,
-        value: "Architecture, Construction and Manufacturing"
-        },
-        {
-        id: 2,
-        value: "Agriculture, Food and Natural Resources",
-        },
-        {
-        id: 3,
-        value: "Business, Managemetn and Administration",
-        },
-        {
-        id: 4,
-        value: "Education",
-        },
-        {
-        id: 5,
-        value: "Engineering",
-        },
-        {
-        id: 6,
-        value: "Government and Public Services",
-        },
-        {
-        id: 7,
-        value: "Healthcare",
-        },
-        {
-        id: 8,
-        value: "Hospitality",
-        },
-        {
-        id: 9,
-        value: "Information Technology",
-        },
-        {
-        id: 10,
-        value: "Law/Legal",
-        },
-
-        ]
-
-function Dropdown({ title, selectObjects, multiSelect = false }) {
+function Dropdown({ title, items, multiSelect = false }) {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState([]);
   const toggle = () => setOpen(!open);
@@ -58,7 +11,10 @@ function Dropdown({ title, selectObjects, multiSelect = false }) {
   function handleOnClick(item) {
     if (!selection.some(current => current.id === item.id)) {
       if (!multiSelect) {
+        console.log(item)
         setSelection([item]);
+        // setOpen(false);
+           console.log(selection)
       } else if (multiSelect) {
         setSelection([...selection, item]);
       }
@@ -98,7 +54,7 @@ function Dropdown({ title, selectObjects, multiSelect = false }) {
         <ul className="dd-list">
           {items.map(item => (
             <li className="dd-list-item" key={item.id}>
-              <button type="button" onClick={() => handleOnClick(item)}>
+              <button type="button" className="dd-button"onClick={() => handleOnClick(item)}>
                 <span>{item.value}</span>
                 <span>{isItemInSelection(item) && 'Selected'}</span>
               </button>
