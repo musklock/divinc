@@ -883,19 +883,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
 
 
- // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
-// import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
+
+
 
 var mSTP = function mSTP(state) {
-  return {// OTBSamples: Object.values(state.entities.OTBSamples)
+  return {
+    userProfile: state.entities.userProfile,
+    registration: state.entities.registration
   };
 };
 
 var mDTP = function mDTP(dispatch) {
-  return {// fetchOTBSamples: () => dispatch(fetchOTBSamples()),
-    // fetchOTBSampleHistories: () => dispatch(fetchOTBSampleHistories()),
+  return {
+    updateRegistrationProfileObject: function updateRegistrationProfileObject(profileObject) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_3__["updateRegistrationProfileObject"])(profileObject));
+    },
+    updateUserProfile: function updateUserProfile(user) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_3__["updateUserProfile"])(user));
+    }
   };
 };
 
@@ -916,19 +924,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page.jsx */ "./frontend/components/registration/registration_page.jsx");
+/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
 
 
- // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
-// import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
+
+
+
 
 var mSTP = function mSTP(state) {
-  return {// OTBSamples: Object.values(state.entities.OTBSamples)
+  return {
+    userProfile: state.entities.userProfile,
+    registration: state.entities.registration
   };
 };
 
 var mDTP = function mDTP(dispatch) {
-  return {// fetchOTBSamples: () => dispatch(fetchOTBSamples()),
-    // fetchOTBSampleHistories: () => dispatch(fetchOTBSampleHistories()),
+  return {
+    updateRegistrationProfileObject: function updateRegistrationProfileObject(profileObject) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateRegistrationProfileObject"])(profileObject));
+    },
+    updateUserProfile: function updateUserProfile(user) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateUserProfile"])(user));
+    }
   };
 };
 
@@ -1059,19 +1077,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _registration_profile_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_profile.jsx */ "./frontend/components/registration/registration_profile.jsx");
+/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
 
 
- // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
-// import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
+
+
+
 
 var mSTP = function mSTP(state) {
-  return {// OTBSamples: Object.values(state.entities.OTBSamples)
+  return {
+    userProfile: state.entities.userProfile,
+    registration: state.entities.registration
   };
 };
 
 var mDTP = function mDTP(dispatch) {
-  return {// fetchOTBSamples: () => dispatch(fetchOTBSamples()),
-    // fetchOTBSampleHistories: () => dispatch(fetchOTBSampleHistories()),
+  return {
+    updateRegistrationProfileObject: function updateRegistrationProfileObject(profileObject) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateRegistrationProfileObject"])(profileObject));
+    },
+    updateUserProfile: function updateUserProfile(user) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateUserProfile"])(user));
+    }
   };
 };
 
@@ -1205,7 +1233,7 @@ var ProfileReducer = function ProfileReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case UPDATE_REGISTER:
+    case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_USER_PROFILE"]:
       newState = _objectSpread({}, state);
       Object.keys(action.registerObject).forEach(function (key, idx) {
         newState[key] = Object.values(action.registerObject)[idx];
