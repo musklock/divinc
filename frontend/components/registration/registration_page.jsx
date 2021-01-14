@@ -1,6 +1,6 @@
 
 import React, {useState, useEffect} from 'react';
-
+import {Link} from 'react-router-dom';
 
 import RegisterHeader from '../header_footer/register_header';
 
@@ -45,7 +45,8 @@ const handleSubmit = (e) => {
                     </label>
 
 
-                      <button className="register_button">Register</button>
+                      <Link to="/register2" className="register_button">Register</Link>
+                      {/* <button className="register_button"><Link>Register</button> */}
                   </form>
                 </div>
               </div> 

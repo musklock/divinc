@@ -10,13 +10,14 @@ body {
   font: $theme-font;
   background-color: $themeColor-Light;
   h1, h2 {
-      color: $themeColor-Dark
+      color: $themeColor-Dark;
   }
 }
 
 .main_page_container {
   display:flex;
   flex-direction: column;
+justify-content: flex-start;
   height: 100%;
   width:100%;
  align-items: center;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import RegistrationPage2 from "./registration_page_2.jsx";
+
 // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
 // import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
 

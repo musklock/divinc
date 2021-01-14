@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 
 import RegisterHeader from '../header_footer/register_header';
 // import TableContainer from '../table/table_container'
-
+import Footer from '../header_footer/footer'
 const RegistrationPage2 = props => {
 
 
@@ -46,6 +46,7 @@ const [initialData, setInitialData] = useState([{}]);
                 </div>
               
             </div>
+            <Footer/>
             </div>
         )
 }
