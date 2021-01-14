@@ -4,15 +4,51 @@ import onClickOutside from 'react-onclickoutside';
  const selectObjects = [
         {
         id: 0,
-        value: "No",
+        value: "ARts, Audio/Video Technology, Communication",
         },
         {
         id: 1,
-        value: "Yes"
+        value: "Architecture, Construction and Manufacturing"
         },
-       
+        {
+        id: 2,
+        value: "Agriculture, Food and Natural Resources",
+        },
+        {
+        id: 3,
+        value: "Business, Managemetn and Administration",
+        },
+        {
+        id: 4,
+        value: "Education",
+        },
+        {
+        id: 5,
+        value: "Engineering",
+        },
+        {
+        id: 6,
+        value: "Government and Public Services",
+        },
+        {
+        id: 7,
+        value: "Healthcare",
+        },
+        {
+        id: 8,
+        value: "Hospitality",
+        },
+        {
+        id: 9,
+        value: "Information Technology",
+        },
+        {
+        id: 10,
+        value: "Law/Legal",
+        },
 
         ]
+
 function Dropdown({ title, selectObjects, multiSelect = false }) {
   const [open, setOpen] = useState(false);
   const [selection, setSelection] = useState([]);
