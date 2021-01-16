@@ -103,6 +103,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _static_css_appStyles_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../static/css/appStyles.scss */ "./static/css/appStyles.scss");
 /* harmony import */ var _components_registration_registration_page_container__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/registration/registration_page_container */ "./frontend/components/registration/registration_page_container.js");
 /* harmony import */ var _components_registration_registration_page_2_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/registration/registration_page_2_container */ "./frontend/components/registration/registration_page_2_container.js");
+/* harmony import */ var _components_registration_registration_profile_container__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/registration/registration_profile_container */ "./frontend/components/registration/registration_profile_container.js");
+/* harmony import */ var _components_registration_matching_questions_container__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/registration/matching_questions_container */ "./frontend/components/registration/matching_questions_container.js");
+
+
 
 
 
@@ -127,6 +131,14 @@ function App() {
     exact: true,
     path: "/register",
     component: _components_registration_registration_page_container__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/register3",
+    component: _components_registration_registration_profile_container__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/matchingquestions",
+    component: _components_registration_matching_questions_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
     render: function render() {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Redirect"], {
@@ -169,6 +181,1189 @@ var closeModal = function closeModal() {
 
 /***/ }),
 
+/***/ "./frontend/actions/register_actions.js":
+/*!**********************************************!*\
+  !*** ./frontend/actions/register_actions.js ***!
+  \**********************************************/
+/*! exports provided: UPDATE_REGISTER_OBJECT, UPDATE_USER_PROFILE, RECEIVE_ERRORS, CLEAR_ERRORS, clearErrors, updateRegistrationProfileObject, updateUserProfile */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_REGISTER_OBJECT", function() { return UPDATE_REGISTER_OBJECT; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "UPDATE_USER_PROFILE", function() { return UPDATE_USER_PROFILE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_ERRORS", function() { return RECEIVE_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CLEAR_ERRORS", function() { return CLEAR_ERRORS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "clearErrors", function() { return clearErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateRegistrationProfileObject", function() { return updateRegistrationProfileObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "updateUserProfile", function() { return updateUserProfile; });
+var UPDATE_REGISTER_OBJECT = 'UPDATE_REGISTER_OBJECT';
+var UPDATE_USER_PROFILE = "UPDATE_USER_PROFILE";
+var RECEIVE_ERRORS = "RECEIVE_ERRORS";
+var CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+var receiveErrors = function receiveErrors(errors) {
+  return {
+    type: RECEIVE_OTB_SAMPLE_ERRORS,
+    errors: errors
+  };
+};
+
+var clearErrors = function clearErrors() {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
+
+var updateRegisterObject = function updateRegisterObject(registerObject) {
+  return {
+    type: UPDATE_REGISTER_OBJECT,
+    registerObject: registerObject
+  };
+};
+
+var updateProfile = function updateProfile(user) {
+  return {
+    type: UPDATE_USER_PROFILE,
+    user: user
+  };
+};
+
+var updateRegistrationProfileObject = function updateRegistrationProfileObject(registrationObject) {
+  return function (dispatch) {
+    dispatch(updateRegisterObject(registrationObject)), function (err) {
+      return dispatch(receiveErrors(err.response.JSON));
+    };
+  };
+};
+var updateUserProfile = function updateUserProfile(userObject) {
+  return function (dispatch) {
+    dispatch(updateProfile(userObject)), function (err) {
+      return dispatch(receiveErrors(err.response.JSON));
+    };
+  };
+}; // const receiveOTBSamples = OTBSamples => {
+//  return {   type: RECEIVE_OTB_SAMPLES,
+//     OTBSamples
+//      }
+// }
+// const receiveOTBSample = OTBSample => ({
+//     type: RECEIVE_OTB_SAMPLE,
+//     OTBSample
+// })
+// const removeOTBSample = OTBSampleId => ({
+//     type: REMOVE_OTB_SAMPLE,
+//     OTBSampleId
+// })
+// export const fetchOTBSamples = () => dispatch => (
+//     OTBSampleAPIUtil.fetchOTBSamples()
+//         .then(OTBSamples => (dispatch(receiveOTBSamples(OTBSamples))
+//         ), err => (
+//             dispatch(receiveErrors(err.responseJSON))
+//         ))
+// )
+// export const fetchOTBSample = id => dispatch => (
+//     OTBSampleAPIUtil.fetchOTBSample(id)
+//         .then(OTBSample => (dispatch(receiveAirTravel(OTBSample))
+//         ), err => (
+//             dispatch(receiveErrors(err.responseJSON))
+//         ))
+// )
+// export const createOTBSample = OTBSample => dispatch => (
+//     OTBSampleAPIUtil.createOTBSample(OTBSample)
+//         .then(OTBSample => (dispatch(receiveOTBSample(OTBSample))
+//         ), err => (
+//             dispatch(receiveErrors(err.responseJSON))
+//         ))
+// )
+// export const updateOTBSample = OTBSample => dispatch => (
+//     OTBSampleAPIUtil.updateOTBSample(OTBSample)
+//         .then(OTBSample => (dispatch(receiveOTBSample(OTBSample))
+//         ), err => (
+//             dispatch(receiveErrors(err.responseJSON))
+//         ))
+// )
+// export const deleteOTBSample = OTBSampleId => dispatch => (
+//     OTBSampleAPIUtil.deleteOTBSample(OTBSampleId)
+//         .then(() => dispatch(removeOTBSample(OTBSampleId)))
+// )
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/menteedropdown1.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/menteedropdown1.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!multiSelect) {
+      if (!selection.some(function (current) {
+        return current.id === item.id;
+      })) {
+        setSelection([item]);
+        console.log;
+        console.log(selection); // setOpen(false);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/menteedropdown2.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/menteedropdown2.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/menteedropdown3.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/menteedropdown3.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/mentordropdown1.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/mentordropdown1.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/mentordropdown2.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/mentordropdown2.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/mentordropdown3.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/mentordropdown3.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      type: "button",
+      className: "dd-button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/dropdown/mentordropdown4.jsx":
+/*!**********************************************************!*\
+  !*** ./frontend/components/dropdown/mentordropdown4.jsx ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-onclickoutside */ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+var testValues = [{
+  id: 1,
+  value: "test1"
+}, {
+  id: 2,
+  value: "test2"
+}, {
+  id: 3,
+  value: "test3"
+}];
+
+
+
+function Dropdown(_ref) {
+  var title = _ref.title,
+      items = _ref.items,
+      _ref$multiSelect = _ref.multiSelect,
+      multiSelect = _ref$multiSelect === void 0 ? false : _ref$multiSelect;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      open = _useState2[0],
+      setOpen = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selection = _useState4[0],
+      setSelection = _useState4[1];
+
+  var toggle = function toggle() {
+    return setOpen(!open);
+  };
+
+  Dropdown.handleClickOutside = function () {
+    return setOpen(false);
+  };
+
+  function handleOnClick(item) {
+    if (!selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      if (!multiSelect) {
+        console.log(item);
+        setSelection([item]); // setOpen(false);
+
+        console.log(selection);
+      } else if (multiSelect) {
+        setSelection([].concat(_toConsumableArray(selection), [item]));
+      }
+    } else {
+      var selectionAfterRemoval = selection;
+      selectionAfterRemoval = selectionAfterRemoval.filter(function (current) {
+        return current.id !== item.id;
+      });
+      setSelection(_toConsumableArray(selectionAfterRemoval));
+    }
+  }
+
+  function isItemInSelection(item) {
+    if (selection.some(function (current) {
+      return current.id === item.id;
+    })) {
+      return true;
+    }
+
+    return false;
+  }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    tabIndex: 0,
+    className: "dd-header",
+    role: "button",
+    onKeyPress: function onKeyPress() {
+      return toggle(!open);
+    },
+    onClick: function onClick() {
+      return toggle(!open);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__title"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "dd-header__title--bold"
+  }, title)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "dd-header__action"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, open ? 'Close' : 'Open'))), open && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "dd-list"
+  }, items.map(function (item) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      className: "dd-list-item",
+      key: item.id
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      className: "dd-button",
+      type: "button",
+      onClick: function onClick() {
+        return handleOnClick(item);
+      }
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, item.value), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, isItemInSelection(item) && 'Selected')));
+  })));
+}
+
+var clickOutsideConfig = {
+  handleClickOutside: function handleClickOutside() {
+    return Dropdown.handleClickOutside;
+  }
+};
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_onclickoutside__WEBPACK_IMPORTED_MODULE_1__["default"])(Dropdown, clickOutsideConfig));
+
+/***/ }),
+
+/***/ "./frontend/components/header_footer/blank_header.jsx":
+/*!************************************************************!*\
+  !*** ./frontend/components/header_footer/blank_header.jsx ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var RegisterHeader = function RegisterHeader(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "header_wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    width: "169",
+    height: "32",
+    viewBox: "0 0 169 32",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M37.9538 25C37.6504 25 37.3849 24.8957 37.1573 24.6871C36.9487 24.4596 36.8444 24.1941 36.8444 23.8907V3.89422C36.8444 3.57185 36.9487 3.30637 37.1573 3.09777C37.3849 2.88918 37.6504 2.78489 37.9538 2.78489C38.4089 2.78489 38.7407 2.97452 38.9493 3.35378L48.0516 21.4444L56.9831 3.35378C57.2107 2.97452 57.5425 2.78489 57.9787 2.78489C58.2821 2.78489 58.5381 2.88918 58.7467 3.09777C58.9553 3.30637 59.0596 3.57185 59.0596 3.89422V23.8907C59.0596 24.1941 58.9553 24.4596 58.7467 24.6871C58.5381 24.8957 58.2821 25 57.9787 25C57.6563 25 57.3813 24.8957 57.1538 24.6871C56.9452 24.4596 56.8409 24.1941 56.8409 23.8907V7.79111L48.9333 23.9476C48.7247 24.3079 48.4024 24.488 47.9662 24.488C47.4921 24.488 47.1508 24.2604 46.9422 23.8053L39.0631 8.04711V23.8907C39.0631 24.1941 38.9493 24.4596 38.7218 24.6871C38.5132 24.8957 38.2572 25 37.9538 25ZM70.9051 25.1422C69.445 25.1422 68.1365 24.8009 66.9798 24.1182C65.823 23.4166 64.9033 22.4684 64.2207 21.2738C63.557 20.0791 63.2251 18.7327 63.2251 17.2347C63.2251 15.7176 63.5664 14.3618 64.2491 13.1671C64.9507 11.9724 65.8989 11.0338 67.0936 10.3511C68.2882 9.64948 69.6346 9.29866 71.1327 9.29866C72.6307 9.29866 73.9676 9.64948 75.1433 10.3511C76.338 11.0338 77.2767 11.9724 77.9593 13.1671C78.661 14.3618 79.0213 15.7176 79.0402 17.2347V23.9191C79.0402 24.2415 78.9359 24.507 78.7273 24.7156C78.5187 24.9052 78.2533 25 77.9309 25C77.6085 25 77.343 24.9052 77.1344 24.7156C76.9259 24.507 76.8216 24.2415 76.8216 23.9191V22.184C76.1768 23.0942 75.3424 23.8148 74.3184 24.3458C73.2944 24.8767 72.1567 25.1422 70.9051 25.1422ZM71.1327 23.1511C72.2325 23.1511 73.2091 22.8951 74.0624 22.3831C74.9347 21.8711 75.6174 21.1695 76.1104 20.2782C76.6224 19.368 76.8784 18.3535 76.8784 17.2347C76.8784 16.0969 76.6224 15.0824 76.1104 14.1911C75.6174 13.2999 74.9347 12.5982 74.0624 12.0862C73.2091 11.5553 72.2325 11.2898 71.1327 11.2898C70.0518 11.2898 69.0752 11.5553 68.2029 12.0862C67.3306 12.5982 66.6384 13.2999 66.1264 14.1911C65.6144 15.0824 65.3584 16.0969 65.3584 17.2347C65.3584 18.3535 65.6144 19.368 66.1264 20.2782C66.6384 21.1695 67.3306 21.8711 68.2029 22.3831C69.0752 22.8951 70.0518 23.1511 71.1327 23.1511ZM88.9604 25C87.9554 25 87.0547 24.763 86.2582 24.2889C85.4807 23.8148 84.8644 23.1701 84.4093 22.3547C83.9542 21.5203 83.7267 20.5721 83.7267 19.5102V11.9156H81.8778C81.5933 11.9156 81.3563 11.8302 81.1667 11.6596C80.977 11.4699 80.8822 11.2424 80.8822 10.9769C80.8822 10.6924 80.977 10.4649 81.1667 10.2942C81.3563 10.1046 81.5933 10.0098 81.8778 10.0098H83.7267V5.60089C83.7267 5.27852 83.8215 5.01303 84.0111 4.80444C84.2197 4.59585 84.4852 4.49155 84.8076 4.49155C85.1299 4.49155 85.3954 4.59585 85.604 4.80444C85.8126 5.01303 85.9169 5.27852 85.9169 5.60089V10.0098H89.1311C89.4156 10.0098 89.6526 10.1046 89.8422 10.2942C90.0319 10.4649 90.1267 10.6924 90.1267 10.9769C90.1267 11.2424 90.0319 11.4699 89.8422 11.6596C89.6526 11.8302 89.4156 11.9156 89.1311 11.9156H85.9169V19.5102C85.9169 20.4773 86.2013 21.2738 86.7702 21.8996C87.3391 22.5064 88.0692 22.8098 88.9604 22.8098H89.7284C90.0319 22.8098 90.2784 22.9141 90.468 23.1227C90.6576 23.3313 90.7524 23.5967 90.7524 23.9191C90.7524 24.2415 90.6387 24.507 90.4111 24.7156C90.1836 24.9052 89.8991 25 89.5578 25H88.9604ZM100.832 25.1422C99.3335 25.1422 97.9966 24.8009 96.8209 24.1182C95.6642 23.4166 94.7444 22.4684 94.0618 21.2738C93.3981 20.0791 93.0662 18.7327 93.0662 17.2347C93.0662 15.7176 93.3886 14.3618 94.0333 13.1671C94.6781 11.9724 95.5599 11.0338 96.6787 10.3511C97.7975 9.64948 99.087 9.29866 100.547 9.29866C102.917 9.29866 104.842 10.2089 106.321 12.0293C106.53 12.2569 106.606 12.5034 106.549 12.7689C106.492 13.0154 106.331 13.2335 106.065 13.4231C105.857 13.5748 105.62 13.6317 105.354 13.5938C105.108 13.5369 104.89 13.3947 104.7 13.1671C103.6 11.9156 102.216 11.2898 100.547 11.2898C99.4852 11.2898 98.5465 11.5458 97.7311 12.0578C96.9347 12.5698 96.3089 13.2714 95.8538 14.1627C95.4176 15.0539 95.1996 16.0779 95.1996 17.2347C95.1996 18.3724 95.4366 19.387 95.9107 20.2782C96.3847 21.1695 97.0484 21.8711 97.9018 22.3831C98.7551 22.8951 99.7317 23.1511 100.832 23.1511C102.349 23.1511 103.572 22.7434 104.501 21.928C104.728 21.7384 104.965 21.6341 105.212 21.6151C105.459 21.5961 105.686 21.672 105.895 21.8427C106.122 22.0513 106.245 22.2883 106.264 22.5538C106.302 22.8193 106.217 23.0468 106.008 23.2364C104.624 24.507 102.899 25.1422 100.832 25.1422ZM111.518 25C111.177 25 110.902 24.9052 110.693 24.7156C110.504 24.507 110.409 24.2415 110.409 23.9191V10.5502C110.409 10.2089 110.504 9.94341 110.693 9.75378C110.902 9.54518 111.177 9.44089 111.518 9.44089C111.841 9.44089 112.097 9.54518 112.286 9.75378C112.495 9.94341 112.599 10.2089 112.599 10.5502V11.5173C113.206 10.8157 113.955 10.2658 114.846 9.86755C115.756 9.46933 116.733 9.27022 117.776 9.27022C119.122 9.27022 120.327 9.55466 121.388 10.1236C122.45 10.6735 123.285 11.4889 123.892 12.5698C124.517 13.6507 124.83 14.9686 124.83 16.5236V23.9191C124.83 24.2225 124.726 24.4785 124.517 24.6871C124.309 24.8957 124.053 25 123.749 25C123.427 25 123.161 24.8957 122.953 24.6871C122.744 24.4785 122.64 24.2225 122.64 23.9191V16.5236C122.64 14.76 122.147 13.461 121.161 12.6267C120.194 11.7733 118.99 11.3467 117.548 11.3467C116.619 11.3467 115.775 11.5268 115.017 11.8871C114.277 12.2474 113.689 12.7404 113.253 13.3662C112.817 13.992 112.599 14.7031 112.599 15.4996V23.9191C112.599 24.2415 112.495 24.507 112.286 24.7156C112.097 24.9052 111.841 25 111.518 25ZM111.518 18.6569C111.177 18.6569 110.902 18.5526 110.693 18.344C110.504 18.1354 110.409 17.8699 110.409 17.5476V3.89422C110.409 3.55289 110.504 3.2874 110.693 3.09777C110.902 2.88918 111.177 2.78489 111.518 2.78489C111.841 2.78489 112.097 2.88918 112.286 3.09777C112.495 3.2874 112.599 3.55289 112.599 3.89422V17.5476C112.599 17.8699 112.495 18.1354 112.286 18.344C112.097 18.5526 111.841 18.6569 111.518 18.6569ZM135.319 25C134.314 25 133.414 24.763 132.617 24.2889C131.84 23.8148 131.223 23.1701 130.768 22.3547C130.313 21.5203 130.086 20.5721 130.086 19.5102V11.9156H128.237C127.952 11.9156 127.715 11.8302 127.526 11.6596C127.336 11.4699 127.241 11.2424 127.241 10.9769C127.241 10.6924 127.336 10.4649 127.526 10.2942C127.715 10.1046 127.952 10.0098 128.237 10.0098H130.086V5.60089C130.086 5.27852 130.18 5.01303 130.37 4.80444C130.579 4.59585 130.844 4.49155 131.166 4.49155C131.489 4.49155 131.754 4.59585 131.963 4.80444C132.171 5.01303 132.276 5.27852 132.276 5.60089V10.0098H135.49C135.774 10.0098 136.011 10.1046 136.201 10.2942C136.391 10.4649 136.486 10.6924 136.486 10.9769C136.486 11.2424 136.391 11.4699 136.201 11.6596C136.011 11.8302 135.774 11.9156 135.49 11.9156H132.276V19.5102C132.276 20.4773 132.56 21.2738 133.129 21.8996C133.698 22.5064 134.428 22.8098 135.319 22.8098H136.087C136.391 22.8098 136.637 22.9141 136.827 23.1227C137.017 23.3313 137.111 23.5967 137.111 23.9191C137.111 24.2415 136.998 24.507 136.77 24.7156C136.542 24.9052 136.258 25 135.917 25H135.319ZM147.333 25.1422C145.816 25.1422 144.46 24.8009 143.265 24.1182C142.07 23.4356 141.132 22.4969 140.449 21.3022C139.766 20.1076 139.425 18.7517 139.425 17.2347C139.425 15.6987 139.766 14.3333 140.449 13.1387C141.132 11.944 142.07 11.0053 143.265 10.3227C144.46 9.64 145.816 9.29866 147.333 9.29866C148.85 9.29866 150.196 9.64 151.372 10.3227C152.566 11.0053 153.505 11.944 154.188 13.1387C154.87 14.3333 155.221 15.6987 155.24 17.2347C155.24 18.7517 154.889 20.1076 154.188 21.3022C153.505 22.4969 152.566 23.4356 151.372 24.1182C150.196 24.8009 148.85 25.1422 147.333 25.1422ZM147.333 23.1511C148.433 23.1511 149.419 22.8951 150.291 22.3831C151.163 21.8711 151.846 21.1695 152.339 20.2782C152.832 19.387 153.078 18.3724 153.078 17.2347C153.078 16.0969 152.832 15.0824 152.339 14.1911C151.846 13.2809 151.163 12.5698 150.291 12.0578C149.419 11.5458 148.433 11.2898 147.333 11.2898C146.233 11.2898 145.247 11.5458 144.374 12.0578C143.502 12.5698 142.81 13.2809 142.298 14.1911C141.805 15.0824 141.558 16.0969 141.558 17.2347C141.558 18.3724 141.805 19.387 142.298 20.2782C142.81 21.1695 143.502 21.8711 144.374 22.3831C145.247 22.8951 146.233 23.1511 147.333 23.1511ZM160.154 25C159.434 25 159.073 24.6397 159.073 23.9191V10.5218C159.073 9.80118 159.434 9.44089 160.154 9.44089C160.875 9.44089 161.235 9.80118 161.235 10.5218V11.7449C161.804 10.9864 162.506 10.389 163.34 9.95289C164.174 9.49778 165.094 9.27022 166.099 9.27022C166.971 9.27022 167.645 9.39348 168.119 9.64C168.593 9.88652 168.773 10.2468 168.659 10.7209C168.564 11.157 168.337 11.3846 167.976 11.4036C167.635 11.4036 167.227 11.3846 166.753 11.3467C165.691 11.2519 164.743 11.3656 163.909 11.688C163.093 11.9914 162.439 12.4655 161.946 13.1102C161.472 13.755 161.235 14.523 161.235 15.4142V23.9191C161.235 24.6397 160.875 25 160.154 25Z",
+    fill: "black"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M15.8464 2.96289H8.58307e-06L6.67216 9.63504H22.5185L15.8464 2.96289ZM6.67215 9.63505V25.4814L0 18.8093V2.96289L6.67215 9.63505Z",
+    fill: "#CCCCCC"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M6.67218 25.4814L22.5185 25.4814L15.8464 18.8093L2.28882e-05 18.8093L6.67218 25.4814ZM15.8464 18.8093L15.8464 2.96292L22.5186 9.63508L22.5186 25.4814L15.8464 18.8093Z",
+    fill: "black"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegisterHeader);
+
+/***/ }),
+
+/***/ "./frontend/components/header_footer/footer.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/header_footer/footer.jsx ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Footer = function Footer(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "footer_wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    width: "169",
+    height: "32",
+    viewBox: "0 0 169 32",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M37.9538 25C37.6504 25 37.3849 24.8957 37.1573 24.6871C36.9487 24.4596 36.8444 24.1941 36.8444 23.8907V3.89422C36.8444 3.57185 36.9487 3.30637 37.1573 3.09777C37.3849 2.88918 37.6504 2.78489 37.9538 2.78489C38.4089 2.78489 38.7407 2.97452 38.9493 3.35378L48.0516 21.4444L56.9831 3.35378C57.2107 2.97452 57.5425 2.78489 57.9787 2.78489C58.2821 2.78489 58.5381 2.88918 58.7467 3.09777C58.9553 3.30637 59.0596 3.57185 59.0596 3.89422V23.8907C59.0596 24.1941 58.9553 24.4596 58.7467 24.6871C58.5381 24.8957 58.2821 25 57.9787 25C57.6563 25 57.3813 24.8957 57.1538 24.6871C56.9452 24.4596 56.8409 24.1941 56.8409 23.8907V7.79111L48.9333 23.9476C48.7247 24.3079 48.4024 24.488 47.9662 24.488C47.4921 24.488 47.1508 24.2604 46.9422 23.8053L39.0631 8.04711V23.8907C39.0631 24.1941 38.9493 24.4596 38.7218 24.6871C38.5132 24.8957 38.2572 25 37.9538 25ZM70.9051 25.1422C69.445 25.1422 68.1365 24.8009 66.9798 24.1182C65.823 23.4166 64.9033 22.4684 64.2207 21.2738C63.557 20.0791 63.2251 18.7327 63.2251 17.2347C63.2251 15.7176 63.5664 14.3618 64.2491 13.1671C64.9507 11.9724 65.8989 11.0338 67.0936 10.3511C68.2882 9.64948 69.6346 9.29866 71.1327 9.29866C72.6307 9.29866 73.9676 9.64948 75.1433 10.3511C76.338 11.0338 77.2767 11.9724 77.9593 13.1671C78.661 14.3618 79.0213 15.7176 79.0402 17.2347V23.9191C79.0402 24.2415 78.9359 24.507 78.7273 24.7156C78.5187 24.9052 78.2533 25 77.9309 25C77.6085 25 77.343 24.9052 77.1344 24.7156C76.9259 24.507 76.8216 24.2415 76.8216 23.9191V22.184C76.1768 23.0942 75.3424 23.8148 74.3184 24.3458C73.2944 24.8767 72.1567 25.1422 70.9051 25.1422ZM71.1327 23.1511C72.2325 23.1511 73.2091 22.8951 74.0624 22.3831C74.9347 21.8711 75.6174 21.1695 76.1104 20.2782C76.6224 19.368 76.8784 18.3535 76.8784 17.2347C76.8784 16.0969 76.6224 15.0824 76.1104 14.1911C75.6174 13.2999 74.9347 12.5982 74.0624 12.0862C73.2091 11.5553 72.2325 11.2898 71.1327 11.2898C70.0518 11.2898 69.0752 11.5553 68.2029 12.0862C67.3306 12.5982 66.6384 13.2999 66.1264 14.1911C65.6144 15.0824 65.3584 16.0969 65.3584 17.2347C65.3584 18.3535 65.6144 19.368 66.1264 20.2782C66.6384 21.1695 67.3306 21.8711 68.2029 22.3831C69.0752 22.8951 70.0518 23.1511 71.1327 23.1511ZM88.9604 25C87.9554 25 87.0547 24.763 86.2582 24.2889C85.4807 23.8148 84.8644 23.1701 84.4093 22.3547C83.9542 21.5203 83.7267 20.5721 83.7267 19.5102V11.9156H81.8778C81.5933 11.9156 81.3563 11.8302 81.1667 11.6596C80.977 11.4699 80.8822 11.2424 80.8822 10.9769C80.8822 10.6924 80.977 10.4649 81.1667 10.2942C81.3563 10.1046 81.5933 10.0098 81.8778 10.0098H83.7267V5.60089C83.7267 5.27852 83.8215 5.01303 84.0111 4.80444C84.2197 4.59585 84.4852 4.49155 84.8076 4.49155C85.1299 4.49155 85.3954 4.59585 85.604 4.80444C85.8126 5.01303 85.9169 5.27852 85.9169 5.60089V10.0098H89.1311C89.4156 10.0098 89.6526 10.1046 89.8422 10.2942C90.0319 10.4649 90.1267 10.6924 90.1267 10.9769C90.1267 11.2424 90.0319 11.4699 89.8422 11.6596C89.6526 11.8302 89.4156 11.9156 89.1311 11.9156H85.9169V19.5102C85.9169 20.4773 86.2013 21.2738 86.7702 21.8996C87.3391 22.5064 88.0692 22.8098 88.9604 22.8098H89.7284C90.0319 22.8098 90.2784 22.9141 90.468 23.1227C90.6576 23.3313 90.7524 23.5967 90.7524 23.9191C90.7524 24.2415 90.6387 24.507 90.4111 24.7156C90.1836 24.9052 89.8991 25 89.5578 25H88.9604ZM100.832 25.1422C99.3335 25.1422 97.9966 24.8009 96.8209 24.1182C95.6642 23.4166 94.7444 22.4684 94.0618 21.2738C93.3981 20.0791 93.0662 18.7327 93.0662 17.2347C93.0662 15.7176 93.3886 14.3618 94.0333 13.1671C94.6781 11.9724 95.5599 11.0338 96.6787 10.3511C97.7975 9.64948 99.087 9.29866 100.547 9.29866C102.917 9.29866 104.842 10.2089 106.321 12.0293C106.53 12.2569 106.606 12.5034 106.549 12.7689C106.492 13.0154 106.331 13.2335 106.065 13.4231C105.857 13.5748 105.62 13.6317 105.354 13.5938C105.108 13.5369 104.89 13.3947 104.7 13.1671C103.6 11.9156 102.216 11.2898 100.547 11.2898C99.4852 11.2898 98.5465 11.5458 97.7311 12.0578C96.9347 12.5698 96.3089 13.2714 95.8538 14.1627C95.4176 15.0539 95.1996 16.0779 95.1996 17.2347C95.1996 18.3724 95.4366 19.387 95.9107 20.2782C96.3847 21.1695 97.0484 21.8711 97.9018 22.3831C98.7551 22.8951 99.7317 23.1511 100.832 23.1511C102.349 23.1511 103.572 22.7434 104.501 21.928C104.728 21.7384 104.965 21.6341 105.212 21.6151C105.459 21.5961 105.686 21.672 105.895 21.8427C106.122 22.0513 106.245 22.2883 106.264 22.5538C106.302 22.8193 106.217 23.0468 106.008 23.2364C104.624 24.507 102.899 25.1422 100.832 25.1422ZM111.518 25C111.177 25 110.902 24.9052 110.693 24.7156C110.504 24.507 110.409 24.2415 110.409 23.9191V10.5502C110.409 10.2089 110.504 9.94341 110.693 9.75378C110.902 9.54518 111.177 9.44089 111.518 9.44089C111.841 9.44089 112.097 9.54518 112.286 9.75378C112.495 9.94341 112.599 10.2089 112.599 10.5502V11.5173C113.206 10.8157 113.955 10.2658 114.846 9.86755C115.756 9.46933 116.733 9.27022 117.776 9.27022C119.122 9.27022 120.327 9.55466 121.388 10.1236C122.45 10.6735 123.285 11.4889 123.892 12.5698C124.517 13.6507 124.83 14.9686 124.83 16.5236V23.9191C124.83 24.2225 124.726 24.4785 124.517 24.6871C124.309 24.8957 124.053 25 123.749 25C123.427 25 123.161 24.8957 122.953 24.6871C122.744 24.4785 122.64 24.2225 122.64 23.9191V16.5236C122.64 14.76 122.147 13.461 121.161 12.6267C120.194 11.7733 118.99 11.3467 117.548 11.3467C116.619 11.3467 115.775 11.5268 115.017 11.8871C114.277 12.2474 113.689 12.7404 113.253 13.3662C112.817 13.992 112.599 14.7031 112.599 15.4996V23.9191C112.599 24.2415 112.495 24.507 112.286 24.7156C112.097 24.9052 111.841 25 111.518 25ZM111.518 18.6569C111.177 18.6569 110.902 18.5526 110.693 18.344C110.504 18.1354 110.409 17.8699 110.409 17.5476V3.89422C110.409 3.55289 110.504 3.2874 110.693 3.09777C110.902 2.88918 111.177 2.78489 111.518 2.78489C111.841 2.78489 112.097 2.88918 112.286 3.09777C112.495 3.2874 112.599 3.55289 112.599 3.89422V17.5476C112.599 17.8699 112.495 18.1354 112.286 18.344C112.097 18.5526 111.841 18.6569 111.518 18.6569ZM135.319 25C134.314 25 133.414 24.763 132.617 24.2889C131.84 23.8148 131.223 23.1701 130.768 22.3547C130.313 21.5203 130.086 20.5721 130.086 19.5102V11.9156H128.237C127.952 11.9156 127.715 11.8302 127.526 11.6596C127.336 11.4699 127.241 11.2424 127.241 10.9769C127.241 10.6924 127.336 10.4649 127.526 10.2942C127.715 10.1046 127.952 10.0098 128.237 10.0098H130.086V5.60089C130.086 5.27852 130.18 5.01303 130.37 4.80444C130.579 4.59585 130.844 4.49155 131.166 4.49155C131.489 4.49155 131.754 4.59585 131.963 4.80444C132.171 5.01303 132.276 5.27852 132.276 5.60089V10.0098H135.49C135.774 10.0098 136.011 10.1046 136.201 10.2942C136.391 10.4649 136.486 10.6924 136.486 10.9769C136.486 11.2424 136.391 11.4699 136.201 11.6596C136.011 11.8302 135.774 11.9156 135.49 11.9156H132.276V19.5102C132.276 20.4773 132.56 21.2738 133.129 21.8996C133.698 22.5064 134.428 22.8098 135.319 22.8098H136.087C136.391 22.8098 136.637 22.9141 136.827 23.1227C137.017 23.3313 137.111 23.5967 137.111 23.9191C137.111 24.2415 136.998 24.507 136.77 24.7156C136.542 24.9052 136.258 25 135.917 25H135.319ZM147.333 25.1422C145.816 25.1422 144.46 24.8009 143.265 24.1182C142.07 23.4356 141.132 22.4969 140.449 21.3022C139.766 20.1076 139.425 18.7517 139.425 17.2347C139.425 15.6987 139.766 14.3333 140.449 13.1387C141.132 11.944 142.07 11.0053 143.265 10.3227C144.46 9.64 145.816 9.29866 147.333 9.29866C148.85 9.29866 150.196 9.64 151.372 10.3227C152.566 11.0053 153.505 11.944 154.188 13.1387C154.87 14.3333 155.221 15.6987 155.24 17.2347C155.24 18.7517 154.889 20.1076 154.188 21.3022C153.505 22.4969 152.566 23.4356 151.372 24.1182C150.196 24.8009 148.85 25.1422 147.333 25.1422ZM147.333 23.1511C148.433 23.1511 149.419 22.8951 150.291 22.3831C151.163 21.8711 151.846 21.1695 152.339 20.2782C152.832 19.387 153.078 18.3724 153.078 17.2347C153.078 16.0969 152.832 15.0824 152.339 14.1911C151.846 13.2809 151.163 12.5698 150.291 12.0578C149.419 11.5458 148.433 11.2898 147.333 11.2898C146.233 11.2898 145.247 11.5458 144.374 12.0578C143.502 12.5698 142.81 13.2809 142.298 14.1911C141.805 15.0824 141.558 16.0969 141.558 17.2347C141.558 18.3724 141.805 19.387 142.298 20.2782C142.81 21.1695 143.502 21.8711 144.374 22.3831C145.247 22.8951 146.233 23.1511 147.333 23.1511ZM160.154 25C159.434 25 159.073 24.6397 159.073 23.9191V10.5218C159.073 9.80118 159.434 9.44089 160.154 9.44089C160.875 9.44089 161.235 9.80118 161.235 10.5218V11.7449C161.804 10.9864 162.506 10.389 163.34 9.95289C164.174 9.49778 165.094 9.27022 166.099 9.27022C166.971 9.27022 167.645 9.39348 168.119 9.64C168.593 9.88652 168.773 10.2468 168.659 10.7209C168.564 11.157 168.337 11.3846 167.976 11.4036C167.635 11.4036 167.227 11.3846 166.753 11.3467C165.691 11.2519 164.743 11.3656 163.909 11.688C163.093 11.9914 162.439 12.4655 161.946 13.1102C161.472 13.755 161.235 14.523 161.235 15.4142V23.9191C161.235 24.6397 160.875 25 160.154 25Z",
+    fill: "black"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M15.8464 2.96289H8.58307e-06L6.67216 9.63504H22.5185L15.8464 2.96289ZM6.67215 9.63505V25.4814L0 18.8093V2.96289L6.67215 9.63505Z",
+    fill: "#CCCCCC"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M6.67218 25.4814L22.5185 25.4814L15.8464 18.8093L2.28882e-05 18.8093L6.67218 25.4814ZM15.8464 18.8093L15.8464 2.96292L22.5186 9.63508L22.5186 25.4814L15.8464 18.8093Z",
+    fill: "black"
+  }))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Footer);
+
+/***/ }),
+
 /***/ "./frontend/components/header_footer/main_page_header.jsx":
 /*!****************************************************************!*\
   !*** ./frontend/components/header_footer/main_page_header.jsx ***!
@@ -183,12 +1378,41 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Header = function Header(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "header_wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "header-logo"
-  }, "MATCHTOR");
+  }, "MATCHTOR"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+
+/***/ "./frontend/components/header_footer/register_header.jsx":
+/*!***************************************************************!*\
+  !*** ./frontend/components/header_footer/register_header.jsx ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var RegisterHeader = function RegisterHeader(props) {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "header_wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header-logo"
+  }, "MATCHTOR"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "login-button"
+  }, "Login"));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegisterHeader);
 
 /***/ }),
 
@@ -205,6 +1429,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _login_component__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login_component */ "./frontend/components/home_page/login_component.jsx");
 /* harmony import */ var _header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../header_footer/main_page_header */ "./frontend/components/header_footer/main_page_header.jsx");
+/* harmony import */ var _header_footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../header_footer/footer */ "./frontend/components/header_footer/footer.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -219,7 +1445,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
  // import TableContainer from '../table/table_container'
+
+
 
 var HomePage = function HomePage(props) {
   // useEffect(() => {
@@ -248,7 +1477,9 @@ var HomePage = function HomePage(props) {
     className: "main_page_container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_background"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_login_component__WEBPACK_IMPORTED_MODULE_1__["default"], null)));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header-prompt"
+  }, "Match with a mentor in your desired field and start building skills and confidence for your career switch"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_login_component__WEBPACK_IMPORTED_MODULE_1__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (HomePage);
@@ -300,11 +1531,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
 
 
 
 var LoginContainer = function LoginContainer(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "login-wrapper"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
     className: "login-container",
     action: ""
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
@@ -319,7 +1554,15 @@ var LoginContainer = function LoginContainer(props) {
     className: "login-container-submit",
     type: "submit",
     value: "LOGIN"
-  })));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "#",
+    className: "reset-password"
+  }, "Forgot password?")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "register-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Don't have an account? ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+    className: "signup-link",
+    to: "/register"
+  }, "Sign up"))));
 };
 
 var mSTP = function mSTP(state) {
@@ -400,10 +1643,10 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 
 /***/ }),
 
-/***/ "./frontend/components/registration/registration_page.jsx":
-/*!****************************************************************!*\
-  !*** ./frontend/components/registration/registration_page.jsx ***!
-  \****************************************************************/
+/***/ "./frontend/components/registration/matching_questions.jsx":
+/*!*****************************************************************!*\
+  !*** ./frontend/components/registration/matching_questions.jsx ***!
+  \*****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -411,7 +1654,15 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/main_page_header */ "./frontend/components/header_footer/main_page_header.jsx");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _dropdown_menteedropdown1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dropdown/menteedropdown1 */ "./frontend/components/dropdown/menteedropdown1.jsx");
+/* harmony import */ var _dropdown_menteedropdown2__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dropdown/menteedropdown2 */ "./frontend/components/dropdown/menteedropdown2.jsx");
+/* harmony import */ var _dropdown_menteedropdown3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dropdown/menteedropdown3 */ "./frontend/components/dropdown/menteedropdown3.jsx");
+/* harmony import */ var _dropdown_mentordropdown2__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../dropdown/mentordropdown2 */ "./frontend/components/dropdown/mentordropdown2.jsx");
+/* harmony import */ var _dropdown_mentordropdown1__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dropdown/mentordropdown1 */ "./frontend/components/dropdown/mentordropdown1.jsx");
+/* harmony import */ var _dropdown_mentordropdown3__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../dropdown/mentordropdown3 */ "./frontend/components/dropdown/mentordropdown3.jsx");
+/* harmony import */ var _dropdown_mentordropdown4__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../dropdown/mentordropdown4 */ "./frontend/components/dropdown/mentordropdown4.jsx");
+/* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -425,34 +1676,418 @@ function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
+
+
+
+
+
+
+
+
+var industries = [{
+  id: 0,
+  value: "ARts, Audio/Video Technology, Communication"
+}, {
+  id: 1,
+  value: "Architecture, Construction and Manufacturing"
+}, {
+  id: 2,
+  value: "Agriculture, Food and Natural Resources"
+}, {
+  id: 3,
+  value: "Business, Managemetn and Administration"
+}, {
+  id: 4,
+  value: "Education"
+}, {
+  id: 5,
+  value: "Engineering"
+}, {
+  id: 6,
+  value: "Government and Public Services"
+}, {
+  id: 7,
+  value: "Healthcare"
+}, {
+  id: 8,
+  value: "Hospitality"
+}, {
+  id: 9,
+  value: "Information Technology"
+}, {
+  id: 10,
+  value: "Law/Legal"
+}];
+var fields = [{
+  id: 0,
+  value: "Product Management"
+}, {
+  id: 1,
+  value: "User Experience Design"
+}, {
+  id: 2,
+  value: "Software Engineering"
+}];
+var menteeGoals = [{
+  id: 0,
+  value: "Build Confidence"
+}, {
+  id: 1,
+  value: "Develop Transferrable Skills"
+}, {
+  id: 2,
+  value: "Resume Feedback"
+}, {
+  id: 3,
+  value: "Job Search Strategy"
+}, {
+  id: 4,
+  value: "Interview Feedback"
+}, {
+  id: 5,
+  value: "Build ongoing relationships with experienced professionals"
+}];
+var yesNoSelect = [{
+  id: 0,
+  value: "No"
+}, {
+  id: 1,
+  value: "Yes"
+}];
+var mentorGoals = [{
+  id: 0,
+  value: "Help Build Confidence"
+}, {
+  id: 1,
+  value: "Help Develop Transferrable Skills"
+}, {
+  id: 2,
+  value: "Give Resume Feedback"
+}, {
+  id: 3,
+  value: "Help with Job Search Strategy"
+}, {
+  id: 4,
+  value: "Give Interview Feedback"
+}, {
+  id: 5,
+  value: "Build ongoing relationships with aspiring professionals"
+}];
  // import TableContainer from '../table/table_container'
 
-var RegistrationPage = function RegistrationPage(props) {
-  // useEffect(() => {
-  //     props.fetchOTBSamples()
-  //     props.fetchOTBSampleHistories()
-  // }, [])    
-  var table = true; // function container() {
-  //     if (table) {
-  //         return <TableContainer/>
-  //     }
-  // }
+var MatchingQuestions = function MatchingQuestions(_ref) {
+  var userProfile = _ref.userProfile,
+      registration = _ref.registration,
+      updateRegistrationProfileObject = _ref.updateRegistrationProfileObject,
+      updateUserProfile = _ref.updateUserProfile,
+      history = _ref.history;
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([{}]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
-      initialData = _useState2[0],
-      setInitialData = _useState2[1];
+      mentor1 = _useState2[0],
+      setMentor1 = _useState2[1];
 
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    fetch('/api').then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      return setInitialData(data);
-    });
-  }, []);
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      mentor2 = _useState4[0],
+      setMentor2 = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      mentor3 = _useState6[0],
+      setMentor3 = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      mentor4 = _useState8[0],
+      setMentor4 = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      mentee1 = _useState10[0],
+      setMetee1 = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState12 = _slicedToArray(_useState11, 2),
+      mentee2 = _useState12[0],
+      setMetee2 = _useState12[1];
+
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState14 = _slicedToArray(_useState13, 2),
+      mentee3 = _useState14[0],
+      setMetee3 = _useState14[1];
+
+  var submit = function submit() {
+    var userObject;
+
+    if (registration.userType === "mentor") {
+      userObject = {
+        careerSwitcher: mentor1,
+        industry: mentor2,
+        currentField: mentor3,
+        offering: mentor4
+      };
+    }
+
+    if (registration.userType === "mentee") {
+      userObject = {
+        industry: mentee1,
+        currentField: mentee2,
+        goals: mentee3
+      };
+    }
+
+    updateRegistrationProfileObject(userObject);
+    history.push("/matchpage");
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "background_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_register_header__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-box-container"
+  }, registration.userType === "mentee" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form_box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "registration_form",
+    onSubmit: function onSubmit() {
+      return submit();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "form_header"
+  }, "Let's get started with matching you with some mentees!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " Have you switched from another Industry into tech?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_menteedropdown1__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    title: "Select One",
+    items: yesNoSelect
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " If yes, which industry did you switch from?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_menteedropdown2__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    title: "Select One",
+    items: industries
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What's your current field?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_menteedropdown3__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    title: "Select One",
+    items: fields
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What can you offer as a mentor?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_menteedropdown3__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    title: "Select All That Apply",
+    items: mentorGoals,
+    multiselect: true
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Submit"
+  }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form_box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "registration_form",
+    onSubmit: function onSubmit() {
+      return submit();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "form_header"
+  }, "Let's get started with matching you with some mentors!"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What industry are you currently in?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_mentordropdown2__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    title: "Select One",
+    items: industries
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What's your desired field in Tech?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_mentordropdown1__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    title: "Select One",
+    items: fields
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "dropdown_label"
+  }, " What do you wnat out of mentorship?", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_dropdown_mentordropdown3__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    title: "Select One",
+    items: menteeGoals
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Submit"
+  })))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MatchingQuestions);
+
+/***/ }),
+
+/***/ "./frontend/components/registration/matching_questions_container.js":
+/*!**************************************************************************!*\
+  !*** ./frontend/components/registration/matching_questions_container.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _matching_questions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./matching_questions */ "./frontend/components/registration/matching_questions.jsx");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    userProfile: state.entities.userProfile,
+    registration: state.entities.registration
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    updateRegistrationProfileObject: function updateRegistrationProfileObject(profileObject) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_3__["updateRegistrationProfileObject"])(profileObject));
+    },
+    updateUserProfile: function updateUserProfile(user) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_3__["updateUserProfile"])(user));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_matching_questions__WEBPACK_IMPORTED_MODULE_2__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/registration/registration_page.jsx":
+/*!****************************************************************!*\
+  !*** ./frontend/components/registration/registration_page.jsx ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _header_footer_footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../header_footer/footer */ "./frontend/components/header_footer/footer.jsx");
+/* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+ // import TableContainer from '../table/table_container'
+
+var RegistrationPage = function RegistrationPage(_ref) {
+  var userProfile = _ref.userProfile,
+      registration = _ref.registration,
+      updateRegistrationProfileObject = _ref.updateRegistrationProfileObject,
+      updateUserProfile = _ref.updateUserProfile,
+      history = _ref.history;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      email = _useState2[0],
+      setEmail = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      name = _useState4[0],
+      setName = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('&&&&'),
+      _useState6 = _slicedToArray(_useState5, 2),
+      password = _useState6[0],
+      setPassword = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      confirmation = _useState8[0],
+      setConfirmation = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      linkedin = _useState10[0],
+      setlinkedin = _useState10[1];
+
+  var submit = function submit() {
+    if (password != confirmation) {
+      alert('Passwords must match!');
+      return;
+    }
+
+    var userObject = {
+      name: name,
+      email: email,
+      password: password,
+      linkedin: linkedin
+    };
+    updateRegistrationProfileObject(userObject);
+    history.push("/register2");
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_register_header__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "background_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form_box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Your Information"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    className: "registration_form",
+    onSubmit: function onSubmit() {
+      return submit();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text"
+  }, "Full Name", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    onChange: function onChange(event) {
+      return setName(event.target.value);
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text"
+  }, "Email", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    onChange: function onChange(event) {
+      return setEmail(event.target.value);
+    },
+    placeholder: "youremail@example.com"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text"
+  }, "Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    onChange: function onChange(event) {
+      return setPassword(event.target.value);
+    },
+    placeholder: "must be longer than 6 characters"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text"
+  }, "Verify Password", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "password",
+    onChange: function onChange(event) {
+      return setConfirmation(event.target.value);
+    },
+    placeholder: "type to confirm your password"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    className: "registration_text",
+    onChange: function onChange(event) {
+      return setlinkedin(event.target.value);
+    }
+  }, "Linkedin URL", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Register",
+    className: "register_button"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RegistrationPage);
@@ -470,48 +2105,59 @@ var RegistrationPage = function RegistrationPage(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/main_page_header */ "./frontend/components/header_footer/main_page_header.jsx");
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _header_footer_register_header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../header_footer/register_header */ "./frontend/components/header_footer/register_header.jsx");
+/* harmony import */ var _header_footer_footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../header_footer/footer */ "./frontend/components/header_footer/footer.jsx");
 
 
  // import TableContainer from '../table/table_container'
 
-var RegistrationPage2 = function RegistrationPage2(props) {
+
+
+var RegistrationPage2 = function RegistrationPage2(_ref) {
+  var userProfile = _ref.userProfile,
+      registration = _ref.registration,
+      updateRegistrationProfileObject = _ref.updateRegistrationProfileObject,
+      updateUserProfile = _ref.updateUserProfile;
   // useEffect(() => {
   //     props.fetchOTBSamples()
   //     props.fetchOTBSampleHistories()
   // }, [])    
-  var table = true; // function container() {
+  // let table = true;
+  // function container() {
   //     if (table) {
   //         return <TableContainer/>
   //     }
   // }
-
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([{}]),
-      _useState2 = _slicedToArray(_useState, 2),
-      initialData = _useState2[0],
-      setInitialData = _useState2[1];
-
-  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
-    fetch('/api').then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      return setInitialData(data);
-    });
-  }, []);
+  // const [initialData, setInitialData] = useState([{}]);
+  //   useEffect(() => {
+  //     fetch('/api').then(
+  //       response => response.json()
+  //     ).then(data => setInitialData(data))
+  //   }, [])
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main_page_container"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_main_page_header__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_register_header__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "background_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form_box"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Are you interested in being a mentor or a mentee?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/register3",
+    className: "register_button",
+    onClick: function onClick() {
+      return updateRegistrationProfileObject({
+        userType: "mentor"
+      });
+    }
+  }, "Mentor"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/register3",
+    className: "register_button",
+    onClick: function onClick() {
+      return updateRegistrationProfileObject({
+        userType: "mentee"
+      });
+    }
+  }, "Mentee"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (RegistrationPage2);
@@ -530,24 +2176,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page.jsx */ "./frontend/components/registration/registration_page.jsx");
+/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
 
 
- // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
-// import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
+
+
 
 var mSTP = function mSTP(state) {
-  return {// OTBSamples: Object.values(state.entities.OTBSamples)
+  return {
+    userProfile: state.entities.userProfile,
+    registration: state.entities.registration
   };
 };
 
 var mDTP = function mDTP(dispatch) {
-  return {// fetchOTBSamples: () => dispatch(fetchOTBSamples()),
-    // fetchOTBSampleHistories: () => dispatch(fetchOTBSampleHistories()),
+  return {
+    updateRegistrationProfileObject: function updateRegistrationProfileObject(profileObject) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_3__["updateRegistrationProfileObject"])(profileObject));
+    },
+    updateUserProfile: function updateUserProfile(user) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_3__["updateUserProfile"])(user));
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
 
 /***/ }),
 
@@ -563,24 +2217,226 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
+/* harmony import */ var _registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_page.jsx */ "./frontend/components/registration/registration_page.jsx");
+/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
- // import {fetchOTBSamples} from '../../actions/otb_sample_actions';
-// import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
+
+
+
+
 
 var mSTP = function mSTP(state) {
-  return {// OTBSamples: Object.values(state.entities.OTBSamples)
+  return {
+    userProfile: state.entities.userProfile,
+    registration: state.entities.registration
   };
 };
 
 var mDTP = function mDTP(dispatch) {
-  return {// fetchOTBSamples: () => dispatch(fetchOTBSamples()),
-    // fetchOTBSampleHistories: () => dispatch(fetchOTBSampleHistories()),
+  return {
+    updateRegistrationProfileObject: function updateRegistrationProfileObject(profileObject) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateRegistrationProfileObject"])(profileObject));
+    },
+    updateUserProfile: function updateUserProfile(user) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateUserProfile"])(user));
+    }
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_2__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_page_jsx__WEBPACK_IMPORTED_MODULE_2__["default"])));
+
+/***/ }),
+
+/***/ "./frontend/components/registration/registration_profile.jsx":
+/*!*******************************************************************!*\
+  !*** ./frontend/components/registration/registration_profile.jsx ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _header_footer_blank_header__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../header_footer/blank_header */ "./frontend/components/header_footer/blank_header.jsx");
+/* harmony import */ var _header_footer_footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ..//header_footer/footer */ "./frontend/components/header_footer/footer.jsx");
+/* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+ // import Dropdown from '../dropdown/mentordropdown1';
+
+
+ // import TableContainer from '../table/table_container'
+
+var RegistrationProfile = function RegistrationProfile(_ref) {
+  var userProfile = _ref.userProfile,
+      registration = _ref.registration,
+      updateRegistrationProfileObject = _ref.updateRegistrationProfileObject,
+      updateUserProfile = _ref.updateUserProfile,
+      history = _ref.history;
+
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      picture = _useState2[0],
+      setPicture = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      aboutMe = _useState4[0],
+      setAboutMe = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      job = _useState6[0],
+      setJob = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])('company'),
+      _useState8 = _slicedToArray(_useState7, 2),
+      company = _useState8[0],
+      setCompany = _useState8[1];
+
+  var submit = function submit() {
+    var userObject = {
+      aboutMe: aboutMe,
+      job: job,
+      company: company
+    };
+    updateRegistrationProfileObject(userObject);
+    history.push("/matchingquestions");
+  };
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main_page_container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_blank_header__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blue-top"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blue-header-text bold"
+  }, "Create your profile"), registration.userType === 'mentor' ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blue-header-text "
+  }, "Tell your future mentees about yourself.") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "blue-header-text "
+  }, "Tell your future mentors about yourself.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "photo-bubble"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    className: "photo_button",
+    width: "56",
+    height: "56",
+    viewBox: "0 0 56 56",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M16.1864 13.6392C16.3517 13.4094 16.5353 13.128 16.7695 12.7487C16.855 12.6101 17.0882 12.2253 17.2619 11.9387C17.3546 11.7858 17.4303 11.6608 17.4576 11.6163C19.3919 8.45224 20.798 7 23.3334 7H35V11.6667H23.3334C23.131 11.6667 22.4945 12.324 21.4392 14.0504C21.4175 14.0859 21.3528 14.1925 21.2703 14.3288L21.2694 14.3302L21.2685 14.3316C21.0934 14.6205 20.8389 15.0405 20.7407 15.1995C20.4538 15.6644 20.2155 16.0297 19.9748 16.3643C18.9289 17.8183 17.8835 18.6667 16.3334 18.6667H9.33337C8.04471 18.6667 7.00004 19.7113 7.00004 21V42C7.00004 43.2887 8.04471 44.3333 9.33337 44.3333H46.6667C47.9554 44.3333 49 43.2887 49 42V28H53.6667V42C53.6667 45.866 50.5327 49 46.6667 49H9.33337C5.46738 49 2.33337 45.866 2.33337 42V21C2.33337 17.134 5.46738 14 9.33337 14H15.9045C15.9822 13.9112 16.0774 13.7908 16.1864 13.6392ZM39.6667 18.6667V14H44.3334V9.33335H49V14H53.6667V18.6667H49V23.3333H44.3334V18.6667H39.6667ZM28 42C21.5567 42 16.3334 36.7766 16.3334 30.3333C16.3334 23.89 21.5567 18.6667 28 18.6667C34.4434 18.6667 39.6667 23.89 39.6667 30.3333C39.6667 36.7766 34.4434 42 28 42ZM28 37.3333C31.866 37.3333 35 34.1993 35 30.3333C35 26.4674 31.866 23.3333 28 23.3333C24.134 23.3333 21 26.4674 21 30.3333C21 34.1993 24.134 37.3333 28 37.3333Z",
+    fill: "black"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    id: "back-arrow-svg",
+    width: "50",
+    height: "46",
+    viewBox: "0 0 50 46",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    className: "back-button",
+    to: "/register2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    fillRule: "evenodd",
+    clipRule: "evenodd",
+    d: "M13.3626 23.8335L26.4728 35.3704L23.5265 37.9632L5.38672 22.0001L23.5265 6.03711L26.4728 8.62983L13.3626 20.1668H43.7497V23.8335H13.3626Z",
+    fill: "rgb(46, 44, 44)"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("defs", null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "name-header"
+  }, registration.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit() {
+      return submit();
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Job Title", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: function onChange(event) {
+      return setJob(event.target.value);
+    },
+    type: "text"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Company", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    onChange: function onChange(event) {
+      return setCompany(event.target.vaue);
+    },
+    type: "text"
+  })), registration.userType === "mentor" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "About Me (i.e. what are you passionate about? What are your hobbies? What would you like to share with your mentee?)", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    cols: "30",
+    rows: "10",
+    onChange: function onChange(event) {
+      return setAboutMet(event.target.value);
+    }
+  })) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "About Me (i.e. what are you passionate about? What are your hobbies? What would you like to share with your mentor?)", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+    cols: "30",
+    rows: "10"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "submit",
+    value: "Next"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_header_footer_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegistrationProfile);
+
+/***/ }),
+
+/***/ "./frontend/components/registration/registration_profile_container.js":
+/*!****************************************************************************!*\
+  !*** ./frontend/components/registration/registration_profile_container.js ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _registration_profile_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./registration_profile.jsx */ "./frontend/components/registration/registration_profile.jsx");
+/* harmony import */ var _registration_page_2_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./registration_page_2.jsx */ "./frontend/components/registration/registration_page_2.jsx");
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../actions/register_actions */ "./frontend/actions/register_actions.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+
+
+
+
+var mSTP = function mSTP(state) {
+  return {
+    userProfile: state.entities.userProfile,
+    registration: state.entities.registration
+  };
+};
+
+var mDTP = function mDTP(dispatch) {
+  return {
+    updateRegistrationProfileObject: function updateRegistrationProfileObject(profileObject) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateRegistrationProfileObject"])(profileObject));
+    },
+    updateUserProfile: function updateUserProfile(user) {
+      return dispatch(Object(_actions_register_actions__WEBPACK_IMPORTED_MODULE_4__["updateUserProfile"])(user));
+    }
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_5__["withRouter"])(Object(react_redux__WEBPACK_IMPORTED_MODULE_1__["connect"])(mSTP, mDTP)(_registration_profile_jsx__WEBPACK_IMPORTED_MODULE_2__["default"])));
 
 /***/ }),
 
@@ -623,15 +2479,14 @@ document.addEventListener("DOMContentLoaded", function () {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
- // import OTBSamplesReducer from './otb_samples_reducer.js';
-// import OTBSampleHistoriesReducer from './otb_sample_histories_reducer';
-// import currentOTBSamplesReducer from './current_otb_samples_reducer'
-// import currentOTBSampleHistoriesReducer from './current_otb_sample_histories_reducer'
+/* harmony import */ var _profile_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./profile_reducer */ "./frontend/reducers/profile_reducer.js");
+/* harmony import */ var _register_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./register_reducer */ "./frontend/reducers/register_reducer.js");
 
-var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({// OTBSamples: OTBSamplesReducer,
-  // OTBSampleHistories: OTBSampleHistoriesReducer,
-  // currentOTBSamples: currentOTBSamplesReducer,
-  // currentOTBSampleHistories: currentOTBSampleHistoriesReducer
+
+
+var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  registration: _register_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  userProfile: _profile_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -647,11 +2502,11 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
- // import OTBSamplesErrors from './otb_sample_errors_reducer.js';
-// import OTBSampleHistoriesErrors from './otb_sample_history_errors_reducer.js';
+/* harmony import */ var _register_actions_errors_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./register_actions_errors_reducer */ "./frontend/reducers/register_actions_errors_reducer.js");
 
-var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({// OTBSamples: OTBSamplesErrors,
-  // OTBSampleHistories: OTBSampleHistoriesErrors
+
+var errorsReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  RegistrationErrors: _register_actions_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (errorsReducer);
 
@@ -684,6 +2539,118 @@ function modalReducer() {
       return state;
   }
 }
+
+/***/ }),
+
+/***/ "./frontend/reducers/profile_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/profile_reducer.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/register_actions */ "./frontend/actions/register_actions.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var ProfileReducer = function ProfileReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_USER_PROFILE"]:
+      var newState = _objectSpread({}, state);
+
+      Object.keys(action.registerObject).forEach(function (key, idx) {
+        newState[key] = Object.values(action.registerObject)[idx];
+      });
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ProfileReducer);
+
+/***/ }),
+
+/***/ "./frontend/reducers/register_actions_errors_reducer.js":
+/*!**************************************************************!*\
+  !*** ./frontend/reducers/register_actions_errors_reducer.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/register_actions */ "./frontend/actions/register_actions.js");
+
+/* harmony default export */ __webpack_exports__["default"] = (function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_ERRORS"]:
+      return action.errors;
+
+    case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["CLEAR_ERRORS"]:
+      return [];
+
+    default:
+      return state;
+  }
+});
+
+/***/ }),
+
+/***/ "./frontend/reducers/register_reducer.js":
+/*!***********************************************!*\
+  !*** ./frontend/reducers/register_reducer.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/register_actions */ "./frontend/actions/register_actions.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+var RegisterReducer = function RegisterReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_register_actions__WEBPACK_IMPORTED_MODULE_0__["UPDATE_REGISTER_OBJECT"]:
+      var newState = _objectSpread({}, state);
+
+      Object.keys(action.registerObject).forEach(function (key, idx) {
+        newState[key] = Object.values(action.registerObject)[idx];
+      });
+      return newState;
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RegisterReducer);
 
 /***/ }),
 
@@ -890,7 +2857,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default.a);
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(_images_homepage_png__WEBPACK_IMPORTED_MODULE_3__["default"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.i, ".header-logo {\n  display: flex;\n  align-self: center;\n  font-family: Abril Fatface;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  align-items: center;\n  text-align: center;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top 1px center;\n  background-size: 100% auto;\n  height: 100%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  width: 420px;\n  height: 300px;\n  position: absolute;\n  top: 30%;\n  right: 8%;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  border-radius: 3px;\n  align-content: center; }\n\n.login-container-input {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD; }\n\n.login-container-submit {\n  height: 50px;\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\nbody {\n  font: verdana, sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%; }\n", "",{"version":3,"sources":["webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAEA;EAEI,aAAa;EACb,kBAAkB;EAClB,0BAA0B;EAC1B,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,aAAa;EACb,mBAAmB;EACnB,kBAAkB;EAClB,uBAAuB;EACvB,yBAAyB;EACzB,cAAc,EAAA;;ACflB;EACI,yDAA8C;EAC9C,mCAAmC;EACnC,0BAA0B;EAC1B,YAAY;EACZ,4BAA4B;EAC5B,uBAAuB;EACvB,WAAW,EAAA;;AAGf;EACI,aAAa;EACb,sBAAsB;EACtB,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,uBAAuB;EACvB,yBAAyB;EACzB,kBAAkB;EAClB,qBAAqB,EAAA;;AAIzB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc,EAAA;;AAIlB;EACI,YAAY;EACZ,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAE3B;EACI,eAAe;EACf,yBAAyB,EAAA;;ACpD7B;EACE,yBANiC;EAOjC,yBCRwB,EAAA;EDM1B;IAIM,cCTkB,EAAA;;ADaxB;EACE,aAAY;EACZ,sBAAsB;EACtB,YAAY;EACZ,WAAU,EAAA","sourcesContent":["\n\n.header-logo {\n\n    display: flex;\n    align-self: center;\n    font-family: Abril Fatface;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    align-items: center;\n    text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n}\n\n","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: top 1px center;\n    background-size: 100% auto;\n    height: 100%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    width: 420px;\n    height: 300px;\n    position: absolute;\n    top: 30%;\n    right: 8%;\n    background-color: white;\n    border: 1px solid #C4C4C4;\n    border-radius: 3px;\n    align-content: center;\n    \n}\n\n.login-container-input {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n\n}\n\n.login-container-submit {\n    height: 50px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n","@import 'themeColors';\n$theme-font:    verdana, sans-serif;\n\n@import 'header_footer';\n@import 'mainPage';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark\n  }\n}\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n}\n\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.i, "html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent; }\n\nul {\n  list-style: none; }\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto; }\n\ninput {\n  height: 30px;\n  width: 450px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD;\n  margin-bottom: 40px; }\n\nbutton {\n  padding: 10px;\n  justify-self: center;\n  height: 20px;\n  width: 80px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\ninput[type=\"submit\"] {\n  padding: 10px;\n  justify-self: center;\n  height: 20px;\n  width: 80px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center;\n  margin-top: 80px;\n  padding: 10px 25px; }\n\ntextarea {\n  min-height: 200px;\n  width: 950px;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  margin: 5px;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #BDBDBD;\n  margin-top: 20px;\n  resize: none; }\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px; }\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer; }\n\n/* Clearfix */\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both; }\n\n.header-logo {\n  display: flex;\n  align-self: center;\n  justify-self: center;\n  font-style: normal;\n  font-weight: 700;\n  font-size: 44px;\n  line-height: 100px;\n  display: flex;\n  letter-spacing: -0.03em;\n  text-transform: uppercase;\n  color: #000000;\n  height: 10%; }\n\n.header_wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  height: 200px;\n  min-height: 10%;\n  width: 100%;\n  align-items: center;\n  background-color: white; }\n\n.footer_wrapper {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-around;\n  min-height: 10%;\n  width: 100%;\n  background-color: white;\n  align-items: center; }\n\n.login-button {\n  width: 120px;\n  background: white;\n  color: #969696;\n  border-color: #969696; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.main_page_background {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: center center;\n  background-size: auto 100%;\n  min-height: 80%;\n  background-repeat: no-repeat;\n  justify-content: center;\n  width: 100%; }\n\n.login-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  align-items: center; }\n\n.login-container-input {\n  width: 80%;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n  display: flex;\n  border: 1px solid #BDBDBD;\n  align-self: center;\n  border-radius: 3px;\n  padding: 10px;\n  color: #5B5A5A;\n  background-color: #e9eef1;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-container-submit {\n  margin-top: 10px;\n  width: 80%;\n  align-self: center;\n  background-color: #6187c8;\n  border: 2px solid #6187c8;\n  border-radius: 6px;\n  color: white;\n  text-align: center;\n  font-weight: bolder;\n  justify-content: center; }\n\n.login-container-submit:hover {\n  cursor: pointer;\n  background-color: #4e7ac5; }\n\n.header-prompt {\n  position: relative;\n  top: 150px;\n  left: 50px;\n  width: 800px;\n  height: 130px; }\n\n.register-container {\n  display: flex;\n  flex-direction: column;\n  border-radius: 3px;\n  align-content: center;\n  padding: 20px;\n  width: 100%;\n  margin-top: 20px;\n  background-color: white;\n  border: 1px solid #C4C4C4;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); }\n\n.login-wrapper {\n  display: flex;\n  position: absolute;\n  flex-direction: column;\n  display: flex;\n  width: 420px;\n  height: 420px;\n  position: absolute;\n  right: 8%;\n  top: 30%; }\n\n.reset-password {\n  margin-top: 10px; }\n\n.header-prompt {\n  position: relative;\n  width: 818px;\n  padding: 20px;\n  font-family: Roboto, Arial, Helvetica, sans-serif;\n  font-style: normal;\n  font-weight: 500;\n  font-size: 30px;\n  line-height: 29px;\n  display: flex;\n  align-items: center;\n  letter-spacing: 0.04em;\n  color: #1A1A22;\n  background-color: rgba(254, 247, 245, 0.8);\n  border-radius: 4px; }\n\n.main_page_container {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n\n.blue-top {\n  width: 100%;\n  background-color: #6187cb;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.blue-header-text {\n  color: white;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; }\n\n.bold {\n  font-style: bold; }\n\n.photo-bubble {\n  width: 180px;\n  height: 180px;\n  background-color: #C4c4c4;\n  border-radius: 100px;\n  align-self: center;\n  position: absolute;\n  top: 170px; }\n\n.photo_button {\n  position: relative;\n  top: 120px;\n  left: 120px;\n  cursor: pointer; }\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color: black;\n  stroke: #2e2c2c;\n  fill: black; }\n\n#back-arrow-svg {\n  align-self: flex-start; }\n\n.name-header {\n  margin-top: 100px; }\n\n.register_button {\n  margin-top: 30px;\n  align-self: center; }\n\n.background_container {\n  background-color: #f4f5f6;\n  display: flex;\n  flex-direction: column;\n  height: 100%;\n  width: 100%;\n  align-items: center; }\n\n.form_box {\n  margin-top: 80px;\n  background-color: white;\n  border: 1px solid #C0C0C0;\n  padding: 40px;\n  width: 800px;\n  padding-bottom: 100px; }\n\n.back-button {\n  position: relative;\n  top: 0px;\n  left: 0px;\n  height: 150px;\n  width: 150px; }\n\n.back-button:hover {\n  cursor: pointer; }\n\n.dd-wrapper {\n  display: flex;\n  min-height: 20px;\n  flex-wrap: wrap;\n  font-size: 16px;\n  margin: 20px; }\n  .dd-wrapper .dd-header {\n    width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    align-self: center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD; }\n    .dd-wrapper .dd-header_title--bold {\n      font-weight: 400;\n      font-size: 16px; }\n  .dd-wrapper .dd-list {\n    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);\n    padding: 0;\n    margin: 0;\n    width: 300px;\n    margin-top: 2px;\n    position: relative;\n    top: 20px; }\n    .dd-wrapper .dd-list li {\n      list-style-type: none; }\n      .dd-wrapper .dd-list li:first-of-type > button {\n        border-top: 1px solid #ccc;\n        border-top-left-radius: 4px;\n        border-top-right-radius: 4px; }\n      .dd-wrapper .dd-list li:last-of-type > button {\n        border-bottom-left-radius: 4px;\n        border-bottom-right-radius: 4px; }\n      .dd-wrapper .dd-list li button {\n        display: flex;\n        justify-content: space-between;\n        background-color: white;\n        font-size: 16px;\n        padding: 10px 15px 10px 15px;\n        border: 0;\n        border-bottom: 1px solid #ccc;\n        width: 100%;\n        text-align: left;\n        border-left: 1px solid #ccc;\n        border-right: 1px solid #ccc;\n        height: 30px;\n        margin: 0px;\n        width: 450px;\n        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n        display: flex;\n        border: 1px solid #BDBDBD;\n        align-self: center;\n        border-radius: 3px;\n        padding: 10px;\n        color: #BDBDBD;\n        margin-bottom: 40px; }\n        .dd-wrapper .dd-list li button:hover, .dd-wrapper .dd-list li button:focus {\n          cursor: pointer;\n          font-weight: 400;\n          background-color: #ccc; }\n\n.dd-button {\n  margin: 0; }\n\nbody {\n  font: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen, Ubuntu, Cantarell, \"Open Sans\", \"Helvetica Neue\", sans-serif;\n  background-color: #ffffff; }\n  body h1, body h2 {\n    color: #000000; }\n", "",{"version":3,"sources":["webpack://./static/css/reset.scss","webpack://./static/css/appStyles.scss","webpack://./static/css/header_footer.scss","webpack://./static/css/mainPage.scss","webpack://./static/css/profile_page.scss","webpack://./static/css/registration_page.scss","webpack://./static/css/dropdown.scss","webpack://./static/css/themeColors.scss"],"names":[],"mappings":"AAAA;;;;;EAKE,SAAS;EACT,UAAU;EACV,SAAS;EACT,UAAU;EACV,wIAAyI;EACzI,cAAc;EACd,mBAAmB;EACnB,wBAAwB;EACxB,uBAAuB;EACvB,mBAAmB;EACnB,uBAAuB,EAAA;;AAGzB;EACE,gBAAgB,EAAA;;AAGlB;EACE,cAAc;EACd,WAAW;EACX,YAAY,EAAA;;AAId;EACG,YAAY;EACX,YAAY;EACZ,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,mBAAkB,EAAA;;AAItB;EACI,aAAa;EACb,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAI3B;EACG,aAAa;EACZ,oBAAoB;EACpB,YAAY;EACZ,WAAW;EACX,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB;EACvB,gBAAgB;EAChB,kBAAkB,EAAA;;AAGtB;EACO,iBAAiB;EACpB,YAAY;EACZ,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EACzB,WAAW;EACX,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,gBAAe;EACf,YAAY,EAAA;;AAKhB;;;;;;EAME;;;GCTC;EDaD,wBAAwB;EACxB,qBAAqB;EACrB,gBAAgB;EAChB,YAAY,EAAA;;AAGd;;EAEE,eAAe,EAAA;;AAGjB,aAAA;AAEA;EACE,WAAW;EACX,cAAc;EACd,WAAW,EAAA;;AE9Hb;EACI,aAAa;EACb,kBAAkB;EAClB,oBAAoB;EACpB,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,kBAAkB;EAClB,aAAa;EAGb,uBAAuB;EACvB,yBAAyB;EACzB,cAAc;EAEd,WAAW,EAAA;;AAKf;EACI,aAAY;EACZ,mBAAmB;EACnB,6BAA6B;EAC7B,aAAa;EACb,eAAe;EACf,WAAW;EACX,mBAAmB;EACnB,uBAAuB,EAAA;;AAI3B;EACI,aAAY;EACZ,mBAAmB;EACnB,6BAA6B;EAC7B,eAAe;EACf,WAAW;EACV,uBAAuB;EAExB,mBAAmB,EAAA;;AAIvB;EACI,YAAY;EACZ,iBAAiB;EACjB,cAAc;EACd,qBAAqB,EAAA;;AAOzB;EACI,WAAW;EACX,yBAAyB;EACzB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B,EAAA;;AC9D/B;EACI,yDAA8C;EAC9C,kCAAkC;EAClC,0BAA0B;EAC1B,eAAe;EACf,4BAA4B;EAC5B,uBAAuB;EACvB,WAAW,EAAA;;AAGf;EACI,aAAa;EACb,sBAAsB;EACtB,kBAAkB;EAClB,qBAAqB;EACrB,aAAa;EACX,WAAW;EAEb,gBAAgB;EACd,uBAAuB;EACzB,yBAAyB;EACzB,mBAAmB,EAAA;;AAIvB;EAEI,UAAU;EACV,2CAA2C;EAC3C,aAAa;EACb,yBAAyB;EAEzB,kBAAiB;EACjB,kBAAkB;EAClB,aAAa;EACb,cAAc;EACd,yBAA4B;EAC3B,2CAA2C,EAAA;;AAIhD;EAGI,gBAAgB;EAChB,UAAU;EAEV,kBAAiB;EACjB,yBAAyB;EACzB,yBAAyB;EACzB,kBAAkB;EAClB,YAAY;EACZ,kBAAkB;EAClB,mBAAmB;EACnB,uBAAuB,EAAA;;AAE3B;EACI,eAAe;EACf,yBAAyB,EAAA;;AAI7B;EACI,kBAAkB;EAClB,UAAU;EACV,UAAU;EACV,YAAY;EACZ,aAAa,EAAA;;AAGjB;EACQ,aAAa;EACjB,sBAAsB;EAEnB,kBAAkB;EACrB,qBAAqB;EACrB,aAAa;EACb,WAAW;EAEX,gBAAgB;EACd,uBAAuB;EACzB,yBAAyB;EACxB,2CAA2C,EAAA;;AAIhD;EACI,aAAa;EACb,kBAAkB;EAClB,sBAAsB;EAItB,aAAa;EACb,YAAY;EACZ,aAAa;EACb,kBAAkB;EAClB,SAAS;EACT,QAAQ,EAAA;;AAGZ;EACI,gBAAgB,EAAA;;AAIpB;EAEE,kBAAkB;EAClB,YAAY;EACZ,aAAa;EAKb,iDAAiD;EACjD,kBAAkB;EAClB,gBAAgB;EAChB,eAAe;EACf,iBAAiB;EACjB,aAAa;EACb,mBAAmB;EACnB,sBAAsB;EACtB,cAAc;EAChB,0CAA0C;EAC1C,kBAAkB,EAAA;;AAIlB;EACE,aAAY;EACZ,sBAAsB;EACxB,2BAA2B;EACzB,YAAY;EACZ,WAAU;EACX,mBAAmB,EAAA;;ACxIpB;EACI,WAAW;EACX,yBAAyB;EACzB,aAAa;EACb,aAAa;EACb,sBAAsB;EACtB,2BAA2B,EAAA;;AAG/B;EACI,YAAY;EACZ,wIAAwI,EAAA;;AAG5I;EACI,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,oBAAoB;EACpB,kBAAkB;EAClB,kBAAkB;EAClB,UAAU,EAAA;;AAId;EACE,qBAAqB;EACrB,UAAU;EACV,WAAW;EACX,eAAe;EACf,YAAW;EACX,eAAuB;EACvB,WAAW,EAAA;;AAKb;EACI,sBAAsB,EAAA;;AAG1B;EACI,YAAY;EACZ,wIAAwI,EAAA;;AAG5I;EACI,gBAAgB,EAAA;;AAIpB;EACI,YAAY;EACZ,aAAa;EACb,yBAAyB;EACzB,oBAAoB;EACpB,kBAAkB;EAClB,kBAAkB;EAClB,UAAU,EAAA;;AAId;EACI,kBAAkB;EAClB,UAAU;EACV,WAAW;EACX,eAAe,EAAA;;AAGnB;EACE,qBAAqB;EACrB,UAAU;EACV,WAAW;EACX,eAAe;EACf,YAAW;EACX,eAAuB;EACvB,WAAW,EAAA;;AAKb;EACI,sBAAsB,EAAA;;AAI1B;EACI,iBAAiB,EAAA;;AC5FrB;EACI,gBAAgB;EACpB,kBAAkB,EAAA;;AAIlB;EACI,yBAAyB;EACxB,aAAY;EACf,sBAAsB;EACtB,YAAY;EACZ,WAAU;EACX,mBAAmB,EAAA;;AAGpB;EACI,gBAAgB;EAChB,uBAAsB;EACtB,yBAAyB;EACzB,aAAa;EACb,YAAY;EACZ,qBAAqB,EAAA;;AAQzB;EACI,kBAAkB;EAClB,QAAQ;EACR,SAAS;EACT,aAAa;EACb,YAAY,EAAA;;AAGhB;EACI,eAAe,EAAA;;ACtCnB;EACI,aAAa;EACb,gBAAgB;EAChB,eAAe;EACf,eAAe;EACf,YAAY,EAAA;EALhB;IAcQ,YAAY;IAChB,2CAA2C;IAC3C,aAAa;IACb,yBAAyB;IAEzB,kBAAiB;IACjB,kBAAkB;IAClB,aAAa;IACb,cAAc,EAAA;IAtBlB;MA0BY,gBAAe;MACf,eAAe,EAAA;EA3B3B;IAkCI,mDAA6C;IAC7C,UAAS;IACT,SAAS;IACT,YAAY;IACZ,eAAe;IACf,kBAAiB;IACjB,SAAS,EAAA;IAxCb;MA4CQ,qBAAqB,EAAA;MA5C7B;QAgDgB,0BAA0B;QAC1B,2BAA2B;QAC3B,4BAA4B,EAAA;MAlD5C;QAuDY,8BAA6B;QAC7B,+BAA8B,EAAA;MAxD1C;QA4DY,aAAY;QACZ,8BAA8B;QAC9B,uBAAuB;QACvB,eAAe;QACf,4BAA4B;QAC5B,SAAS;QACT,6BAA6B;QAC7B,WAAW;QACX,gBAAgB;QAChB,2BAA2B;QAC3B,4BAA4B;QACzB,YAAY;QACZ,WAAW;QACtB,YAAY;QACZ,2CAA2C;QAC3C,aAAa;QACb,yBAAyB;QAEzB,kBAAiB;QACjB,kBAAkB;QAClB,aAAa;QACb,cAAc;QACd,mBAAkB,EAAA;QAlFtB;UAqFgB,eAAe;UACf,gBAAgB;UAChB,sBAAsB,EAAA;;AAStC;EACI,SAAS,EAAA;;ALxFb;EACE,iIATyI;EAUzI,yBMXwB,EAAA;ENS1B;IAIM,cMZkB,EAAA","sourcesContent":["html, body, header, nav, h1, a,\nul, li, strong, main, button, i,\nsection, img, div, h2, p, form,\nfieldset, label, input, textarea,\nspan, article, footer, time, small, input {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  outline: 0;\n  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n  color: inherit;\n  text-align: inherit;\n  text-decoration: inherit;\n  vertical-align: inherit;\n  box-sizing: inherit;\n  background: transparent;\n}\n\nul {\n  list-style: none;\n}\n\nimg {\n  display: block;\n  width: 100%;\n  height: auto;\n}\n\n\ninput {\n   height: 30px;\n    width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-bottom:40px;\n\n}\n\nbutton {\n    padding: 10px;\n    justify-self: center;\n    height: 20px;\n    width: 80px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n\n\ninput[type=\"submit\"] {\n   padding: 10px;\n    justify-self: center;\n    height: 20px;\n    width: 80px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;  \n    margin-top: 80px;\n    padding: 10px 25px;\n}\n\ntextarea {\n       min-height: 200px;\n    width: 950px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    margin: 5px;\n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-top:20px;\n    resize: none;\n    \n\n}\n\ninput[type=\"password\"],\ninput[type=\"email\"],\ninput[type=\"text\"],\ninput[type=\"submit\"],\ntextarea,\nbutton {\n  /*\n  Get rid of native styling. Read more here:\n  http://css-tricks.com/almanac/properties/a/appearance/\n  */\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none;\n  height: 30px;\n}\n\nbutton,\ninput[type=\"submit\"] {\n  cursor: pointer;\n}\n\n/* Clearfix */\n\n.group:after {\n  content: \"\";\n  display: block;\n  clear: both;\n}\n\n\n","@import 'themeColors';\n$theme-font:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n@import 'reset';\n@import 'header_footer';\n@import 'mainPage';\n@import 'profile_page';\n@import 'registration_page';\n@import 'dropdown';\n\nbody {\n  font: $theme-font;\n  background-color: $themeColor-Light;\n  h1, h2 {\n      color: $themeColor-Dark;\n  }\n}\n\n","\n\n.header-logo {\n    display: flex;\n    align-self: center;\n    justify-self: center;\n    font-style: normal;\n    font-weight: 700;\n    font-size: 44px;\n    line-height: 100px;\n    display: flex;\n    // align-items: center;\n    // text-align: center;\n    letter-spacing: -0.03em;\n    text-transform: uppercase;\n    color: #000000;\n    // width: 100%;\n    height: 10%;\n    // text-align: center;\n   \n}\n\n.header_wrapper {\n    display:flex;\n    flex-direction: row;\n    justify-content: space-around;\n    height: 200px;\n    min-height: 10%;\n    width: 100%;\n    align-items: center;\n    background-color: white;\n    \n\n}\n.footer_wrapper {\n    display:flex;\n    flex-direction: row;\n    justify-content: space-around;\n    min-height: 10%;\n    width: 100%;\n     background-color: white;\n    // height: 150px;\n    align-items: center;\n\n}\n\n.login-button {\n    width: 120px;\n    background: white;\n    color: #969696; \n    border-color: #969696;\n    // height: 30px;\n    // text-align:center;\n    // justify-content: center;\n}\n\n\n.blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n","\n.main_page_background {\n    background-image: url('./images/homepage.png');\n    background-position: center center;\n    background-size: auto 100%;\n    min-height: 80%;\n    background-repeat: no-repeat;\n    justify-content: center;\n    width: 100%;\n}\n\n.login-container {\n    display: flex;\n    flex-direction: column;\n    border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n      width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n    align-items: center;\n    \n}\n\n.login-container-input {\n    // height: 30px;\n    width: 80%;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    \n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #5B5A5A;\n    background-color: #e9eef1   ;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n\n}\n\n.login-container-submit {\n    // height: 30px;\n    // margin: 5px;\n    margin-top: 10px;\n    width: 80%;\n  \n    align-self:center;\n    background-color: #6187c8;\n    border: 2px solid #6187c8;\n    border-radius: 6px;\n    color: white;\n    text-align: center;\n    font-weight: bolder;\n    justify-content: center;\n}\n.login-container-submit:hover {\n    cursor: pointer;\n    background-color: #4e7ac5;\n}\n\n\n.header-prompt {\n    position: relative;\n    top: 150px;\n    left: 50px;\n    width: 800px;\n    height: 130px;\n}\n\n.register-container {\n        display: flex;\n    flex-direction: column;\n   \n       border-radius: 3px;\n    align-content: center;\n    padding: 20px;\n    width: 100%;\n    // padding: 5px;\n    margin-top: 20px;\n      background-color: white;\n    border: 1px solid #C4C4C4;\n     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    \n}\n\n.login-wrapper {\n    display: flex;\n    position: absolute;\n    flex-direction: column;\n  \n    // top: 35%;\n     \n    display: flex;\n    width: 420px;\n    height: 420px; \n    position: absolute;\n    right: 8%;\n    top: 30%;\n}\n\n.reset-password {\n    margin-top: 10px;\n}\n\n\n.header-prompt {\n\n  position: relative;\n  width: 818px;\n  padding: 20px;\n//   height: 127px;\n//   left: 17px;\n//   top: 152px;\n  \n  font-family: Roboto, Arial, Helvetica, sans-serif;\n  font-style: normal;\n  font-weight: 500;\n  font-size: 30px;\n  line-height: 29px;\n  display: flex;\n  align-items: center;\n  letter-spacing: 0.04em;\n  color: #1A1A22;\nbackground-color: rgba(254, 247, 245, 0.8);\nborder-radius: 4px;\n}\n\n\n.main_page_container {\n  display:flex;\n  flex-direction: column;\njustify-content: flex-start;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n",".blue-top {\n    width: 100%;\n    background-color: #6187cb;\n    height: 150px;\n    display: flex; \n    flex-direction: column;\n    justify-content: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n.blue-header-text {\n    color: white;\n    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;\n}\n\n.bold {\n    font-style: bold;\n}\n\n\n.photo-bubble {\n    width: 180px;\n    height: 180px;\n    background-color: #C4c4c4;\n    border-radius: 100px;\n    align-self: center;\n    position: absolute;\n    top: 170px;\n}\n\n\n.photo_button {\n    position: relative;\n    top: 120px;\n    left: 120px;\n    cursor: pointer;\n}\n\n.icon {\n  display: inline-block;\n  width: 1em;\n  height: 1em;\n  stroke-width: 0;\n  color:black;\n  stroke: rgb(46, 44, 44);\n  fill: black;\n  \n}\n\n\n#back-arrow-svg {\n    align-self: flex-start;\n}\n\n\n.name-header {\n    margin-top: 100px;\n}\n\n",".register_button {\n    margin-top: 30px;\nalign-self: center;\n\n}\n\n.background_container {\n    background-color: #f4f5f6;\n     display:flex;\n  flex-direction: column;\n  height: 100%;\n  width:100%;\n align-items: center;\n}\n\n.form_box {\n    margin-top: 80px;\n    background-color:white;\n    border: 1px solid #C0C0C0;\n    padding: 40px;\n    width: 800px;\n    padding-bottom: 100px;\n}\n\n\n.test_image {\n\n}\n\n.back-button {\n    position: relative;\n    top: 0px;\n    left: 0px;\n    height: 150px;\n    width: 150px;\n}\n\n.back-button:hover {\n    cursor: pointer;\n}",".dd-wrapper {\n    display: flex;\n    min-height: 20px;\n    flex-wrap: wrap;\n    font-size: 16px;\n    margin: 20px;\n\n    .dd-header {\n        // // @include styling();\n        // display:flex;\n        // justify-content: space-between;\n        // cursor: pointer;\n        // width: 100%;\n        // padding: 0 5px;\n        width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    \n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    // margin-bottom:40px;\n\n        &_title--bold {\n            font-weight:400;\n            font-size: 16px;\n        }\n    }\n\n\n\n.dd-list {\n    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);\n    padding:0;\n    margin: 0;\n    width: 300px;\n    margin-top: 2px;\n    position:relative;\n    top: 20px;\n    \n\n    li {\n        list-style-type: none;\n        \n        &:first-of-type {\n            > button {\n                border-top: 1px solid #ccc;\n                border-top-left-radius: 4px;\n                border-top-right-radius: 4px;\n            }\n        }\n\n        &:last-of-type > button {\n            border-bottom-left-radius:4px;\n            border-bottom-right-radius:4px;\n        }\n\n        button {\n            display:flex;\n            justify-content: space-between;\n            background-color: white;\n            font-size: 16px;\n            padding: 10px 15px 10px 15px;\n            border: 0;\n            border-bottom: 1px solid #ccc;\n            width: 100%;\n            text-align: left;\n            border-left: 1px solid #ccc;\n            border-right: 1px solid #ccc;\n               height: 30px;\n               margin: 0px;\n    width: 450px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    display: flex;\n    border: 1px solid #BDBDBD;\n    \n    align-self:center;\n    border-radius: 3px;\n    padding: 10px;\n    color: #BDBDBD;\n    margin-bottom:40px;\n\n            &:hover, &:focus {\n                cursor: pointer;\n                font-weight: 400;\n                background-color: #ccc;\n            }\n        }\n    }\n  }\n}\n\n\n\n.dd-button {\n    margin: 0;\n}\n\n","$themeColor-Light: #ffffff;\n$themeColor-Dark:#000000;"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ __webpack_exports__["default"] = (___CSS_LOADER_EXPORT___);
 
@@ -29951,6 +31918,1948 @@ if (false) {} else {
 
 /***/ }),
 
+/***/ "./node_modules/react-hook-form/dist/index.esm.js":
+/*!********************************************************!*\
+  !*** ./node_modules/react-hook-form/dist/index.esm.js ***!
+  \********************************************************/
+/*! exports provided: Controller, FormProvider, appendErrors, get, transformToNestObject, useController, useFieldArray, useForm, useFormContext, useWatch */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Controller", function() { return Controller; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormProvider", function() { return FormProvider; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "appendErrors", function() { return appendErrors; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "get", function() { return get; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "transformToNestObject", function() { return transformToNestObject; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useController", function() { return useController; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useFieldArray", function() { return useFieldArray; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useForm", function() { return useForm; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useFormContext", function() { return useFormContext; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "useWatch", function() { return useWatch; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var isHTMLElement = (value) => value instanceof HTMLElement;
+
+const EVENTS = {
+    BLUR: 'blur',
+    CHANGE: 'change',
+    INPUT: 'input',
+};
+const VALIDATION_MODE = {
+    onBlur: 'onBlur',
+    onChange: 'onChange',
+    onSubmit: 'onSubmit',
+    onTouched: 'onTouched',
+    all: 'all',
+};
+const SELECT = 'select';
+const UNDEFINED = 'undefined';
+const INPUT_VALIDATION_RULES = {
+    max: 'max',
+    min: 'min',
+    maxLength: 'maxLength',
+    minLength: 'minLength',
+    pattern: 'pattern',
+    required: 'required',
+    validate: 'validate',
+};
+
+function attachEventListeners({ ref }, shouldAttachChangeEvent, handleChange) {
+    if (isHTMLElement(ref) && handleChange) {
+        ref.addEventListener(shouldAttachChangeEvent ? EVENTS.CHANGE : EVENTS.INPUT, handleChange);
+        ref.addEventListener(EVENTS.BLUR, handleChange);
+    }
+}
+
+var isNullOrUndefined = (value) => value == null;
+
+const isObjectType = (value) => typeof value === 'object';
+var isObject = (value) => !isNullOrUndefined(value) &&
+    !Array.isArray(value) &&
+    isObjectType(value) &&
+    !(value instanceof Date);
+
+var isKey = (value) => /^\w*$/.test(value);
+
+var compact = (value) => value.filter(Boolean);
+
+var stringToPath = (input) => compact(input
+    .replace(/["|']/g, '')
+    .replace(/\[/g, '.')
+    .replace(/\]/g, '')
+    .split('.'));
+
+function set(object, path, value) {
+    let index = -1;
+    const tempPath = isKey(path) ? [path] : stringToPath(path);
+    const length = tempPath.length;
+    const lastIndex = length - 1;
+    while (++index < length) {
+        const key = tempPath[index];
+        let newValue = value;
+        if (index !== lastIndex) {
+            const objValue = object[key];
+            newValue =
+                isObject(objValue) || Array.isArray(objValue)
+                    ? objValue
+                    : !isNaN(+tempPath[index + 1])
+                        ? []
+                        : {};
+        }
+        object[key] = newValue;
+        object = object[key];
+    }
+    return object;
+}
+
+var transformToNestObject = (data, value = {}) => {
+    for (const key in data) {
+        !isKey(key) ? set(value, key, data[key]) : (value[key] = data[key]);
+    }
+    return value;
+};
+
+var isUndefined = (val) => val === undefined;
+
+var get = (obj = {}, path, defaultValue) => {
+    const result = compact(path.split(/[,[\].]+?/)).reduce((result, key) => (isNullOrUndefined(result) ? result : result[key]), obj);
+    return isUndefined(result) || result === obj
+        ? isUndefined(obj[path])
+            ? defaultValue
+            : obj[path]
+        : result;
+};
+
+var focusOnErrorField = (fields, fieldErrors) => {
+    for (const key in fields) {
+        if (get(fieldErrors, key)) {
+            const field = fields[key];
+            if (field) {
+                if (field.ref.focus && isUndefined(field.ref.focus())) {
+                    break;
+                }
+                else if (field.options) {
+                    field.options[0].ref.focus();
+                    break;
+                }
+            }
+        }
+    }
+};
+
+var removeAllEventListeners = (ref, validateWithStateUpdate) => {
+    if (isHTMLElement(ref) && ref.removeEventListener) {
+        ref.removeEventListener(EVENTS.INPUT, validateWithStateUpdate);
+        ref.removeEventListener(EVENTS.CHANGE, validateWithStateUpdate);
+        ref.removeEventListener(EVENTS.BLUR, validateWithStateUpdate);
+    }
+};
+
+const defaultReturn = {
+    isValid: false,
+    value: '',
+};
+var getRadioValue = (options) => Array.isArray(options)
+    ? options.reduce((previous, option) => option && option.ref.checked
+        ? {
+            isValid: true,
+            value: option.ref.value,
+        }
+        : previous, defaultReturn)
+    : defaultReturn;
+
+var getMultipleSelectValue = (options) => [...options]
+    .filter(({ selected }) => selected)
+    .map(({ value }) => value);
+
+var isRadioInput = (element) => element.type === 'radio';
+
+var isFileInput = (element) => element.type === 'file';
+
+var isCheckBoxInput = (element) => element.type === 'checkbox';
+
+var isMultipleSelect = (element) => element.type === `${SELECT}-multiple`;
+
+const defaultResult = {
+    value: false,
+    isValid: false,
+};
+const validResult = { value: true, isValid: true };
+var getCheckboxValue = (options) => {
+    if (Array.isArray(options)) {
+        if (options.length > 1) {
+            const values = options
+                .filter((option) => option && option.ref.checked)
+                .map(({ ref: { value } }) => value);
+            return { value: values, isValid: !!values.length };
+        }
+        const { checked, value, attributes } = options[0].ref;
+        return checked
+            ? attributes && !isUndefined(attributes.value)
+                ? isUndefined(value) || value === ''
+                    ? validResult
+                    : { value: value, isValid: true }
+                : validResult
+            : defaultResult;
+    }
+    return defaultResult;
+};
+
+function getFieldValue(fieldsRef, name, shallowFieldsStateRef, excludeDisabled) {
+    const field = fieldsRef.current[name];
+    if (field) {
+        const { ref: { value, disabled }, ref, valueAsNumber, valueAsDate, setValueAs, } = field;
+        if (disabled && excludeDisabled) {
+            return;
+        }
+        if (isFileInput(ref)) {
+            return ref.files;
+        }
+        if (isRadioInput(ref)) {
+            return getRadioValue(field.options).value;
+        }
+        if (isMultipleSelect(ref)) {
+            return getMultipleSelectValue(ref.options);
+        }
+        if (isCheckBoxInput(ref)) {
+            return getCheckboxValue(field.options).value;
+        }
+        return valueAsNumber
+            ? +value
+            : valueAsDate
+                ? ref.valueAsDate
+                : setValueAs
+                    ? setValueAs(value)
+                    : value;
+    }
+    if (shallowFieldsStateRef) {
+        return get(shallowFieldsStateRef.current, name);
+    }
+}
+
+function isDetached(element) {
+    if (!element) {
+        return true;
+    }
+    if (!(element instanceof HTMLElement) ||
+        element.nodeType === Node.DOCUMENT_NODE) {
+        return false;
+    }
+    return isDetached(element.parentNode);
+}
+
+var isEmptyObject = (value) => isObject(value) && !Object.keys(value).length;
+
+var isBoolean = (value) => typeof value === 'boolean';
+
+function baseGet(object, updatePath) {
+    const length = updatePath.slice(0, -1).length;
+    let index = 0;
+    while (index < length) {
+        object = isUndefined(object) ? index++ : object[updatePath[index++]];
+    }
+    return object;
+}
+function unset(object, path) {
+    const updatePath = isKey(path) ? [path] : stringToPath(path);
+    const childObject = updatePath.length == 1 ? object : baseGet(object, updatePath);
+    const key = updatePath[updatePath.length - 1];
+    let previousObjRef;
+    if (childObject) {
+        delete childObject[key];
+    }
+    for (let k = 0; k < updatePath.slice(0, -1).length; k++) {
+        let index = -1;
+        let objectRef;
+        const currentPaths = updatePath.slice(0, -(k + 1));
+        const currentPathsLength = currentPaths.length - 1;
+        if (k > 0) {
+            previousObjRef = object;
+        }
+        while (++index < currentPaths.length) {
+            const item = currentPaths[index];
+            objectRef = objectRef ? objectRef[item] : object[item];
+            if (currentPathsLength === index &&
+                ((isObject(objectRef) && isEmptyObject(objectRef)) ||
+                    (Array.isArray(objectRef) &&
+                        !objectRef.filter((data) => (isObject(data) && !isEmptyObject(data)) || isBoolean(data)).length))) {
+                previousObjRef ? delete previousObjRef[item] : delete object[item];
+            }
+            previousObjRef = objectRef;
+        }
+    }
+    return object;
+}
+
+const isSameRef = (fieldValue, ref) => fieldValue && fieldValue.ref === ref;
+function findRemovedFieldAndRemoveListener(fieldsRef, handleChange, field, shallowFieldsStateRef, shouldUnregister, forceDelete) {
+    const { ref, ref: { name }, } = field;
+    const fieldRef = fieldsRef.current[name];
+    if (!shouldUnregister) {
+        const value = getFieldValue(fieldsRef, name, shallowFieldsStateRef);
+        !isUndefined(value) && set(shallowFieldsStateRef.current, name, value);
+    }
+    if (!ref.type || !fieldRef) {
+        delete fieldsRef.current[name];
+        return;
+    }
+    if (isRadioInput(ref) || isCheckBoxInput(ref)) {
+        if (Array.isArray(fieldRef.options) && fieldRef.options.length) {
+            compact(fieldRef.options).forEach((option = {}, index) => {
+                if ((isDetached(option.ref) && isSameRef(option, option.ref)) ||
+                    forceDelete) {
+                    removeAllEventListeners(option.ref, handleChange);
+                    unset(fieldRef.options, `[${index}]`);
+                }
+            });
+            if (fieldRef.options && !compact(fieldRef.options).length) {
+                delete fieldsRef.current[name];
+            }
+        }
+        else {
+            delete fieldsRef.current[name];
+        }
+    }
+    else if ((isDetached(ref) && isSameRef(fieldRef, ref)) || forceDelete) {
+        removeAllEventListeners(ref, handleChange);
+        delete fieldsRef.current[name];
+    }
+}
+
+var isPrimitive = (value) => isNullOrUndefined(value) || !isObjectType(value);
+
+function deepMerge(target, source) {
+    if (isPrimitive(target) || isPrimitive(source)) {
+        return source;
+    }
+    for (const key in source) {
+        const targetValue = target[key];
+        const sourceValue = source[key];
+        try {
+            target[key] =
+                (isObject(targetValue) && isObject(sourceValue)) ||
+                    (Array.isArray(targetValue) && Array.isArray(sourceValue))
+                    ? deepMerge(targetValue, sourceValue)
+                    : sourceValue;
+        }
+        catch (_a) { }
+    }
+    return target;
+}
+
+function setDirtyFields(values, defaultValues, dirtyFields, parentNode, parentName) {
+    let index = -1;
+    while (++index < values.length) {
+        for (const key in values[index]) {
+            if (Array.isArray(values[index][key])) {
+                !dirtyFields[index] && (dirtyFields[index] = {});
+                dirtyFields[index][key] = [];
+                setDirtyFields(values[index][key], get(defaultValues[index] || {}, key, []), dirtyFields[index][key], dirtyFields[index], key);
+            }
+            else {
+                get(defaultValues[index] || {}, key) === values[index][key]
+                    ? set(dirtyFields[index] || {}, key)
+                    : (dirtyFields[index] = Object.assign(Object.assign({}, dirtyFields[index]), { [key]: true }));
+            }
+        }
+        parentNode &&
+            !dirtyFields.length &&
+            delete parentNode[parentName];
+    }
+    return dirtyFields;
+}
+var setFieldArrayDirtyFields = (values, defaultValues, dirtyFields) => deepMerge(setDirtyFields(values, defaultValues, dirtyFields.slice(0, values.length)), setDirtyFields(defaultValues, values, dirtyFields.slice(0, values.length)));
+
+var isString = (value) => typeof value === 'string';
+
+var getFieldsValues = (fieldsRef, shallowFieldsState, shouldUnregister, excludeDisabled, search) => {
+    const output = {};
+    for (const name in fieldsRef.current) {
+        if (isUndefined(search) ||
+            (isString(search)
+                ? name.startsWith(search)
+                : Array.isArray(search) && search.find((data) => name.startsWith(data)))) {
+            output[name] = getFieldValue(fieldsRef, name, undefined, excludeDisabled);
+        }
+    }
+    return shouldUnregister
+        ? transformToNestObject(output)
+        : deepMerge(shallowFieldsState, transformToNestObject(output));
+};
+
+function deepEqual(object1, object2, isErrorObject) {
+    if (isPrimitive(object1) ||
+        isPrimitive(object2) ||
+        object1 instanceof Date ||
+        object2 instanceof Date) {
+        return object1 === object2;
+    }
+    if (!Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(object1)) {
+        const keys1 = Object.keys(object1);
+        const keys2 = Object.keys(object2);
+        if (keys1.length !== keys2.length) {
+            return false;
+        }
+        for (const key of keys1) {
+            const val1 = object1[key];
+            if (!(isErrorObject && key === 'ref')) {
+                const val2 = object2[key];
+                if ((isObject(val1) || Array.isArray(val1)) &&
+                    (isObject(val2) || Array.isArray(val2))
+                    ? !deepEqual(val1, val2, isErrorObject)
+                    : val1 !== val2) {
+                    return false;
+                }
+            }
+        }
+    }
+    return true;
+}
+
+var isErrorStateChanged = ({ errors, name, error, validFields, fieldsWithValidation, }) => {
+    const isValid = isUndefined(error);
+    const previousError = get(errors, name);
+    return ((isValid && !!previousError) ||
+        (!isValid && !deepEqual(previousError, error, true)) ||
+        (isValid && get(fieldsWithValidation, name) && !get(validFields, name)));
+};
+
+var isRegex = (value) => value instanceof RegExp;
+
+var getValueAndMessage = (validationData) => isObject(validationData) && !isRegex(validationData)
+    ? validationData
+    : {
+        value: validationData,
+        message: '',
+    };
+
+var isFunction = (value) => typeof value === 'function';
+
+var isMessage = (value) => isString(value) || Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(value);
+
+function getValidateError(result, ref, type = 'validate') {
+    if (isMessage(result) || (isBoolean(result) && !result)) {
+        return {
+            type,
+            message: isMessage(result) ? result : '',
+            ref,
+        };
+    }
+}
+
+var appendErrors = (name, validateAllFieldCriteria, errors, type, message) => validateAllFieldCriteria
+    ? Object.assign(Object.assign({}, errors[name]), { types: Object.assign(Object.assign({}, (errors[name] && errors[name].types ? errors[name].types : {})), { [type]: message || true }) }) : {};
+
+var validateField = async (fieldsRef, validateAllFieldCriteria, { ref, ref: { value }, options, required, maxLength, minLength, min, max, pattern, validate, }, shallowFieldsStateRef) => {
+    const name = ref.name;
+    const error = {};
+    const isRadio = isRadioInput(ref);
+    const isCheckBox = isCheckBoxInput(ref);
+    const isRadioOrCheckbox = isRadio || isCheckBox;
+    const isEmpty = value === '';
+    const appendErrorsCurry = appendErrors.bind(null, name, validateAllFieldCriteria, error);
+    const getMinMaxMessage = (exceedMax, maxLengthMessage, minLengthMessage, maxType = INPUT_VALIDATION_RULES.maxLength, minType = INPUT_VALIDATION_RULES.minLength) => {
+        const message = exceedMax ? maxLengthMessage : minLengthMessage;
+        error[name] = Object.assign({ type: exceedMax ? maxType : minType, message,
+            ref }, (exceedMax
+            ? appendErrorsCurry(maxType, message)
+            : appendErrorsCurry(minType, message)));
+    };
+    if (required &&
+        ((!isRadio && !isCheckBox && (isEmpty || isNullOrUndefined(value))) ||
+            (isBoolean(value) && !value) ||
+            (isCheckBox && !getCheckboxValue(options).isValid) ||
+            (isRadio && !getRadioValue(options).isValid))) {
+        const { value, message } = isMessage(required)
+            ? { value: !!required, message: required }
+            : getValueAndMessage(required);
+        if (value) {
+            error[name] = Object.assign({ type: INPUT_VALIDATION_RULES.required, message, ref: isRadioOrCheckbox
+                    ? ((fieldsRef.current[name].options || [])[0] || {}).ref
+                    : ref }, appendErrorsCurry(INPUT_VALIDATION_RULES.required, message));
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if ((!isNullOrUndefined(min) || !isNullOrUndefined(max)) && value !== '') {
+        let exceedMax;
+        let exceedMin;
+        const maxOutput = getValueAndMessage(max);
+        const minOutput = getValueAndMessage(min);
+        if (!isNaN(value)) {
+            const valueNumber = ref.valueAsNumber || parseFloat(value);
+            if (!isNullOrUndefined(maxOutput.value)) {
+                exceedMax = valueNumber > maxOutput.value;
+            }
+            if (!isNullOrUndefined(minOutput.value)) {
+                exceedMin = valueNumber < minOutput.value;
+            }
+        }
+        else {
+            const valueDate = ref.valueAsDate || new Date(value);
+            if (isString(maxOutput.value)) {
+                exceedMax = valueDate > new Date(maxOutput.value);
+            }
+            if (isString(minOutput.value)) {
+                exceedMin = valueDate < new Date(minOutput.value);
+            }
+        }
+        if (exceedMax || exceedMin) {
+            getMinMaxMessage(!!exceedMax, maxOutput.message, minOutput.message, INPUT_VALIDATION_RULES.max, INPUT_VALIDATION_RULES.min);
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if (isString(value) && !isEmpty && (maxLength || minLength)) {
+        const maxLengthOutput = getValueAndMessage(maxLength);
+        const minLengthOutput = getValueAndMessage(minLength);
+        const exceedMax = !isNullOrUndefined(maxLengthOutput.value) &&
+            value.length > maxLengthOutput.value;
+        const exceedMin = !isNullOrUndefined(minLengthOutput.value) &&
+            value.length < minLengthOutput.value;
+        if (exceedMax || exceedMin) {
+            getMinMaxMessage(exceedMax, maxLengthOutput.message, minLengthOutput.message);
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if (isString(value) && pattern && !isEmpty) {
+        const { value: patternValue, message } = getValueAndMessage(pattern);
+        if (isRegex(patternValue) && !patternValue.test(value)) {
+            error[name] = Object.assign({ type: INPUT_VALIDATION_RULES.pattern, message,
+                ref }, appendErrorsCurry(INPUT_VALIDATION_RULES.pattern, message));
+            if (!validateAllFieldCriteria) {
+                return error;
+            }
+        }
+    }
+    if (validate) {
+        const fieldValue = getFieldValue(fieldsRef, name, shallowFieldsStateRef);
+        const validateRef = isRadioOrCheckbox && options ? options[0].ref : ref;
+        if (isFunction(validate)) {
+            const result = await validate(fieldValue);
+            const validateError = getValidateError(result, validateRef);
+            if (validateError) {
+                error[name] = Object.assign(Object.assign({}, validateError), appendErrorsCurry(INPUT_VALIDATION_RULES.validate, validateError.message));
+                if (!validateAllFieldCriteria) {
+                    return error;
+                }
+            }
+        }
+        else if (isObject(validate)) {
+            let validationResult = {};
+            for (const [key, validateFunction] of Object.entries(validate)) {
+                if (!isEmptyObject(validationResult) && !validateAllFieldCriteria) {
+                    break;
+                }
+                const validateResult = await validateFunction(fieldValue);
+                const validateError = getValidateError(validateResult, validateRef, key);
+                if (validateError) {
+                    validationResult = Object.assign(Object.assign({}, validateError), appendErrorsCurry(key, validateError.message));
+                    if (validateAllFieldCriteria) {
+                        error[name] = validationResult;
+                    }
+                }
+            }
+            if (!isEmptyObject(validationResult)) {
+                error[name] = Object.assign({ ref: validateRef }, validationResult);
+                if (!validateAllFieldCriteria) {
+                    return error;
+                }
+            }
+        }
+    }
+    return error;
+};
+
+const getPath = (rootPath, values, paths = []) => {
+    for (const property in values) {
+        const rootName = (rootPath +
+            (isObject(values)
+                ? `.${property}`
+                : `[${property}]`));
+        isPrimitive(values[property])
+            ? paths.push(rootName)
+            : getPath(rootName, values[property], paths);
+    }
+    return paths;
+};
+
+var assignWatchFields = (fieldValues, fieldName, watchFields, inputValue, isSingleField) => {
+    let value = undefined;
+    watchFields.add(fieldName);
+    if (!isEmptyObject(fieldValues)) {
+        value = get(fieldValues, fieldName);
+        if (isObject(value) || Array.isArray(value)) {
+            getPath(fieldName, value).forEach((name) => watchFields.add(name));
+        }
+    }
+    return isUndefined(value)
+        ? isSingleField
+            ? inputValue
+            : get(inputValue, fieldName)
+        : value;
+};
+
+var skipValidation = ({ isOnBlur, isOnChange, isOnTouch, isTouched, isReValidateOnBlur, isReValidateOnChange, isBlurEvent, isSubmitted, isOnAll, }) => {
+    if (isOnAll) {
+        return false;
+    }
+    else if (!isSubmitted && isOnTouch) {
+        return !(isTouched || isBlurEvent);
+    }
+    else if (isSubmitted ? isReValidateOnBlur : isOnBlur) {
+        return !isBlurEvent;
+    }
+    else if (isSubmitted ? isReValidateOnChange : isOnChange) {
+        return isBlurEvent;
+    }
+    return true;
+};
+
+var getFieldArrayParentName = (name) => name.substring(0, name.indexOf('['));
+
+const isMatchFieldArrayName = (name, searchName) => RegExp(`^${searchName}([|.)\\d+`.replace(/\[/g, '\\[').replace(/\]/g, '\\]')).test(name);
+var isNameInFieldArray = (names, name) => [...names].some((current) => isMatchFieldArrayName(name, current));
+
+var isSelectInput = (element) => element.type === `${SELECT}-one`;
+
+function onDomRemove(fieldsRef, removeFieldEventListenerAndRef) {
+    const observer = new MutationObserver(() => {
+        for (const field of Object.values(fieldsRef.current)) {
+            if (field && field.options) {
+                for (const option of field.options) {
+                    if (option && option.ref && isDetached(option.ref)) {
+                        removeFieldEventListenerAndRef(field);
+                    }
+                }
+            }
+            else if (field && isDetached(field.ref)) {
+                removeFieldEventListenerAndRef(field);
+            }
+        }
+    });
+    observer.observe(window.document, {
+        childList: true,
+        subtree: true,
+    });
+    return observer;
+}
+
+var isWeb = typeof window !== UNDEFINED && typeof document !== UNDEFINED;
+
+function cloneObject(data) {
+    let copy;
+    if (isPrimitive(data) ||
+        (isWeb && (data instanceof File || isHTMLElement(data)))) {
+        return data;
+    }
+    if (data instanceof Date) {
+        copy = new Date(data.getTime());
+        return copy;
+    }
+    if (data instanceof Set) {
+        copy = new Set();
+        for (const item of data) {
+            copy.add(item);
+        }
+        return copy;
+    }
+    if (data instanceof Map) {
+        copy = new Map();
+        for (const key of data.keys()) {
+            copy.set(key, cloneObject(data.get(key)));
+        }
+        return copy;
+    }
+    copy = Array.isArray(data) ? [] : {};
+    for (const key in data) {
+        copy[key] = cloneObject(data[key]);
+    }
+    return copy;
+}
+
+var modeChecker = (mode) => ({
+    isOnSubmit: !mode || mode === VALIDATION_MODE.onSubmit,
+    isOnBlur: mode === VALIDATION_MODE.onBlur,
+    isOnChange: mode === VALIDATION_MODE.onChange,
+    isOnAll: mode === VALIDATION_MODE.all,
+    isOnTouch: mode === VALIDATION_MODE.onTouched,
+});
+
+var isRadioOrCheckboxFunction = (ref) => isRadioInput(ref) || isCheckBoxInput(ref);
+
+const isWindowUndefined = typeof window === UNDEFINED;
+const isProxyEnabled = isWeb ? 'Proxy' in window : typeof Proxy !== UNDEFINED;
+function useForm({ mode = VALIDATION_MODE.onSubmit, reValidateMode = VALIDATION_MODE.onChange, resolver, context, defaultValues = {}, shouldFocusError = true, shouldUnregister = true, criteriaMode, } = {}) {
+    const fieldsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const fieldArrayDefaultValuesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const fieldArrayValuesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const watchFieldsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(new Set());
+    const useWatchFieldsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const useWatchRenderFunctionsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const fieldsWithValidationRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const validFieldsRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const defaultValuesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(defaultValues);
+    const isUnMount = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(false);
+    const isWatchAllRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(false);
+    const handleChangeRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+    const shallowFieldsStateRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const resetFieldArrayFunctionRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({});
+    const contextRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(context);
+    const resolverRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(resolver);
+    const fieldArrayNamesRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(new Set());
+    const modeRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(modeChecker(mode));
+    const { isOnSubmit, isOnTouch } = modeRef.current;
+    const isValidateAllFieldCriteria = criteriaMode === VALIDATION_MODE.all;
+    const [formState, setFormState] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+        isDirty: false,
+        isValidating: false,
+        dirtyFields: {},
+        isSubmitted: false,
+        submitCount: 0,
+        touched: {},
+        isSubmitting: false,
+        isSubmitSuccessful: false,
+        isValid: !isOnSubmit,
+        errors: {},
+    });
+    const readFormStateRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({
+        isDirty: !isProxyEnabled,
+        dirtyFields: !isProxyEnabled,
+        touched: !isProxyEnabled || isOnTouch,
+        isValidating: !isProxyEnabled,
+        isSubmitting: !isProxyEnabled,
+        isValid: !isProxyEnabled,
+    });
+    const formStateRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(formState);
+    const observerRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+    const { isOnBlur: isReValidateOnBlur, isOnChange: isReValidateOnChange, } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(modeChecker(reValidateMode)).current;
+    contextRef.current = context;
+    resolverRef.current = resolver;
+    formStateRef.current = formState;
+    shallowFieldsStateRef.current = shouldUnregister
+        ? {}
+        : isEmptyObject(shallowFieldsStateRef.current)
+            ? cloneObject(defaultValues)
+            : shallowFieldsStateRef.current;
+    const updateFormState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((state = {}) => {
+        if (!isUnMount.current) {
+            formStateRef.current = Object.assign(Object.assign({}, formStateRef.current), state);
+            setFormState(formStateRef.current);
+        }
+    }, []);
+    const updateIsValidating = () => readFormStateRef.current.isValidating &&
+        updateFormState({
+            isValidating: true,
+        });
+    const shouldRenderBaseOnError = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, error, shouldRender = false, state = {}, isValid) => {
+        let shouldReRender = shouldRender ||
+            isErrorStateChanged({
+                errors: formStateRef.current.errors,
+                error,
+                name,
+                validFields: validFieldsRef.current,
+                fieldsWithValidation: fieldsWithValidationRef.current,
+            });
+        const previousError = get(formStateRef.current.errors, name);
+        if (error) {
+            unset(validFieldsRef.current, name);
+            shouldReRender =
+                shouldReRender ||
+                    !previousError ||
+                    !deepEqual(previousError, error, true);
+            set(formStateRef.current.errors, name, error);
+        }
+        else {
+            if (get(fieldsWithValidationRef.current, name) || resolverRef.current) {
+                set(validFieldsRef.current, name, true);
+                shouldReRender = shouldReRender || previousError;
+            }
+            unset(formStateRef.current.errors, name);
+        }
+        if ((shouldReRender && !isNullOrUndefined(shouldRender)) ||
+            !isEmptyObject(state) ||
+            readFormStateRef.current.isValidating) {
+            updateFormState(Object.assign(Object.assign(Object.assign({}, state), (resolverRef.current ? { isValid: !!isValid } : {})), { isValidating: false }));
+        }
+    }, []);
+    const setFieldValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, rawValue) => {
+        const { ref, options } = fieldsRef.current[name];
+        const value = isWeb && isHTMLElement(ref) && isNullOrUndefined(rawValue)
+            ? ''
+            : rawValue;
+        if (isRadioInput(ref)) {
+            (options || []).forEach(({ ref: radioRef }) => (radioRef.checked = radioRef.value === value));
+        }
+        else if (isFileInput(ref) && !isString(value)) {
+            ref.files = value;
+        }
+        else if (isMultipleSelect(ref)) {
+            [...ref.options].forEach((selectRef) => (selectRef.selected = value.includes(selectRef.value)));
+        }
+        else if (isCheckBoxInput(ref) && options) {
+            options.length > 1
+                ? options.forEach(({ ref: checkboxRef }) => (checkboxRef.checked = Array.isArray(value)
+                    ? !!value.find((data) => data === checkboxRef.value)
+                    : value === checkboxRef.value))
+                : (options[0].ref.checked = !!value);
+        }
+        else {
+            ref.value = value;
+        }
+    }, []);
+    const isFormDirty = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, data) => {
+        if (readFormStateRef.current.isDirty) {
+            const formValues = getValues();
+            name && data && set(formValues, name, data);
+            return !deepEqual(formValues, defaultValuesRef.current);
+        }
+        return false;
+    }, []);
+    const updateAndGetDirtyState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, shouldRender = true) => {
+        if (readFormStateRef.current.isDirty ||
+            readFormStateRef.current.dirtyFields) {
+            const isFieldDirty = !deepEqual(get(defaultValuesRef.current, name), getFieldValue(fieldsRef, name, shallowFieldsStateRef));
+            const isDirtyFieldExist = get(formStateRef.current.dirtyFields, name);
+            const previousIsDirty = formStateRef.current.isDirty;
+            isFieldDirty
+                ? set(formStateRef.current.dirtyFields, name, true)
+                : unset(formStateRef.current.dirtyFields, name);
+            const state = {
+                isDirty: isFormDirty(),
+                dirtyFields: formStateRef.current.dirtyFields,
+            };
+            const isChanged = (readFormStateRef.current.isDirty &&
+                previousIsDirty !== state.isDirty) ||
+                (readFormStateRef.current.dirtyFields &&
+                    isDirtyFieldExist !== get(formStateRef.current.dirtyFields, name));
+            isChanged && shouldRender && updateFormState(state);
+            return isChanged ? state : {};
+        }
+        return {};
+    }, []);
+    const executeValidation = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async (name, skipReRender) => {
+        if (true) {
+            if (!fieldsRef.current[name]) {
+                console.warn('📋 Field is missing with `name` attribute: ', name);
+                return false;
+            }
+        }
+        const error = (await validateField(fieldsRef, isValidateAllFieldCriteria, fieldsRef.current[name], shallowFieldsStateRef))[name];
+        shouldRenderBaseOnError(name, error, skipReRender);
+        return isUndefined(error);
+    }, [shouldRenderBaseOnError, isValidateAllFieldCriteria]);
+    const executeSchemaOrResolverValidation = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async (names) => {
+        const { errors } = await resolverRef.current(getValues(), contextRef.current, isValidateAllFieldCriteria);
+        const previousFormIsValid = formStateRef.current.isValid;
+        if (Array.isArray(names)) {
+            const isInputsValid = names
+                .map((name) => {
+                const error = get(errors, name);
+                error
+                    ? set(formStateRef.current.errors, name, error)
+                    : unset(formStateRef.current.errors, name);
+                return !error;
+            })
+                .every(Boolean);
+            updateFormState({
+                isValid: isEmptyObject(errors),
+                isValidating: false,
+            });
+            return isInputsValid;
+        }
+        else {
+            const error = get(errors, names);
+            shouldRenderBaseOnError(names, error, previousFormIsValid !== isEmptyObject(errors), {}, isEmptyObject(errors));
+            return !error;
+        }
+    }, [shouldRenderBaseOnError, isValidateAllFieldCriteria]);
+    const trigger = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async (name) => {
+        const fields = name || Object.keys(fieldsRef.current);
+        updateIsValidating();
+        if (resolverRef.current) {
+            return executeSchemaOrResolverValidation(fields);
+        }
+        if (Array.isArray(fields)) {
+            !name && (formStateRef.current.errors = {});
+            const result = await Promise.all(fields.map(async (data) => await executeValidation(data, null)));
+            updateFormState({
+                isValidating: false,
+            });
+            return result.every(Boolean);
+        }
+        return await executeValidation(fields);
+    }, [executeSchemaOrResolverValidation, executeValidation]);
+    const setInternalValues = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, value, { shouldDirty, shouldValidate }) => {
+        const data = {};
+        set(data, name, value);
+        for (const fieldName of getPath(name, value)) {
+            if (fieldsRef.current[fieldName]) {
+                setFieldValue(fieldName, get(data, fieldName));
+                shouldDirty && updateAndGetDirtyState(fieldName);
+                shouldValidate && trigger(fieldName);
+            }
+        }
+    }, [trigger, setFieldValue, updateAndGetDirtyState]);
+    const setInternalValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name, value, config) => {
+        !shouldUnregister &&
+            !isPrimitive(value) &&
+            set(shallowFieldsStateRef.current, name, Object.assign({}, value));
+        if (fieldsRef.current[name]) {
+            setFieldValue(name, value);
+            config.shouldDirty && updateAndGetDirtyState(name);
+            config.shouldValidate && trigger(name);
+        }
+        else if (!isPrimitive(value)) {
+            setInternalValues(name, value, config);
+            if (fieldArrayNamesRef.current.has(name)) {
+                const parentName = getFieldArrayParentName(name) || name;
+                set(fieldArrayDefaultValuesRef.current, name, value);
+                resetFieldArrayFunctionRef.current[parentName]({
+                    [parentName]: get(fieldArrayDefaultValuesRef.current, parentName),
+                });
+                if ((readFormStateRef.current.isDirty ||
+                    readFormStateRef.current.dirtyFields) &&
+                    config.shouldDirty) {
+                    set(formStateRef.current.dirtyFields, name, setFieldArrayDirtyFields(value, get(defaultValuesRef.current, name, []), get(formStateRef.current.dirtyFields, name, [])));
+                    updateFormState({
+                        isDirty: !deepEqual(Object.assign(Object.assign({}, getValues()), { [name]: value }), defaultValuesRef.current),
+                    });
+                }
+            }
+        }
+        !shouldUnregister && set(shallowFieldsStateRef.current, name, value);
+    }, [updateAndGetDirtyState, setFieldValue, setInternalValues]);
+    const isFieldWatched = (name) => isWatchAllRef.current ||
+        watchFieldsRef.current.has(name) ||
+        watchFieldsRef.current.has((name.match(/\w+/) || [])[0]);
+    const renderWatchedInputs = (name) => {
+        let found = true;
+        if (!isEmptyObject(useWatchFieldsRef.current)) {
+            for (const key in useWatchFieldsRef.current) {
+                if (!name ||
+                    !useWatchFieldsRef.current[key].size ||
+                    useWatchFieldsRef.current[key].has(name) ||
+                    useWatchFieldsRef.current[key].has(getFieldArrayParentName(name))) {
+                    useWatchRenderFunctionsRef.current[key]();
+                    found = false;
+                }
+            }
+        }
+        return found;
+    };
+    function setValue(name, value, config) {
+        setInternalValue(name, value, config || {});
+        isFieldWatched(name) && updateFormState();
+        renderWatchedInputs(name);
+    }
+    handleChangeRef.current = handleChangeRef.current
+        ? handleChangeRef.current
+        : async ({ type, target }) => {
+            let name = target.name;
+            const field = fieldsRef.current[name];
+            let error;
+            let isValid;
+            if (field) {
+                const isBlurEvent = type === EVENTS.BLUR;
+                const shouldSkipValidation = skipValidation(Object.assign({ isBlurEvent,
+                    isReValidateOnChange,
+                    isReValidateOnBlur, isTouched: !!get(formStateRef.current.touched, name), isSubmitted: formStateRef.current.isSubmitted }, modeRef.current));
+                let state = updateAndGetDirtyState(name, false);
+                let shouldRender = !isEmptyObject(state) ||
+                    (!isBlurEvent && isFieldWatched(name));
+                if (isBlurEvent &&
+                    !get(formStateRef.current.touched, name) &&
+                    readFormStateRef.current.touched) {
+                    set(formStateRef.current.touched, name, true);
+                    state = Object.assign(Object.assign({}, state), { touched: formStateRef.current.touched });
+                }
+                if (!shouldUnregister && isCheckBoxInput(target)) {
+                    set(shallowFieldsStateRef.current, name, getFieldValue(fieldsRef, name));
+                }
+                if (shouldSkipValidation) {
+                    !isBlurEvent && renderWatchedInputs(name);
+                    return ((!isEmptyObject(state) ||
+                        (shouldRender && isEmptyObject(state))) &&
+                        updateFormState(state));
+                }
+                updateIsValidating();
+                if (resolverRef.current) {
+                    const { errors } = await resolverRef.current(getValues(), contextRef.current, isValidateAllFieldCriteria);
+                    const previousFormIsValid = formStateRef.current.isValid;
+                    error = get(errors, name);
+                    if (isCheckBoxInput(target) &&
+                        !error &&
+                        resolverRef.current) {
+                        const parentNodeName = getFieldArrayParentName(name);
+                        const currentError = get(errors, parentNodeName, {});
+                        currentError.type &&
+                            currentError.message &&
+                            (error = currentError);
+                        if (parentNodeName &&
+                            (currentError ||
+                                get(formStateRef.current.errors, parentNodeName))) {
+                            name = parentNodeName;
+                        }
+                    }
+                    isValid = isEmptyObject(errors);
+                    previousFormIsValid !== isValid && (shouldRender = true);
+                }
+                else {
+                    error = (await validateField(fieldsRef, isValidateAllFieldCriteria, field, shallowFieldsStateRef))[name];
+                }
+                !isBlurEvent && renderWatchedInputs(name);
+                shouldRenderBaseOnError(name, error, shouldRender, state, isValid);
+            }
+        };
+    function setFieldArrayDefaultValues(data) {
+        if (!shouldUnregister) {
+            let copy = cloneObject(data);
+            for (const value of fieldArrayNamesRef.current) {
+                if (isKey(value) && !copy[value]) {
+                    copy = Object.assign(Object.assign({}, copy), { [value]: [] });
+                }
+            }
+            return copy;
+        }
+        return data;
+    }
+    function getValues(payload) {
+        if (isString(payload)) {
+            return getFieldValue(fieldsRef, payload, shallowFieldsStateRef);
+        }
+        if (Array.isArray(payload)) {
+            const data = {};
+            for (const name of payload) {
+                set(data, name, getFieldValue(fieldsRef, name, shallowFieldsStateRef));
+            }
+            return data;
+        }
+        return setFieldArrayDefaultValues(getFieldsValues(fieldsRef, cloneObject(shallowFieldsStateRef.current), shouldUnregister));
+    }
+    const validateResolver = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(async (values = {}) => {
+        const { errors } = await resolverRef.current(Object.assign(Object.assign({}, getValues()), values), contextRef.current, isValidateAllFieldCriteria);
+        const isValid = isEmptyObject(errors);
+        formStateRef.current.isValid !== isValid &&
+            updateFormState({
+                isValid,
+            });
+    }, [isValidateAllFieldCriteria]);
+    const removeFieldEventListener = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((field, forceDelete) => findRemovedFieldAndRemoveListener(fieldsRef, handleChangeRef.current, field, shallowFieldsStateRef, shouldUnregister, forceDelete), [shouldUnregister]);
+    const updateWatchedValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((name) => {
+        if (isWatchAllRef.current) {
+            updateFormState();
+        }
+        else {
+            for (const watchField of watchFieldsRef.current) {
+                if (watchField.startsWith(name)) {
+                    updateFormState();
+                    break;
+                }
+            }
+            renderWatchedInputs(name);
+        }
+    }, []);
+    const removeFieldEventListenerAndRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((field, forceDelete) => {
+        if (field) {
+            removeFieldEventListener(field, forceDelete);
+            if (shouldUnregister && !compact(field.options || []).length) {
+                unset(validFieldsRef.current, field.ref.name);
+                unset(fieldsWithValidationRef.current, field.ref.name);
+                unset(formStateRef.current.errors, field.ref.name);
+                set(formStateRef.current.dirtyFields, field.ref.name, true);
+                updateFormState({
+                    isDirty: isFormDirty(),
+                });
+                readFormStateRef.current.isValid &&
+                    resolverRef.current &&
+                    validateResolver();
+                updateWatchedValue(field.ref.name);
+            }
+        }
+    }, [validateResolver, removeFieldEventListener]);
+    function clearErrors(name) {
+        name &&
+            (Array.isArray(name) ? name : [name]).forEach((inputName) => fieldsRef.current[inputName] && isKey(inputName)
+                ? delete formStateRef.current.errors[inputName]
+                : unset(formStateRef.current.errors, inputName));
+        updateFormState({
+            errors: name ? formStateRef.current.errors : {},
+        });
+    }
+    function setError(name, error) {
+        const ref = (fieldsRef.current[name] || {}).ref;
+        set(formStateRef.current.errors, name, Object.assign(Object.assign({}, error), { ref }));
+        updateFormState({
+            isValid: false,
+        });
+        error.shouldFocus && ref && ref.focus && ref.focus();
+    }
+    const watchInternal = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((fieldNames, defaultValue, watchId) => {
+        const watchFields = watchId
+            ? useWatchFieldsRef.current[watchId]
+            : watchFieldsRef.current;
+        let fieldValues = getFieldsValues(fieldsRef, cloneObject(shallowFieldsStateRef.current), shouldUnregister, false, fieldNames);
+        if (isString(fieldNames)) {
+            if (fieldArrayNamesRef.current.has(fieldNames)) {
+                const fieldArrayValue = get(fieldArrayValuesRef.current, fieldNames, []);
+                fieldValues =
+                    !fieldArrayValue.length ||
+                        fieldArrayValue.length !==
+                            compact(get(fieldValues, fieldNames, [])).length
+                        ? fieldArrayValuesRef.current
+                        : fieldValues;
+            }
+            return assignWatchFields(fieldValues, fieldNames, watchFields, isUndefined(get(defaultValuesRef.current, fieldNames))
+                ? defaultValue
+                : get(defaultValuesRef.current, fieldNames), true);
+        }
+        const combinedDefaultValues = isUndefined(defaultValue)
+            ? defaultValuesRef.current
+            : defaultValue;
+        if (Array.isArray(fieldNames)) {
+            return fieldNames.reduce((previous, name) => (Object.assign(Object.assign({}, previous), { [name]: assignWatchFields(fieldValues, name, watchFields, combinedDefaultValues) })), {});
+        }
+        isWatchAllRef.current = isUndefined(watchId);
+        return transformToNestObject((!isEmptyObject(fieldValues) && fieldValues) ||
+            combinedDefaultValues);
+    }, []);
+    function watch(fieldNames, defaultValue) {
+        return watchInternal(fieldNames, defaultValue);
+    }
+    function unregister(name) {
+        for (const fieldName of Array.isArray(name) ? name : [name]) {
+            removeFieldEventListenerAndRef(fieldsRef.current[fieldName], true);
+        }
+    }
+    function registerFieldRef(ref, options = {}) {
+        if (true) {
+            if (!ref.name) {
+                return console.warn('📋 Field is missing `name` attribute', ref, `https://react-hook-form.com/api#useForm`);
+            }
+            if (fieldArrayNamesRef.current.has(ref.name.split(/\[\d+\]$/)[0]) &&
+                !RegExp(`^${ref.name.split(/\[\d+\]$/)[0]}[\\d+].\\w+`
+                    .replace(/\[/g, '\\[')
+                    .replace(/\]/g, '\\]')).test(ref.name)) {
+                return console.warn('📋 `name` prop should be in object shape: name="test[index].name"', ref, 'https://react-hook-form.com/api#useFieldArray');
+            }
+        }
+        const { name, type, value } = ref;
+        const fieldRefAndValidationOptions = Object.assign({ ref }, options);
+        const fields = fieldsRef.current;
+        const isRadioOrCheckbox = isRadioOrCheckboxFunction(ref);
+        const isFieldArray = isNameInFieldArray(fieldArrayNamesRef.current, name);
+        const compareRef = (currentRef) => isWeb && (!isHTMLElement(ref) || currentRef === ref);
+        let field = fields[name];
+        let isEmptyDefaultValue = true;
+        let defaultValue;
+        if (field &&
+            (isRadioOrCheckbox
+                ? Array.isArray(field.options) &&
+                    compact(field.options).find((option) => {
+                        return value === option.ref.value && compareRef(option.ref);
+                    })
+                : compareRef(field.ref))) {
+            fields[name] = Object.assign(Object.assign({}, field), options);
+            return;
+        }
+        if (type) {
+            field = isRadioOrCheckbox
+                ? Object.assign({ options: [
+                        ...compact((field && field.options) || []),
+                        {
+                            ref,
+                        },
+                    ], ref: { type, name } }, options) : Object.assign({}, fieldRefAndValidationOptions);
+        }
+        else {
+            field = fieldRefAndValidationOptions;
+        }
+        fields[name] = field;
+        const isEmptyUnmountFields = isUndefined(get(shallowFieldsStateRef.current, name));
+        if (!isEmptyObject(defaultValuesRef.current) || !isEmptyUnmountFields) {
+            defaultValue = get(isEmptyUnmountFields
+                ? defaultValuesRef.current
+                : shallowFieldsStateRef.current, name);
+            isEmptyDefaultValue = isUndefined(defaultValue);
+            if (!isEmptyDefaultValue && !isFieldArray) {
+                setFieldValue(name, defaultValue);
+            }
+        }
+        if (!isEmptyObject(options)) {
+            set(fieldsWithValidationRef.current, name, true);
+            if (!isOnSubmit && readFormStateRef.current.isValid) {
+                validateField(fieldsRef, isValidateAllFieldCriteria, field, shallowFieldsStateRef).then((error) => {
+                    const previousFormIsValid = formStateRef.current.isValid;
+                    isEmptyObject(error)
+                        ? set(validFieldsRef.current, name, true)
+                        : unset(validFieldsRef.current, name);
+                    previousFormIsValid !== isEmptyObject(error) && updateFormState();
+                });
+            }
+        }
+        if (shouldUnregister && !(isFieldArray && isEmptyDefaultValue)) {
+            !isFieldArray && unset(formStateRef.current.dirtyFields, name);
+        }
+        if (type) {
+            attachEventListeners(isRadioOrCheckbox && field.options
+                ? field.options[field.options.length - 1]
+                : field, isRadioOrCheckbox || isSelectInput(ref), handleChangeRef.current);
+        }
+    }
+    function register(refOrRegisterOptions, options) {
+        if (!isWindowUndefined) {
+            if (isString(refOrRegisterOptions)) {
+                registerFieldRef({ name: refOrRegisterOptions }, options);
+            }
+            else if (isObject(refOrRegisterOptions) &&
+                'name' in refOrRegisterOptions) {
+                registerFieldRef(refOrRegisterOptions, options);
+            }
+            else {
+                return (ref) => ref && registerFieldRef(ref, refOrRegisterOptions);
+            }
+        }
+    }
+    const handleSubmit = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((onValid, onInvalid) => async (e) => {
+        if (e && e.preventDefault) {
+            e.preventDefault();
+            e.persist();
+        }
+        let fieldErrors = {};
+        let fieldValues = setFieldArrayDefaultValues(getFieldsValues(fieldsRef, cloneObject(shallowFieldsStateRef.current), shouldUnregister, true));
+        readFormStateRef.current.isSubmitting &&
+            updateFormState({
+                isSubmitting: true,
+            });
+        try {
+            if (resolverRef.current) {
+                const { errors, values } = await resolverRef.current(fieldValues, contextRef.current, isValidateAllFieldCriteria);
+                formStateRef.current.errors = fieldErrors = errors;
+                fieldValues = values;
+            }
+            else {
+                for (const field of Object.values(fieldsRef.current)) {
+                    if (field) {
+                        const { name } = field.ref;
+                        const fieldError = await validateField(fieldsRef, isValidateAllFieldCriteria, field, shallowFieldsStateRef);
+                        if (fieldError[name]) {
+                            set(fieldErrors, name, fieldError[name]);
+                            unset(validFieldsRef.current, name);
+                        }
+                        else if (get(fieldsWithValidationRef.current, name)) {
+                            unset(formStateRef.current.errors, name);
+                            set(validFieldsRef.current, name, true);
+                        }
+                    }
+                }
+            }
+            if (isEmptyObject(fieldErrors) &&
+                Object.keys(formStateRef.current.errors).every((name) => name in fieldsRef.current)) {
+                updateFormState({
+                    errors: {},
+                    isSubmitting: true,
+                });
+                await onValid(fieldValues, e);
+            }
+            else {
+                formStateRef.current.errors = Object.assign(Object.assign({}, formStateRef.current.errors), fieldErrors);
+                onInvalid && (await onInvalid(formStateRef.current.errors, e));
+                shouldFocusError &&
+                    focusOnErrorField(fieldsRef.current, formStateRef.current.errors);
+            }
+        }
+        finally {
+            formStateRef.current.isSubmitting = false;
+            updateFormState({
+                isSubmitted: true,
+                isSubmitting: false,
+                isSubmitSuccessful: isEmptyObject(formStateRef.current.errors),
+                submitCount: formStateRef.current.submitCount + 1,
+            });
+        }
+    }, [shouldFocusError, isValidateAllFieldCriteria]);
+    const resetRefs = ({ errors, isDirty, isSubmitted, touched, isValid, submitCount, dirtyFields, }) => {
+        if (!isValid) {
+            validFieldsRef.current = {};
+            fieldsWithValidationRef.current = {};
+        }
+        fieldArrayDefaultValuesRef.current = {};
+        watchFieldsRef.current = new Set();
+        isWatchAllRef.current = false;
+        updateFormState({
+            submitCount: submitCount ? formStateRef.current.submitCount : 0,
+            isDirty: isDirty ? formStateRef.current.isDirty : false,
+            isSubmitted: isSubmitted ? formStateRef.current.isSubmitted : false,
+            isValid: isValid ? formStateRef.current.isValid : false,
+            dirtyFields: dirtyFields ? formStateRef.current.dirtyFields : {},
+            touched: touched ? formStateRef.current.touched : {},
+            errors: errors ? formStateRef.current.errors : {},
+            isSubmitting: false,
+            isSubmitSuccessful: false,
+        });
+    };
+    const reset = (values, omitResetState = {}) => {
+        if (isWeb) {
+            for (const field of Object.values(fieldsRef.current)) {
+                if (field) {
+                    const { ref, options } = field;
+                    const inputRef = isRadioOrCheckboxFunction(ref) && Array.isArray(options)
+                        ? options[0].ref
+                        : ref;
+                    if (isHTMLElement(inputRef)) {
+                        try {
+                            inputRef.closest('form').reset();
+                            break;
+                        }
+                        catch (_a) { }
+                    }
+                }
+            }
+        }
+        fieldsRef.current = {};
+        defaultValuesRef.current = Object.assign({}, (values || defaultValuesRef.current));
+        values && renderWatchedInputs('');
+        Object.values(resetFieldArrayFunctionRef.current).forEach((resetFieldArray) => isFunction(resetFieldArray) && resetFieldArray());
+        shallowFieldsStateRef.current = shouldUnregister
+            ? {}
+            : cloneObject(values || defaultValuesRef.current);
+        resetRefs(omitResetState);
+    };
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        resolver && readFormStateRef.current.isValid && validateResolver();
+        observerRef.current =
+            observerRef.current || !isWeb
+                ? observerRef.current
+                : onDomRemove(fieldsRef, removeFieldEventListenerAndRef);
+    }, [removeFieldEventListenerAndRef, defaultValuesRef.current]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => () => {
+        observerRef.current && observerRef.current.disconnect();
+        isUnMount.current = true;
+        if (true) {
+            return;
+        }
+        Object.values(fieldsRef.current).forEach((field) => removeFieldEventListenerAndRef(field, true));
+    }, []);
+    if (!resolver && readFormStateRef.current.isValid) {
+        formState.isValid =
+            deepEqual(validFieldsRef.current, fieldsWithValidationRef.current) &&
+                isEmptyObject(formStateRef.current.errors);
+    }
+    const commonProps = {
+        trigger,
+        setValue: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(setValue, [setInternalValue, trigger]),
+        getValues: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(getValues, []),
+        register: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(register, [defaultValuesRef.current]),
+        unregister: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(unregister, []),
+        formState: isProxyEnabled
+            ? new Proxy(formState, {
+                get: (obj, prop) => {
+                    if (true) {
+                        if (prop === 'isValid' && isOnSubmit) {
+                            console.warn('📋 `formState.isValid` is applicable with `onTouched`, `onChange` or `onBlur` mode. https://react-hook-form.com/api#formState');
+                        }
+                    }
+                    if (prop in obj) {
+                        readFormStateRef.current[prop] = true;
+                        return obj[prop];
+                    }
+                    return undefined;
+                },
+            })
+            : formState,
+    };
+    const control = Object(react__WEBPACK_IMPORTED_MODULE_0__["useMemo"])(() => (Object.assign({ isFormDirty,
+        updateWatchedValue,
+        shouldUnregister,
+        updateFormState,
+        removeFieldEventListener,
+        watchInternal, mode: modeRef.current, reValidateMode: {
+            isReValidateOnBlur,
+            isReValidateOnChange,
+        }, validateResolver: resolver ? validateResolver : undefined, fieldsRef,
+        resetFieldArrayFunctionRef,
+        useWatchFieldsRef,
+        useWatchRenderFunctionsRef,
+        fieldArrayDefaultValuesRef,
+        validFieldsRef,
+        fieldsWithValidationRef,
+        fieldArrayNamesRef,
+        readFormStateRef,
+        formStateRef,
+        defaultValuesRef,
+        shallowFieldsStateRef,
+        fieldArrayValuesRef }, commonProps)), [
+        defaultValuesRef.current,
+        updateWatchedValue,
+        shouldUnregister,
+        removeFieldEventListener,
+        watchInternal,
+    ]);
+    return Object.assign({ watch,
+        control,
+        handleSubmit, reset: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(reset, []), clearErrors: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(clearErrors, []), setError: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(setError, []), errors: formState.errors }, commonProps);
+}
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+const FormContext = Object(react__WEBPACK_IMPORTED_MODULE_0__["createContext"])(null);
+FormContext.displayName = 'RHFContext';
+const useFormContext = () => Object(react__WEBPACK_IMPORTED_MODULE_0__["useContext"])(FormContext);
+const FormProvider = (_a) => {
+    var { children } = _a, props = __rest(_a, ["children"]);
+    return (Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(FormContext.Provider, { value: Object.assign({}, props) }, children));
+};
+
+var generateId = () => {
+    const d = typeof performance === UNDEFINED ? Date.now() : performance.now() * 1000;
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+        const r = (Math.random() * 16 + d) % 16 | 0;
+        return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16);
+    });
+};
+
+function removeAtIndexes(data, indexes) {
+    let i = 0;
+    const temp = [...data];
+    for (const index of indexes) {
+        temp.splice(index - i, 1);
+        i++;
+    }
+    return compact(temp).length ? temp : [];
+}
+var removeArrayAt = (data, index) => isUndefined(index)
+    ? []
+    : removeAtIndexes(data, (Array.isArray(index) ? index : [index]).sort());
+
+var moveArrayAt = (data, from, to) => {
+    if (Array.isArray(data)) {
+        if (isUndefined(data[to])) {
+            data[to] = undefined;
+        }
+        data.splice(to, 0, data.splice(from, 1)[0]);
+        return data;
+    }
+    return [];
+};
+
+var swapArrayAt = (data, indexA, indexB) => {
+    const temp = [data[indexB], data[indexA]];
+    data[indexA] = temp[0];
+    data[indexB] = temp[1];
+};
+
+function prepend(data, value) {
+    return [...(Array.isArray(value) ? value : [value || undefined]), ...data];
+}
+
+function insert(data, index, value) {
+    return [
+        ...data.slice(0, index),
+        ...(Array.isArray(value) ? value : [value || undefined]),
+        ...data.slice(index),
+    ];
+}
+
+var fillEmptyArray = (value) => Array.isArray(value) ? Array(value.length).fill(undefined) : undefined;
+
+var fillBooleanArray = (value) => (Array.isArray(value) ? value : [value]).map((data) => {
+    if (isObject(data)) {
+        const object = {};
+        for (const key in data) {
+            object[key] = true;
+        }
+        return object;
+    }
+    return true;
+});
+
+const mapIds = (values = [], keyName, skipWarn) => {
+    if (true) {
+        if (!skipWarn) {
+            for (const value of values) {
+                if (typeof value === 'object') {
+                    if (keyName in value) {
+                        console.warn(`📋 useFieldArray fieldValues contain the keyName \`${keyName}\` which is reserved for use by useFieldArray. https://react-hook-form.com/api#useFieldArray`);
+                        break;
+                    }
+                }
+                else {
+                    console.warn(`📋 useFieldArray input's name should be in object shape instead of flat array. https://react-hook-form.com/api#useFieldArray`);
+                    break;
+                }
+            }
+        }
+    }
+    return values.map((value) => (Object.assign({ [keyName]: value[keyName] || generateId() }, value)));
+};
+const useFieldArray = ({ control, name, keyName = 'id', }) => {
+    const methods = useFormContext();
+    if (true) {
+        if (!control && !methods) {
+            throw new Error('📋 useFieldArray is missing `control` prop. https://react-hook-form.com/api#useFieldArray');
+        }
+    }
+    const focusIndexRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(-1);
+    const { isFormDirty, updateWatchedValue, resetFieldArrayFunctionRef, fieldArrayNamesRef, fieldsRef, defaultValuesRef, removeFieldEventListener, formStateRef, shallowFieldsStateRef, updateFormState, readFormStateRef, validFieldsRef, fieldsWithValidationRef, fieldArrayDefaultValuesRef, validateResolver, getValues, shouldUnregister, fieldArrayValuesRef, } = control || methods.control;
+    const fieldArrayParentName = getFieldArrayParentName(name);
+    const memoizedDefaultValues = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])([
+        ...(get(fieldArrayDefaultValuesRef.current, fieldArrayParentName)
+            ? get(fieldArrayDefaultValuesRef.current, name, [])
+            : get(shouldUnregister
+                ? defaultValuesRef.current
+                : shallowFieldsStateRef.current, name, [])),
+    ]);
+    const [fields, setFields] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(mapIds(memoizedDefaultValues.current, keyName));
+    set(fieldArrayValuesRef.current, name, fields);
+    const omitKey = (fields) => fields.map((_a = {}) => {
+        var _b = keyName, omitted = _a[_b], rest = __rest(_a, [typeof _b === "symbol" ? _b : _b + ""]);
+        return rest;
+    });
+    fieldArrayNamesRef.current.add(name);
+    const getFieldArrayValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => get(fieldArrayValuesRef.current, name, []), [name]);
+    const getCurrentFieldsValues = () => mapIds(get(getValues(), name, getFieldArrayValue()).map((item, index) => (Object.assign(Object.assign({}, getFieldArrayValue()[index]), item))), keyName, true);
+    fieldArrayNamesRef.current.add(name);
+    if (fieldArrayParentName &&
+        !get(fieldArrayDefaultValuesRef.current, fieldArrayParentName)) {
+        set(fieldArrayDefaultValuesRef.current, fieldArrayParentName, cloneObject(get(defaultValuesRef.current, fieldArrayParentName)));
+    }
+    const setFieldAndValidState = (fieldsValues) => {
+        setFields(fieldsValues);
+        set(fieldArrayValuesRef.current, name, fieldsValues);
+        if (readFormStateRef.current.isValid && validateResolver) {
+            const values = getValues();
+            set(values, name, fieldsValues);
+            validateResolver(values);
+        }
+    };
+    const resetFields = () => {
+        for (const key in fieldsRef.current) {
+            if (isMatchFieldArrayName(key, name)) {
+                removeFieldEventListener(fieldsRef.current[key], true);
+                delete fieldsRef.current[key];
+            }
+        }
+    };
+    const cleanup = (ref) => !compact(get(ref, name, [])).length && unset(ref, name);
+    const updateDirtyFieldsWithDefaultValues = (updatedFieldArrayValues) => {
+        if (updatedFieldArrayValues) {
+            set(formStateRef.current.dirtyFields, name, setFieldArrayDirtyFields(omitKey(updatedFieldArrayValues), get(defaultValuesRef.current, name, []), get(formStateRef.current.dirtyFields, name, [])));
+        }
+    };
+    const batchStateUpdate = (method, args, updatedFieldValues, updatedFormValues = [], shouldSet = true, shouldUpdateValid = false) => {
+        if (get(shallowFieldsStateRef.current, name)) {
+            const output = method(get(shallowFieldsStateRef.current, name), args.argA, args.argB);
+            shouldSet && set(shallowFieldsStateRef.current, name, output);
+        }
+        if (get(fieldArrayDefaultValuesRef.current, name)) {
+            const output = method(get(fieldArrayDefaultValuesRef.current, name), args.argA, args.argB);
+            shouldSet && set(fieldArrayDefaultValuesRef.current, name, output);
+            cleanup(fieldArrayDefaultValuesRef.current);
+        }
+        if (Array.isArray(get(formStateRef.current.errors, name))) {
+            const output = method(get(formStateRef.current.errors, name), args.argA, args.argB);
+            shouldSet && set(formStateRef.current.errors, name, output);
+            cleanup(formStateRef.current.errors);
+        }
+        if (readFormStateRef.current.touched &&
+            get(formStateRef.current.touched, name)) {
+            const output = method(get(formStateRef.current.touched, name), args.argA, args.argB);
+            shouldSet && set(formStateRef.current.touched, name, output);
+            cleanup(formStateRef.current.touched);
+        }
+        if (readFormStateRef.current.dirtyFields ||
+            readFormStateRef.current.isDirty) {
+            set(formStateRef.current.dirtyFields, name, setFieldArrayDirtyFields(omitKey(updatedFormValues), get(defaultValuesRef.current, name, []), get(formStateRef.current.dirtyFields, name, [])));
+            updateDirtyFieldsWithDefaultValues(updatedFieldValues);
+            cleanup(formStateRef.current.dirtyFields);
+        }
+        if (shouldUpdateValid &&
+            readFormStateRef.current.isValid &&
+            !validateResolver) {
+            set(validFieldsRef.current, name, method(get(validFieldsRef.current, name, []), args.argA));
+            cleanup(validFieldsRef.current);
+            set(fieldsWithValidationRef.current, name, method(get(fieldsWithValidationRef.current, name, []), args.argA));
+            cleanup(fieldsWithValidationRef.current);
+        }
+        updateFormState({
+            isDirty: isFormDirty(name, omitKey(updatedFormValues)),
+        });
+    };
+    const append = (value, shouldFocus = true) => {
+        const appendValue = Array.isArray(value) ? value : [value];
+        const updateFormValues = [
+            ...getCurrentFieldsValues(),
+            ...mapIds(appendValue, keyName),
+        ];
+        setFieldAndValidState(updateFormValues);
+        if (readFormStateRef.current.dirtyFields ||
+            readFormStateRef.current.isDirty) {
+            updateDirtyFieldsWithDefaultValues(updateFormValues);
+            updateFormState({
+                isDirty: true,
+                dirtyFields: formStateRef.current.dirtyFields,
+            });
+        }
+        !shouldUnregister &&
+            set(shallowFieldsStateRef.current, name, [
+                ...(get(shallowFieldsStateRef.current, name) || []),
+                ...cloneObject(appendValue),
+            ]);
+        focusIndexRef.current = shouldFocus
+            ? get(fieldArrayValuesRef.current, name).length - 1
+            : -1;
+    };
+    const prepend$1 = (value, shouldFocus = true) => {
+        const emptyArray = fillEmptyArray(value);
+        const updatedFieldArrayValues = prepend(getCurrentFieldsValues(), mapIds(Array.isArray(value) ? value : [value], keyName));
+        setFieldAndValidState(updatedFieldArrayValues);
+        resetFields();
+        batchStateUpdate(prepend, {
+            argA: emptyArray,
+            argC: fillBooleanArray(value),
+        }, updatedFieldArrayValues);
+        focusIndexRef.current = shouldFocus ? 0 : -1;
+    };
+    const remove = (index) => {
+        const fieldValues = getCurrentFieldsValues();
+        const updatedFieldValues = removeArrayAt(fieldValues, index);
+        setFieldAndValidState(updatedFieldValues);
+        resetFields();
+        batchStateUpdate(removeArrayAt, {
+            argA: index,
+            argC: index,
+        }, updatedFieldValues, removeArrayAt(fieldValues, index), true, true);
+    };
+    const insert$1 = (index, value, shouldFocus = true) => {
+        const emptyArray = fillEmptyArray(value);
+        const fieldValues = getCurrentFieldsValues();
+        const updatedFieldArrayValues = insert(fieldValues, index, mapIds(Array.isArray(value) ? value : [value], keyName));
+        setFieldAndValidState(updatedFieldArrayValues);
+        resetFields();
+        batchStateUpdate(insert, {
+            argA: index,
+            argB: emptyArray,
+            argC: index,
+            argD: fillBooleanArray(value),
+        }, updatedFieldArrayValues, insert(fieldValues, index));
+        focusIndexRef.current = shouldFocus ? index : -1;
+    };
+    const swap = (indexA, indexB) => {
+        const fieldValues = getCurrentFieldsValues();
+        swapArrayAt(fieldValues, indexA, indexB);
+        resetFields();
+        setFieldAndValidState([...fieldValues]);
+        batchStateUpdate(swapArrayAt, {
+            argA: indexA,
+            argB: indexB,
+            argC: indexA,
+            argD: indexB,
+        }, undefined, fieldValues, false);
+    };
+    const move = (from, to) => {
+        const fieldValues = getCurrentFieldsValues();
+        moveArrayAt(fieldValues, from, to);
+        resetFields();
+        setFieldAndValidState([...fieldValues]);
+        batchStateUpdate(moveArrayAt, {
+            argA: from,
+            argB: to,
+            argC: from,
+            argD: to,
+        }, undefined, fieldValues, false);
+    };
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        if (true) {
+            if (!name) {
+                console.warn('📋 useFieldArray is missing `name` attribute. https://react-hook-form.com/api#useFieldArray');
+            }
+        }
+        const defaultValues = get(fieldArrayDefaultValuesRef.current, name);
+        if (defaultValues && fields.length < defaultValues.length) {
+            defaultValues.pop();
+            set(fieldArrayDefaultValuesRef.current, name, defaultValues);
+        }
+        updateWatchedValue(name);
+        if (focusIndexRef.current > -1) {
+            for (const key in fieldsRef.current) {
+                const field = fieldsRef.current[key];
+                if (key.startsWith(`${name}[${focusIndexRef.current}]`) &&
+                    field.ref.focus) {
+                    field.ref.focus();
+                    break;
+                }
+            }
+        }
+        focusIndexRef.current = -1;
+    }, [fields, name]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        const resetFunctions = resetFieldArrayFunctionRef.current;
+        const fieldArrayNames = fieldArrayNamesRef.current;
+        if (!getFieldArrayParentName(name)) {
+            resetFunctions[name] = (data) => {
+                resetFields();
+                !data && unset(fieldArrayDefaultValuesRef.current, name);
+                unset(shallowFieldsStateRef.current, name);
+                memoizedDefaultValues.current = get(data || defaultValuesRef.current, name);
+                setFields(mapIds(memoizedDefaultValues.current, keyName));
+            };
+        }
+        return () => {
+            if (true) {
+                return;
+            }
+            resetFields();
+            delete resetFunctions[name];
+            unset(fieldArrayValuesRef, name);
+            fieldArrayNames.delete(name);
+        };
+    }, []);
+    return {
+        swap: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(swap, [name]),
+        move: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(move, [name]),
+        prepend: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(prepend$1, [name]),
+        append: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(append, [name]),
+        remove: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(remove, [name]),
+        insert: Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(insert$1, [name]),
+        fields,
+    };
+};
+
+var getInputValue = (event) => isPrimitive(event) ||
+    !isObject(event.target) ||
+    (isObject(event.target) && !event.type)
+    ? event
+    : isUndefined(event.target.value)
+        ? event.target.checked
+        : event.target.value;
+
+function useController({ name, rules, defaultValue, control, onFocus, }) {
+    const methods = useFormContext();
+    if (true) {
+        if (!control && !methods) {
+            throw new Error('📋 Controller is missing `control` prop. https://react-hook-form.com/api#Controller');
+        }
+    }
+    const { defaultValuesRef, setValue, register, unregister, trigger, mode, reValidateMode: { isReValidateOnBlur, isReValidateOnChange }, formState, formStateRef: { current: { isSubmitted, touched, errors }, }, updateFormState, readFormStateRef, fieldsRef, fieldArrayNamesRef, shallowFieldsStateRef, } = control || methods.control;
+    const isNotFieldArray = !isNameInFieldArray(fieldArrayNamesRef.current, name);
+    const getInitialValue = () => !isUndefined(get(shallowFieldsStateRef.current, name)) && isNotFieldArray
+        ? get(shallowFieldsStateRef.current, name)
+        : isUndefined(defaultValue)
+            ? get(defaultValuesRef.current, name)
+            : defaultValue;
+    const [value, setInputStateValue] = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getInitialValue());
+    const valueRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(value);
+    const ref = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])({
+        focus: () => null,
+    });
+    const onFocusRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(onFocus ||
+        (() => {
+            if (isFunction(ref.current.focus)) {
+                ref.current.focus();
+            }
+            if (true) {
+                if (!isFunction(ref.current.focus)) {
+                    console.warn(`📋 'ref' from Controller render prop must be attached to a React component or a DOM Element whose ref provides a 'focus()' method`);
+                }
+            }
+        }));
+    const shouldValidate = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((isBlurEvent) => !skipValidation(Object.assign({ isBlurEvent,
+        isReValidateOnBlur,
+        isReValidateOnChange,
+        isSubmitted, isTouched: !!get(touched, name) }, mode)), [
+        isReValidateOnBlur,
+        isReValidateOnChange,
+        isSubmitted,
+        touched,
+        name,
+        mode,
+    ]);
+    const commonTask = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(([event]) => {
+        const data = getInputValue(event);
+        setInputStateValue(data);
+        valueRef.current = data;
+        return data;
+    }, []);
+    const registerField = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((shouldUpdateValue) => {
+        if (true) {
+            if (!name) {
+                return console.warn('📋 Field is missing `name` prop. https://react-hook-form.com/api#Controller');
+            }
+        }
+        if (fieldsRef.current[name]) {
+            fieldsRef.current[name] = Object.assign({ ref: fieldsRef.current[name].ref }, rules);
+        }
+        else {
+            register(Object.defineProperties({
+                name,
+                focus: onFocusRef.current,
+            }, {
+                value: {
+                    set(data) {
+                        setInputStateValue(data);
+                        valueRef.current = data;
+                    },
+                    get() {
+                        return valueRef.current;
+                    },
+                },
+            }), rules);
+            shouldUpdateValue = isUndefined(get(defaultValuesRef.current, name));
+        }
+        shouldUpdateValue &&
+            isNotFieldArray &&
+            setInputStateValue(getInitialValue());
+    }, [rules, name, register]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => () => unregister(name), [name]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        if (true) {
+            if (isUndefined(value)) {
+                console.warn(`📋 ${name} is missing in the 'defaultValue' prop of either its Controller (https://react-hook-form.com/api#Controller) or useForm (https://react-hook-form.com/api#useForm)`);
+            }
+            if (!isNotFieldArray && isUndefined(defaultValue)) {
+                console.warn('📋 Controller is missing `defaultValue` prop when using `useFieldArray`. https://react-hook-form.com/api#Controller');
+            }
+        }
+        registerField();
+    }, [registerField]);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        !fieldsRef.current[name] && registerField(true);
+    });
+    const onBlur = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])(() => {
+        if (readFormStateRef.current.touched && !get(touched, name)) {
+            set(touched, name, true);
+            updateFormState({
+                touched,
+            });
+        }
+        shouldValidate(true) && trigger(name);
+    }, [name, updateFormState, shouldValidate, trigger, readFormStateRef]);
+    const onChange = Object(react__WEBPACK_IMPORTED_MODULE_0__["useCallback"])((...event) => setValue(name, commonTask(event), {
+        shouldValidate: shouldValidate(),
+        shouldDirty: true,
+    }), [setValue, name, shouldValidate]);
+    return {
+        field: {
+            onChange,
+            onBlur,
+            name,
+            value,
+            ref,
+        },
+        meta: Object.defineProperties({
+            invalid: !!get(errors, name),
+        }, {
+            isDirty: {
+                get() {
+                    return !!get(formState.dirtyFields, name);
+                },
+            },
+            isTouched: {
+                get() {
+                    return !!get(formState.touched, name);
+                },
+            },
+        }),
+    };
+}
+
+function useWatch({ control, name, defaultValue, }) {
+    const methods = useFormContext();
+    if (true) {
+        if (!control && !methods) {
+            throw new Error('📋 useWatch is missing `control` prop. https://react-hook-form.com/api#useWatch');
+        }
+    }
+    const { useWatchFieldsRef, useWatchRenderFunctionsRef, watchInternal, defaultValuesRef, } = control || methods.control;
+    const updateValue = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])()[1];
+    const idRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+    const defaultValueRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(defaultValue);
+    Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+        if (true) {
+            if (name === '') {
+                console.warn('📋 useWatch is missing `name` attribute. https://react-hook-form.com/api#useWatch');
+            }
+        }
+        const id = (idRef.current = generateId());
+        const watchFieldsHookRender = useWatchRenderFunctionsRef.current;
+        const watchFieldsHook = useWatchFieldsRef.current;
+        watchFieldsHook[id] = new Set();
+        watchFieldsHookRender[id] = () => updateValue({});
+        watchInternal(name, defaultValueRef.current, id);
+        return () => {
+            delete watchFieldsHook[id];
+            delete watchFieldsHookRender[id];
+        };
+    }, [
+        name,
+        useWatchRenderFunctionsRef,
+        useWatchFieldsRef,
+        watchInternal,
+        defaultValueRef,
+    ]);
+    return idRef.current
+        ? watchInternal(name, defaultValueRef.current, idRef.current)
+        : isUndefined(defaultValue)
+            ? isString(name)
+                ? get(defaultValuesRef.current, name)
+                : Array.isArray(name)
+                    ? name.reduce((previous, inputName) => (Object.assign(Object.assign({}, previous), { [inputName]: get(defaultValuesRef.current, inputName) })), {})
+                    : defaultValuesRef.current
+            : defaultValue;
+}
+
+const Controller = (props) => {
+    const { rules, as, render, defaultValue, control, onFocus } = props, rest = __rest(props, ["rules", "as", "render", "defaultValue", "control", "onFocus"]);
+    const { field, meta } = useController(props);
+    const componentProps = Object.assign(Object.assign({}, rest), field);
+    return as
+        ? Object(react__WEBPACK_IMPORTED_MODULE_0__["isValidElement"])(as)
+            ? Object(react__WEBPACK_IMPORTED_MODULE_0__["cloneElement"])(as, componentProps)
+            : Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(as, componentProps)
+        : render
+            ? render(field, meta)
+            : null;
+};
+
+
+//# sourceMappingURL=index.esm.js.map
+
+
+/***/ }),
+
 /***/ "./node_modules/react-is/cjs/react-is.development.js":
 /*!***********************************************************!*\
   !*** ./node_modules/react-is/cjs/react-is.development.js ***!
@@ -30157,6 +34066,387 @@ exports.typeOf = typeOf;
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js":
+/*!***************************************************************************!*\
+  !*** ./node_modules/react-onclickoutside/dist/react-onclickoutside.es.js ***!
+  \***************************************************************************/
+/*! exports provided: IGNORE_CLASS_NAME, default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "IGNORE_CLASS_NAME", function() { return IGNORE_CLASS_NAME; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  subClass.__proto__ = superClass;
+}
+
+function _objectWithoutProperties(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+
+  return target;
+}
+
+/**
+ * Check whether some DOM node is our Component's node.
+ */
+function isNodeFound(current, componentNode, ignoreClass) {
+  if (current === componentNode) {
+    return true;
+  } // SVG <use/> elements do not technically reside in the rendered DOM, so
+  // they do not have classList directly, but they offer a link to their
+  // corresponding element, which can have classList. This extra check is for
+  // that case.
+  // See: http://www.w3.org/TR/SVG11/struct.html#InterfaceSVGUseElement
+  // Discussion: https://github.com/Pomax/react-onclickoutside/pull/17
+
+
+  if (current.correspondingElement) {
+    return current.correspondingElement.classList.contains(ignoreClass);
+  }
+
+  return current.classList.contains(ignoreClass);
+}
+/**
+ * Try to find our node in a hierarchy of nodes, returning the document
+ * node as highest node if our node is not found in the path up.
+ */
+
+function findHighest(current, componentNode, ignoreClass) {
+  if (current === componentNode) {
+    return true;
+  } // If source=local then this event came from 'somewhere'
+  // inside and should be ignored. We could handle this with
+  // a layered approach, too, but that requires going back to
+  // thinking in terms of Dom node nesting, running counter
+  // to React's 'you shouldn't care about the DOM' philosophy.
+
+
+  while (current.parentNode) {
+    if (isNodeFound(current, componentNode, ignoreClass)) {
+      return true;
+    }
+
+    current = current.parentNode;
+  }
+
+  return current;
+}
+/**
+ * Check if the browser scrollbar was clicked
+ */
+
+function clickedScrollbar(evt) {
+  return document.documentElement.clientWidth <= evt.clientX || document.documentElement.clientHeight <= evt.clientY;
+}
+
+// ideally will get replaced with external dep
+// when rafrex/detect-passive-events#4 and rafrex/detect-passive-events#5 get merged in
+var testPassiveEventSupport = function testPassiveEventSupport() {
+  if (typeof window === 'undefined' || typeof window.addEventListener !== 'function') {
+    return;
+  }
+
+  var passive = false;
+  var options = Object.defineProperty({}, 'passive', {
+    get: function get() {
+      passive = true;
+    }
+  });
+
+  var noop = function noop() {};
+
+  window.addEventListener('testPassiveEventSupport', noop, options);
+  window.removeEventListener('testPassiveEventSupport', noop, options);
+  return passive;
+};
+
+function autoInc(seed) {
+  if (seed === void 0) {
+    seed = 0;
+  }
+
+  return function () {
+    return ++seed;
+  };
+}
+
+var uid = autoInc();
+
+var passiveEventSupport;
+var handlersMap = {};
+var enabledInstances = {};
+var touchEvents = ['touchstart', 'touchmove'];
+var IGNORE_CLASS_NAME = 'ignore-react-onclickoutside';
+/**
+ * Options for addEventHandler and removeEventHandler
+ */
+
+function getEventHandlerOptions(instance, eventName) {
+  var handlerOptions = null;
+  var isTouchEvent = touchEvents.indexOf(eventName) !== -1;
+
+  if (isTouchEvent && passiveEventSupport) {
+    handlerOptions = {
+      passive: !instance.props.preventDefault
+    };
+  }
+
+  return handlerOptions;
+}
+/**
+ * This function generates the HOC function that you'll use
+ * in order to impart onOutsideClick listening to an
+ * arbitrary component. It gets called at the end of the
+ * bootstrapping code to yield an instance of the
+ * onClickOutsideHOC function defined inside setupHOC().
+ */
+
+
+function onClickOutsideHOC(WrappedComponent, config) {
+  var _class, _temp;
+
+  var componentName = WrappedComponent.displayName || WrappedComponent.name || 'Component';
+  return _temp = _class =
+  /*#__PURE__*/
+  function (_Component) {
+    _inheritsLoose(onClickOutside, _Component);
+
+    function onClickOutside(props) {
+      var _this;
+
+      _this = _Component.call(this, props) || this;
+
+      _this.__outsideClickHandler = function (event) {
+        if (typeof _this.__clickOutsideHandlerProp === 'function') {
+          _this.__clickOutsideHandlerProp(event);
+
+          return;
+        }
+
+        var instance = _this.getInstance();
+
+        if (typeof instance.props.handleClickOutside === 'function') {
+          instance.props.handleClickOutside(event);
+          return;
+        }
+
+        if (typeof instance.handleClickOutside === 'function') {
+          instance.handleClickOutside(event);
+          return;
+        }
+
+        throw new Error("WrappedComponent: " + componentName + " lacks a handleClickOutside(event) function for processing outside click events.");
+      };
+
+      _this.__getComponentNode = function () {
+        var instance = _this.getInstance();
+
+        if (config && typeof config.setClickOutsideRef === 'function') {
+          return config.setClickOutsideRef()(instance);
+        }
+
+        if (typeof instance.setClickOutsideRef === 'function') {
+          return instance.setClickOutsideRef();
+        }
+
+        return Object(react_dom__WEBPACK_IMPORTED_MODULE_1__["findDOMNode"])(instance);
+      };
+
+      _this.enableOnClickOutside = function () {
+        if (typeof document === 'undefined' || enabledInstances[_this._uid]) {
+          return;
+        }
+
+        if (typeof passiveEventSupport === 'undefined') {
+          passiveEventSupport = testPassiveEventSupport();
+        }
+
+        enabledInstances[_this._uid] = true;
+        var events = _this.props.eventTypes;
+
+        if (!events.forEach) {
+          events = [events];
+        }
+
+        handlersMap[_this._uid] = function (event) {
+          if (_this.componentNode === null) return;
+
+          if (_this.props.preventDefault) {
+            event.preventDefault();
+          }
+
+          if (_this.props.stopPropagation) {
+            event.stopPropagation();
+          }
+
+          if (_this.props.excludeScrollbar && clickedScrollbar(event)) return;
+          var current = event.target;
+
+          if (findHighest(current, _this.componentNode, _this.props.outsideClickIgnoreClass) !== document) {
+            return;
+          }
+
+          _this.__outsideClickHandler(event);
+        };
+
+        events.forEach(function (eventName) {
+          document.addEventListener(eventName, handlersMap[_this._uid], getEventHandlerOptions(_this, eventName));
+        });
+      };
+
+      _this.disableOnClickOutside = function () {
+        delete enabledInstances[_this._uid];
+        var fn = handlersMap[_this._uid];
+
+        if (fn && typeof document !== 'undefined') {
+          var events = _this.props.eventTypes;
+
+          if (!events.forEach) {
+            events = [events];
+          }
+
+          events.forEach(function (eventName) {
+            return document.removeEventListener(eventName, fn, getEventHandlerOptions(_this, eventName));
+          });
+          delete handlersMap[_this._uid];
+        }
+      };
+
+      _this.getRef = function (ref) {
+        return _this.instanceRef = ref;
+      };
+
+      _this._uid = uid();
+      return _this;
+    }
+    /**
+     * Access the WrappedComponent's instance.
+     */
+
+
+    var _proto = onClickOutside.prototype;
+
+    _proto.getInstance = function getInstance() {
+      if (!WrappedComponent.prototype.isReactComponent) {
+        return this;
+      }
+
+      var ref = this.instanceRef;
+      return ref.getInstance ? ref.getInstance() : ref;
+    };
+
+    /**
+     * Add click listeners to the current document,
+     * linked to this component's state.
+     */
+    _proto.componentDidMount = function componentDidMount() {
+      // If we are in an environment without a DOM such
+      // as shallow rendering or snapshots then we exit
+      // early to prevent any unhandled errors being thrown.
+      if (typeof document === 'undefined' || !document.createElement) {
+        return;
+      }
+
+      var instance = this.getInstance();
+
+      if (config && typeof config.handleClickOutside === 'function') {
+        this.__clickOutsideHandlerProp = config.handleClickOutside(instance);
+
+        if (typeof this.__clickOutsideHandlerProp !== 'function') {
+          throw new Error("WrappedComponent: " + componentName + " lacks a function for processing outside click events specified by the handleClickOutside config option.");
+        }
+      }
+
+      this.componentNode = this.__getComponentNode(); // return early so we dont initiate onClickOutside
+
+      if (this.props.disableOnClickOutside) return;
+      this.enableOnClickOutside();
+    };
+
+    _proto.componentDidUpdate = function componentDidUpdate() {
+      this.componentNode = this.__getComponentNode();
+    };
+    /**
+     * Remove all document's event listeners for this component
+     */
+
+
+    _proto.componentWillUnmount = function componentWillUnmount() {
+      this.disableOnClickOutside();
+    };
+    /**
+     * Can be called to explicitly enable event listening
+     * for clicks and touches outside of this element.
+     */
+
+
+    /**
+     * Pass-through render
+     */
+    _proto.render = function render() {
+      // eslint-disable-next-line no-unused-vars
+      var _props = this.props,
+          excludeScrollbar = _props.excludeScrollbar,
+          props = _objectWithoutProperties(_props, ["excludeScrollbar"]);
+
+      if (WrappedComponent.prototype.isReactComponent) {
+        props.ref = this.getRef;
+      } else {
+        props.wrappedRef = this.getRef;
+      }
+
+      props.disableOnClickOutside = this.disableOnClickOutside;
+      props.enableOnClickOutside = this.enableOnClickOutside;
+      return Object(react__WEBPACK_IMPORTED_MODULE_0__["createElement"])(WrappedComponent, props);
+    };
+
+    return onClickOutside;
+  }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]), _class.displayName = "OnClickOutside(" + componentName + ")", _class.defaultProps = {
+    eventTypes: ['mousedown', 'touchstart'],
+    excludeScrollbar: config && config.excludeScrollbar || false,
+    outsideClickIgnoreClass: IGNORE_CLASS_NAME,
+    preventDefault: false,
+    stopPropagation: false
+  }, _class.getClass = function () {
+    return WrappedComponent.getClass ? WrappedComponent.getClass() : WrappedComponent;
+  }, _temp;
+}
+
+
+/* harmony default export */ __webpack_exports__["default"] = (onClickOutsideHOC);
 
 
 /***/ }),

@@ -1,13 +1,13 @@
 import {
     CLEAR_ERRORS,
-    RECEIVE_OTB_SAMPLE_ERRORS
-} from '../actions/otb_sample_actions'
+    RECEIVE_ERRORS
+} from '../actions/register_actions'
 
 
 export default (state = [], action) => {
     Object.freeze(state);
     switch (action.type) {
-        case RECEIVE_OTB_SAMPLE_ERRORS:
+        case RECEIVE_ERRORS:
             return action.errors
         case CLEAR_ERRORS:
             return [];

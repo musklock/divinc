@@ -1,17 +1,18 @@
 import React from 'react';
 
 
-const Header = props => {
+const RegisterHeader = props => {
 
     return (
 
         <span className="header_wrapper">
-
             <div className="header-logo">MATCHTOR</div>
+            <button className="login-button">Login</button>
+
         </span>
         
     )
 
 }
 
-export default Header;
+export default RegisterHeader;

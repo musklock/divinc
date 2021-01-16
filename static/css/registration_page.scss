@@ -1,0 +1,40 @@
+.register_button {
+    margin-top: 30px;
+align-self: center;
+
+}
+
+.background_container {
+    background-color: #f4f5f6;
+     display:flex;
+  flex-direction: column;
+  height: 100%;
+  width:100%;
+ align-items: center;
+}
+
+.form_box {
+    margin-top: 80px;
+    background-color:white;
+    border: 1px solid #C0C0C0;
+    padding: 40px;
+    width: 800px;
+    padding-bottom: 100px;
+}
+
+
+.test_image {
+
+}
+
+.back-button {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    height: 150px;
+    width: 150px;
+}
+
+.back-button:hover {
+    cursor: pointer;
+}

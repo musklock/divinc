@@ -1,39 +1,76 @@
 
 import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import Footer from '../header_footer/footer'
+import RegisterHeader from '../header_footer/register_header';
 
-import Header from '../header_footer/main_page_header';
 // import TableContainer from '../table/table_container'
 
-const RegistrationPage = props => {
+const RegistrationPage = ({userProfile, registration, updateRegistrationProfileObject, updateUserProfile, history}) => {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [password, setPassword] = useState('&&&&');
+  const [confirmation, setConfirmation ] = useState('');
+  const [linkedin, setlinkedin] = useState('');
 
+  const submit = () => {
 
-// useEffect(() => {
-//     props.fetchOTBSamples()
-//     props.fetchOTBSampleHistories()
-// }, [])    
+    if (password != confirmation) {
 
-let table = true;
-// function container() {
-//     if (table) {
-//         return <TableContainer/>
-//     }
-// }
+      alert('Passwords must match!')
+      return;
 
-const [initialData, setInitialData] = useState([{}]);
+    }
+    let userObject = {
+      name: name,
+      email: email,
+      password: password,
+      linkedin: linkedin
+    }
 
-  useEffect(() => {
-    fetch('/api').then(
-      response => response.json()
-    ).then(data => setInitialData(data))
-  }, [])
+    updateRegistrationProfileObject(userObject)
+    history.push("/register2")
 
+    }
 
     
     return (
             <div className="main_page_container">
-              <Header/>
-
+              <RegisterHeader/>
             
+
+           
+              <div className="background_container">
+                <div className="form_box">
+                  <h1>Your Information</h1>
+                  <form className="registration_form" onSubmit={()=>submit()}>
+                    
+                    <label className="registration_text">Full Name
+                        <input type="text" onChange={event => setName(event.target.value)}/>
+                    </label>
+                    
+                    <label className="registration_text">Email
+                        <input type="text" onChange={event => setEmail(event.target.value)} placeholder="youremail@example.com"/>
+                    </label>
+                    <label className="registration_text">Password
+                        <input type="password" onChange={event => setPassword(event.target.value)} placeholder="must be longer than 6 characters"/>
+                    </label>
+                    <label className="registration_text">Verify Password
+                        <input type="password" onChange={event => setConfirmation(event.target.value)} placeholder="type to confirm your password"/>
+                    </label>
+                    <label className="registration_text" onChange={event => setlinkedin(event.target.value)}>Linkedin URL
+                        <input type="text" />
+                    </label>
+
+
+                      <input type="submit" value="Register" className="register_button" />
+                      
+                      {/* <button className="register_button"><Link>Register</button> */}
+                  </form>
+                </div>
+              </div> 
+               
+              <Footer/>
             </div>
         )
 }

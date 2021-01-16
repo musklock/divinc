@@ -1,3 +1,5 @@
+from flask import send_from_directory
+import os
 from flask import Flask, render_template, flash, redirect
 from app import app
 from .forms import *
@@ -56,3 +58,8 @@ def profile_mentor():
     # logged_in = checklogin()
     return render_template("mentor_profile.html", form=form)
     # return render_template("mentor_profile.html", form=form, logged_in=logged_in)
+
+
+@app.route('/favicon.ico')
+def favicon():
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'favicon.ico', mimetype='image/vnd.microsoft.icon')

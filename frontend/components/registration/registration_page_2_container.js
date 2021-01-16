@@ -1,22 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RegistrationPage from "./registration_page.jsx";
-// import {fetchOTBSamples} from '../../actions/otb_sample_actions';
-// import {fetchOTBSampleHistories} from '../../actions/otb_sample_history_actions';
-
+import RegistrationPage2 from "./registration_page_2.jsx";
+import {updateRegistrationProfileObject, updateUserProfile} from '../../actions/register_actions'
 
 
 const mSTP = state => ({
-  // OTBSamples: Object.values(state.entities.OTBSamples)
+  userProfile: state.entities.userProfile,
+  registration: state.entities.registration
 });
 
 
 const mDTP = dispatch => ({
-    // fetchOTBSamples: () => dispatch(fetchOTBSamples()),
-    // fetchOTBSampleHistories: () => dispatch(fetchOTBSampleHistories()),
+  updateRegistrationProfileObject: profileObject => dispatch(updateRegistrationProfileObject(profileObject)),
+  updateUserProfile: user => dispatch(updateUserProfile(user))
 });
 
 
 
 
-export default connect(mSTP, mDTP)(RegistrationPage)
+export default connect(mSTP, mDTP)(RegistrationPage2)

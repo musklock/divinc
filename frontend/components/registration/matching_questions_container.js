@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RegistrationPage from "./registration_page.jsx";
-import RegistrationPage2 from "./registration_page_2.jsx";
+import MatchingQuestions from './matching_questions';
 import {updateRegistrationProfileObject, updateUserProfile} from '../../actions/register_actions'
 import {withRouter } from 'react-router-dom';
 
@@ -20,4 +19,4 @@ const mDTP = dispatch => ({
 
 
 
-export default withRouter(connect(mSTP, mDTP)(RegistrationPage))
+export default withRouter(connect(mSTP, mDTP)(MatchingQuestions))

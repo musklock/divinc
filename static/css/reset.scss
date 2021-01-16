@@ -1,0 +1,132 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+
+input {
+   height: 30px;
+    width: 450px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    border: 1px solid #BDBDBD;
+    margin: 5px;
+    align-self:center;
+    border-radius: 3px;
+    padding: 10px;
+    color: #BDBDBD;
+    margin-bottom:40px;
+
+}
+
+button {
+    padding: 10px;
+    justify-self: center;
+    height: 20px;
+    width: 80px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    border: 1px solid #BDBDBD;
+    margin: 5px;
+    align-self:center;
+    background-color: #6187c8;
+    border: 2px solid #6187c8;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    justify-content: center;
+}
+
+
+input[type="submit"] {
+   padding: 10px;
+    justify-self: center;
+    height: 20px;
+    width: 80px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    border: 1px solid #BDBDBD;
+    margin: 5px;
+    align-self:center;
+    background-color: #6187c8;
+    border: 2px solid #6187c8;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    justify-content: center;  
+    margin-top: 80px;
+    padding: 10px 25px;
+}
+
+textarea {
+       min-height: 200px;
+    width: 950px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    border: 1px solid #BDBDBD;
+    margin: 5px;
+    align-self:center;
+    border-radius: 3px;
+    padding: 10px;
+    color: #BDBDBD;
+    margin-top:20px;
+    resize: none;
+    
+
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  height: 30px;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+/* Clearfix */
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+

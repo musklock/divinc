@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import RegistrationPage from "./registration_page.jsx";
+import RegistrationProfile from "./registration_profile.jsx";
 import RegistrationPage2 from "./registration_page_2.jsx";
 import {updateRegistrationProfileObject, updateUserProfile} from '../../actions/register_actions'
 import {withRouter } from 'react-router-dom';
-
 
 const mSTP = state => ({
   userProfile: state.entities.userProfile,
@@ -20,4 +19,4 @@ const mDTP = dispatch => ({
 
 
 
-export default withRouter(connect(mSTP, mDTP)(RegistrationPage))
+export default withRouter(connect(mSTP, mDTP)(RegistrationProfile));
