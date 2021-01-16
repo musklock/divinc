@@ -39,6 +39,7 @@ const RegistrationPage2 = ({userProfile, registration, updateRegistrationProfile
 
               
               
+              
               <div className="background_container">
                 <div className="form_box">
                   <h2>Are you interested in being a mentor or a mentee?</h2>

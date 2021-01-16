@@ -1,7 +1,7 @@
 
 import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
-
+import Footer from '../header_footer/footer'
 import RegisterHeader from '../header_footer/register_header';
 
 // import TableContainer from '../table/table_container'
@@ -35,9 +35,12 @@ const RegistrationPage = ({userProfile, registration, updateRegistrationProfileO
 
     
     return (
-            <div className="background_container">
+            <div className="main_page_container">
               <RegisterHeader/>
-              <div className="form-box-container">
+            
+
+           
+              <div className="background_container">
                 <div className="form_box">
                   <h1>Your Information</h1>
                   <form className="registration_form" onSubmit={()=>submit()}>
@@ -66,6 +69,8 @@ const RegistrationPage = ({userProfile, registration, updateRegistrationProfileO
                   </form>
                 </div>
               </div> 
+               
+              <Footer/>
             </div>
         )
 }

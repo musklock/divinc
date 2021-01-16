@@ -1,9 +1,9 @@
 
 .main_page_background {
     background-image: url('./images/homepage.png');
-    background-position: top 1px center;
-    background-size: 100% auto;
-    height: 100%;
+    background-position: center center;
+    background-size: auto 100%;
+    min-height: 80%;
     background-repeat: no-repeat;
     justify-content: center;
     width: 100%;
@@ -12,7 +12,6 @@
 .login-container {
     display: flex;
     flex-direction: column;
-    
     border-radius: 3px;
     align-content: center;
     padding: 20px;
@@ -104,3 +103,37 @@
 .reset-password {
     margin-top: 10px;
 }
+
+
+.header-prompt {
+
+  position: relative;
+  width: 818px;
+  padding: 20px;
+//   height: 127px;
+//   left: 17px;
+//   top: 152px;
+  
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: #1A1A22;
+background-color: rgba(254, 247, 245, 0.8);
+border-radius: 4px;
+}
+
+
+.main_page_container {
+  display:flex;
+  flex-direction: column;
+justify-content: flex-start;
+  height: 100%;
+  width:100%;
+ align-items: center;
+}
+

@@ -31,50 +31,6 @@ const RegistrationProfile = ({userProfile, registration, updateRegistrationProfi
     }
 
 
-  // const questions = [
-  //     {id: 1, value: "test1"}, 
-  //     {id: 2, value: "test2"}, 
-  //     {id: 3, value: "test3"},
-  //     {id: 3, value: "test3"},
-  //     {id: 3, value: "test3"},
-  //     {id: 3, value: "test3"},
-  //     {id: 3, value: "test3"},
-  //   ]
-
-
-// const getBase64Image = (img) => {
-//     var canvas = document.createElement("canvas");
-//     canvas.width = img.width;
-//     canvas.height = img.height;
-//     var ctx = canvas.getContext("2d");
-//     ctx.drawImage(img, 0, 0);
-
-//     var dataURL = canvas.toDataURL("image/png");
-
-//     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-// }
-
-// const onSubmit = (data) => {
-//   // console.log(data)
-//   // setPicture(data)
-//   setPicture(true)
-//   let imgData = getBase64Image(data);
-//   localStorage.setItem("picture", imgData);
-
-// }
-
-// const renderStorageImage = () => {
-//   let dataImage = localStorage.getItem('imgData');
-//   let bannerImg = document.getElementById('tableBanner');
-//   bannerImg.src = "data:image/png;base64," + dataImage;
-// }
-
-// const [initialData, setInitialData] = useState([{}]);
-
-
-
-    // const {register, handleSubmit} = useForm()s
-    
     return (
             <div className="main_page_container">
               <BlankHeader/>
@@ -155,7 +111,6 @@ const RegistrationProfile = ({userProfile, registration, updateRegistrationProfi
                   </label>
                   : 
                   <label>About Me (i.e. what are you passionate about? What are your hobbies? What would you like to share with your mentor?)
-
                       <textarea cols="30" rows="10"></textarea>
                   </label>
                   }
